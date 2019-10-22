@@ -19,5 +19,6 @@
 *.symbols-glo
 *.symbols-gls
 *.toc
+*.gls-abr
 uw-ethesis.pdf
 uw-ethesis.out
