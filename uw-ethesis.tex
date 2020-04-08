@@ -184,6 +184,17 @@
   \clearpage{\pagestyle{empty}\origdoublepage}}
 \let\cleardoublepage\clearemptydoublepage
 
+
+%%% REZAREZAREZAREZAREZA
+\usepackage{xcolor}
+
+
+%%% REZAREZAREZAREZAREZA
+\definecolor{myred}{HTML}{9A031E}
+\definecolor{myblue}{HTML}{064a6d}
+
+\newcommand{\newtext}[1]{\textcolor{myblue}{#1}}
+
 % Define Glossary terms (This is properly done here, in the preamble and could also be \input{} from a separate file...)
 % Main glossary entries -- definitions of relevant terminology
 \newglossaryentry{computer}
@@ -217,6 +228,13 @@ description={Random vector: a location in n-dimensional Cartesian space, where e
 }
  
 \makeglossaries
+
+
+%\newcommand{\newrev}[1]{\textcolor{myred}{#1}}
+%\newcommand{\deadtext}[1]{\textcolor{red}{\sout{#1}}}
+%\newcommand{\newtext}[1]{#1}
+%\newcommand{\newrev}[1]{#1}
+%\newcommand{\deadtext}[1]{}
 
 %======================================================================
 %   L O G I C A L    D O C U M E N T
