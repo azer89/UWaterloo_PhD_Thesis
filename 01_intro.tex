@@ -38,6 +38,8 @@ A packing installation in a lobby of a video game company. }
 Doodle boy. }
 \end{figure}
 
+\mynote{TODO: Copy from comp\_2}
+
 \mynote{
 Thesis Statement (one or two sentences)
 \begin{itemize}
@@ -46,6 +48,14 @@ Thesis Statement (one or two sentences)
 \item How will you test (prove/disprove) your hypothesis?
 \end{itemize}
 }
+
+
+A \textit{packing} is an arrangement of 2D geometric
+\textit{elements} within a \textit{container} region in the plane.
+Packings are popular in art, ornamentation, and graphics design.
+Figure ~\ref{fig_logo_packings}\ref{fig_graphics_designs}\ref{fig_woodland}\ref{fig_valve_lobby}\ref{fig_doodle_boy} show several packing examples.
+They can effectively convey a relationship between a unified whole (the
+container shape) and its many sub-parts (the elements).
 
 \mynote{
 Motivation
@@ -62,6 +72,33 @@ Goals / Objectives
 \end{itemize}
 }
 
+There has been a moderate amount of past research in computer
+graphics, particularly in the field of non-photorealistic rendering,
+on the generation of packings, tilings, or mosaics.  
+See Chapter~\ref{related_work_section} for specific examples.  
+However,  most techniques pack elements via rigid transformations, leading to
+uneven element distribution and overlaps.  
+Jigsaw Image Mosaics~\cite{Kim2002} and collages based on the Pyramid of Arclength
+Descriptor~\cite{Kwan2016}, might be described as \textit{data-driven}.
+These techniques rely on assembling a large library of elements, so that given an
+area to fill in a partial composition, there is likely to be an
+element in the library with a compatible shape.  The challenge is 
+\textit{finding compatible elements}, 
+which requires designing a shape descriptor that is fast and robust.
+These techniques suppress imperfections by deforming
+elements in a final post-processing step after they freeze the element positions.
+%allows this compatible element to be found efficiently.  
+The data-driven approaches do not always work.
+They cannot guarantee to find a compatible element
+at every iteration, and
+elements typically do not fit perfectly with each other 
+or the container boundary.
+The remedy here is providing more data with increased computation time.
+However, a large library may not be feasible or artistically desirable.
+If an artist wants a packing of cats, and a data-driven approach 
+cannot find a good result with ten cat shapes, 
+the artist may not want to draw 100 or 1000 cat shapes to ensure a better fit.
+
 \mynote{
 Contributions
 \begin{itemize}
@@ -74,3 +111,19 @@ Contributions
 
 
 
+We propose \textit{deformation-driven} methods.
+Instead of finding compatible elements,
+we intend to \textit{create compatible elements} through element deformation
+that can adapt to the shapes of neighboring elements and the container boundary.
+We allow elements to deform in a controlled way,
+to trade off between the evenness of the element distribution and 
+the deformations of the individual elements.
+By building an algorithm with a controllable deformation model at its core, we achieve a
+more even distribution of negative space, even with a small library of element shapes.
+
+
+
+\mynote
+{
+Explain briefly FLOWPAK, RepulsionPak, and AnimationPak. 
+}
