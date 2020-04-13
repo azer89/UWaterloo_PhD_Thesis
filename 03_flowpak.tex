@@ -48,9 +48,56 @@ FLOWPAK pipeline. \mynote{Need rearrange}.}
 
 \subsection{Target Containers}
 \subsection{Ornamental elements and LR functions}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
+\caption{\label{ornamental_shapes_fig}
+Ornamental elements and their LR functions. Full elements have non-empty
+left and right sides, while half elements have only one non-empty side. 
+We normalize the LR functions to a unit square.}
+\end{figure}
+
 \subsection{Creating Vector Fields and Tracing Streamlines}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
+\caption{\label{streamline_tracing}
+The streamline tracing process. The first streamline $s_1$ always begins
+on a directional guide or the container boundary.  Subsequent streamlines begin
+on the container boundary, a directional guide, or at a point that is 
+$d\_gap$ away from a previous streamline.}
+\end{figure}
+
 \subsection{sub-region blobs}
 \subsection{Shape Matching and Deformation}
+
+\begin{figure}
+\centering
+\includegraphics[width=6.4cm]{figures/flowpak/shape_deformation.pdf}
+\caption{\label{shape_deformation}
+The deformation process bends the element along the streamline and
+scales it to fit inside the blob.}
+\bigskip
+ \includegraphics[width=6.4cm]{figures/flowpak/shift_streamline.pdf}
+ \caption{\label{shift_streamline}
+ Streamline shifting.
+ 	We move the streamline's start and end points along 
+	perpendiculars, stopping before intersecting neighbouring elements.}
+\smallskip
+\includegraphics[width=3.2cm]{figures/flowpak/dijkstra.pdf}
+ \caption{\label{dijkstra}
+ Tracing a shortest path using Dijkstra's algorithm.  We generate the 
+ orange nodes by resampling and offsetting the original red streamline.
+          The search directions at a node are shown with green arrows.}
+\end{figure}
+
+Once we have chosen an element, we place it along the streamline using a
+simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's width
+to make it as wide as possible while still staying inside the blob
+(Figure~\ref{shape_deformation}).
+
 \subsection{Iterative Refinement}
 \section{Implementation and Results}
 
