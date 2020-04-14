@@ -1,11 +1,13 @@
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{FLOWPAK: Flow-based Ornamental Element Packing}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mynote{Chapter title too long --> https://tex.stackexchange.com/questions/335346/addcontentslinetoc-with-a-linebreak-or-newline-for-the-toc}
 
 
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}[ht] %%% ELEMENT IMAGE
 \centering
@@ -35,9 +37,21 @@ the generation of packings or mosaics,
 this past work is not appropriate for creating flow-like
 designs similar to the dog example.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Previous Work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problem Formulation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Approach}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \begin{figure}
 \centering
@@ -46,8 +60,14 @@ designs similar to the dog example.
 FLOWPAK pipeline. \mynote{Need rearrange}.}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Target Containers}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ornamental elements and LR functions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
@@ -58,7 +78,9 @@ left and right sides, while half elements have only one non-empty side.
 We normalize the LR functions to a unit square.}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Creating Vector Fields and Tracing Streamlines}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
@@ -70,8 +92,14 @@ on the container boundary, a directional guide, or at a point that is
 $d\_gap$ away from a previous streamline.}
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{sub-region blobs}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Shape Matching and Deformation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
@@ -98,8 +126,35 @@ simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's 
 to make it as wide as possible while still staying inside the blob
 (Figure~\ref{shape_deformation}).
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Iterative Refinement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=6.5cm]{figures/flowpak/stretch.pdf}
+\caption{\label{stretch_ornament}
+(a) An elementt with its sub-region blob shown in dashed green line. Note that any blob is constrained by the neighboring elements. (b) The dashed red line is the grown blob, which accommodates an enlarged element.}
+
+% ROTATING OR FLIPPING
+\medskip
+\includegraphics[width=6.5cm]{figures/flowpak/rotate_ornament.pdf}
+\caption{\label{rotate_ornament}
+Top row: rotated versions of the original element. 
+         The best rotation angle is chosen via least squares matching.
+         Bottom row: original, rotated, and enlarged versions of an element.}
+
+\medskip
+\includegraphics[width=4.5cm]{figures/flowpak/flip.pdf}
+\caption{\label{flip_shape}
+An element that reflects across its spine during iterative refinement.
+LR functions and least squares shape matching allow an element to reflect
+across its spine, along its spine, or both.}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Implementation and Results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{figure}
 \centering
@@ -108,6 +163,58 @@ to make it as wide as possible while still staying inside the blob
 Lion Unicorn. }
 \end{figure}
 
+\begin{figure}[t!]
+\centering
+\includegraphics[width=5cm]{figures/flowpak/result_02.pdf} %RHINO
+\caption{\label{result_rhino}
+A packing of a rhinoceros.  Simple teardrop-shaped 
+elements lead to variety in size and curvature.}
+\bigskip
+\includegraphics[width=6cm]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
+\caption{\label{result_bear_leaves}
+	A bear packed with leaf elements.  We manually add noise to the 
+	elements in the output to create a distressed look.}
+\end{figure}
+
+\begin{figure} %CAT
+\centering
+\includegraphics[width=6.5cm]{figures/flowpak/cat.pdf}
+\caption{A packing with a symmetric layout; we only compute the left half and reflect the result. The elements around the cheeks and the chin are not aligned to the boundary, creating a fur-like effect.}
+\label{result_cat}
+\end{figure}
 
 
+\begin{figure} %DOG FLOWER
+\centering
+\includegraphics[width=6cm]{figures/flowpak/dog_flower.pdf}
+\caption{A packing of a dog. The fixed elements, shown as green
+	shapes in the diagram, are copied as-is to the output; fixed spines,
+	shown as green paths, force the placement of new elements at the given
+	locations.}
+\label{result_dog}
+\end{figure}
+
+
+
+
+\begin{figure} %BEAR OFFSET
+\centering
+\includegraphics[width=6cm]{figures/flowpak/bear_offset_space.pdf}
+\caption{A packing of the same container as in Figure~\ref{result_bear_leaves}.
+	We place longer and sparser elements and synthesize additional forms to
+	fill negative space.}
+\label{result_bear_offset}
+\end{figure}
+
+\begin{figure} %BIRD SQUARE
+\centering
+\includegraphics[width=6cm]{figures/flowpak/bird_square.pdf}
+\caption{A packing of a bird, based on input provided by
+	an artist.}
+\label{bird_square}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
