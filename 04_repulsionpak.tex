@@ -1,5 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\chapter{RepulsionPak: Deformation-Driven Element Packing with Repulsion Forces}
+\chapter[RepulsionPak: Deformation-Driven Element Packing \newline with Repulsion Forces]
+{RepulsionPak: Deformation-Driven Element Packing with Repulsion Forces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -18,14 +19,15 @@
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/pipeline.pdf} 
-\caption{\label{fig_repulsionpak_pipeline} 
+\caption[RepulsionPak pipeline]
+{\label{fig_repulsionpak_pipeline} 
 RepulsionPak pipeline. }
 \end{figure}
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=5cm]{figures/repulsionpak/pipeline_defviz_csk.pdf}
-\caption{
+\caption[Element deformation]{
 	\label{fig_defviz}
 	Some of the elements in the final packing in Fig.~\ref{fig_repulsionpak_pipeline}, 
 	showing the effect of deformation in our simulation.
@@ -39,7 +41,7 @@ RepulsionPak pipeline. }
 \begin{figure}[t] %%% ELEMENT IMAGE
 \centering
 \includegraphics[width=4.5cm]{figures/repulsionpak/element_skin_triangles_2.pdf}
-\caption{
+\caption[Element discretization]{
 	\label{fig_elements_image}
 	\newtext{An illustration of element discretization for preprocessing.}
 	(a) An element with its boundary displaced to create a skin, drawn in red.
@@ -50,7 +52,7 @@ RepulsionPak pipeline. }
 \begin{figure*}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces.pdf}
-\caption{
+\caption[Forces]{
 \label{fig_forces}
 Illustrations of the forces in our simulation.
 \;\textbf{(a)~Repulsion force}:
@@ -96,7 +98,8 @@ Should include negative space edges.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.3\columnwidth]{figures/repulsionpak/descriptor_2.pdf}
-\caption{\label{fig_shape_matching}
+\caption[A local shape descriptor for shape matching]
+{\label{fig_shape_matching}
 \newtext{An illustration of a local shape descriptor with $n = 3$. 
 These segments have varying arclengths but they all have the same value
 of $\tau$, the integral of absolute curvature along their lengths.}
@@ -105,7 +108,8 @@ of $\tau$, the integral of absolute curvature along their lengths.}
 \begin{figure}
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
-\caption{\label{rhino_packing}
+\caption[A demonstration of shape matching of leaf shapes inside a rhinoceros]
+{\label{rhino_packing}
 { 
 A demonstration of shape matching of leaf shapes inside a rhinoceros. 
 (a) We detect nine salient features, namely sharp convex corners, and 
@@ -122,7 +126,8 @@ assign an element to each.
 \begin{figure*}
   \centering
   \includegraphics[width=1.0\textwidth]{figures/repulsionpak/cat_whale_04}
-  \caption{
+  \caption[A packing of a cat]
+  {
   \label{cat_packing}
            A packing of six cat elements inside a fish-shaped target container. 
            Controllable deformation and repulsion forces allow the elements to deform,
@@ -134,7 +139,8 @@ assign an element to each.
 \begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/allresults.pdf} 
-\caption{\label{three_packings} Three packings created using RepulsionPak: Birds, Bats, and Butterflies. The results are visually appealing overall,
+\caption[Three packings created using RepulsionPak: Birds, Bats, and Butterflies]
+{\label{three_packings} Three packings created using RepulsionPak: \newline Birds, Bats, and Butterflies. The results are visually appealing overall,
 though some birds' tails suffer from excessive deformation in
 the packing on the left.}
 \end{figure*}
@@ -142,7 +148,8 @@ the packing on the left.}
 \begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/giraffe_penguin.pdf}
-\caption{\label{giraffe_penguin_packing}
+\caption[A packing that demonstrates torsional forces]
+{\label{giraffe_penguin_packing}
 A packing that demonstrates torsional forces.
 The packing uses copies of a single element shape, but every copy is given a rest orientation between $0^\circ$
 and $180^\circ$, based on its horizontal position in the container.  In the final packing the elements transition
@@ -154,7 +161,8 @@ from upright to upside-down, recreating an illusion in which giraffe heads becom
 \centering
 \includegraphics[width=0.95\columnwidth]{figures/repulsionpak/paisley_new.pdf} 
 \vspace{-10pt}
-\caption{\label{paisley_packing}
+\caption[A paisley-inspired toroidal packing that can tile the plane]
+{\label{paisley_packing}
 A paisley-inspired toroidal packing that can tile the plane. 
            (a) An initial paisley packing.
            (b) In a separate simulation, we fill each paisley with circles to demonstrate a packing inside a packing.
@@ -166,7 +174,9 @@ A paisley-inspired toroidal packing that can tile the plane.
 \centering
 \includegraphics[width=0.85\columnwidth]{figures/repulsionpak/bad_results.pdf} 
 \vspace{-12pt}
-\caption{\label{bad_results}
+\caption[Two demonstrations of how extreme parameter values can lead to \newline 
+	low-quality results]
+	{\label{bad_results}
 Two demonstrations of how extreme parameter values can lead to
 	low-quality results.  In~(a), we allow repulsion to overwhelm element
 	shape by setting $k_r$ to 200 and $k_e$ to 20; the resulting packing 
