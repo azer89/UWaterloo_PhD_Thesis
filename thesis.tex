@@ -188,6 +188,18 @@
 %%% REZAREZAREZAREZAREZA
 %%% REZAREZAREZAREZAREZA
 %%% REZAREZAREZAREZAREZA
+
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\renewcommand{\algorithmicrequire}{\textbf{Input:}} % change text require --> input
+\renewcommand{\algorithmicensure}{\textbf{Output:}} % change text ensure  --> output
+
+% amsmath
+\usepackage{array}
+\newenvironment{conditions}
+  {\par\vspace{\abovedisplayskip}\noindent\begin{tabular}{>{$}l<{$} @{${} \text{is } {}$} l}}
+  {\end{tabular}\par\vspace{\belowdisplayskip}}
+
 \usepackage{xcolor}
 \usepackage{bm}
 
@@ -201,6 +213,81 @@
 
 \newcommand{\newtext}[1]{\textcolor{myblue}{#1}}
 \newcommand{\mynote}[1]{\textcolor{myorange}{#1}}
+
+%% New environments from Craig
+\newenvironment{items}      {\begin{list}{$\bullet$}
+                              {
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{\parskip}
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{$\bullet$}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                            }
+                            {\end{list}}
+\newenvironment{packeditems}      {\begin{list}{$\bullet$}
+                              {
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{0pt}
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{$\bullet$}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                            }
+                            {\end{list}}
+\newenvironment{numbers}    {\begin{list}{\arabic{enumi}.}
+                              {
+                                \usecounter{enumi}
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{\parskip}
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{1ex}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                              }
+                            {\end{list}}
+\newenvironment{packednumbers}    {\begin{list}{\arabic{enumi}.}
+                              {
+                                \usecounter{enumi}
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{0pt} %% Change if you want
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{1ex}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                              }
+                            {\end{list}}
+\newenvironment{letters}    {\begin{list}{\alph{enumi}.}
+                              {
+                                \usecounter{enumi}
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{\parskip}
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{1ex}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                              }
+                            {\end{list}}
 
 % Define Glossary terms (This is properly done here, in the preamble and could also be \input{} from a separate file...)
 % Main glossary entries -- definitions of relevant terminology

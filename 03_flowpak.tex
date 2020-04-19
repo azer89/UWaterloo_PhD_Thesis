@@ -47,11 +47,56 @@ designs similar to the dog example.
 \section{Problem Formulation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+We formally define the problem to be solved as follows.  The user provides several pieces of input
+to our system:
+\begin{enumerate}
+      \item A set of target containers.
+            Each container 
+			is a closed curve to be filled with ornamental elements.
+      \item A set of direction guides
+      		that guide the placement algorithm, defining the flow of the results. 
+      		Every target container must have at least one guide, and some or
+      		all of the guides typically follow the container boundaries.
+      \item An optional set of fixed elements that we transfer directly to the result.
+      \item A set of ornamental elements, each with a spine that will control
+            its deformation.
+\end{enumerate}
+The first three inputs are combined into a single diagram, where they are
+distinguished by their colors; see
+the left and right drawings in Figure~\ref{lion_unicorn}. 
+The goal of our algorithm is to fill each target container with elements,
+trying to satisfy several guiding principles:
+\begin{enumerate}
+	\item Follow the flow defined by the direction guides.
+	\item Have as little empty space as possible.
+	\item Make the spacing between elements be as even as possible.
+	\item Conform to container boundaries.
+	\item Vary element width and length to avoid an excessively uniform arrangement.
+\end{enumerate}
+The next section describes how we achieve these results.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Approach}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. The numbers in the following
+steps correspond to parts of the figure.
+
+\smallskip
+
+\begin{enumerate}
+  \item Read the input target containers and
+  copy any fixed elements to the output art (Section~\ref{target_containers}).
+  \item Analyze the ornamental elements, creating a shape descriptor for each
+   (Section~\ref{ornamental_shapes}).
+  \item Use the direction guides to fill each target container with a vector field then trace streamlines (Section~\ref{vector_fields_streamlines}).
+  \item Divide the target containers into blobs around the streamlines (Section~\ref{subregion_blobs}).
+  \item Use the element shape descriptors to determine the best element for each blob. 
+        Place the element in the blob, treating it as a skeletal stroke and mapping its
+        spine to the streamline (Section~\ref{shape_matching_and_deformation}).
+  \item Iteratively refine the placement to eliminate empty areas and make the spacing more even (Section~\ref{iterative_refinement_process}).
+\end{enumerate}
 
 \begin{figure}
 \centering
@@ -65,10 +110,64 @@ FLOWPAK pipeline. \mynote{Need rearrange}.}
 \subsection{Target Containers}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+The input diagram contains a set of target containers. Each is a single
+closed curve defining an area
+to be filled.  Most non-trivial examples include more than one target
+container.  For the most part, our algorithm fills each container separately,
+and so the following explanation is given in terms of a single container.
+Containers will later be merged in the iterative refinement step.
+
+The artist has the option of including a set of fixed elements that
+we copy directly into the final result. The following sections
+include descriptions of how the fixed elements affect the filling
+algorithm.
+
+We define $input\_size$ to be the maximum of the combined width or height
+of all the target containers and fixed elements as laid out by the artist.
+This value will
+be used to set various parameters in the synthesis process.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Ornamental elements and LR functions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+An ornamental element is defined as one or more closed curves.  Our placement method will
+eventually deform copies of the element (Section~\ref{shape_matching_and_deformation}) 
+using a simple skeletal stroke algorithm~\cite{Hsu93},
+so each element must be annotated with a straight spine to guide the deformation.  The spine
+does not need to go through the center of the element---it can be anywhere.
+
+We define two classes of elements: a \textit{full element} extends across
+both sides of its
+spine, and a \textit{half element} lies entirely on one side of its spine.
+Figure~\ref{ornamental_shapes_fig} shows examples of full and half elements.  If the input
+to our algorithm includes direction guides that coincide with target container boundaries,
+the placement method will align half elements along these boundaries.  
+If half elements 
+have edges that closely follow their spines, they will visually reinforce
+container boundaries, as shown in our examples.
+
+We define a simple shape descriptor called an \textit{LR function}
+that will be used in
+Section~\ref{shape_matching_and_deformation} to choose which element to place in a particular location. 
+Inspired by the work of Gal et al.~\cite{Gal2007A}, we sample the element's
+spine at $n$ locations and at each location determine how far the ornament extends to the
+left and right of the spine. The LR function is the set $\{L, R\}$ where $L=\{\ell_1,\ldots,\ell_{n\text{\_}f}\}$
+is the left function and $R=\{r_1,\ldots,r_{n\text{\_}f}\}$ is the right function. The number of samples is denoted by $n\text{\_}f$.
+
+The LR function is made scale-invariant by normalizing its
+domain and range to $[0,1]$.  Note that swapping the $L$ and $R$ functions
+corresponds to reflecting the element across its spine, and reversing each
+of $L$ and $R$ corresponds to reflecting the element along its spine.  We
+will consider all four combinations of these two reflections when placing 
+an element in a blob (Section~\ref{subregion_blobs}),
+in order to achieve the best possible fit.
+
+Intuitively, LR functions give an approximate area an ornamental element can claim.
+Figure~\ref{ornamental_shapes_fig} 
+shows elements with their left values
+in green and their right values in red. We have found that $n = 100$ gives sufficient
+granularity for our algorithm.
 
 \begin{figure}
 \centering
@@ -84,6 +183,80 @@ We normalize the LR functions to a unit square.}
 \subsection{Creating Vector Fields and Tracing Streamlines}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+To implement the flow principle described in the introduction, we fill each target
+container with a vector field, constrained by the direction guides in that container.
+
+We sample the directional guides $D = \{ d_{1}, d_{2}, ... , d_{n\text{\_}d}\}$  
+and use the tangent at every sampled point as a directional constraint.
+We then construct a vector field using the $N$-RoSy algorithm
+of Palacios and Zhang\cite{Palacios2007}.  Note that, as shown in 
+Step~3 of Figure~\ref{pipeline},
+fixed elements do not affect the vector field.  
+The artist can include directional guides to guide the vector field around fixed elements if desired.
+
+The next step is to trace streamlines in the vector field, guided by three input parameters:
+\begin{conditions}
+d\_gap \enspace & the desired space between streamlines \\
+s\_max & the maximum desired streamline length \\
+s\_min & the minimum desired streamline length   
+\end{conditions}
+Because we will ultimately place elements along streamlines without overlap, $d\_gap$ determines
+the approximate width of the placed elements, and $s\_max$ the maximum length.  We also derive
+a value $d\_stop$ that prevents streamlines from coming too close to each other; in our implementation we
+compute $d\_stop = 0.8\,d\_gap$.
+
+We adapt the streamline tracing algorithm of Jobard and Lefer~\cite{Jobard1997}.
+First we generate a set of potential seed points $P = \{ p_{1}, p_{2}, ... , p_{n\text{\_}p}\}$  by
+densely resampling the target container boundary $T$ and the directional guides in $D$.
+We use a sampling distance of $0.005\,input\_size$.
+The first streamline $s$ is generated by randomly removing a seed point from $P$ and following
+the vector field until one of the following conditions holds:
+\medskip
+\begin{enumerate}
+\item the length of $s$ would exceed $s\_max$.
+\item $s$ would come within $d\_stop$ of another streamline.
+\item $s$ would cross $T$, leaving the container.
+\item $s$ would cross the boundary of a fixed element.
+\end{enumerate}
+\medskip
+
+If the length of $s$ is less than $s\_min$, we discard it. Otherwise we sample 
+$s$, again using $0.005\,input\_size$, and at each point generate two more
+potential seeds that are $d\_gap$ away from $s$ on either side. If a seed is
+inside the container, we add it to $P$.  The process is repeated until $P$ is empty.
+Note that the $d\_stop$ distance test combined with the $s\_min$ length
+test imply that many attempts to form streamlines will stop immediately,
+especially as the container fills with streamlines.
+
+Figure~\ref{streamline_tracing} shows the creation process, and 
+Algorithm~\ref{tracing_streamlines} shows the pseudocode.
+The sort function \textsc{Sort}$(P)$ orders the points in $P$ according to their distance from the
+boundary $T$ and the directional guides in $D$, with closer points first and equally distant
+points ordered randomly. Because the initial points are all on $T$ or on a path in $D$, their
+sort value is zero, and they will be processed before any derived points. 
+
+\begin{algorithm}[h!]
+\caption{Tracing streamlines} 
+\label{tracing_streamlines}
+\begin{algorithmic} 
+\STATE Create a seed list $P = \{ p_{1}, p_{2}, ... , p_{n\text{\_}p}\}$ 
+       by uniformly resampling
+\STATE \hskip\algorithmicindent $T$ and the guides in $D$.
+\STATE Create an empty set $S$ of streamlines.
+\STATE Randomly order the elements of $P$.
+\WHILE {$P$ is not empty}
+  \STATE Generate a new streamline $s$ from $p_{1}$.
+  \STATE Remove $p_{1}$ from $P$.
+  \IF {$s$ is longer than $s\_min$}
+    \STATE Add $s$ to $S$.
+    \STATE Create seed points that are $d\_gap$ away from $s$ and
+	\STATE \hskip\algorithmicindent add them to $P$.
+    \STATE \textsc{Sort}$(P)$.
+  \ENDIF
+\ENDWHILE
+\end{algorithmic}
+\end{algorithm}
+
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
@@ -96,13 +269,64 @@ $d\_gap$ away from a previous streamline.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{sub-region blobs}
+\subsection{Sub-region blobs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+To assist in choosing which element to place along each streamline, we first
+subtract the areas of any fixed elements from the target container. We then
+construct an approximate generalized Voronoi diagram of the interior
+using the method of Osher and Sethian~\cite{Osher1988}.
+The streamlines are then extended at each end, following the vector field, until
+they encounter the boundaries of their Voronoi regions.
+We call the area around each streamline a \textit{sub-region blob}.
+Step~4 of Figure~\ref{pipeline} 
+shows the blobs for the sample fish.
+
+We then compute an LR function for each blob as described in Section~\ref{ornamental_shapes},
+using the streamline as the spine. Because the streamline is not usually straight, we 
+compute the left and right distances along the normals to the streamline. The LR function approximates
+the blob's shape if the streamline were to be straightened.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Shape Matching and Deformation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The next step is to place an ornamental element in each blob.  We choose which element
+to place in the blob by finding the element that minimizes a sum of least squares distance, defined as
+%\vspace{-4pt}
+\begin{equation}
+\sum_{i=1}^{N} (\alpha_{li} - \beta_{li})^2 + \sum_{i=1}^{N} (\alpha_{ri} - \beta_{ri})^2
+\end{equation}
+where
+%\vspace*{-4pt}
+\begin{conditions}
+\alpha_{l}\enspace & the element left function\\
+\alpha_{r} &  the element right function \\   
+\beta_{l}  &  the blob left function \\
+\beta_{r}  &  the blob right function
+\end{conditions}
+%\vspace{-4pt}
+
+Every element can be placed in one of four orientations, by optionally 
+incorporating reflections across and along its spine.  These reflections
+correspond, respectively, to swapping the $L$ and $R$ functions and reversing
+them.  When comparing the LR functions for an element and a blob, we compute
+the least squares distances for all four orientations and choose the 
+orientation with the smallest distance.  Note that this matching method
+automatically places half elements along streamlines that follow container
+boundaries, visually reinforcing the overall shape.
+
+We investigated alternatives for shape matching, using an approach
+discussed by Gal et al. \cite{Gal2007B} that tries to fill a sub-region
+blob as much as possible, with heavy penalties if a part of an
+element protrudes outside the boundary of the blob. However, we found
+this computation to be more expensive without providing significant
+advantages over our LR functions.
+
+Once we have chosen an element, we place it along the streamline using a
+simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's width
+to make it as wide as possible while still staying inside the blob
+(Figure~\ref{shape_deformation}).
 
 \begin{figure}
 \centering
@@ -135,6 +359,169 @@ to make it as wide as possible while still staying inside the blob
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Iterative Refinement}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We now refine the overall composition in an iterative process.  We perform
+this part of the algorithm globally, by merging all containers and allowing the
+elements within them to interact.
+
+The refinement process aims to reduce the amount of negative space and make it
+more even by growing and shifting the placed ornamental elements. It would be 
+possible to use a greedy approach, improving the placement of each element as much
+as possible before moving on to the next, However, we have found that gradually
+improving the placement of all elements leads to a more even result.
+
+Each refinement
+iteration has two phases.
+First, we shift the streamlines to more accurately follow the space that is available,
+as shown in Figure~\ref{shift_streamline}. After shifting, we recalculate the LR function
+for the blob to reflect the new position, and repeat a variant of the
+element placement process
+that allows the elements to rotate slightly in their space.
+Second, we expand each blob to allow it to use adjacent space that is not 
+filled with another element, as shown in Figure~\ref{stretch_ornament}.
+
+Each refinement iteration considers the blobs in increasing order of 
+placed element area, allowing smaller elements to grow more.   While each step
+usually results in a larger placed element, some
+configurations can result in a smaller one. We only accept the new element if its
+area is no smaller than $\alpha$ times its old area, where $\alpha$ is a growth tolerance
+that we set to $0.9$. Elements therefore have some freedom to grow or
+shrink, in the search for more globally even spacing.
+
+Algorithm~\ref{iterative_refinement_algorithm}
+gives the overall method, and the following sections give details. We have found that
+15 iterations suffice for most designs.
+Note that in Algorithm~\ref{iterative_refinement_algorithm}, the variable
+$E$ is the list of placed, distorted ornamental elements, and
+not the set of prototype elements discussed earlier.
+
+\begin{algorithm}[t] 
+\caption{Iterative refinement} 
+\label{iterative_refinement_algorithm}
+\begin{algorithmic} 
+\REQUIRE $E = \{ e_{1}, e_{2},... , e_{n\text{\_}e} \}$ as the ornamental element list. 
+\REQUIRE $S = \{ s_{1}, s_{2},... , s_{n\text{\_}s} \}$ as the streamline list.
+\REQUIRE $B = \{ b_{1}, b_{2},... , b_{n\text{\_}b} \}$ as the blob list.
+\REQUIRE $\alpha$ as the growth tolerance
+\REQUIRE $t$ as the number of iterations
+\FOR {$t$ times}
+
+  \STATE Sort $E$, $S$, and $B$ by \textsc{Area}$(e_{i})$ (smallest first)
+  \FOR {Element $e_{i}$ in $E$}
+  	\STATE $s_{i}$ is the corresponding streamline of $e_{i}$
+    \STATE Calculate $s'_{i}$ by \textbf{shifting} $s_{i}$.
+    \STATE Recompute the LR function of $b_{i}$ to give $b'_{i}$
+    \STATE Calculate $e'_{i}$ by \textbf{placing} $e_{i}$ inside $b'_{i}$
+    \IF{$\textsc{Area}(e'_{i}) \times \alpha > \textsc{Area}(e_{i})$}
+        \STATE $s_{i} \leftarrow s'_{i}$
+        \STATE $b_{i} \leftarrow b'_{i}$
+    	\STATE $e_{i} \leftarrow e'_{i}$ 
+    \ENDIF
+  \ENDFOR
+  \STATE Sort $E$, $S$, and $B$ by \textsc{Area}$(e_{i})$ (smallest first)
+
+  \FOR {Element $e_{i}$ in $E$}
+  	\STATE $b_{i}$ is the corresponding blob of $e_{i}$
+    \STATE Calculate $b'_{i}$ by \textbf{growing} $b_{i}$.
+    \STATE Calculate $s'_{i}$ based on $b'_{i}$ 
+    \STATE Calculate $e'_{i}$ by \textbf{placing} $e_{i}$ inside $b'_{i}$\
+    \STATE $b_{i} \leftarrow b'_{i}$
+    \IF{$\textsc{Area}(e'_{i}) \times \alpha > \textsc{Area}(e_{i})$}
+        \STATE $s_{i} \leftarrow s'_{i}$
+    	\STATE $e_{i} \leftarrow e'_{i}$ 
+    \ENDIF
+  \ENDFOR
+
+\ENDFOR
+\end{algorithmic}
+\end{algorithm}
+
+\textbf{Shifting streamlines.}
+There are two issues that keep the initial placement of elements from being
+evenly
+distributed. Our streamline placement method keeps streamlines apart,
+but they may not be spaced completely evenly. More significantly, the
+ornamental elements often have unbalanced left and right sides and concavities,
+leading to extra space on one side or the other.  Our refinement process
+shifts streamlines to address these problems.
+
+The shifting process allows the endpoints of the streamline to move to the
+left or the right relative to the streamline, depending on which side has more empty space.
+This allows the streamline's element to become wider and fill more of the space
+(Figure~\ref{shift_streamline}). It also gives the streamline room to
+extend if its endpoints were too close to boundaries of other placed
+elements.
+
+Given the endpoints $p_\mathrm{start}$ and $p_\mathrm{end}$, we 
+calculate new endpoints $p'_\mathrm{start}$ and $p'_\mathrm{end}$.
+We generate perpendicular
+vectors to the left side and to the right side at each endpoint and construct
+a line segment joining the points where the vectors intersect other placed elements.
+We then move the endpoint of the streamline towards the midpoint of this
+segment. To enforce the principle of gradual refinement, we do not allow the
+endpoint to move more than $g_\mathrm{limit}$ units, where 
+$g_\mathrm{limit}=0.005\,input\_size$ (Recall that $input\_size$ is the maximum dimension
+of the design as described in Section~\ref{target_containers}).
+
+We replace the streamline with a path joining
+$p'_\mathrm{start}$ and $p'_\mathrm{end}$. Our goal
+is to create a path that is smooth and does not deviate too much from the vector
+field.  We calculate the shifted streamline by performing Dijkstra's
+algorithm on a non-rectangular graph that respects the vector field
+(Figure~\ref{dijkstra}), using a method similar to one by Xu and Mould~\cite{Mould2015} for
+pathfinding in a vector field.
+
+To construct the graph, we begin by densely sampling the original
+streamline with a distance of $0.25\,g_\mathrm{limit}$. We then duplicate
+the points, offset to the left and right, again using $0.25\,g_\mathrm{limit}$.
+The duplication is repeated until the graph extends to the left and right of the
+streamline by a distance equal to the maximum left and right widths of the blob (i.e.,
+the maximum values in an unnormalized version of the blob's LR function).
+
+For a node, we check its $N = 150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
+the streamline from backtracking.
+The cost of an edge from $n_a$ to  $n_b$ is 
+
+\begin{equation}
+w = w_f (1 - f^p) + w_d \: D(s_i, n_a)
+\end{equation}
+where
+\begin{conditions}
+f                  & $(n_b-n_a) \cdot \vec{v}$ \\
+\vec{v} 		   & a sampled vector of the vector field \\
+s_i                & the original streamline \\   
+D()\enspace        & a distance function between a polyline and a point
+\end{conditions}
+
+In practice, we set $w_d = 0.1$, $w_f=1$, and $p = 3$.
+
+After finding a set of points, we fit cubic B\'ezier curves using a method
+devised by Schneider \cite{Schneider1990} and extend the path at both ends 
+by following
+the vector field until it intersects the edges of its blob. 
+
+\textbf{Growing blobs.} The growth process tries to enlarge each sub-region blob to
+claim empty space.
+Given a blob $b_{i}$, we calculate a larger blog $b'_{i}$ 
+by offsetting its boundaries until they intersect other placed elements (Figure~\ref{stretch_ornament}).
+To enforce gradual growth, the offset cannot be larger than $g_\mathrm{limit}$, where
+$g_\mathrm{limit}=0.005\,input\_size$.
+
+The value $g_\mathrm{limit}$ used in growing blobs and shifting streamlines limits the speed of
+the refinement.  Making it larger would require fewer iterations to fill the available space,
+but at a cost of elements growing less evenly. 
+
+% ROTATING OR FLIPPING
+\textbf{Element placement.}
+In the refinement process, we allow a more flexible element placement so that
+the elements can fill more of their blobs.  We allow the element
+to rotate by a small amount, up to ten degrees, before placing it, as shown in
+Figure~\ref{rotate_ornament}. 
+We generate rotated versions of $e_{i}$ 
+with varying angles $r_\mathrm{angle} = {1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}}$
+and precompute LR functions for each. The shape matching algorithm
+(Section~\ref{shape_matching_and_deformation}) automatically choses the best rotation. It
+can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
 
 \begin{figure}[t]
 \centering
