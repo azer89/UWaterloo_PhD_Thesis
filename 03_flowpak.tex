@@ -20,6 +20,7 @@
 \vspace*{-8pt}
 \caption[An example of flow visual style]{
   \label{dog_flow}  
+  \mynote{Maybe show other examples}
   An example of flow visual style, 
   including a visualization of the flow directions
 of elements (by ComicVector703 on Shutterstock).
@@ -49,6 +50,16 @@ designs similar to the dog example.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+Wong et al.
+
+DecoBrush
+
+PATEX
+
+Asente's brush app (I forget the name)
+
+Asente's intern
+
 
 
 
@@ -73,11 +84,13 @@ to our system:
       \item A set of ornamental elements, each with a spine that will control
             its deformation.
 \end{enumerate}
-The first three inputs are combined into a single diagram, where they are
+
+\newtext{The first three inputs are combined into a single diagram, where they are
 distinguished by their colors; see
-the left and right drawings in Figure~\ref{lion_unicorn}. 
+the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
 The goal of our algorithm is to fill each target container with elements,
 trying to satisfy several guiding principles:
+
 \begin{enumerate}
 	\item Follow the flow defined by the direction guides.
 	\item Have as little empty space as possible.
@@ -101,19 +114,20 @@ steps correspond to parts of the figure.
 
 \begin{enumerate}
   \item Read the input target containers and
-  copy any fixed elements to the output art (Section~\ref{target_containers}).
+  copy any fixed elements to the output art (Section~\ref{flowpak_target_containers}).
   \item Analyze the ornamental elements, creating a shape descriptor for each
-   (Section~\ref{ornamental_shapes}).
-  \item Use the direction guides to fill each target container with a vector field then trace streamlines (Section~\ref{vector_fields_streamlines}).
-  \item Divide the target containers into blobs around the streamlines (Section~\ref{subregion_blobs}).
+   (Section~\ref{flowpak_ornamental_element_and_lr_functions}).
+  \item Use the direction guides to fill each target container with a vector field then trace streamlines 
+  (Section~\ref{flowpak_creating_vector_fields_and_tracing_streamlines}).
+  \item Divide the target containers into blobs around the streamlines (Section~\ref{flowpak_subregion_blobs}).
   \item Use the element shape descriptors to determine the best element for each blob. 
         Place the element in the blob, treating it as a skeletal stroke and mapping its
-        spine to the streamline (Section~\ref{shape_matching_and_deformation}).
-  \item Iteratively refine the placement to eliminate empty areas and make the spacing more even (Section~\ref{iterative_refinement_process}).
+        spine to the streamline (Section~\ref{flowpak_shape_matching_and_deformation}).
+  \item Iteratively refine the placement to eliminate empty areas and make the spacing more even (Section~\ref{flowpak_iterative_refinement}).
 \end{enumerate}
 
 %FFFFFFFFFFFFFFF
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/pipeline.pdf} 
 \caption[FLOWPAK pipeline]
@@ -153,7 +167,7 @@ be used to set various parameters in the synthesis process.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 An ornamental element is defined as one or more closed curves.  Our placement method will
-eventually deform copies of the element (Section~\ref{shape_matching_and_deformation}) 
+eventually deform copies of the element (Section~\ref{flowpak_shape_matching_and_deformation}) 
 using a simple skeletal stroke algorithm~\cite{Hsu93},
 so each element must be annotated with a straight spine to guide the deformation.  The spine
 does not need to go through the center of the element---it can be anywhere.
@@ -170,7 +184,7 @@ container boundaries, as shown in our examples.
 
 We define a simple shape descriptor called an \textit{LR function}
 that will be used in
-Section~\ref{shape_matching_and_deformation} to choose which element to place in a particular location. 
+Section~\ref{flowpak_shape_matching_and_deformation} to choose which element to place in a particular location. 
 Inspired by the work of Gal et al.~\cite{Gal2007A}, we sample the element's
 spine at $n$ locations and at each location determine how far the ornament extends to the
 left and right of the spine. The LR function is the set $\{L, R\}$ where $L=\{\ell_1,\ldots,\ell_{n\text{\_}f}\}$
@@ -181,7 +195,7 @@ domain and range to $[0,1]$.  Note that swapping the $L$ and $R$ functions
 corresponds to reflecting the element across its spine, and reversing each
 of $L$ and $R$ corresponds to reflecting the element along its spine.  We
 will consider all four combinations of these two reflections when placing 
-an element in a blob (Section~\ref{subregion_blobs}),
+an element in a blob (Section~\ref{flowpak_subregion_blobs}),
 in order to achieve the best possible fit.
 
 Intuitively, LR functions give an approximate area an ornamental element can claim.
@@ -215,7 +229,7 @@ We sample the directional guides $D = \{ d_{1}, d_{2}, ... , d_{n\text{\_}d}\}$
 and use the tangent at every sampled point as a directional constraint.
 We then construct a vector field using the $N$-RoSy algorithm
 of Palacios and Zhang\cite{Palacios2007}.  Note that, as shown in 
-Step~3 of Figure~\ref{pipeline},
+Step~3 of Figure~\ref{fig_flowpak_pipeline},
 fixed elements do not affect the vector field.  
 The artist can include directional guides to guide the vector field around fixed elements if desired.
 
@@ -297,7 +311,7 @@ $d\_gap$ away from a previous streamline.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Sub-region blobs}
-\label{flowpak_sub-region_blobs}
+\label{flowpak_subregion_blobs}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -308,10 +322,10 @@ using the method of Osher and Sethian~\cite{Osher1988}.
 The streamlines are then extended at each end, following the vector field, until
 they encounter the boundaries of their Voronoi regions.
 We call the area around each streamline a \textit{sub-region blob}.
-Step~4 of Figure~\ref{pipeline} 
+Step~4 of Figure~\ref{fig_flowpak_pipeline} 
 shows the blobs for the sample fish.
 
-We then compute an LR function for each blob as described in Section~\ref{ornamental_shapes},
+We then compute an LR function for each blob as described in Section~\ref{flowpak_ornamental_element_and_lr_functions},
 using the streamline as the spine. Because the streamline is not usually straight, we 
 compute the left and right distances along the normals to the streamline. The LR function approximates
 the blob's shape if the streamline were to be straightened.
@@ -497,7 +511,7 @@ We then move the endpoint of the streamline towards the midpoint of this
 segment. To enforce the principle of gradual refinement, we do not allow the
 endpoint to move more than $g_\mathrm{limit}$ units, where 
 $g_\mathrm{limit}=0.005\,input\_size$ (Recall that $input\_size$ is the maximum dimension
-of the design as described in Section~\ref{target_containers}).
+of the design as described in Section~\ref{flowpak_target_containers}).
 
 We replace the streamline with a path joining
 $p'_\mathrm{start}$ and $p'_\mathrm{end}$. Our goal
@@ -556,7 +570,7 @@ Figure~\ref{rotate_ornament}.
 We generate rotated versions of $e_{i}$ 
 with varying angles $r_\mathrm{angle} = {1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}}$
 and precompute LR functions for each. The shape matching algorithm
-(Section~\ref{shape_matching_and_deformation}) automatically choses the best rotation. It
+(Section~\ref{flowpak_shape_matching_and_deformation}) automatically choses the best rotation. It
 can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
 
 %FFFFFFFFFFFFFFF
@@ -624,7 +638,7 @@ We also process the placed elements to create a distressed look.
 
 
 The packing of a cat in Figure~\ref{result_cat} demonstrates a symmetric packing with
-a fur contour inspired by Figure~\ref{some_examples}c. 
+a fur contour inspired by Figure~\ref{some_examples}c \mynote{Bring back this figure?}. 
 We only compute the left part and reflect the result.
 The elements around the cheeks and the chin extend outward, not following the boundary, and creating the appearance of fur.
 
@@ -650,7 +664,7 @@ different container regions; the result has sparse ``Y'' elements in
 the breast and head, and denser ``O'' elements in the wings. The artist was pleased with the results.
 
 %FFFFFFFFFFFFFFF
-\begin{figure}
+\begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
 \caption[A packing of lion and unicorn]
@@ -659,7 +673,7 @@ Lion Unicorn. }
 \end{figure}
 
 %FFFFFFFFFFFFFFF
-\begin{figure}[t!]
+\begin{figure}[h]
 \centering
 \includegraphics[width=5cm]{figures/flowpak/result_02.pdf} %RHINO
 \caption[A packing of a rhinoceros]
@@ -675,7 +689,7 @@ elements lead to variety in size and curvature.}
 \end{figure}
 
 %FFFFFFFFFFFFFFF
-\begin{figure} %CAT
+\begin{figure}[h]
 \centering
 \includegraphics[width=6.5cm]{figures/flowpak/cat.pdf}
 \caption[A packing of a cat]
@@ -684,7 +698,7 @@ elements lead to variety in size and curvature.}
 \end{figure}
 
 %FFFFFFFFFFFFFFF
-\begin{figure} %DOG FLOWER
+\begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/dog_flower.pdf}
 \caption[A packing of a dog]
@@ -696,7 +710,7 @@ elements lead to variety in size and curvature.}
 \end{figure}
 
 %FFFFFFFFFFFFFFF
-\begin{figure} %BEAR OFFSET
+\begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/bear_offset_space.pdf}
 \caption[A packing of a bear with elements created from negative space]
@@ -707,7 +721,7 @@ elements lead to variety in size and curvature.}
 \end{figure}
 
 %FFFFFFFFFFFFFFF
-\begin{figure} %BIRD SQUARE
+\begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/bird_square.pdf}
 \caption[A packing of a bird]
@@ -722,3 +736,49 @@ elements lead to variety in size and curvature.}
 \label{flowpak_conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We have demonstrated a method to create ornamental packings
+in which vector fields are used to provide a sense of visual flow.
+We achieve a degree of uniformity by using repeated copies of a small
+set of initial decorative elements, but balance that uniformity with
+variety by deforming those elements.  An iterative refinement process
+improves upon an initial placement of elements, arriving at a final
+composition with a more even use of negative space.
+
+We see many possibilities for further improvements to our algorithm and
+future research on ornamental packing.  
+
+\begin{itemize}
+
+\item In our current algorithm, elements must completely fill streamlines.
+It would be worthwhile to investigate whether multiple shorter elements
+could be threaded along streamlines.
+
+\item Our results do not have significant high-curvature streamlines like u-turns, since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
+
+%\item \textcolor{red}{If we compare our results with examples in Figure\ref{some_examples}, one obvious future work is eliminating the negative space even more.}
+
+\item Our iterative refinement process uses a greedy approach, in which we 
+iterate over all placed elements in a fixed order from smallest to largest.
+We would like to investigate global optimizations
+that could be applied to improve the overall composition in an 
+order-independent way.  A natural first choice would be an approach based
+on simulated annealing, although performance could become a more serious
+issue in that case.
+
+\item As with many research projects in non-photorealistic rendering, this
+work raises deep questions about the aesthetics of ornamental packings.
+What compositions are most appealing?  What is the most effective
+way to distribute
+negative space?  Some hand-drawn compositions insert additional small elements,
+like circles and squares, to break up large areas of negative space;
+an automated simulation of this process would be helpful.
+
+\item We would like to explore the automatic creation and placement of 
+the fixed elements, perhaps by discovering them as salient regions 
+in source photographs, and extracting and vectorizing them.  This 
+extraction must be carried out carefully, yielding enough fixed elements
+to communicate a container clearly without disrupting the uniformity of
+the design.
+
+\end{itemize}
