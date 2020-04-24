@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[ht] %%% ELEMENT IMAGE
 \centering
 \includegraphics[width=0.6\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
@@ -107,6 +107,19 @@ The next section describes how we achieve these results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/pipeline.pdf} 
+\caption[FLOWPAK pipeline]
+{\label{fig_flowpak_pipeline} 
+A visualization of the steps in our ornamental packing algorithm.
+The input containers are shown as three black outlines in (a): the body
+and two fins.  They are annotated with directional guides in red and fixed elements (in this 
+case, the eye) in green.  The steps in the algorithm follow the
+description at the beginning of Section~\ref{flowpak_approach}.
+ \mynote{Need rearrange}.}
+\end{figure}
 
 Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. The numbers in the following
 steps correspond to parts of the figure.
@@ -125,15 +138,6 @@ steps correspond to parts of the figure.
         spine to the streamline (Section~\ref{flowpak_shape_matching_and_deformation}).
   \item Iteratively refine the placement to eliminate empty areas and make the spacing more even (Section~\ref{flowpak_iterative_refinement}).
 \end{enumerate}
-
-%FFFFFFFFFFFFFFF
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/pipeline.pdf} 
-\caption[FLOWPAK pipeline]
-{\label{fig_flowpak_pipeline} 
-FLOWPAK pipeline. \mynote{Need rearrange}.}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -204,8 +208,8 @@ shows elements with their left values
 in green and their right values in red. We have found that $n = 100$ gives sufficient
 granularity for our algorithm.
 
-%FFFFFFFFFFFFFFF
-\begin{figure}
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
 \caption[Ornamental elements and their LR functions]
@@ -235,14 +239,14 @@ The artist can include directional guides to guide the vector field around fixed
 
 The next step is to trace streamlines in the vector field, guided by three input parameters:
 \begin{conditions}
-d\_gap \enspace & the desired space between streamlines \\
+s\_gap \enspace & the desired space between streamlines \\
 s\_max & the maximum desired streamline length \\
 s\_min & the minimum desired streamline length   
 \end{conditions}
-Because we will ultimately place elements along streamlines without overlap, $d\_gap$ determines
+Because we will ultimately place elements along streamlines without overlap, $s\_gap$ determines
 the approximate width of the placed elements, and $s\_max$ the maximum length.  We also derive
 a value $d\_stop$ that prevents streamlines from coming too close to each other; in our implementation we
-compute $d\_stop = 0.8\,d\_gap$.
+compute $d\_stop = 0.8\,s\_gap$.
 
 We adapt the streamline tracing algorithm of Jobard and Lefer~\cite{Jobard1997}.
 First we generate a set of potential seed points $P = \{ p_{1}, p_{2}, ... , p_{n\text{\_}p}\}$  by
@@ -261,7 +265,7 @@ the vector field until one of the following conditions holds:
 
 If the length of $s$ is less than $s\_min$, we discard it. Otherwise we sample 
 $s$, again using $0.005\,input\_size$, and at each point generate two more
-potential seeds that are $d\_gap$ away from $s$ on either side. If a seed is
+potential seeds that are $s\_gap$ away from $s$ on either side. If a seed is
 inside the container, we add it to $P$.  The process is repeated until $P$ is empty.
 Note that the $d\_stop$ distance test combined with the $s\_min$ length
 test imply that many attempts to form streamlines will stop immediately,
@@ -288,7 +292,7 @@ sort value is zero, and they will be processed before any derived points.
   \STATE Remove $p_{1}$ from $P$.
   \IF {$s$ is longer than $s\_min$}
     \STATE Add $s$ to $S$.
-    \STATE Create seed points that are $d\_gap$ away from $s$ and
+    \STATE Create seed points that are $s\_gap$ away from $s$ and
 	\STATE \hskip\algorithmicindent add them to $P$.
     \STATE \textsc{Sort}$(P)$.
   \ENDIF
@@ -296,7 +300,7 @@ sort value is zero, and they will be processed before any derived points.
 \end{algorithmic}
 \end{algorithm}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
@@ -305,7 +309,8 @@ sort value is zero, and they will be processed before any derived points.
 The streamline tracing process. The first streamline $s_1$ always begins
 on a directional guide or the container boundary.  Subsequent streamlines begin
 on the container boundary, a directional guide, or at a point that is 
-$d\_gap$ away from a previous streamline.}
+$s\_gap$ away from a previous streamline.
+\mynote{Change to s\_gap}}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -374,23 +379,23 @@ simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's 
 to make it as wide as possible while still staying inside the blob
 (Figure~\ref{shape_deformation}).
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}
 \centering
-\includegraphics[width=6.4cm]{figures/flowpak/shape_deformation.pdf}
+\includegraphics[width=1.0\textwidth]{figures/flowpak/shape_deformation.pdf}
 \caption[Shape deformation]
 {\label{shape_deformation}
 The deformation process bends the element along the streamline and
 scales it to fit inside the blob.}
 \bigskip
- \includegraphics[width=6.4cm]{figures/flowpak/shift_streamline.pdf}
+ \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
  \caption[Shift a streamline]
  {\label{shift_streamline}
  Streamline shifting.
  	We move the streamline's start and end points along 
 	perpendiculars, stopping before intersecting neighbouring elements.}
 \smallskip
-\includegraphics[width=3.2cm]{figures/flowpak/dijkstra.pdf}
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
  \caption[Trace a shortest path]
  {\label{dijkstra}
  Tracing a shortest path using Dijkstra's algorithm.  We generate the 
@@ -573,7 +578,7 @@ and precompute LR functions for each. The shape matching algorithm
 (Section~\ref{flowpak_shape_matching_and_deformation}) automatically choses the best rotation. It
 can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[t]
 \centering
 \includegraphics[width=6.5cm]{figures/flowpak/stretch.pdf}
@@ -583,15 +588,12 @@ can also choose to reflect the element across its spine, along its spine, or bot
 (b) The dashed red line is the grown blob, which accommodates an enlarged element.}
 
 % ROTATING OR FLIPPING
-\medskip
 \includegraphics[width=6.5cm]{figures/flowpak/rotate_ornament.pdf}
 \caption[Rotate an element]
 {\label{rotate_ornament}
 Top row: rotated versions of the original element. 
          The best rotation angle is chosen via least squares matching.
          Bottom row: original, rotated, and enlarged versions of an element.}
-
-\medskip
 \includegraphics[width=4.5cm]{figures/flowpak/flip.pdf}
 \caption[Flip an element]
 {\label{flip_shape}
@@ -628,6 +630,12 @@ sophisticated 2D geometric data structures like quadtrees.
 We tested our approach using a variety of container shapes, based mostly
 on animals, and many different ornamental elements with varying amounts
 of geometric complexity.
+\newtext{
+In Figure~\ref{fig_lion_unicorn}, we show two packings of a lion and a unicorn.
+Each packing is generated with only a set of four elements.
+The packings demonstrate that FLOWPAK is able to pack and deform
+elements inside the containers.
+}  
 In Figure~\ref{result_rhino},
 we show a packing of a rhinoceros with simple teardrop elements
 that demonstrates the variety we achieve in shape and curvature.
@@ -637,8 +645,11 @@ adjust the tracing parameters to obtain shorter placed elements.
 We also process the placed elements to create a distressed look.
 
 
-The packing of a cat in Figure~\ref{result_cat} demonstrates a symmetric packing with
-a fur contour inspired by Figure~\ref{some_examples}c \mynote{Bring back this figure?}. 
+\newtext
+{
+The packing of a cat in Figure~\ref{result_cat} demonstrates 
+a symmetric packing with a fur contour. 
+}
 We only compute the left part and reflect the result.
 The elements around the cheeks and the chin extend outward, not following the boundary, and creating the appearance of fur.
 
@@ -663,16 +674,24 @@ The artist requested that different elements and densities be used in
 different container regions; the result has sparse ``Y'' elements in 
 the breast and head, and denser ``O'' elements in the wings. The artist was pleased with the results.
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
 \caption[A packing of lion and unicorn]
 {\label{fig_lion_unicorn} 
-Lion Unicorn. }
+Ornamental packings of a lion and a unicorn.
+The diagram next to each animal shows a set of four ornamental
+elements used in the packing (top) and the annotated
+container regions (bottom).  Each ornamental element has a
+red spine that is used to deform it along a streamline.  In
+the containers, black curves represent boundaries, red
+curves with arrows represent directional guides, and green
+curves are fixed elements copied into the final design.
+The colours in the final rendering were added manually. }
 \end{figure}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=5cm]{figures/flowpak/result_02.pdf} %RHINO
@@ -688,7 +707,7 @@ elements lead to variety in size and curvature.}
 	elements in the output to create a distressed look.}
 \end{figure}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=6.5cm]{figures/flowpak/cat.pdf}
@@ -697,7 +716,7 @@ elements lead to variety in size and curvature.}
 \label{result_cat}
 \end{figure}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/dog_flower.pdf}
@@ -709,7 +728,7 @@ elements lead to variety in size and curvature.}
 \label{result_dog}
 \end{figure}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/bear_offset_space.pdf}
@@ -720,7 +739,7 @@ elements lead to variety in size and curvature.}
 \label{result_bear_offset}
 \end{figure}
 
-%FFFFFFFFFFFFFFF
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h]
 \centering
 \includegraphics[width=6cm]{figures/flowpak/bird_square.pdf}
