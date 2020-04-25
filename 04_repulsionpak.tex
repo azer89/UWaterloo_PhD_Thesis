@@ -39,7 +39,16 @@
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/pipeline.pdf} 
 \caption[RepulsionPak pipeline]
 {\label{fig_repulsionpak_pipeline} 
-RepulsionPak pipeline. }
+The creation of a packing using RepulsionPak.
+  (a) A library of elements, comprising nine primary elements and a single
+  	secondary element.
+  (b) A target container with the initial distribution of scaled-down elements.
+  (c) The simulation in progress, showing the elements growing, translating,
+  	rotating, and deforming.
+  (d) The resulting packing of primary elements.
+  (e) The final result, after adding secondary elements and allowing them to
+  	grow.
+  	Fig.~\ref{fig_defviz} shows the deformations of some of the elements. }
 \end{figure}
 
 \begin{figure}[h]
@@ -51,6 +60,59 @@ RepulsionPak pipeline. }
 	showing the effect of deformation in our simulation.
 }
 \end{figure}
+
+Our system requires three main pieces of input:
+\begin{packednumbers}
+	\item A library of primary and optional secondary elements, such
+		as those shown in Fig.~\ref{fig_repulsionpak_pipeline}a.
+	      Each element is a collection of 
+		  open or closed polygonal paths---any curves must
+		  be flattened ahead of time.
+	\item One or more closed polygonal target containers, such as the
+		heart in Fig.~\ref{fig_repulsionpak_pipeline}b.  Target containers can optionally
+		have internal holes.
+	\item The desired element spacing distance $d_\mathrm{gap}>0$.
+\end{packednumbers}
+
+RepulsionPak starts by preprocessing the elements, creating additional space around
+each to enforce the spacing distance, and fitting a triangle mesh over each element.
+\newtext{The containers are then seeded with randomly placed
+copies of scaled-down elements 
+(Section~\ref{repulsionpak_preprocessing}).}
+
+\newtext{RepulsionPak} then performs a physics simulation on the meshes, 
+making them simultaneously grow and repel each other. As a
+proof of concept, we implement a spring-based 
+simulation, \newtext{which yields satisfactory results despite its simplicity};
+many alternatives are possible 
+(see Section~\ref{repulsionpak_conclusions}).
+Forces in the
+simulation push mesh vertices away from vertices in other meshes,
+attempt to keep the meshes from undergoing excessive deformation, and resolve
+places where meshes overlap or vertices move outside target containers
+(Section~\ref{repulsionpak_simulation}).
+
+After each iteration of the simulation, meshes grow into adjacent space
+if possible, so that they gradually consume the negative space in the container.
+At the same time, mesh self-intersections are resolved
+(Sections~\ref{repulsionpak_element_growth} and \ref{section_self_intersection_constraint}).
+\mynote{delete self intersection section...}
+
+The simulation concludes 
+either when the elements occupy a sufficient proportion of the container area, or 
+when some number of simulation steps fail to
+significantly reduce the negative space
+(Section~\ref{repulsionpak_stopping_criteria}).
+
+Finally, an optional second simulation further reduces and evens out the
+negative space.  It begins by placing small secondary elements in large
+pockets of negative space.  This simulation is the same as the
+first, except that vertices of primary element meshes are not allowed to move
+(Section~\ref{repulsionpak_secondary_elements}).
+
+Final SVG output is created by using barycentric coordinates to map each element's
+paths from the element's initial mesh into the deformed mesh produced through
+simulation.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,7 +135,7 @@ RepulsionPak pipeline. }
 
 \begin{figure*}[t]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces.pdf}
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces_new.pdf}
 \caption[Forces]{
 \label{fig_forces}
 Illustrations of the forces in our simulation.
@@ -94,8 +156,8 @@ to restore its angular position relative to $\bm{c}$,
 the center of mass of the element.
 \mynote
 {
-xs should be bold.
-Should include negative space edges.
+points should be bold.
+Should explain negative space edges, and shear edges.
 }
 }
 \end{figure*}
@@ -127,6 +189,13 @@ Should include negative space edges.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Secondary Elements}
+\label{repulsionpak_secondary_elements}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

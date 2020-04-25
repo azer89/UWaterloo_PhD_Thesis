@@ -6,6 +6,24 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
+\caption[A packing of lion and unicorn]
+{\label{fig_lion_unicorn} 
+Ornamental packings of a lion and a unicorn.
+The diagram next to each animal shows a set of four ornamental
+elements used in the packing (top) and the annotated
+container regions (bottom).  Each ornamental element has a
+red spine that is used to deform it along a streamline.  In
+the containers, black curves represent boundaries, red
+curves with arrows represent directional guides, and green
+curves are fixed elements copied into the final design.
+The colours in the final rendering were added manually. }
+\end{figure}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction}
@@ -85,9 +103,12 @@ to our system:
             its deformation.
 \end{enumerate}
 
-\newtext{The first three inputs are combined into a single diagram, where they are
+%\newtext{The first three inputs are combined into a single diagram, where they are
+%distinguished by their colors; see
+%the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
+The first three inputs are combined into a single diagram, where they are
 distinguished by their colors; see
-the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
+the left and right drawings in Figure~\ref{fig_lion_unicorn}.
 The goal of our algorithm is to fill each target container with elements,
 trying to satisfy several guiding principles:
 
@@ -594,7 +615,7 @@ can also choose to reflect the element across its spine, along its spine, or bot
 Top row: rotated versions of the original element. 
          The best rotation angle is chosen via least squares matching.
          Bottom row: original, rotated, and enlarged versions of an element.}
-         
+
 \includegraphics[width=1.0\textwidth]{figures/flowpak/flip.pdf}
 \caption[Flip an element]
 {\label{flip_shape}
@@ -609,6 +630,64 @@ across its spine, along its spine, or both.}
 \label{flowpak_implementation_and_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/flowpak/result_02.pdf} %RHINO
+\caption[A packing of a rhinoceros]
+{\label{result_rhino}
+A packing of a rhinoceros.  Simple teardrop-shaped 
+elements lead to variety in size and curvature.}
+\bigskip
+\includegraphics[width=0.5\textwidth]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
+\caption[A packing of a bear with leaf elements]
+{\label{result_bear_leaves}
+  A bear packing with leaf elements.  We manually add noise to the 
+  elements in the output to create a distressed look.}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/flowpak/cat.pdf}
+\caption[A packing of a cat]
+{A packing with a symmetric layout; we only compute the left half and reflect the result. The elements around the cheeks and the chin are not aligned to the boundary, creating a fur-like effect.}
+\label{result_cat}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/flowpak/dog_flower.pdf}
+\caption[A packing of a dog]
+{A packing of a dog. The fixed elements, shown as green
+  shapes in the diagram, are copied as-is to the output; fixed spines,
+  shown as green paths, force the placement of new elements at the given
+  locations.}
+\label{result_dog}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/flowpak/bear_offset_space.pdf}
+\caption[A packing of a bear with elements created from negative space]
+{A packing of the same container as in Figure~\ref{result_bear_leaves}.
+  We place longer and sparser elements and synthesize additional forms to
+  fill negative space.}
+\label{result_bear_offset}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.5\textwidth]{figures/flowpak/bird_square.pdf}
+\caption[A packing of a bird]
+{A packing of a bird, based on input provided by
+  an artist.}
+\label{bird_square}
+\end{figure}
 
 We design our containers and decorative elements in a vector graphics 
 editor, and then use them as input to a C++ program that outputs final
@@ -675,80 +754,9 @@ The artist requested that different elements and densities be used in
 different container regions; the result has sparse ``Y'' elements in 
 the breast and head, and denser ``O'' elements in the wings. The artist was pleased with the results.
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
-\caption[A packing of lion and unicorn]
-{\label{fig_lion_unicorn} 
-Ornamental packings of a lion and a unicorn.
-The diagram next to each animal shows a set of four ornamental
-elements used in the packing (top) and the annotated
-container regions (bottom).  Each ornamental element has a
-red spine that is used to deform it along a streamline.  In
-the containers, black curves represent boundaries, red
-curves with arrows represent directional guides, and green
-curves are fixed elements copied into the final design.
-The colours in the final rendering were added manually. }
-\end{figure}
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=5cm]{figures/flowpak/result_02.pdf} %RHINO
-\caption[A packing of a rhinoceros]
-{\label{result_rhino}
-A packing of a rhinoceros.  Simple teardrop-shaped 
-elements lead to variety in size and curvature.}
-\bigskip
-\includegraphics[width=6cm]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
-\caption[A packing of a bear with leaf elements]
-{\label{result_bear_leaves}
-	A bear packing with leaf elements.  We manually add noise to the 
-	elements in the output to create a distressed look.}
-\end{figure}
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=6.5cm]{figures/flowpak/cat.pdf}
-\caption[A packing of a cat]
-{A packing with a symmetric layout; we only compute the left half and reflect the result. The elements around the cheeks and the chin are not aligned to the boundary, creating a fur-like effect.}
-\label{result_cat}
-\end{figure}
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=6cm]{figures/flowpak/dog_flower.pdf}
-\caption[A packing of a dog]
-{A packing of a dog. The fixed elements, shown as green
-	shapes in the diagram, are copied as-is to the output; fixed spines,
-	shown as green paths, force the placement of new elements at the given
-	locations.}
-\label{result_dog}
-\end{figure}
-
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=6cm]{figures/flowpak/bear_offset_space.pdf}
-\caption[A packing of a bear with elements created from negative space]
-{A packing of the same container as in Figure~\ref{result_bear_leaves}.
-	We place longer and sparser elements and synthesize additional forms to
-	fill negative space.}
-\label{result_bear_offset}
-\end{figure}
-
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
-\centering
-\includegraphics[width=6cm]{figures/flowpak/bird_square.pdf}
-\caption[A packing of a bird]
-{A packing of a bird, based on input provided by
-	an artist.}
-\label{bird_square}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
