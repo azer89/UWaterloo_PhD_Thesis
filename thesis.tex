@@ -190,7 +190,7 @@
 %%% REZAREZAREZAREZAREZA
 
 
-
+\usepackage{nicefrac} 
 \usepackage{algorithm}
 \usepackage{algorithmic}
 \renewcommand{\algorithmicrequire}{\textbf{Input:}} % change text require --> input
@@ -264,6 +264,21 @@
                               }
                             {\end{list}}
 \newenvironment{packednumbers}    {\begin{list}{\arabic{enumi}.}
+                              {
+                                \usecounter{enumi}
+                                \setlength{\partopsep}{\parskip}
+                                \setlength{\parsep}{0pt} %% Change if you want
+                                \setlength{\topsep}{0pt}
+                                \setlength{\itemsep}{0pt}
+                                \settowidth{\labelwidth}{1ex}
+                                \setlength{\labelsep}{1ex}
+                                \setlength{\leftmargin}{\labelwidth}
+                                \addtolength{\leftmargin}{\labelsep}
+                                \addtolength{\leftmargin}{0.5em}
+                                }
+                              }
+                            {\end{list}}
+\newenvironment{packeddescriptions}    {\begin{list}{}
                               {
                                 \usecounter{enumi}
                                 \setlength{\partopsep}{\parskip}

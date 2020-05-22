@@ -88,6 +88,8 @@ The creation of a discretized spacetime element.
 A spacetime element with a scripted animation.}
 \end{figure}
 
+\mynote{Need to stitch with repulsionpak}
+
 The input to AnimationPak is a library of animated elements and a
 fixed container shape.  AnimationPak currently supports two kinds
 of animation: the user can animate the shape of each individual
@@ -214,7 +216,8 @@ the compatibility of nearby shapes in the final animation.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/guided_element.pdf} 
-\caption{\label{fig_animationpak_guided_element} A 2D illustration of a guided element.
+\caption[A 2D illustration of a guided element]{
+\label{fig_animationpak_guided_element} A 2D illustration of a guided element.
 Slices are depicted as black lines and slice vertices as black dots.
 A spring connects the centermost vertex $\bm{x}$ of a slice $s$ to a target
 point $p$.
@@ -226,7 +229,8 @@ the target points.}
 \begin{figure*}[t]
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/simulation_process.pdf} 
-\caption{\label{fig_animationpak_simulation_process} The simulation process. 
+\caption[AnimationPak simulation process]{
+\label{fig_animationpak_simulation_process} The simulation process. 
 (a) Initial placement of 
 shrunken spacetime elements inside a static 2D disc, extruded into a 
 cylindrical spacetime domain.
@@ -320,7 +324,8 @@ initial placement of spacetime elements.
 \begin{figure} [t]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/repulsion_force.pdf} 
-\caption{\label{fig_animationpak_repulsion_force} 
+\caption[Repulsion forces applied to a vertex $\bm{x}$]
+{\label{fig_animationpak_repulsion_force} 
 Repulsion forces applied to a vertex $\bm{x}$, 
 allowing the element to deform and move away from a neighbouring element.}
 \end{figure}
@@ -328,7 +333,8 @@ allowing the element to deform and move away from a neighbouring element.}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/t_force.pdf} 
-\caption{\label{fig_animationpak_t_force} 
+\caption[An illustration of the temporal force]
+{\label{fig_animationpak_t_force} 
 An illustration of the temporal force.  The vertices in slice
 $s_i$ are drawn back towards time $t$.
 }
@@ -362,7 +368,8 @@ refer to the time domain in which the simulation is taking place.
 \begin{figure}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/collision_grid.pdf} 
-\caption{\label{fig_animationpak_collision_grid} 
+\caption[An envelope and a collision grid]
+{\label{fig_animationpak_collision_grid} 
 (a) The triangles that connect consecutive slices define the envelope of the
 element.  The midpoints of these triangles are stored in a collision grid.
 (b) A 2D visualization of the region of collision
@@ -421,7 +428,8 @@ outer shell of the $5\times 5\times 5$ block around that
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/constraints.pdf} 
-\caption{\label{fig_animationpak_constraints} 
+\caption[Constraints]
+{\label{fig_animationpak_constraints} 
 a) End-to-end constraint: 
 slice $s_1$ and $s_n$, located at 
 $t = 0$ and $t = 1$,  should never change their $t$ positions but can change their $x, y$ positions. 
@@ -482,7 +490,8 @@ $\bm{p}_2$ to $(\frac{x_1+x_1}{2},\frac{y_2+y_2}{2},0)$.
 \begin{figure}
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/growth.pdf} 
-\caption{\label{fig_animationpakgrowth} 
+\caption[Element growths]
+{\label{fig_animationpakgrowth} 
 A spacetime element shown (a) shrunken at the beginning of the simulation,
 and (b) grown later in the simulation. (c) When two elements overlap
 somewhere along their lengths, they are temporarily prohibited from growing
@@ -695,8 +704,9 @@ high level.
 %\begin{comment}
 \begin{table}[]
 \centering 
-\caption{
-   Data and statistics for the results in the paper.  The table shows the
+\caption[Data and statistics for the AnimationPak results]
+{
+   \newtext{Data and statistics for the AnimationPak results}.  The table shows the
    number of elements,
    the number of vertices, 
    the number of springs, 
@@ -714,7 +724,7 @@ high level.
 	\cellcolor{lg}Springs &
 	\cellcolor{lg}Triangles &
 	\cellcolor{lg}Time \\ \hline
-\makecell{Aquatic animals  \\ (Fig.~\ref{fig_animationpak_teaser})}  
+\makecell{Aquatic fauna  \\ (Fig.~\ref{fig_animationpak_teaser})}  
 & 37         & 97,800             & 623,634            & 106,000		& 01:06:35        
 \\ \hline
 \makecell{Snake and birb     \\ (Fig.~\ref{fig_animationpak_chasing_bird})}  
@@ -739,7 +749,8 @@ high level.
 \begin{figure*}
   \centering
   \includegraphics[width=0.8\textwidth]{figures/animationpak/teaser.pdf}
-  \caption{\label{fig_animationpak_teaser}
+  \caption[An animated packing of aquatic fauna]
+  {\label{fig_animationpak_teaser}
   (a) Input animated elements,
   each with its own animation: swimming penguins, swimming sharks and fish,
   Pac-Man fish that open or close their mouths, and rotating stars. 
@@ -750,7 +761,8 @@ high level.
 \begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/chasing_bird.pdf} 
-\caption{\label{fig_animationpak_chasing_bird} 
+\caption[An animated packing of a snake chases a bird]
+{\label{fig_animationpak_chasing_bird} 
 A snake chasing a bird through a packing of animals.  The snake and bird 
 	are both guided elements that move clockwise around the annular 
 	container.}
@@ -759,7 +771,8 @@ A snake chasing a bird through a packing of animals.  The snake and bird
 \begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/penguin_giraffe.pdf} 
-\caption{\label{fig_animationpak_penguin_giraffe} 
+\caption[An animated packing of the penguins-to-giraffes illusion]
+{\label{fig_animationpak_penguin_giraffe} 
 Penguins turning into giraffes.  The penguins animate by rotating in place.
 Torsional forces are used to preserve element orientations.
 Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$. 
@@ -769,7 +782,8 @@ Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$.
 \begin{figure*}
 \centering
 \includegraphics[width=0.8\textwidth]{figures/animationpak/star_comparison.pdf} 
-\caption{\label{fig_animationpak_star_comparison} 
+\caption[An comparison between CAVD, The spectral approach, and AnimationPak]
+{\label{fig_animationpak_star_comparison} 
 A comparison of (a) Centroidal Area Voronoi Diagrams (CAVDs)~\cite{Smith2005}, 
 (b) spectral packing~\cite{Dalal2006}, and (c) AnimationPak. 
 We show two frames for each method, taken at $t = 0$ and $t = 0.5$. 
@@ -786,7 +800,8 @@ The AnimationPak packing has less negative space that is more even.}
 \begin{minipage}{.47\textwidth}
   \centering
   \includegraphics[width=0.4\textwidth]{figures/animationpak/lion_comparison.pdf}
-  \caption{
+  \caption[A packing of lion's mane]
+  {
   \label{fig_animationpak_lion}
     (a) A static packing made by an artist, taken from StockUnlimited. 
 	(b) The first frame from an AnimationPak packing. 
@@ -800,7 +815,8 @@ The AnimationPak packing has less negative space that is more even.}
 \begin{minipage}{.47\textwidth}
   \centering
   \includegraphics[width=0.4\textwidth]{figures/animationpak/repulsionpak_vs_animationpak.pdf}
-  \caption{
+  \caption[A comparison between RepulsionPak and AnimationPak]
+  {
   \label{fig_animationpak_repulsionpak_vs_animationpak}
   	(a) A static packing created with RepulsionPak.
 	(b) The first frame of a comparable AnimationPak packing.
@@ -815,7 +831,8 @@ The AnimationPak packing has less negative space that is more even.}
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/teaser_weak_t_springs.pdf} 
-\caption{\label{fig_animationpak_teaser_weak_t_springs} 
+\caption[The effect of adjusting time spring stiffness]
+{\label{fig_animationpak_teaser_weak_t_springs} 
 (a) One frame from Fig.~\ref{fig_animationpak_teaser}.
 (b) The same packing with time springs that are 1\% as stiff.
 Reducing the stiffness of time springs leads to a more even packing with
@@ -830,7 +847,8 @@ high frequency fluctuation in its position.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.4\textwidth]{figures/animationpak/blender.pdf} 
-\caption{\label{fig_animationpak_blender} 
+\caption[A failure case for AnimationPak]
+{\label{fig_animationpak_blender} 
 A failure case for AnimationPak, consisting of 
 a rotating beam and a number of small circles.  Instead of being dragged
 around by the beam, the circles dodge it entirely by sneaking through
@@ -914,16 +932,8 @@ AnimationPak:
 
 
 
-\item Saputra et al.~\cite{Saputra2018} previously studied a set of
-	measurements inspired by spatial statistics for evaluating the 
-	evenness of the distribution of negative space in a static packing.
-	While their measurements extend naturally to three purely spatial
-	dimensions, it is not clear whether they can be 
-	adapted to our spacetime context.  We would like to investigate
-	spatial statistics for the quality of animated packings that correlate
-	with human perceptual judgments.
 
-\item There are many examples of static two-dimensional packings
+\item mynote{edit this}There are many examples of static two-dimensional packings
 	created by artists, which can
 	serve as inspiration for an algorithm like RepulsionPak.  We were
 	unable to find an equivalent set of animated examples, probably
