@@ -2,6 +2,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter
 {FLOWPAK: Flow-based Ornamental Element Packing}
+\label{chapter_flowpak}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -226,7 +227,7 @@ in order to achieve the best possible fit.
 Intuitively, LR functions give an approximate area an ornamental element can claim.
 Figure~\ref{ornamental_shapes_fig} 
 shows elements with their left values
-in green and their right values in red. We have found that $n = 100$ gives sufficient
+in blue and their right values in red. We have found that $n = 100$ gives sufficient
 granularity for our algorithm.
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -420,7 +421,7 @@ scales it to fit inside the blob.}
  \caption[Trace a shortest path]
  {\label{dijkstra}
  Tracing a shortest path using Dijkstra's algorithm.  We generate the 
- orange nodes by resampling and offsetting the original red streamline.
+ orange nodes by resampling and offsetting the blue red streamline.
           The search directions at a node are shown with green arrows.}
 \end{figure}
 
@@ -605,7 +606,7 @@ can also choose to reflect the element across its spine, along its spine, or bot
 \includegraphics[width=1.0\textwidth]{figures/flowpak/stretch.pdf}
 \caption[Enlarge an element]
 {\label{stretch_ornament}
-(a) An element with its sub-region blob shown in dashed green line. Note that any blob is constrained by the neighboring elements. 
+(a) An element with its sub-region blob shown in dashed blue line. Note that any blob is constrained by the neighboring elements. 
 (b) The dashed red line is the grown blob, which accommodates an enlarged element.}
 
 % ROTATING OR FLIPPING

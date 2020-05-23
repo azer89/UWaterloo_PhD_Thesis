@@ -99,17 +99,13 @@
 \usepackage{amsmath,amssymb,amstext} % Lots of math symbols and environments
 \usepackage[pdftex]{graphicx} % For including graphics N.B. pdftex graphics driver 
 
-\usepackage[T1]{fontenc} % radomir name
-\usepackage{currvita}    % radomir name
-
 % Hyperlinks make it very easy to navigate an electronic document.
 % In addition, this is where you should specify the thesis title
 % and author as they appear in the properties of the PDF document.
 % Use the "hyperref" package 
 % N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
 \usepackage[pdftex,pagebackref=false]{hyperref} % with basic options
-%\usepackage[pdftex,pagebackref=true]{hyperref}
-		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
+        % N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
 \hypersetup{
     plainpages=false,       % needed if Roman numbers in frontpages
     unicode=false,          % non-Latin characters in Acrobat’s bookmarks
@@ -117,7 +113,7 @@
     pdfmenubar=true,        % show Acrobat’s menu?
     pdffitwindow=false,     % window fit to page when opened
     pdfstartview={FitH},    % fits the width of the page to the window
-%    pdftitle={uWaterloo\ LaTeX\ Thesis\ Template},    % title: CHANGE THIS TEXT!
+    pdftitle={uWaterloo\ LaTeX\ Thesis\ Template},    % title: CHANGE THIS TEXT!
 %    pdfauthor={Author},    % author: CHANGE THIS TEXT! and uncomment this line
 %    pdfsubject={Subject},  % subject: CHANGE THIS TEXT! and uncomment this line
 %    pdfkeywords={keyword1} {key2} {key3}, % list of keywords, and uncomment this line if desired
@@ -129,7 +125,7 @@
     urlcolor=cyan           % color of external links
 }
 \ifthenelse{\boolean{PrintVersion}}{   % for improved print quality, change some hyperref options
-\hypersetup{	% override some previously defined hyperref options
+\hypersetup{    % override some previously defined hyperref options
 %    colorlinks,%
     citecolor=black,%
     filecolor=black,%
