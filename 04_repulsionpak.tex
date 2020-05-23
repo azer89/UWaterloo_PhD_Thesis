@@ -9,6 +9,19 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure*}[h!]
+  \centering
+  \includegraphics[width=1.0\textwidth]{figures/repulsionpak/cat_whale_04}
+  \caption[A packing of a cat]
+  {
+  \label{cat_packing}
+           A packing of six cat elements inside a fish-shaped target container. 
+           Controllable deformation and repulsion forces allow the elements to deform,
+           efficiently filling the container and creating a uniform distribution of
+           negative space. We then reduce the remaining negative space by placing smaller
+           cat heads. The gradient fill was added as a post-process.}
+\end{figure*}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,6 +173,7 @@ to restore its angular position relative to $\bm{c}$,
 the center of mass of the element.
 \mynote
 {
+$\bm{c_r}$
 points should be bold.
 Should explain negative space edges, and shear edges.
 }
@@ -607,8 +621,6 @@ assign an element to each.
 }
 \end{figure}
 
-\newtext
-{
 The motions and deformations of elements, as described
 in the previous sections, give them an opportunity to conform to each 
 other and to the target container.  However, in some cases the random 
@@ -620,9 +632,7 @@ position to a pointy element that offers a better fit.  In the final
 packing, the sharp corners of the containers will appear ``rounded off''.
 Another problem occurs when a long narrow element is initially placed diagonally across a corner, 
 in which case the simulation pushes the element's middle into the corner, causing extreme deformation.
-}
 
-\newtext{
 To overcome these deficiencies, we optionally perform an initial fit-guided
 placement pass before seeding the rest of the container at random. 
 Here we take inspiration from existing rigid packing 
@@ -630,10 +640,7 @@ algorithms~\cite{Kwan2016}, which are driven primarily by shape
 compatibility.  We use a simplified shape descriptor; we can tolerate
 a less perfect initial fit, with the expectation that deformation will
 improve the quality later.
-}
 
-\newtext
-{
 We begin by building shape descriptors for the elements.  
 Each element is first scaled to have area
 $0.6A_c/n_e$, where $A_c$ is the container area and $n_e$ is the 
@@ -643,14 +650,10 @@ for our fit-based placement.  We then sample the target container and
 the boundaries of the elements, with adjacent samples separated by
 distance $\delta$.  We set $\delta=0.002L_s$, where $L_s$ is the
 side length of the container's bounding square.
-}
 
-\newtext
-{
 We define a local descriptor based on integral of absolute curvature~\cite{Cui2009,Kwan2016}.
 Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent the curvature of the curve at $P(t)$.  For a given interval $[s,t]$ within the curve's domain, we may define the integral of absolute curvature
 $\tau(s,t) = \int_{s}^{t} | \kappa(x) | dx$.
-}
 
 In practice, we estimate curvature from the discrete sample points
 using second-order forward finite differences~\cite{Banchoff} 
@@ -669,16 +672,10 @@ size, and the factor of $0.001$ was determined through experimentation.
 We further choose $n=5$, yielding a 10-dimensional descriptor. We compute
 this descriptor for all the container and element samples defined above.
 
-\newtext
-{
 Based on these descriptors, we now use a simple greedy heuristic to identify salient container features where shape matching will be used.
 Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Fig.~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
 Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
-}
 
-
-\newtext
-{
 Even when an element's descriptor is a close match to a segment of 
 target container, 
 it may still not be safe to place that element at a given location.
@@ -699,7 +696,6 @@ sample point $\bm{x}$, we then compute a score
     - \alpha d(\bm{x}), & \mathrm{if}\;\; d(\bm{x}) > 0    
   \end{cases}
 \end{equation}
-}
 
 With this scoring function, a sample point that lies on the container boundary
 will have a score of 1, the maximum for $q(\bm{x})$.
@@ -707,7 +703,6 @@ Scores decay exponentially towards 0
 for points farther inside the container.  Sample points outside the container
 are penalized by assigning a negative score proportional to distance.
 
-\newtext{
 We then define a quality measurement for an entire element by summing over
 all of its sample points:
 \begin{equation}
@@ -722,17 +717,13 @@ For every salient container feature, we obtain the $10$ closest descriptors from
 Finally, we place the selected element in the container by 
 aligning the endpoints of the element's and container's matching shape 
 descriptors.
-}
 
-\newtext
-{
 The shape matching process yields a set of elements that should be attached
 to particular locations on the target container.  However, during simulation
 they could wander away from these initial positions, under the influence of
 the many other forces at play.  As shown in Fig.~\ref{rhino_packing}b, we
 encourage these elements to remain in place by attaching them to the salient
 container points with additional springs.
-}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -741,18 +732,7 @@ container points with additional springs.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}
-  \centering
-  \includegraphics[width=1.0\textwidth]{figures/repulsionpak/cat_whale_04}
-  \caption[A packing of a cat]
-  {
-  \label{cat_packing}
-           A packing of six cat elements inside a fish-shaped target container. 
-           Controllable deformation and repulsion forces allow the elements to deform,
-           efficiently filling the container and creating a uniform distribution of
-           negative space. We then reduce the remaining negative space by placing smaller
-           cat heads. The gradient fill was added as a post-process.}
-\end{figure*}
+
 
 \begin{figure*}
 \centering
