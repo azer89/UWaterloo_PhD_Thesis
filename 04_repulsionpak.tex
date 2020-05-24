@@ -33,6 +33,12 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newtext
+{
+RepulsionPak~\cite{Saputra2018, Saputra2019} is a technique
+to pack deformable elements using repulsion forces.
+}
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -69,7 +75,7 @@ The creation of a packing using RepulsionPak.
   (d) The resulting packing of primary elements.
   (e) The final result, after adding secondary elements and allowing them to
   	grow.
-  	Fig.~\ref{fig_defviz} shows the deformations of some of the elements. }
+  	Figure~\ref{fig_defviz} shows the deformations of some of the elements. }
 \end{figure}
 
 \begin{figure}[h]
@@ -77,7 +83,7 @@ The creation of a packing using RepulsionPak.
 \includegraphics[width=5cm]{figures/repulsionpak/pipeline_defviz_csk.pdf}
 \caption[Element deformation]{
 	\label{fig_defviz}
-	Some of the elements in the final packing in Fig.~\ref{fig_repulsionpak_pipeline}, 
+	Some of the elements in the final packing in Figure~\ref{fig_repulsionpak_pipeline}, 
 	showing the effect of deformation in our simulation.
 }
 \end{figure}
@@ -85,12 +91,12 @@ The creation of a packing using RepulsionPak.
 Our system requires three main pieces of input:
 \begin{itemize}
 	\item A library of primary and optional secondary elements, such
-		as those shown in Fig.~\ref{fig_repulsionpak_pipeline}a.
+		as those shown in Figure~\ref{fig_repulsionpak_pipeline}a.
 	      Each element is a collection of 
 		  open or closed polygonal paths---any curves must
 		  be flattened ahead of time.
 	\item One or more closed polygonal target containers, such as the
-		heart in Fig.~\ref{fig_repulsionpak_pipeline}b.  Target containers can optionally
+		heart in Figure~\ref{fig_repulsionpak_pipeline}b.  Target containers can optionally
 		have internal holes.
 	\item The desired element spacing distance $d_\mathrm{gap}>0$.
 \end{itemize}
@@ -206,7 +212,7 @@ springs in a physical simulation, allowing elements to deform in response to
 their neighbours.  
 We further brace the mesh against
 deformation by augmenting it with ``auxiliary springs'' (see
-Section~\ref{section_forces} and Fig.~\ref{fig_forces}b).
+Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
 
 Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
 Increasing the mesh resolution produces a more precise result at the expense of greater running time.
@@ -236,7 +242,7 @@ We prepare our simulation by randomly placing non-overlapping elements.
 		  have found that $5-10$\% of the area gives good results. Making them
 		  larger would speed up the simulation but does
 	      not allow enough freedom of movement to generate successful
-		  packings.  Fig.~\ref{pipeline}b shows an initial placement.	      
+		  packings.  Figure~\ref{pipeline}b shows an initial placement.	      
 \end{enumerate}
 
 
@@ -271,7 +277,7 @@ Section~\ref{section_growing_element}, to completely fill the target container.
 \textbf{Repulsion force:} 
 The repulsion force tries to push element meshes apart when they approach
 each other, with the goal of
-making them transform to align their boundaries (Fig.~\ref{fig_forces}a).
+making them transform to align their boundaries (Figure~\ref{fig_forces}a).
  
 The vertex $\bm{x}$ will
 experience an inverse square repulsive force, inspired by Coulomb's law,
@@ -319,7 +325,7 @@ displacement
 of these springs allows a mesh to deform in response to repulsion forces
 by neighbouring meshes.
 In addition, when two mesh triangles share an edge we connect the two vertices
-opposite the edge with an \textit{auxiliary spring} (Fig.~\ref{fig_forces}b), 
+opposite the edge with an \textit{auxiliary spring} (Figure~\ref{fig_forces}b), 
 adding extra bracing to a mesh to prevent it from folding.
 
 An undeformed element mesh provides the rest lengths for all of
@@ -501,7 +507,7 @@ of packing with rigid elements.
 
 RepulsionPak starts with small initial elements to avoid intersections,
 and gradually enlarges them until they tightly fill the target
-container.  Fig.~\ref{pipeline}c-d shows elements growing and gradually
+container.  Figure~\ref{pipeline}c-d shows elements growing and gradually
 consuming negative space.  Elements have different intrinsic sizes, which are
 respected in the initial placement.  Because they all grow at roughly the
 same rate, their relative sizes tend to be maintained.
@@ -658,12 +664,11 @@ side length of the container's bounding square.
 We define a local descriptor based on integral of absolute curvature~\cite{Cui2009,Kwan2016}.
 Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent the curvature of the curve at $P(t)$.  For a given interval $[s,t]$ within the curve's domain, we may define the integral of absolute curvature
 $\tau(s,t) = \int_{s}^{t} | \kappa(x) | dx$.
-
 In practice, we estimate curvature from the discrete sample points
 using second-order forward finite differences~\cite{Banchoff} 
 and compute $\tau$ by summing curvature estimates using the trapezoid rule.
 
-Let an objective $\tau_\mathrm{obj}$ be a positive real number and $P(t_0)$ be a given point on a curve.  If $\tau_\mathrm{obj}$ is sufficiently small, then as we traverse the curve on either side of $P(t_0)$ we will eventually reach points $P(t_{-1})$ and $P(t_1)$ such that $\tau(t_{-1},t_0)=\tau(t_0,t_1)=\tau_\mathrm{obj}$.  We let $l_1=t_0-t_{-1}$ and $r_1=t_1-t_0$ be the arclengths that produce these integrals.  We can continue this process for any number of steps, walking in both directions along the curve away from previous sample points until we reach $\tau_\mathrm{obj}$, yielding new arclengths $l_k$ and $r_k$ (see Fig.~\ref{fig_shape_matching}).  Finally, for a given number of steps $n$ we define the shape descriptor at $P(t_0)$ as
+Let an objective $\tau_\mathrm{obj}$ be a positive real number and $P(t_0)$ be a given point on a curve.  If $\tau_\mathrm{obj}$ is sufficiently small, then as we traverse the curve on either side of $P(t_0)$ we will eventually reach points $P(t_{-1})$ and $P(t_1)$ such that $\tau(t_{-1},t_0)=\tau(t_0,t_1)=\tau_\mathrm{obj}$.  We let $l_1=t_0-t_{-1}$ and $r_1=t_1-t_0$ be the arclengths that produce these integrals.  We can continue this process for any number of steps, walking in both directions along the curve away from previous sample points until we reach $\tau_\mathrm{obj}$, yielding new arclengths $l_k$ and $r_k$ (see Figure~\ref{fig_shape_matching}).  Finally, for a given number of steps $n$ we define the shape descriptor at $P(t_0)$ as
 $(l_n, l_{n-1}, \ldots, l_2, l_1, r_1, r_2, \ldots, r_{n-1}, r_n)$.
 Like PAD~\cite{Kwan2016}, our shape descriptor is rotation 
 invariant.  Effectively it is one level of a PAD, which suffices because
@@ -677,7 +682,7 @@ We further choose $n=5$, yielding a 10-dimensional descriptor. We compute
 this descriptor for all the container and element samples defined above.
 
 Based on these descriptors, we now use a simple greedy heuristic to identify salient container features where shape matching will be used.
-Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Fig.~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
+Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Figure~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
 Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
 
 Even when an element's descriptor is a close match to a segment of 
@@ -725,13 +730,13 @@ descriptors.
 The shape matching process yields a set of elements that should be attached
 to particular locations on the target container.  However, during simulation
 they could wander away from these initial positions, under the influence of
-the many other forces at play.  As shown in Fig.~\ref{rhino_packing}b, we
+the many other forces at play.  As shown in Figure~\ref{rhino_packing}b, we
 encourage these elements to remain in place by attaching them to the salient
 container points with additional springs.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Results}
+\section{Implementation and Results}
 \label{repulsionpak_results}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -800,29 +805,26 @@ Two demonstrations of how extreme parameter values can lead to
    the running times of the primary and the secondary simulations ($t_p$, $t_s$) in seconds,
    and the number of iterations ($i$).
    In these results, torsional forces are used only in 
-   Fig.~\ref{giraffe_penguin_packing} and shape matching is used only 
-   in Fig.~\ref{rhino_packing}.
+   Figure~\ref{giraffe_penguin_packing} and shape matching is used only 
+   in Figure~\ref{rhino_packing}.
    }
 \label{packing_statistics}
 \definecolor{lg}{rgb}{0.73,0.867,0.98}
-\vspace{-10pt}
-\resizebox{\columnwidth}{!}{
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \cellcolor{lg}Packing                  & \cellcolor{lg}$n_p$ & \cellcolor{lg}$n_s$ & \cellcolor{lg}$v$   & \cellcolor{lg}$t_p$ & \cellcolor{lg}$t_s$ & \cellcolor{lg}$i$\\ \hline
-Animals (Fig.~\ref{pipeline})                       & 25    & 14   & 2412  & 133  & 65  & 16670\\ \hline
-\newtext{Rhino   (Fig.~\ref{rhino_packing})}        & 107   & 0    & 4833  & 237  & 0   & 15521\\ \hline
-Cats (Fig.~\ref{cat_packing})                       & 41    & 69   & 3598  & 185  & 62  & 8531\\ \hline
-Birds  (Fig.~\ref{three_packings}a)                 & 43    & 43   & 2309  & 102  & 54  & 11571\\ \hline
-Bats (Fig.~\ref{three_packings}b)                   & 47    & 22   & 3048  & 165  & 56  & 13120\\ \hline
-Butterflies (Fig.~\ref{three_packings}c)            & 123   & 135  & 11916 & 696  & 616 & 14379\\ \hline
-\newtext{Giraffes \& Penguins (Fig.~\ref{giraffe_penguin_packing})}        & 60    & 0   & 2250  & 163  & 0   & 9347\\ \hline
-\newtext{Paisley (Fig.~\ref{paisley_packing})}      & 162   & 0    & 4860  & 128  & 0   & 23040\\ \hline
-\newtext{Circles in Paisleys (Fig.~\ref{paisley_packing})}      & 144   & 0    & 2544  & 403  & 0   & 29584\\ \hline
-\newtext{Collage (Fig.~\ref{pad_comparison})}       & 51    & 0    & 3481  & 729  & 0   & 29868\\ \hline
-\newtext{Autumn  (Fig.~\ref{balabolka_comparison})} & 77    & 0    & 2427  & 868  & 0   & 38387\\ \hline
+Animals (Figure~\ref{pipeline})                       & 25    & 14   & 2412  & 133  & 65  & 16670\\ \hline
+\newtext{Rhino   (Figure~\ref{rhino_packing})}        & 107   & 0    & 4833  & 237  & 0   & 15521\\ \hline
+Cats (Figure~\ref{cat_packing})                       & 41    & 69   & 3598  & 185  & 62  & 8531\\ \hline
+Birds  (Figure~\ref{three_packings}a)                 & 43    & 43   & 2309  & 102  & 54  & 11571\\ \hline
+Bats (Figure~\ref{three_packings}b)                   & 47    & 22   & 3048  & 165  & 56  & 13120\\ \hline
+Butterflies (Figure~\ref{three_packings}c)            & 123   & 135  & 11916 & 696  & 616 & 14379\\ \hline
+\newtext{Giraffes \& Penguins (Figure~\ref{giraffe_penguin_packing})}        & 60    & 0   & 2250  & 163  & 0   & 9347\\ \hline
+\newtext{Paisley (Figure~\ref{paisley_packing})}      & 162   & 0    & 4860  & 128  & 0   & 23040\\ \hline
+\newtext{Circles in Paisleys (Figure~\ref{paisley_packing})}      & 144   & 0    & 2544  & 403  & 0   & 29584\\ \hline
+\newtext{Collage (Figure~\ref{pad_comparison})}       & 51    & 0    & 3481  & 729  & 0   & 29868\\ \hline
+\newtext{Autumn  (Figure~\ref{balabolka_comparison})} & 77    & 0    & 2427  & 868  & 0   & 38387\\ \hline
 \end{tabular}
-} 
 \end{table}
 
 
@@ -835,52 +837,53 @@ back into Illustrator, fit smooth curves to polygonal paths, and
 apply colours and other visual effects.  Table~\ref{packing_statistics}
 shows statistics for the results in the paper.  All results in this
 paper use $\Delta t = 0.1$.
-Torsional forces are used only in Fig.~\ref{giraffe_penguin_packing},
-and shape matching is used only in Fig.~\ref{rhino_packing}.
+Torsional forces are used only in Figure~\ref{giraffe_penguin_packing},
+and shape matching is used only in Figure~\ref{rhino_packing}.
 We also use our improved method for resolving self intersection in
 Figs.~\ref{rhino_packing},~\ref{giraffe_penguin_packing},
 ~\ref{paisley_packing},
 ~\ref{pad_comparison}, and
 ~\ref{balabolka_comparison}.
 
-The supplemental materials include movies that visualize the simulation
-process.  These movies make it clear that elements can jostle each other
-around, inducing translation, rotation, and deformation throughout the 
-simulation.
+\mynote{Supplemental material???}
+%The supplemental materials include movies that visualize the simulation
+%process.  These movies make it clear that elements can jostle each other
+%around, inducing translation, rotation, and deformation throughout the 
+%simulation.
 
-The packing in Fig.~\ref{cat_packing} 
+The packing in Figure~\ref{cat_packing} 
 uses six cat-shaped primary elements and one secondary cat head.
 RepulsionPak naturally bends legs and tails to fill the container more evenly.
 
-The animal packing in Fig.~\ref{pipeline} 
+The animal packing in Figure~\ref{pipeline} 
 has several elements with limbs (the bear, fox, chick, and penguin),  
 extensions (the dog and bunny ears), and long shapes (the snake).
-Fig.~\ref{fig_defviz} highlights the deformations for some of these elements;
+Figure~\ref{fig_defviz} highlights the deformations for some of these elements;
 they are noticeably more deformed 
 than nearly convex elements like the cat and mouse.
 
 
-The butterfly packing in Fig.~\ref{three_packings} is an attempt to reproduce 
+The butterfly packing in Figure~\ref{three_packings} is an attempt to reproduce 
 the visual style of a 
 dense packing (or tessellation), similar to Jigsaw Image Mosaics~\cite{Kim2002}
 or the ``Butterflies in Butterfly'' example from the
-Pyramid of Arclength Descriptor paper~\cite[Fig. 21]{Kwan2016}. 
+Pyramid of Arclength Descriptor paper~\cite[Figure 21]{Kwan2016}. 
 The target container is made from two regions,
 one with internal holes.  The resulting packing is tight but overlap-free.
 
-The packing on the left in Fig.~\ref{three_packings}
+The packing on the left in Figure~\ref{three_packings}
 exhibits significant deformation in the wings and the tails of the birds.
 In particular, the thin tails of the swallows have some unaesthetic
 sharp bends.  We would like to investigate ways to ensure these bends are
 smoother.
 
-The packing in Fig.~\ref{giraffe_penguin_packing} demonstrates torsional forces
+The packing in Figure~\ref{giraffe_penguin_packing} demonstrates torsional forces
 that gradually turn the elements upside down. 
-The rhinoceros packing in Fig.~\ref{rhino_packing} demonstrates initial placement via shape matching.
+The rhinoceros packing in Figure~\ref{rhino_packing} demonstrates initial placement via shape matching.
 The entire shape matching process took 922 milliseconds with a 4-element library.
 
 We have also experimented with creating tileable packings, as shown
-in Fig.~\ref{paisley_packing}.  We seed a central square with elements,
+in Figure~\ref{paisley_packing}.  We seed a central square with elements,
 but also place clones of those elements in all the squares of the
 8-neighbourhood around the center.  These clones track the transformations
 and deformations of their originals, but also exert forces on them during
@@ -888,20 +891,20 @@ simulation, leading to an even, seamless packing in a toroidal domain.
 
 We have found that RepulsionPak is robust to parameter variation, and 
 produces predictable, high quality results without the need for fine-grained
-adjustments.  However, as shown in Fig.~\ref{bad_results}, extreme parameter 
+adjustments.  However, as shown in Figure~\ref{bad_results}, extreme parameter 
 settings can still produce degenerate results.
-In Fig.~\ref{bad_results}a, the repulsion force is made much stronger than 
+In Figure~\ref{bad_results}a, the repulsion force is made much stronger than 
 the edge force, leading to excessive element deformation and
 self-intersections in the pursuit of even negative space.  In 
-Fig.~\ref{bad_results}b, edge and torsional forces dominate repulsion,
+Figure~\ref{bad_results}b, edge and torsional forces dominate repulsion,
 producing a packing with stiff, upright elements that do not fill their
 container effectively.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
-\label{repulsionpak_conclusions}
+\section{Conclusions and Future Work}
+\label{repulsionpak_conclusions_and_future_work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -943,7 +946,7 @@ and future research on element packings.
 
 \item Our barycentric warping method can
 	introduce undesirable artifacts in highly deformed elements, as
-	in the swallow tails in the left result of Fig.~\ref{three_packings}.
+	in the swallow tails in the left result of Figure~\ref{three_packings}.
 	We would like to explore other methods for warping an element's
 	geometry based on the correspondences between the triangles of its original
 	mesh and the deformed meshes in the final packing, based for example on the

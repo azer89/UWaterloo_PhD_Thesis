@@ -26,6 +26,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newtext
+{
+AnimationPak~\cite{Saputra2020} is a technique
+to pack animated 2D elements.
+}
+
+
 \mynote{need to rearrange}
 
 Inspired by RepulsionPak, we investigate a physics-based
@@ -132,23 +139,23 @@ Each element begins life as a static shape defined using
 vector paths.  Following RepulsionPak, we construct a discrete
 geometric proxy of the element that will interact with other
 proxies in a physical simulation.  The construction of this proxy
-for a single shape is shown in Fig.~\ref{fig_animationpak_discretization}, and
+for a single shape is shown in Figure~\ref{fig_animationpak_discretization}, and
 the individual steps are explained in greater detail below.
 
 In order to produce a packing with an even distribution of negative
 space, we first offset the shape's paths by a distance $\Delta s$,
 leaving the shape surrounded by a channel of negative space
-(Fig.~\ref{fig_animationpak_discretization}a).  In our system
+(Figure~\ref{fig_animationpak_discretization}a).  In our system
 we scale the shape to fit a unit square and set $\Delta s=0.04$.
 
 Next, we place evenly-spaced samples around the outer boundary of 
 the offset path and construct a Delaunay triangulation of the samples
-(Fig.~\ref{fig_animationpak_discretization}b).  As in RepulsionPak, we will
+(Figure~\ref{fig_animationpak_discretization}b).  As in RepulsionPak, we will
 later treat the edges of the triangulation as springs, allowing the
 element to deform in response to forces in the simulation.  
 We also follow RepulsionPak by adding extra edges to prevent
 folding or self-overlaps during simulation
-(Fig.~\ref{fig_animationpak_discretization}c).  First, if two triangles 
+(Figure~\ref{fig_animationpak_discretization}c).  First, if two triangles 
 $ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$.  Second, we triangulate the negative space
 inside the convex hull of the original Delaunay triangulation, and
@@ -159,7 +166,7 @@ bracing.  The element's concavities can still be occupied by its
 neighbours.}
 
 We refer to the augmented triangulation shown in 
-Fig.~\ref{fig_animationpak_discretization}c as a \textit{slice}.  
+Figure~\ref{fig_animationpak_discretization}c as a \textit{slice}.  
 The entire spacetime packing process operates on slices.  
 However, we will eventually
 need to compute deformed copies of the element's original vector paths 
@@ -176,7 +183,7 @@ with slice $s_i$ being placed at time $(i-1)/(n_s-1)$.
 Higher temporal resolution will
 produce a smoother final animation at the expense of more computation.
 In our examples, we set $n_s=100$. 
-Fig.~\ref{fig_animationpak_discretization}d shows a set of time slices, with
+Figure~\ref{fig_animationpak_discretization}d shows a set of time slices, with
 $n_s=5$ for visualization purposes.
 
 To complete the construction of a spacetime element without animation,
@@ -190,7 +197,7 @@ we add time edges $AC$, $AD$, and $BC$.
 During simulation, time edges will transmit forces backwards and forwards in
 time, maintaining temporal coherence by smoothing out deformation and 
 transformations.
-Fig.~\ref{fig_animationpak_discretization}e shows time edges for $n_s=5$.
+Figure~\ref{fig_animationpak_discretization}e shows time edges for $n_s=5$.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -211,7 +218,7 @@ been positioned manually has its entire trajectory through the animation
 computed using spline interpolation.  Then, at any other slice, the positions
 of all other vertices can be interpolated using the as-rigid-as-possible
 technique.  The result is a smoothly animated spacetime volume like the one
-visualized in Fig.~\ref{fig_animationpak_spacetime_element}.
+visualized in Figure~\ref{fig_animationpak_spacetime_element}.
 
 Unlike data-driven packing methods like PAD~\cite{Kwan2016}, methods that
 allow distortions do not require a large library of distinct elements
@@ -289,12 +296,12 @@ fixing the initial and final positions of the guided element.
 We then linearly interpolate the anchor position
 for each slice based on the target points, and translate the slice
 so that its anchor lies at the desired position.  The red extrusions
-in Fig.~\ref{fig_animationpak_simulation_process}a are guided elements.
+in Figure~\ref{fig_animationpak_simulation_process}a are guided elements.
 
 If the artist wishes to create a looping animation, the $(x_i,y_i)$ position
 for target points $\bm{p}_1$ and $\bm{p}_n$ must match up, either
 for a single guided element or across elements. In
-Fig.~\ref{fig_animationpak_simulation_process} the two guided elements form a connected
+Figure~\ref{fig_animationpak_simulation_process} the two guided elements form a connected
 loop; $(x_1,y_1)$ for each one matches $(x_n,y_n)$ for the other.
 
 In this initial configuration, the guided elements abruptly change
@@ -304,7 +311,7 @@ simulation runs. Also, the simulation is not constrained to reach
 each target position exactly.  Instead, we attach the
 anchor to the target using a \textit{target-point spring} that
 attempts to draw the element towards it while balancing against
-the other physical forces in play (Fig.~\ref{fig_simulation_process}b).
+the other physical forces in play (Figure~\ref{fig_simulation_process}b).
 The strength of these springs determines how closely the element
 will follow the trajectory.
 
@@ -324,7 +331,7 @@ towards its centroid.  These shrunken elements are
 guaranteed not to intersect one another; as the simulation runs, they
 will grow and consume the container's negative space, while avoiding
 collisions.
-The blue extrusions in Fig.~\ref{fig_animationpak_simulation_process}a show an
+The blue extrusions in Figure~\ref{fig_animationpak_simulation_process}a show an
 initial placement of spacetime elements.
 
 
@@ -360,7 +367,7 @@ $s_i$ are drawn back towards time $t$.
 We now perform a physics simulation on the spacetime elements and the 
 container.  Elements are subject to a number of forces that cause them
 to simultaneously grow, deform, and repel each other
-(Fig.~\ref{fig_animationpak_simulation_process}).
+(Figure~\ref{fig_animationpak_simulation_process}).
 Our physics simulation is very similar to that of 
 RepulsionPak (Chapter XX Section YY)---with the exception of the new temporal
 force, all our forces are the spacetime analogues of the ones used
@@ -403,7 +410,7 @@ To find these points, we use each element's
 \textit{envelope}, a triangle mesh implied by the construction in
 Sect.~\ref{sect_animated_elements}.  Each triangle of the envelope 
 is made from two time edges and one edge of a slice boundary, as
-shown in Fig.~\ref{fig_animationpak_collision_grid}a.  Given a query vertex 
+shown in Figure~\ref{fig_animationpak_collision_grid}a.  Given a query vertex 
 $\bm{x}$, we need to find nearby envelope triangles that belong to
 other elements.
 
@@ -429,7 +436,7 @@ grid around the simulation volume.  A query point's nearby grid cells
 are the 27 cells making up a $3\times 3\times 3$ block around the cell 
 containing the point; the more distant cells are the 98 that make up the
 outer shell of the $5\times 5\times 5$ block around that 
-(Fig.~\ref{fig_animationpak_collision_grid}).
+(Figure~\ref{fig_animationpak_collision_grid}).
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -466,7 +473,7 @@ A spacetime element must be present for the full length of the animation
 from $t=0$ to $t=1$.  After every simulation step, every vertex belonging
 to an element's first slice has its $t$ value set to $0$, and every vertex
 of the last slice has its $t$ value set to $1$
-(Fig.~\ref{fig_animationpak_constraints}a).
+(Figure~\ref{fig_animationpak_constraints}a).
 
 \item \textbf{Simultaneity constraint:}
 During simulation, the vertices of a slice can drift away from each
@@ -474,7 +481,7 @@ other in time, which could lead to rendering artifacts in the animation.
 After every simulation step, we compute the average $t$ value of all
 vertices belonging to each slice other than the first and last slices, and 
 snap all the slice's vertices to that $t$ value 
-(Fig.~\ref{fig_animationpak_constraints}b).
+(Figure~\ref{fig_animationpak_constraints}b).
 
 \item \textbf{Loop constraint:}
 AnimationPak optionally supports looping animations.
@@ -483,9 +490,9 @@ of the spacetime container are identical.
 The $t=1$ slice of every element $e_1$ must then 
 coincide with the $t=0$ slice of \textit{some} 
 element $e_2$.  We can have $e_1=e_2$ 
-(Fig.~\ref{fig_animationpak_constraints}c), but more general loops are possible in which
+(Figure~\ref{fig_animationpak_constraints}c), but more general loops are possible in which
 the elements arrive at a permutation of their original configuration
-(Fig.~\ref{fig_animationpak_constraints}d).  We require only that there is a one-to-one
+(Figure~\ref{fig_animationpak_constraints}d).  We require only that there is a one-to-one
 correspondence between the vertices of the $t=1$ slice of $e_1$ and the
 $t=0$ slice of $e_2$.  If $\bm{p}_1=(x_1,y_1,1)\in e_1$ and
 $\bm{p}_2=(x_2,y_2,0)\in e_2$
@@ -517,7 +524,7 @@ there.
 We begin the spacetime packing process with all element slices scaled
 down in $x$ and $y$, guaranteeing that elements do not 
 overlap.  As the simulation progresses we gradually grow the slices, 
-consuming the negative space around them (Fig.~\ref{fig_animationpak_growth}a,b).
+consuming the negative space around them (Figure~\ref{fig_animationpak_growth}a,b).
 A perfect packing would fill the spacetime container completely with the elements.
 Because each element wraps the underlying animated shape with a narrow channel
 of negative space, this would yield an even
@@ -557,7 +564,7 @@ room to grow in later iterations.
 \newtext{
 This approach can cause elements to fluctuate in size during the course
 of an animation, as slices compete for shifting negative space 
-(Fig.~\ref{fig_animationpak_growth}).}
+(Figure~\ref{fig_animationpak_growth}).}
 
 \textbf{Stopping Criteria:} We halt the simulation when the space between
 neighbouring elements drops below a threshold.  When calculating 
@@ -639,22 +646,22 @@ of springs, and requires about an hour to complete.
 We enable the loop constraint in all results.  The paper shows selected frames from the
 results; see the accompanying videos for full animations.
 
-Fig.~\ref{fig_animationpak_teaser} is an animation of aquatic fauna featuring two
+Figure~\ref{fig_animationpak_teaser} is an animation of aquatic fauna featuring two
 penguins as guided elements.  During one loop the penguins move clockwise
 around the container, swapping positions at the top and the bottom.
 Each ends at the other's starting point, demonstrating a loop constraint
 between distinct elements.  All elements are animated, as shown in 
-Fig.~\ref{fig_animationpak_teaser}a.  Note the coupling between the Pac-Man fish's
+Figure~\ref{fig_animationpak_teaser}a.  Note the coupling between the Pac-Man fish's
 mouth and the shark's tail on the left side of the second and fourth frames.
 
 A snake chases a bird around an annular container in 
-Fig.~\ref{fig_animationpak_chasing_bird}, demonstrating a container with a hole
+Figure~\ref{fig_animationpak_chasing_bird}, demonstrating a container with a hole
 and giving a simple example of the narrative potential of animated
-packings.  Fig.~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to-penguin
+packings.  Figure~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to-penguin
 illusion shown as a static packing in RepulsionPak.  This example
 uses torsional forces to control slice orientations.
 
-Fig.~\ref{fig_animationpak_star_comparison} offers a direct comparison between
+Figure~\ref{fig_animationpak_star_comparison} offers a direct comparison between
 packings computed using Centroidal Area Voronoi Diagrams
 (CAVD)~\cite{Smith2005}, the spectral approach~\cite{Dalal2006}, and
 AnimationPak.
@@ -673,8 +680,8 @@ that persists across the animation, including gear-like meshing of
 oppositely-rotating stars.
 
 
-Fig.~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
-used as an example in FLOWPAK~\cite{Saputra2017}.  In Fig.~\ref{fig_animationpak_lion}b,
+Figure~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
+used as an example in FLOWPAK~\cite{Saputra2017}.  In Figure~\ref{fig_animationpak_lion}b,
 we reproduce it with animated elements for the mane.
 The orientations of elements follow a vector field inside
 the container, and are maintained during the animation by 
@@ -682,7 +689,7 @@ torsional forces.
 We simulate only half of the packing and reflect it to create the other half.
 The facial features were added manually in a post-processing step.
 
-Fig.~\ref{fig_animationpak_repulsionpak_vs_animationpak} compares
+Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak} compares
 a static 2D packing created by RepulsionPak with a frame
 from an animated packing created by AnimationPak.
 The extra negative space in AnimationPak comes partly from the trade-off
@@ -690,7 +697,7 @@ between temporal coherence and tight packing, and partly from the lack
 of secondary elements, which were used in a second pass in RepulsionPak 
 to fill pockets of negative space.
 
-Fig.~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
+Figure~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
 temporal coherence and \newtext{evenness of negative space} by creating two animations
 with different time springs stiffness.  In (a), the time springs
 are 100 times stronger than in (b).  The resulting packing has larger
@@ -699,7 +706,7 @@ animation is smoother.  The packing in (b) is tighter, but the elements
 must move frantically to maintain that tightness.
 
 
-Fig.~\ref{fig_animationpak_blender} is a failed attempt to animate a ``blender''.
+Figure~\ref{fig_animationpak_blender} is a failed attempt to animate a ``blender''.
 The packing has a beam that rotates clockwise
 and a number of small unguided circles.  
 In a standard physics simulation we might expect the beam to push the 
@@ -730,7 +737,6 @@ high level.
    }
 \label{table_packing_statistics}
 \definecolor{lg}{rgb}{0.73,0.867,0.98}
-\resizebox{\columnwidth}{!}{
 \begin{tabular}{|c|c|c|c|c|c|}
 \hline
 	\cellcolor{lg}Packing &
@@ -739,26 +745,25 @@ high level.
 	\cellcolor{lg}Springs &
 	\cellcolor{lg}Triangles &
 	\cellcolor{lg}Time \\ \hline
-\makecell{Aquatic fauna  \\ (Fig.~\ref{fig_animationpak_teaser})}  
+\makecell{Aquatic fauna  \\ (Figure~\ref{fig_animationpak_teaser})}  
 & 37         & 97,800             & 623,634            & 106,000		& 01:06:35        
 \\ \hline
-\makecell{Snake and birb     \\ (Fig.~\ref{fig_animationpak_chasing_bird})}  
+\makecell{Snake and birb     \\ (Figure~\ref{fig_animationpak_chasing_bird})}  
 & 37         & 58,700             & 370,571            & 58,700		& 01:01:32        
 \\ \hline
-\makecell{Penguin to giraffe \\ (Fig.~\ref{fig_animationpak_penguin_giraffe})}  
+\makecell{Penguin to giraffe \\ (Figure~\ref{fig_animationpak_penguin_giraffe})}  
 & 33         & 124,300            & 824,164            & 143,000		& 01:19:50        
 \\ \hline
-\makecell{Heart stars         \\ (Fig.~\ref{fig_animationpak_star_comparison}c)}  
+\makecell{Heart stars         \\ (Figure~\ref{fig_animationpak_star_comparison}c)}  
 & 26         & 85,200             & 598,218            & 858,00		& 00:23:08        
 \\ \hline
-\makecell{Animals            \\ (Fig.~\ref{fig_animationpak_repulsionpak_vs_animationpak}b)}  
+\makecell{Animals            \\ (Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak}b)}  
 & 34         & 69,600             & 444,337            & 69,800		& 01:00:19        
 \\ \hline
-\makecell{Lion               \\ (Fig.~\ref{fig_animationpak_lion}b)}  
+\makecell{Lion               \\ (Figure~\ref{fig_animationpak_lion}b)}  
 & 16         & 39,400             & 236,086            & 41,800		& 00:41:56        
 \\ \hline
 \end{tabular}
-}
 \end{table}
 
 
@@ -837,7 +842,7 @@ The AnimationPak packing has less negative space that is more even.}
 \includegraphics[width=0.4\textwidth]{figures/animationpak/teaser_weak_t_springs.pdf} 
 \caption[The effect of adjusting time spring stiffness]
 {\label{fig_animationpak_teaser_weak_t_springs} 
-(a) One frame from Fig.~\ref{fig_animationpak_teaser}.
+(a) One frame from Figure~\ref{fig_animationpak_teaser}.
 (b) The same packing with time springs that are 1\% as stiff.
 Reducing the stiffness of time springs leads to a more even packing with
 less negative space, but the animated elements must move frantically to
@@ -864,8 +869,8 @@ The red circle demonstrates one such maneuver.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusion and Future Work}
-\label{animationpak_conclusion_and_future_work}
+\section{Conclusions and Future Work}
+\label{animationpak_conclusions_and_future_work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -899,7 +904,7 @@ AnimationPak:
 	small and distant from each other, so lower-resolution
 	meshes may suffice for computing repulsion forces.
 
-\item As noted in Sect.~\ref{section_rendering} and Fig.~\ref{fig_animationpak_blender},
+\item As noted in Sect.~\ref{section_rendering} and Figure~\ref{fig_animationpak_blender},
 	our discrete simulation can miss element overlaps that occur between
 	slices.  A more robust continuous collision detection (CCD) algorithm
 	such as that of Brochu et al.~\cite{Brochu2012}

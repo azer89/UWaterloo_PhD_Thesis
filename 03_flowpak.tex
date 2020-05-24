@@ -6,7 +6,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{points or vector should be bold!}
+
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}[h!]
@@ -24,6 +24,8 @@ curves with arrows represent directional guides, and green
 curves are fixed elements copied into the final design.
 The colours in the final rendering were added manually. }
 \end{figure}
+
+\mynote{points or vector should be bold!}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,6 +49,8 @@ of elements (by ComicVector703 on Shutterstock).
 }
 \end{figure}
 
+\newtext
+{
 FLOWPAK~\cite{Saputra2017} is a technique for filling a container 
 region with elements that are deformed 
 to communicate a sense of directionality or flow.
@@ -55,13 +59,14 @@ of flow, but can also be deformed to capture changes in flow direction.
 Flow adds visual interest to a composition,
 engaging the viewer by providing a sense of progression and
 movement through elements.
-A hand-drawn dog example in Fig.~\ref{dog_flow} shows many elements that appear to flow
+A hand-drawn dog example in Figure~\ref{dog_flow} shows many elements that appear to flow
 outward from the flower in the centre of the torso, and then
 up the neck and down into the legs.
 Although there has been a moderate amount of past research on
 the generation of packings or mosaics,
 this past work is not appropriate for creating flow-like
 designs similar to the dog example.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -232,7 +237,7 @@ in blue and their right values in red. We have found that $n = 100$ gives suffic
 granularity for our algorithm.
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
 \caption[Ornamental elements and their LR functions]
@@ -324,7 +329,7 @@ sort value is zero, and they will be processed before any derived points.
 \end{algorithm}
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
 \caption[The streamline tracing process]
@@ -403,7 +408,7 @@ to make it as wide as possible while still staying inside the blob
 (Figure~\ref{shape_deformation}).
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/shape_deformation.pdf}
 \caption[Shape deformation]
@@ -425,11 +430,6 @@ scales it to fit inside the blob.}
  orange nodes by resampling and offsetting the blue red streamline.
           The search directions at a node are shown with green arrows.}
 \end{figure}
-
-Once we have chosen an element, we place it along the streamline using a
-simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's width
-to make it as wide as possible while still staying inside the blob
-(Figure~\ref{shape_deformation}).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -473,7 +473,7 @@ Note that in Algorithm~\ref{iterative_refinement_algorithm}, the variable
 $E$ is the list of placed, distorted ornamental elements, and
 not the set of prototype elements discussed earlier.
 
-\begin{algorithm}[t] 
+\begin{algorithm}[h!] 
 \caption{Iterative refinement} 
 \label{iterative_refinement_algorithm}
 \begin{algorithmic} 
@@ -602,7 +602,7 @@ and precompute LR functions for each. The shape matching algorithm
 can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[t]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/stretch.pdf}
 \caption[Enlarge an element]
@@ -762,8 +762,8 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
-\label{flowpak_conclusions}
+\section{Conclusions and Future Work}
+\label{flowpak_conclusions_and_future_work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
