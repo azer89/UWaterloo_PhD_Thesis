@@ -33,10 +33,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\mynote{Paragraph looks great}
 \newtext
 {
 RepulsionPak~\cite{Saputra2018, Saputra2019} is a technique
-to pack deformable elements using repulsion forces.
+to pack elements using a simple physical simulation, 
+in which each element is represented
+by a mass-spring system called an \textit{element mesh}.  
+\textit{Repulsion forces} between neighbouring meshes work to even out the negative
+space, inducing displacements in mesh springs.
+These displacements translate, rotate, and deform the elements as 
+they gradually adapt to the shapes of their neighbours
+and the container boundary.  
+To control the amount of deformation,
+we use \textit{spring forces} within a mesh to preserve element shapes.
 }
 
 

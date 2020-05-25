@@ -26,17 +26,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtext
-{
-AnimationPak~\cite{Saputra2020} is a technique
-to pack animated 2D elements.
-}
 
-
-\mynote{need to rearrange}
-
-Inspired by RepulsionPak, we investigate a physics-based
-packing method for elements with scripted animations.
+AnimationPak is a physics-based packing method for elements with scripted animations.
 An element can have an animated deformation, such as a bird flapping its
 wings or a fish flicking its tail.
 It can also have an animated transformation, giving a changing
@@ -47,10 +38,9 @@ container shape evenly.  A successful animated packing should balance
 among the evenness of the negative space, the preservation of 
 element shapes, and the comprehensibility of their scripted animations.
 
-In our technique, called \textit{AnimationPak}, we consider an animated
+We consider an animated
 element to be a geometric extrusion along a time axis, a three-dimensional
-object that we call a
-``spacetime element''.  We use a three-dimensional physical simulation
+object that we call a ``spacetime element''.  We use a three-dimensional physical simulation
 similar to RepulsionPak to pack spacetime
 elements into a volume created by extruding a static container shape.
 The animated packing emerges from this three-dimensional volume by rendering 
