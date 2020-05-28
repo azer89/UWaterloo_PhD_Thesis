@@ -60,6 +60,22 @@ Figure ~\ref{fig_logo_packings}\ref{fig_graphics_designs}\ref{fig_woodland}\ref{
 They can effectively convey a relationship between a unified whole (the
 container shape) and its many sub-parts (the elements).
 
+Elements are shapes like animals,
+plants, geometric forms, or man-made objects.
+An artist distributes elements so that they communicate
+the shape of the container. 
+The subset of the container that does not belong to any element is
+called \textit{negative space}
+(Fig.~\ref{packing_example}, right).
+We can also interpret negative space as separation and gaps between elements.
+The evenness of negative space plays an important role in 
+packings.  
+The artist should arrange elements in a way that their boundaries interlock with each other,
+causing the separation between neighbouring elements to become roughly the same everywhere.
+As the elements in a packing become perfectly interlocked,
+the packing turns into a \textit{tiling}: a set of elements that exactly
+fill a container with no overlaps and no negative space (Fig.~\ref{related_work_images}b).
+
 \mynote{
 Motivation
 \begin{itemize}
@@ -112,8 +128,6 @@ Contributions
 \end{itemize}
 }
 
-
-
 We propose \textit{deformation-driven} methods.
 Instead of finding compatible elements,
 we intend to \textit{create compatible elements} through element deformation
@@ -124,7 +138,13 @@ the deformations of the individual elements.
 By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, even with a small library of element shapes.
 
-
+Deformation-driven methods also allow us to work toward a design principle called \textit{uniformity amidst variety}~\cite{Hutcheson1729, Gombrich}. 
+\textit{Uniformity} aims for an overall unity of design; 
+\textit{variety} seeks to break up the monotony of
+pure repetition.
+We can achieve a degree of uniformity by using repeated copies of a small library of elements, but balance that uniformity with
+variety by deforming those elements. 
+We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
 
 \mynote
 {

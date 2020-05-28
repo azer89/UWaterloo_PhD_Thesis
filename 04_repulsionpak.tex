@@ -197,8 +197,7 @@ the center of mass of the element.
 \mynote
 {
 $\bm{c_r}$
-points should be bold.
-Should explain negative space edges, and shear edges.
+Maybe two rows
 }
 }
 \end{figure*}
@@ -223,9 +222,22 @@ The vertices and edges of this mesh become unit
 masses and longitudinal
 springs in a physical simulation, allowing elements to deform in response to
 their neighbours.  
-We further brace the mesh against
-deformation by augmenting it with ``auxiliary springs'' (see
-Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
+%We further brace the mesh against
+%deformation by augmenting it with ``auxiliary springs'' (see
+%Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
+%\mynote{this is perfect place to describe negative space springs}
+\newtext{
+We also add extra edges to prevent
+folding or self-overlaps during simulation
+(Fig.~\ref{fig_discretization}c).  First, if two triangles 
+$ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
+connecting $A$ and $D$.  Second, we triangulate the negative space
+inside the convex hull of the original Delaunay triangulation, and
+create new \textit{negative space edges} corresponding to the newly 
+created triangulation edges. 
+These negative space edges are used exclusively for internal
+bracing.  The element's concavities can still be occupied by its
+neighbours.}
 
 Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
 Increasing the mesh resolution produces a more precise result at the expense of greater running time.
@@ -255,7 +267,7 @@ We prepare our simulation by randomly placing non-overlapping elements.
 		  have found that $5-10$\% of the area gives good results. Making them
 		  larger would speed up the simulation but does
 	      not allow enough freedom of movement to generate successful
-		  packings.  Figure~\ref{pipeline}b shows an initial placement.	      
+		  packings.  Figure~\ref{fig_repulsionpak_pipeline}b shows an initial placement.	      
 \end{enumerate}
 
 
@@ -520,7 +532,7 @@ of packing with rigid elements.
 
 RepulsionPak starts with small initial elements to avoid intersections,
 and gradually enlarges them until they tightly fill the target
-container.  Figure~\ref{pipeline}c-d shows elements growing and gradually
+container.  Figure~\ref{fig_repulsionpak_pipeline}c-d shows elements growing and gradually
 consuming negative space.  Elements have different intrinsic sizes, which are
 respected in the initial placement.  Because they all grow at roughly the
 same rate, their relative sizes tend to be maintained.
@@ -678,7 +690,7 @@ We define a local descriptor based on integral of absolute curvature~\cite{Cui20
 Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent the curvature of the curve at $P(t)$.  For a given interval $[s,t]$ within the curve's domain, we may define the integral of absolute curvature
 $\tau(s,t) = \int_{s}^{t} | \kappa(x) | dx$.
 In practice, we estimate curvature from the discrete sample points
-using second-order forward finite differences~\cite{Banchoff} 
+using second-order forward finite differences~\cite{Banchoff2015} 
 and compute $\tau$ by summing curvature estimates using the trapezoid rule.
 
 Let an objective $\tau_\mathrm{obj}$ be a positive real number and $P(t_0)$ be a given point on a curve.  If $\tau_\mathrm{obj}$ is sufficiently small, then as we traverse the curve on either side of $P(t_0)$ we will eventually reach points $P(t_{-1})$ and $P(t_1)$ such that $\tau(t_{-1},t_0)=\tau(t_0,t_1)=\tau_\mathrm{obj}$.  We let $l_1=t_0-t_{-1}$ and $r_1=t_1-t_0$ be the arclengths that produce these integrals.  We can continue this process for any number of steps, walking in both directions along the curve away from previous sample points until we reach $\tau_\mathrm{obj}$, yielding new arclengths $l_k$ and $r_k$ (see Figure~\ref{fig_shape_matching}).  Finally, for a given number of steps $n$ we define the shape descriptor at $P(t_0)$ as
