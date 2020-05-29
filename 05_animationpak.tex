@@ -53,7 +53,7 @@ of motion graphics, presumably because of the difficulty of creating
 an animated packing by hand.  
 Finding motivating examples created by artists is difficult.
 We only found one shown in Figure~\ref{fig_animationpak_lisa_packing},
-which is an animated packing of gear-like meshing of copies of Lisa's spiky head.
+which is animated gear-like meshing of copies of Lisa's spiky head.
 There is also very little past research
 on animated packings; we discuss the work that does exist in the next
 section. 
@@ -142,7 +142,7 @@ shape, or they can be part of the transformation trajectory.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Each element begins life as a static shape defined using
-vector paths.  Following RepulsionPak, we construct a discrete
+vector paths.  \newtext{Similar to RepulsionPak}, we construct a discrete
 geometric proxy of the element that will interact with other
 proxies in a physical simulation.  The construction of this proxy
 for a single shape is shown in Figure~\ref{fig_animationpak_discretization}, and
@@ -154,22 +154,17 @@ leaving the shape surrounded by a channel of negative space
 (Figure~\ref{fig_animationpak_discretization}a).  In our system
 we scale the shape to fit a unit square and set $\Delta s=0.04$.
 
+\newtext
+{
 Next, we place evenly-spaced samples around the outer boundary of 
 the offset path and construct a Delaunay triangulation of the samples
-(Figure~\ref{fig_animationpak_discretization}b).  As in RepulsionPak, we will
+(Figure~\ref{fig_animationpak_discretization}b). We will
 later treat the edges of the triangulation as springs, allowing the
 element to deform in response to forces in the simulation.  
-We also follow RepulsionPak by adding extra edges to prevent
-folding or self-overlaps during simulation
-(Figure~\ref{fig_animationpak_discretization}c).  First, if two triangles 
-$ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
-connecting $A$ and $D$.  Second, we triangulate the negative space
-inside the convex hull of the original Delaunay triangulation, and
-create new \textit{negative space edges} corresponding to the newly 
-created triangulation edges. 
-\newtext{These negative space edges are used exclusively for internal
-bracing.  The element's concavities can still be occupied by its
-neighbours.}
+We also follow RepulsionPak by adding shear edges to prevent
+folding and negative-space edges to avoid self-overlaps during simulation
+(Figure~\ref{fig_animationpak_discretization}c).
+}
 
 We refer to the augmented triangulation shown in 
 Figure~\ref{fig_animationpak_discretization}c as a \textit{slice}.  
@@ -370,20 +365,78 @@ $s_i$ are drawn back towards time $t$.
 
 \mynote{the difference between RepulsionPak and AnimationPak}
 
+% Chapter~\ref{chapter_repulsionpak} Section~\ref{repulsionpak_simulation}
 We now perform a physics simulation on the spacetime elements and the 
 container.  Elements are subject to a number of forces that cause them
-to simultaneously grow, deform, and repel each other
-(Figure~\ref{fig_animationpak_simulation_process}).
-Our physics simulation is very similar to that of 
-RepulsionPak (Chapter XX Section YY)---with the exception of the new temporal
-force, all our forces are the spacetime analogues of the ones used
-there.  In Sect.~\ref{sect_constraints} we introduce some new hard
+to simultaneously grow, deform, and repel each other (Figure~\ref{fig_simulation_process}).
+In Sect.~\ref{sect_constraints} we introduce some new hard
 constraints that must be applied after every time step.
 
 Note that we must distinguish two notions of time in this simulation.  We use
 $t$ to refer to the time axis of our spacetime volume, which will become
 the time dimension of the final animation, and $t_\mathrm{sim}$ to
 refer to the time domain in which the simulation is taking place.
+Our physics simulation is very similar to that of 
+RepulsionPak (Chapter~\ref{chapter_repulsionpak} Section~\ref{repulsionpak_simulation})~---with 
+the exception of the new temporal
+force, all our forces are the spacetime analogues of the ones used
+there.  
+\newtext
+{
+Since the simulation operates in the spacetime domain,
+vertex $\bm{x}$ accumulates repulsion forces from points at
+various time positions. 
+To locate these points on neighbouring elements that are considered 
+nearest, we use a collision grid data structure, described in greater
+detail in Sect.~\ref{animationpak_spatial_queries}.
+}
+
+\newtext
+{
+Temporal forces prevent slices from drifting too far
+from their original positions along the time axis positions
+(Fig.~\ref{fig_t_force}), which could cause unexpected accelerations
+and decelerations in the final animation.  For every vertex, we compute
+the temporal force $\simforce{tmp}$ as
+\begin{equation}
+\simforce{tmp} = k_\mathrm{tmp} \bm{u}^t(t - t')
+\end{equation}
+where
+\begin{packeddescriptions}
+  \item[$k_\mathrm{tmp}$] is the relative strength of 
+    $\simforce{tmp}$.
+  \item[$t$] is the initial time of the slice to which the vertex belongs;
+  \item[$t'$] is the current time value of the vertex; and
+  \item[$\bm{u}^t = (0,0,1)$].
+\end{packeddescriptions}
+}
+
+\begin{equation}
+\simforce{total} = \simforce{rpl} + \simforce{edg} + \simforce{bdr} + \simforce{ovr} + \simforce{tor} + \simforce{tmp}
+\end{equation}
+where
+\begin{packeddescriptions}
+\item[$\simforce{total}$] ggg
+\item[$\simforce{total}$] ggg
+\item[$\simforce{total}$] ggg
+\item[$\simforce{total}$] ggg
+\item[$\simforce{total}$] ggg
+\item[$\simforce{total}$] ggg
+\end{packeddescriptions}
+
+In practice,
+we control the relative strengths of the forces in the simulation by adjusting parameters below:
+\begin{packednumbers}
+\item We set the relative strength of repulsion forces by setting $k_\mathrm{rpl}$ to $10$.
+\item We have five types of springs, with stiffness constants that can be 
+  set independently. We set $k_\mathrm{edg}$ 
+  to $0.01$ for time springs, $0.1$ for negative-space springs,
+  and 10 for edge springs, shear springs, and target point springs.
+\item We set $k_\mathrm{ovr} = 5$.
+\item We set $k_\mathrm{bdr} = 5$.
+\item We set $k_\mathrm{tor} = 0.1$.
+\item We set $k_\mathrm{tmp} = 1$.
+\end{packednumbers}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

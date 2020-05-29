@@ -287,9 +287,9 @@ The total force $\bm{F}$ applied to $\bm{x}$ is
 \bm{F} = \simforce{r} + \simforce{e} + \simforce{b} + \simforce{o} + \simforce{t}
 \end{equation}
 where $\simforce{r}$, $\simforce{e}$, $\simforce{b}$, $\simforce{o}$ and $\simforce{t}$ are 
-the repulsion force, the edge force, the boundary force, the overlap force, \newtext{and the torsional force}.
+the repulsion force, the edge force, the boundary force, the overlap force, and the torsional force.
 These forces combine with the growth process, described in
-Section~\ref{section_growing_element}, to completely fill the target container.
+Section~\ref{repulsionpak_element_growth}, to completely fill the target container.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% REPULSION FORCE %%%%%%%%%%%%%%%%%%%%
@@ -309,11 +309,11 @@ experience an inverse square repulsive force, inspired by Coulomb's law,
 from all nearby meshes.  We use the following formula:
 
 \begin{equation}
-\simforce{r} = k_r \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{\varsigma  +\| \bm{u} \|^2 }
+\simforce{r} = k_\mathrm{rpl} \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{\varsigma  +\| \bm{u} \|^2 }
 \end{equation}
 where 
 \begin{packeddescriptions}
-	\item[$k_r$]        is the strength of the repulsion force relative to
+	\item[$k_\mathrm{rpl}$]        is the strength of the repulsion force relative to
 						other forces in the simulation.
 	\item[$n$]        is the number of nearest neighbouring meshes to $\bm{x}$. 
 	\item[$\bm{x_{i}}$] is the closest point on the skin of the $i$th neighbour.
@@ -342,34 +342,25 @@ correct it.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \medskip
 \textbf{Edge force:} 
-%\deadtext{By converting element meshes into mass-spring systems,
-%we allow elements to undergo deformation in response to repulsion forces
-%exerted by neighbours.  A mesh's edges become longitudinal \textit{edge springs}.}
-A mesh's edges are treated as longitudinal \textit{edge springs};
-displacement
-of these springs allows a mesh to deform in response to repulsion forces
-by neighbouring meshes.
-In addition, when two mesh triangles share an edge we connect the two vertices
-opposite the edge with an \textit{auxiliary spring} (Figure~\ref{fig_forces}b), 
-adding extra bracing to a mesh to prevent it from folding.
+\newtext{
+A mesh's edges are treated as longitudinal \textit{ springs};
+displacement of these springs allows a mesh to deform in response to repulsion forces
+by neighbouring meshes.}
+%In addition, when two mesh triangles share an edge we connect the two vertices
+%opposite the edge with an \textit{auxiliary spring} (Figure~\ref{fig_forces}b), 
+%adding extra bracing to a mesh to prevent it from folding.
 
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
 attempt to restore these rest lengths.  Let $\bm{x_{a}}$ and $\bm{x_{b}}$ be
 mesh vertices connected by a spring.  We compute the spring force as follows:
-% As we apply forces to the masses, springs get shorter or longer, causing
-% the element to deform. The edge forces attempt to restore the springs
-% back to their rest lengths. 
-% If a pair of masses $\bm{x_a}$ and $\bm{x_b}$ are connected by a spring,
-% the edge force $\simforce{e}$ is applied to to the mass $\bm{x_a}$, 
-% and $-\simforce{e}$ is applied to to the mass $\bm{x_b}$:
 
 \begin{equation}
-\simforce{e} =  k_{e} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
+\simforce{e} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_e$] is the strength of the edge force relative to other forces.
+	\item[$k_\mathrm{edg}$] is the strength of the edge force relative to other forces.
 	\item[$\bm{u}$] $= \bm{x_{b}} - \bm{x_{a}}$
 	\item[$\ell$] is the rest length of the spring.
 	\item[$s$] is +1 or -1, according to whether $(\| \bm{u} \| - \ell)$ 
@@ -403,11 +394,11 @@ as a vertex will pull $\bm{x}$ in the direction of its centroid.  The overlap
 force is thus given by:
 
 \begin{equation}
-\simforce{o} = k_o \sum_{i = 1}^{n} (\bm{p_{i}} - \bm{x})
+\simforce{o} = k_\mathrm{ovr} \sum_{i = 1}^{n} (\bm{p_{i}} - \bm{x})
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_o$] is the relative strength of the overlap force.
+	\item[$k_\mathrm{ovr}$] is the relative strength of the overlap force.
 	\item[$n$] is the number of mesh triangles that have $\bm{x}$ as a vertex.
 	\item[$\bm{p_{i}}$] is the centroid of the $i$th triangle incident on $\bm{x}$.
 \end{packeddescriptions}
@@ -426,11 +417,11 @@ on the container's boundary, by an amount proportional to the distance to
 the boundary:
 %%% EQ
 \begin{equation}
-\simforce{b} = k_{b} (\bm{p_b} - \bm{x})
+\simforce{b} = k_\mathrm{bdr} (\bm{p_b} - \bm{x})
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_b$] is the relative strength of the boundary force.
+	\item[$k_\mathrm{bdr}$] is the relative strength of the boundary force.
 	\item[$\bm{p_b}$] is the closest point on the target container to $\bm{x}$.
 \end{packeddescriptions}
 
@@ -438,7 +429,6 @@ The boundary force is zero for any point inside the container.
 
 \medskip
 \textbf{Torsional force:} 
-\newtext{
 As forces propagate through an element mesh, the aggregate velocity
 vectors of the vertices can induce a rotation of the entire element.
 However, some elements may have a preferred orientation,
@@ -446,9 +436,7 @@ either for aesthetic reasons or because the shape is comprehensible only at cert
 We introduce a torsional force that
 penalizes individual vertices for which the orientation, relative to their
 element's center of mass, drifts too far from its initial orientation.
-}
 
-\newtext{
 Consider a vertex $\bm{x}$ belonging
 to an element, and let $\bm{c}_r$ be the element's center of mass in
 its undeformed state.  We may define the ``rest orientation'' of
@@ -456,26 +444,24 @@ $\bm{x}$ as the orientation of the vector $\bm{u}_r = \bm{x}-\bm{c}_r$.
 During simulation we compute the current centre of mass $\bm{c}$ of 
 the element and let $\bm{u}=\bm{x}-\bm{c}$.  Then the torsional force
 is
-}
-\newtext{
+
 \begin{equation}
   \simforce{t} =\begin{cases}
-    k_t\bm{u}^\perp, & \theta > 0\\
-    -k_t\bm{u}^\perp, & \theta < 0
+    k_\mathrm{tor}\bm{u}^\perp, & \theta > 0\\
+    -k_\mathrm{tor}\bm{u}^\perp, & \theta < 0
   \end{cases}
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_t$]  is the relative strength of the torsional force.
+	\item[$k_\mathrm{tor}$]  is the relative strength of the torsional force.
 	\item[$\theta$] is the signed angle between $\bm{u}_r$ and $\bm{u}$;
 	\item[$\bm{u}^\perp$] is a unit vector rotated $90^\circ$
 		counterclockwise relative to $\bm{u}$; and
 \end{packeddescriptions}
-}
-\newtext{
+
 Using the equation above, $\simforce{t}$ is always perpendicular to $\bm{u}$
 and the direction of $\simforce{t}$ points to the left or to the right depending on $\theta$.
-Unlike the first four force types, the torsional force is optional.}
+Unlike the first four force types, the torsional force is optional.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% THE SIMULATION %%%%%%%%%%%%%%%%%%%
@@ -508,19 +494,27 @@ containing $\bm{x}$.
 This approximation ignores the negligible interactions between
 distant vertices.
 
-The constants $k_r$, $k_o$, $k_b$  $k_e$, and $k_t$ control the relative strengths
+\newtext{
+The constants $k_\mathrm{rpl}$, $k_\mathrm{ovr}$, $k_\mathrm{bdr}$  $k_\mathrm{edg}$, and $k_\mathrm{tor}$ 
+control the relative strengths
 of the five forces in the simulation.  They must also be chosen relative to
 the time step $\Delta t$ and the overall width and height of the container.
+%We find that our simulation produces satisfactory results when 
+%$k_r \approx k_o \approx k_b \geq k_e > k_t$.
+%For example, 
+In practice, if the container's bounding box is approximately $1000\times 1000$,
+we set $k_\mathrm{rpl}=k_\mathrm{ovr}=k_\mathrm{bdr}=80$, and $k_\mathrm{tor}=1$.
+We set $k_\mathrm{edg} = 10$ 
+for negative-space springs, and $k_\mathrm{edg} = 40$ for edge springs and shear springs,
+since weaker springs are sufficient to avoid self-intersections.
+We also set $\varsigma=1$ to avoid explosive repulsion forces. 
+In summary,
 We find that our simulation produces satisfactory results when 
-$k_r \approx k_o \approx k_b \geq k_e > k_t$.
-%\begin{equation}
-%k_r \approx k_o \approx k_b \geq k_e
-%\end{equation}
-For example, if the container's bounding box is approximately $1000\times 1000$,
-then we have obtained good results when $k_r=k_o=k_b=80$, $k_e=40$, and $k_t=1$.  We also
-set $\varsigma=1$ to avoid explosive repulsion forces.  Increasing $k_e$
+$k_\mathrm{rpl} \approx k_\mathrm{ovr} \approx k_\mathrm{bdr} \geq k_\mathrm{edg} > k_\mathrm{tor}$.
+Increasing $k_\mathrm{edg}$
 relative to the other forces suppresses deformation, yielding a close approximation
 of packing with rigid elements.
+} 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -542,8 +536,8 @@ a growth step.  If an element mesh has no vertices that lie inside of
 neighbouring meshes, it is permitted to grow in this iteration.  A mesh with
 overlaps may still grow in subsequent iterations, if local changes to the 
 packing open up more negative space.
-This approach produces \newtext{slight variations} in skin offsets in the output packing
-but the effect \newtext{is negligible.}
+This approach produces slight variations in skin offsets in the output packing
+but the effect is negligible.
 
 We implement growth in the context of the physics simulation by scaling
 the rest lengths of a mesh's springs, allowing it to expand as the simulation
@@ -811,10 +805,10 @@ A paisley-inspired toroidal packing that can tile the plane.
 	{\label{bad_results}
 Two demonstrations of how extreme parameter values can lead to
 	low-quality results.  In~(a), we allow repulsion to overwhelm element
-	shape by setting $k_r$ to 200 and $k_e$ to 20; the resulting packing 
+	shape by setting $k_\mathrm{rpl}$ to 200 and $k_\mathrm{edg}$ to 20; the resulting packing 
 	has even negative space, but elements suffer from high deformation
 	and self intersections.  In~(b), we minimize repulsion and prioritize
-	orientation by setting $k_e$, $k_t$, and $k_r$ to 200, 100, and 50,
+	orientation by setting $k_\mathrm{edg}$, $k_\mathrm{tor}$, and $k_\mathrm{rpl}$ to 200, 100, and 50,
 	respectively.  The elements deviate minimally from their original shapes 
 	and orientations, but cannot fill the container effectively.
 }
@@ -934,6 +928,8 @@ container effectively.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \mynote{need to move a few sentences to evaluation}
+
+\mynote{remove validation}
 
 We presented RepulsionPak, a method to create packings with deformable elements.
 The combination of repulsion forces and controlled deformation
