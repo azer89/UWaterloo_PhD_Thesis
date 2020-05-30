@@ -61,7 +61,7 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{Only talk about packings with deformation}
+\mynote{only discuss papers whose ideas you use or you're comparing with}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -116,27 +116,23 @@ Our system requires three main pieces of input:
 
 RepulsionPak starts by preprocessing the elements, creating additional space around
 each to enforce the spacing distance, and fitting a triangle mesh over each element.
-\newtext{The containers are then seeded with randomly placed
+The containers are then seeded with randomly placed
 copies of scaled-down elements 
-(Section~\ref{repulsionpak_preprocessing}).}
+(Section~\ref{repulsionpak_preprocessing}).
 
-\newtext{RepulsionPak} then performs a physics simulation on the meshes, 
+\newtext{RepulsionPak then performs a physics simulation on the meshes, 
 making them simultaneously grow and repel each other. As a
 proof of concept, we implement a spring-based 
-simulation, \newtext{which yields satisfactory results despite its simplicity};
+simulation, which yields satisfactory results despite its simplicity;
 many alternatives are possible 
 (see Section~\ref{repulsionpak_conclusions}).
-Forces in the
-simulation push mesh vertices away from vertices in other meshes,
+Forces in the simulation push mesh vertices away from vertices in other meshes,
 attempt to keep the meshes from undergoing excessive deformation, and resolve
 places where meshes overlap or vertices move outside target containers
 (Section~\ref{repulsionpak_simulation}).
-
 After each iteration of the simulation, meshes grow into adjacent space
 if possible, so that they gradually consume the negative space in the container.
-At the same time, mesh self-intersections are resolved
-(Sections~\ref{repulsionpak_element_growth} and \ref{section_self_intersection_constraint}).
-\mynote{delete self intersection section...}
+}
 
 The simulation concludes 
 either when the elements occupy a sufficient proportion of the container area, or 
@@ -169,7 +165,7 @@ simulation.
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/element_skin_triangles_2.pdf}
 \caption[Element discretization]{
 	\label{fig_elements_image}
-	\newtext{An illustration of element discretization for preprocessing.}
+	An illustration of element discretization for preprocessing.
 	(a) An element with its boundary displaced to create a skin, drawn in red.
 	(b) A triangle mesh with boundary vertices on the skin.
 }
@@ -233,7 +229,9 @@ We also add extra edges to prevent
 folding or self-overlaps during simulation
 (Fig.~\ref{fig_discretization}c).  First, if two triangles 
 $ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
-connecting $A$ and $D$.  Second, we triangulate the negative space
+connecting $A$ and $D$. The construction of shear edges is inspired by
+Air Meshes~\cite{Muller2015}.
+Second, we triangulate the negative space
 inside the convex hull of the original Delaunay triangulation, and
 create new \textit{negative space edges} corresponding to the newly 
 created triangulation edges. 
@@ -280,10 +278,11 @@ We prepare our simulation by randomly placing non-overlapping elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We design a simulation in which 
-we generate pseudo-physical 
+\newtext
+{
+We design a simulation in which we generate 
 forces that transform elements by transforming their meshes.
-Let $\bm{x}$ be a vertex of an element mesh. 
+Let $\bm{x} = (x, y)$ be a vertex of an element mesh. 
 The total force $\bm{F}$ applied to $\bm{x}$ is
 \begin{equation}
 \bm{F} = \simforce{r} + \simforce{e} + \simforce{b} + \simforce{o} + \simforce{t}
@@ -292,6 +291,7 @@ where $\simforce{r}$, $\simforce{e}$, $\simforce{b}$, $\simforce{o}$ and $\simfo
 the repulsion force, the edge force, the boundary force, the overlap force, and the torsional force.
 These forces combine with the growth process, described in
 Section~\ref{repulsionpak_element_growth}, to completely fill the target container.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% REPULSION FORCE %%%%%%%%%%%%%%%%%%%%
@@ -347,17 +347,14 @@ correct it.
 \newtext{
 A mesh's edges are treated as longitudinal \textit{ springs};
 displacement of these springs allows a mesh to deform in response to repulsion forces
-by neighbouring meshes.}
-%In addition, when two mesh triangles share an edge we connect the two vertices
-%opposite the edge with an \textit{auxiliary spring} (Figure~\ref{fig_forces}b), 
-%adding extra bracing to a mesh to prevent it from folding.
-
+by neighbouring meshes.
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
 attempt to restore these rest lengths.  Let $\bm{x_{a}}$ and $\bm{x_{b}}$ be
 mesh vertices connected by a spring.  We compute the spring force as follows:
-
+}
 \begin{equation}
+\label{eq_edge_force}
 \simforce{e} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
 \end{equation}
 where
@@ -632,9 +629,9 @@ see Figs.~\ref{pipeline}e, \ref{cat_packing}, and \ref{three_packings}.
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/descriptor_2.pdf}
 \caption[A local shape descriptor for shape matching]
 {\label{fig_shape_matching}
-\newtext{An illustration of a local shape descriptor with $n = 3$. 
+An illustration of a local shape descriptor with $n = 3$. 
 These segments have varying arclengths but they all have the same value
-of $\tau$, the integral of absolute curvature along their lengths.}
+of $\tau$, the integral of absolute curvature along their lengths.
 }
 \end{figure}
 \begin{figure}
@@ -834,17 +831,17 @@ Two demonstrations of how extreme parameter values can lead to
 \begin{tabular}{|l|c|c|c|c|c|c|}
 \hline
 \cellcolor{lg}Packing                  & \cellcolor{lg}$n_p$ & \cellcolor{lg}$n_s$ & \cellcolor{lg}$v$   & \cellcolor{lg}$t_p$ & \cellcolor{lg}$t_s$ & \cellcolor{lg}$i$\\ \hline
-Animals (Figure~\ref{pipeline})                       & 25    & 14   & 2412  & 133  & 65  & 16670\\ \hline
-\newtext{Rhino   (Figure~\ref{rhino_packing})}        & 107   & 0    & 4833  & 237  & 0   & 15521\\ \hline
+Animals (Figure~\ref{fig_repulsionpak_pipeline})                       & 25    & 14   & 2412  & 133  & 65  & 16670\\ \hline
+Rhino   (Figure~\ref{rhino_packing})        & 107   & 0    & 4833  & 237  & 0   & 15521\\ \hline
 Cats (Figure~\ref{cat_packing})                       & 41    & 69   & 3598  & 185  & 62  & 8531\\ \hline
 Birds  (Figure~\ref{three_packings}a)                 & 43    & 43   & 2309  & 102  & 54  & 11571\\ \hline
 Bats (Figure~\ref{three_packings}b)                   & 47    & 22   & 3048  & 165  & 56  & 13120\\ \hline
 Butterflies (Figure~\ref{three_packings}c)            & 123   & 135  & 11916 & 696  & 616 & 14379\\ \hline
-\newtext{Giraffes \& Penguins (Figure~\ref{giraffe_penguin_packing})}        & 60    & 0   & 2250  & 163  & 0   & 9347\\ \hline
-\newtext{Paisley (Figure~\ref{paisley_packing})}      & 162   & 0    & 4860  & 128  & 0   & 23040\\ \hline
-\newtext{Circles in Paisleys (Figure~\ref{paisley_packing})}      & 144   & 0    & 2544  & 403  & 0   & 29584\\ \hline
-\newtext{Collage (Figure~\ref{pad_comparison})}       & 51    & 0    & 3481  & 729  & 0   & 29868\\ \hline
-\newtext{Autumn  (Figure~\ref{balabolka_comparison})} & 77    & 0    & 2427  & 868  & 0   & 38387\\ \hline
+Giraffes \& Penguins (Figure~\ref{giraffe_penguin_packing})        & 60    & 0   & 2250  & 163  & 0   & 9347\\ \hline
+Paisley (Figure~\ref{paisley_packing})      & 162   & 0    & 4860  & 128  & 0   & 23040\\ \hline
+Circles in Paisleys (Figure~\ref{paisley_packing})      & 144   & 0    & 2544  & 403  & 0   & 29584\\ \hline
+Collage (Figure~\ref{pad_comparison})       & 51    & 0    & 3481  & 729  & 0   & 29868\\ \hline
+Autumn  (Figure~\ref{balabolka_comparison}) & 77    & 0    & 2427  & 868  & 0   & 38387\\ \hline
 \end{tabular}
 \end{table}
 
@@ -871,6 +868,8 @@ Figs.~\ref{rhino_packing},~\ref{giraffe_penguin_packing},
 %process.  These movies make it clear that elements can jostle each other
 %around, inducing translation, rotation, and deformation throughout the 
 %simulation.
+
+\mynote{Show results by artists.}
 
 The packing in Figure~\ref{cat_packing} 
 uses six cat-shaped primary elements and one secondary cat head.

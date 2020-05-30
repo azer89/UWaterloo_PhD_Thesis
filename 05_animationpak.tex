@@ -75,11 +75,76 @@ gear-like meshing of oppositely-rotating Lisas.}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\mynote{only discuss papers whose ideas you use or you're comparing with}
+
 \mynote{animated packings}
 
 \mynote{video mosaics}
 
 \mynote{animated packings}
+
+\textbf{Animated packings and tilings:}
+Animosaics by Smith et al.~\cite{Smith2005} constructed animations 
+in which static elements without scripted
+animations follow the motion of an animated container.  Elements are
+placed using CAVDs, and advected frame-to-frame using a choice of methods
+motivated by Gestalt grouping principles.
+As the 
+container's area changes, elements are added and removed as needed,
+while attempting to maximize overall temporal coherence.
+Dalal et al.~\cite{Dalal2006} showed how the spectral approach they
+introduced for 2D packings could be extended 
+to pack animated elements in a static container.  Like us, they recast
+the problem in terms of three-dimensional spacetime; they compute optimal
+element placement using discrete samples over time and orientation.
+However, their spacetime elements have fixed
+shapes and are made to fit together using only translation and rotation, 
+limiting their ability to consume the container's negative space.
+
+Liu and Veksler created animated decorative mosaics from video
+input~\cite{Liu2009}.  Their technique combines vision-based
+motion segmentation with a packing step similar to Animosaics.
+Kang et al.~\cite{Kang2011} extracted edges from video and 
+then oriented rectangular tesserae relative to edge directions.
+
+Kaplan~\cite{Kaplan2019} explored animations of simple tilings of
+the plane from copies of a single shape.  Elements in a tiling
+fit together by construction, and therefore always consume all 
+the negative space in the animation.
+
+
+\textbf{Derived animations:} 
+AnimationPak falls into the category of systems that create a derived
+animation based on some input animation. This problem, which
+requires preserving the visual character of the input, is a 
+longstanding one in computer graphics research.
+Spacetime constraints~\cite{Witkin1988, Cohen1992} allow an animator
+to specify an object's constraints and goals, and then calculates 
+the object's trajectory via spacetime optimization.
+Motion warping~\cite{Witkin1995} is a method that deforms an existing
+motion curve to meet user-specified constraints.
+Gleicher~\cite{Gleicher2001} developed a motion path editing method
+that allows user to modify the traveling path of a walking character.
+Bruderlin and Williams~\cite{Bruderlin1995} used signal processing techniques
+to modify motion curves.
+
+
+Previous work has also investigated geometric deformation of 
+animations.
+Edmond et al.~\cite{Ho2010} encoded spatial joint relationships 
+using tetrahedral meshes, and applied as-rigid-as-possible shape deformation
+to the mesh to retarget animation to new characters.
+Choi et al.~\cite{Choi2011} developed a method to deform character motion
+to allow characters to navigate tight passages.
+Masaki~\cite{Oshita2017} developed a motion editing tool that deformed
+3D lattice proxies of  a character's joints.
+Dalstein et al.~\cite{Dalstein2015} presented a data structure
+to animate vector graphics with complex topological changes.
+Kim et al.~\cite{Kim2012} explored a packing algorithm
+to avoid collisions in a crowd of moving characters.
+They defined a motion patch containing temporal trajectories of interacting
+characters, and arranged deformed patches to prevent collisions between
+characters.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -285,13 +350,11 @@ we designate the triangulation vertex closest to its centroid
 to be the anchor point for the element.  The artist then
 chooses a set of spacetime target points $\bm{p}_1,\ldots,\bm{p}_n$,
 with $\bm{p}_i=(x_i,y_i,t_i)$, that the anchor should pass through
-during the animation.  
-\newtext{
+during the animation.
 In our interface, the artist uses a slider to choose the time $t_i$ for 
 a target point, and clicks in the container to specify the spatial
 position $(x_i,y_i)$.
-}
-The artist can \newtext{also} optionally specify scale and
+The artist can also optionally specify scale and
 orientation at the target points. We require $t_1=0$ and $t_n=1$,
 fixing the initial and final positions of the guided element.  
 We then linearly interpolate the anchor position
@@ -362,6 +425,8 @@ $s_i$ are drawn back towards time $t$.
 }
 \end{figure}
 
+\newtext
+{
 We now perform a physics simulation on the spacetime elements and the 
 container.  Elements are subject to a number of forces that cause them
 to simultaneously grow, deform, and repel each other (Figure~\ref{fig_animationpak_simulation_process}).
@@ -371,18 +436,25 @@ Note that we must distinguish two notions of time in this simulation.  We use
 $t$ to refer to the time axis of our spacetime volume, which will become
 the time dimension of the final animation, and $t_\mathrm{sim}$ to
 refer to the time domain in which the simulation is taking place.
+}
 
+\newtext
+{
+Let $\bm{x} = (x, y, t)$ be a vertex of a slice.
 The total force $\simforce{total} $ applied to $\bm{x}$ is
 \begin{equation}
 \simforce{total}  = \simforce{rpl} + \simforce{edg} + \simforce{bdr} + \simforce{ovr} + \simforce{tor} + \simforce{tmp}
 \end{equation}
 where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$,  $\simforce{tor}$ and $\simforce{tmp}$ are 
-the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, \newtext{and the temporal force}.
+the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, and the temporal force.
 The first five forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
 In this section, we will explain these five forces briefly 
-so please return back to Chapter~\ref{chapter_repulsionpak} Section~\ref{repulsionpak_simulation}
+so please refer back to Chapter~\ref{chapter_repulsionpak} Section~\ref{repulsionpak_simulation}
 for equations used to generate them.
+}
 
+\newtext
+{
 \textbf{Repulsion Forces} allow elements to push away vertices of 
 neighbouring elements, inducing deformations and transformations that lead 
 to an even distribution of elements within the container
@@ -394,7 +466,10 @@ various time positions.
 To locate these points on neighbouring elements that are considered 
 nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
+}
 
+\newtext
+{
 \textbf{Edge Forces}
 allow elements to deform in response to repulsion forces.
 The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
@@ -402,7 +477,10 @@ We have five types of springs, with stiffness constants that can be
 set independently.  In our implementation we set $k_\mathrm{edg}$ 
 to $0.01$ for time springs, $0.1$ for negative-space springs,
 and 10 for edge springs, shear springs, and target point springs.
+}
 
+\newtext
+{
 \textbf{Overlap forces} resolve a vertex penetrating a
 neighboring spacetime element.
 Overlaps can occur later in the simulation when negative space is 
@@ -410,7 +488,10 @@ limited.  Once we detect a penetration,
 we temporarily disable the repulsion force on vertex $\bm{x}$, and apply
 an overlap force $\simforce{ovr}$ to push it out.
 The relative strength of overlap forces $k_\mathrm{ovr}$ is set to $5$.
+}
 
+\newtext
+{
 \textbf{Boundary forces} keep vertices inside the container.
 If an element vertex $\bm{x}$
 is outside the container, the boundary force $\simforce{bdr}$ moves
@@ -418,14 +499,20 @@ it towards the closest point
 on the container's boundary by an amount proportional to the distance to
 the boundary.
 The relative strength of boundary forces $k_\mathrm{bdr}$ is set to $5$.
+}
 
+\newtext
+{
 \textbf{Torsional forces} allow an element's slices to be given
 preferred orientations, to which they attempt to return.
 The relative strength of torsional forces $k_\mathrm{tor}$ is set to $0.1$.
+}
 
+\newtext
+{
 \textbf{Temporal forces} prevent slices from drifting too far
 from their original positions along the time axis positions
-(Figure~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
+(Fig.~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
 and decelerations in the final animation.  For every vertex, we compute
 the temporal force $\simforce{tmp}$ as
 \begin{equation}
@@ -434,12 +521,15 @@ the temporal force $\simforce{tmp}$ as
 where
 \begin{packeddescriptions}
   \item[$k_\mathrm{tmp}$] is the relative strength of 
-    $\simforce{tmp}$.
+    $\simforce{tmp}$. We set $k_\mathrm{tmp} = 1$;
   \item[$t$] is the initial time of the slice to which the vertex belongs;
   \item[$t'$] is the current time value of the vertex; and
   \item[$\bm{u}^t = (0,0,1)$].
 \end{packeddescriptions}
+}
 
+\newtext
+{
 \textbf{Numerical integration:}
 We use explicit Euler integration to simulate the motions of the mesh vertices under the
 forces described above.  Every vertex has a position and a velocity vector; in
@@ -448,6 +538,7 @@ velocities.  These updates are scaled by a time step
 $\Delta t_\mathrm{sim}$ that we set to $0.01$.
 We cap velocities at $10 \Delta t_\mathrm{sim}$ 
 to dissipate extra energy from the simulation.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -583,7 +674,7 @@ $\bm{p}_2$ to $(\frac{x_1+x_1}{2},\frac{y_2+y_2}{2},0)$.
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/growth.pdf} 
 \caption[Element growths]
-{\label{fig_animationpakgrowth} 
+{\label{fig_animationpak_growth} 
 A spacetime element shown (a) shrunken at the beginning of the simulation,
 and (b) grown later in the simulation. (c) When two elements overlap
 somewhere along their lengths, they are temporarily prohibited from growing
@@ -621,8 +712,8 @@ When we wish to grow the slice, we increase its $g$ value.
 We can compute new rest lengths for all springs by scaling every slice
 of the reference element by a factor of $g$ relative to the
 slice's centroid, and measuring distances between the scaled vertex
-positions.  These new rest lengths are then used as the $\ell$ values
-in Equation~\ref{eq_edge_force}.
+positions.  \newtext{These new rest lengths are then used as the $\ell$ values
+in Equation~\ref{eq_edge_force} to calculate edge forces.}
 
 Every element slice has its $g$ value initialized to $1$.  After every
 simulation step, if none of the slice's vertices were found to 
@@ -631,10 +722,9 @@ $0.001 \Delta t_\mathrm{sim}$, where $\Delta t_\mathrm{sim}$ is the
 simulation time step.  If any overlaps are found, then that slice's
 growth is instead paused to allow overlap and repulsion forces to give it more
 room to grow in later iterations.  
-\newtext{
 This approach can cause elements to fluctuate in size during the course
 of an animation, as slices compete for shifting negative space 
-(Figure~\ref{fig_animationpak_growth}).}
+(Figure~\ref{fig_animationpak_growth}).
 
 \textbf{Stopping Criteria:} We halt the simulation when the space between
 neighbouring elements drops below a threshold.  When calculating 
@@ -661,7 +751,7 @@ slices exceed that threshold.
 
 \mynote{show figure}
 
-The result of the simulation described above is a packing of spacetime 
+The result of the simulation described \newtext{previously} is a packing of spacetime 
 elements within a spacetime container.  We can render an
 animation frame-by-frame by cutting through this volume at 
 evenly spaced $t$ values from $t=0$ to $t=1$.  For our results, we
@@ -718,6 +808,8 @@ of springs, and requires about an hour to complete.
 We enable the loop constraint in all results.  The paper shows selected frames from the
 results; see the accompanying videos for full animations.
 
+\mynote{birb entering stars}
+
 Figure~\ref{fig_animationpak_teaser} is an animation of aquatic fauna featuring two
 penguins as guided elements.  During one loop the penguins move clockwise
 around the container, swapping positions at the top and the bottom.
@@ -742,7 +834,7 @@ For each method we show the initial frame ($t=0$) and the halfway point
 ($t=0.5$).  The CAVD approach produces a satisfactory---albeit
 loosely coupled---packing for the first frame, but because the 
 algorithm was not intended to work on animated elements, 
-\newtext{the evenness of the packing} quickly degrades in later frames.
+the evenness of the packing quickly degrades in later frames.
 The spectral approach is much better
 than CAVD, but their animated elements still have fixed spacetime shapes
 and can only translate and rotate to improve their fit. 
@@ -770,7 +862,7 @@ of secondary elements, which were used in a second pass in RepulsionPak
 to fill pockets of negative space.
 
 Figure~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
-temporal coherence and \newtext{evenness of negative space} by creating two animations
+temporal coherence and evenness of negative space by creating two animations
 with different time springs stiffness.  In (a), the time springs
 are 100 times stronger than in (b).  The resulting packing has larger
 pockets of negative space, but the accompanying video shows that the
@@ -800,7 +892,7 @@ high level.
 \centering 
 \caption[Data and statistics for the AnimationPak results]
 {
-   \newtext{Data and statistics for the AnimationPak results}.  The table shows the
+   Data and statistics for the AnimationPak results.  The table shows the
    number of elements,
    the number of vertices, 
    the number of springs, 
@@ -900,7 +992,7 @@ The AnimationPak packing has less negative space that is more even.}
 	(b) The first frame of a comparable AnimationPak packing.
     The input spacetime elements are shown on the right.
 	The AnimationPak packing has more negative space because
-	we must tradeoff between temporal coherence and packing \newtext{density}.
+	we must tradeoff between temporal coherence and packing density.
   }  
 \end{figure*}
 
@@ -914,7 +1006,7 @@ The AnimationPak packing has less negative space that is more even.}
 (b) The same packing with time springs that are 1\% as stiff.
 Reducing the stiffness of time springs leads to a more even packing with
 less negative space, but the animated elements must move frantically to
-preserve packing \newtext{density}.  
+preserve packing density.  
 The spacetime trajectories of the highlighted
 fish in (a) and (b) are shown in (c).  The orange fish in (b) exhibits more
 high frequency fluctuation in its position.
@@ -1010,7 +1102,7 @@ AnimationPak:
 
 
 
-\item mynote{edit this}There are many examples of static two-dimensional packings
+\item \mynote{edit this} There are many examples of static two-dimensional packings
 	created by artists, which can
 	serve as inspiration for an algorithm like RepulsionPak.  We were
 	unable to find an equivalent set of animated examples, probably
