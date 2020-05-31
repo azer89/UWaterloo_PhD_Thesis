@@ -66,6 +66,31 @@ packings and to compare RepulsionPak with other packing algorithms.
 
 We build a distance transform by calculating the distance of every pixel in the negative space
 to the nearest element boundary.
+We only evaluate distance transforms on the skeletons of the negative space.
+Unnecessary branches, pruning them is difficult.
+A long branch on on the snail-like element.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
+\caption[An example of distance transform of negative space]
+{\label{fig_distance_transform}
+\newtext{
+    The image on the right is an example of distance transform generated from negative space around two rabbits.
+    The whiter the color of a pixel, the farther it is from the nearest boundary.}
+    % Comparative Correlative
+  }
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/unilever_with_skeleton.pdf}
+\caption[An example of a skeleton of negative space]
+{\label{fig_skeleton}
+\newtext{
+    A skeleton generated from negative space of the Unilever packing.}
+  }
+\end{figure}
 
 
 Voronoi Diagrams
