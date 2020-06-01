@@ -62,25 +62,42 @@ packings and to compare RepulsionPak with other packing algorithms.
   }
 \end{figure}
 
-\mynote{fabrication}
+\newtext
+{
+\textbf{Related work in qualitative evaluation:}
+In Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}, Kwan et al. 
+performed a user study of 13 participant.
+Each was shown a random packing and had to give ratings from 1 (worst) to 6 (best)
+to three categories: their subjective preference, 
+element boundary coupling, and stylishness.
+}
 
 \newtext
 {
+\textbf{Related work in quantitative evaluation:}
 In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimization approach
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 Their energy minimization is useful to backtrack to previous configurations 
 so that they are not stuck at a suboptimal solution.
 However, they did not further discuss whether it can be used for quantitative evaluation.
-In Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}, Kwan et al. 
-performed a qualitative evaluation by performing a user study.
-They asked 13 participants, each was shown a random packing and had to give 1-to-6 ratings 
-in terms of their overall preference, shape coupling, and stylishness.
+Related work in fabrication sought to cover surfaces with arrangements of element~\cite{Zehnder2016, Chen2017}.
+Their quantitative measurements are related to satisfying manufacturing constraints, 
+such as connectivity or stability.
+The connectivity constraint requires element boundaries to touch with each other, more contact points mean a better strength.
+The stability constraint requires weak part detection, for example a single thin element would likely to break
+so that structural supports need to be added.
+%, they want element boundaries to
+%connect with each other. 
+%More connected boundaries mean an increased strength so 
+%that printed objects can resist excessive force and avoid breaking.
+%\mynote{structurel stability}
 }
 
 \newtext
 {
-In the context of 2D packing, we define a \textbf{distance transform} as a 2D image whose pixels labelled with distance values. 
+\textbf{Distance transform:} 
+In the context of 2D packing, we define a distance transform as a 2D image whose pixels labelled with distance values. 
 We compute a distance value $d$ as the Euclidean distance to the closest element boundary (Figure~\ref{fig_distance_transform}).
 We only evaluate the distance transform on all pixels inside the negative space.
 Distance $d > 0$ if $\bm{p}$ belongs to the negative space (outside all elements), 
@@ -97,7 +114,8 @@ causing ``high'' $d$ values locally, which appear as white ridges in Figure~\ref
 
 \newtext
 {
-The spectral packing~\cite{Dalal2006} utilized a \textbf{centroidal area Voronoi diagram} for their optimization approach.
+\textbf{Centroidal area Voronoi diagram:} 
+The spectral packing~\cite{Dalal2006} utilized a centroidal area Voronoi diagram for their optimization approach.
 For each element, they aim to minimize $\sum_{\bm{p} \in I} d^2$,
 where $I$ is the negative space inside the element's Voronoi cell.
 That is, they seek the best alignment of every element with the boundary of its voronoi cell,
@@ -108,7 +126,8 @@ Voronoi cell boundaries do not capture the hollow concavities of C-shaped elemen
 
 \newtext
 {
-An alternative to handle concave elements is to generate a \textbf{medial axis} from the negative space.
+\textbf{Medial axis:}
+An alternative to handle concave elements is to generate a medial axis from the negative space.
 We define a medial axis as a set of connected point, each should have more than one closest point on element boundaries.
 In Figure~\ref{fig_skeleton}, the medial axis is a graph-like structure containing branches that extend to element concavities.
 In theory, we can evaluate the distance transform only on pixels that belong to the medial axis to determine the evenness of negative space.
