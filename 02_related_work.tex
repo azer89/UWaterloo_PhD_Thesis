@@ -17,36 +17,15 @@
 \end{packeditems}
 }
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Rigid Packings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mynote
+{
+	because it's deformation-driven thesis, 
+	you need to explain deformation-driven packing vs rigid packing vs data driven packing
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Non-rigid Packings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Tilings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{3D Packings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Texture Synthesis}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Animated Packings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Packings on Manifolds}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\textbf{Rigid packing:} The ever-popular Lloyd's method~\cite{McCool1992}
+\textbf{Rigid packings:}
+The ever-popular Lloyd's method~\cite{McCool1992}
 is an iterative
 process for creating a perceptually even distribution of points, and has been
 used in various forms in procedural packing methods.
@@ -60,6 +39,64 @@ elements iteratively, which could be seen as making more effective use of negati
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.
 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Data-driven packing:}
+JIM and PAD methods require an element database to make their algorithms works.
+JIM uses geometric hashing to find a matching element, 
+while PAD uses a partial shape matching algorithm.
+Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
+by searching a matching element from a 2D cutout image database collected from the internet.  
+The more elements in the database will increase their chance to \textbf{find a compatible element boundary}.
+However, bigger database means increased computational time.
+Collecting a large number of elements is also not always feasible,
+for example, if an artist wants to create a packing of a hand-drawn cats,
+they may not want to draw 1000 cats which is tedious and repetitive.
+
+%Huang et al.~\cite{Huang2011} produced Arcimboldo-like
+%collages in 2D by layering objects cut out from images on top of a
+%segmented container.  These methods benefit from overlaps, which
+%join elements into a single large object.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Non-rigid packings:}
+
+Image Mosaics (JIM)~\cite{Kim2002} deformed elements
+only in their post-processing step, which is to improve their results due to limitations in their algorithm.
+Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
+simple polygons and polyominoes. Their method cannot handle more
+complicated shapes, making it unsuitable for our style of packings.
+Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
+constructed \textit{calligrams} by filling a container with a small
+number of deformed letters composing one or two words.  Because the
+order of the letterforms was defined by the text, their solutions
+usually required significant distortion of the individual letters.
+Their goal was to balance between filling the container and preserving
+readability.
+Zehnder et al.~\cite{Zehnder2016} proposed an method to
+cover 3D surfaces with deformed ornamental elastic curves.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Tilings:}
+Kaplan and Salesin~\cite{Kaplan2000} deformed a single user-supplied 
+input shape into one that could tile the plane.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{3D packings:}
+Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
+collages reminiscent of portrait paintings by Arcimboldo.  They
+filled a 3D container with overlapping 3D elements using a greedy
+approach and a partial shape matching algorithm.
+Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
+tightly into a small build volume, allowing it to 
+be 3D printed with less waste material and packed into a smaller box.
+Ma et al.~\cite{Ma2018} developed a heuristic method
+to create 3D packings that are overlap free.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Texture synthesis:}
 Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of rigidly transformed elements
 that mimic the statistics of an exemplar.  Barla et al.~\cite{Barla2006} and
@@ -71,45 +108,12 @@ on multitype point processes.
 These techniques are all concerned with replicating
 the uneven element distribution in the exemplar, without regard for negative space.
 
-\textbf{Dense packing and tessellations:} 
-Gal et al.~\cite{Gal2007B} used local shape descriptors on 3D
-models to fill a 3D container with a ``collage'' in the style of
-Arcimboldo.  Huang et al.~\cite{Huang2011} produced Arcimboldo-like
-collages in 2D by layering objects cut out from images on top of a
-segmented container.  These methods benefit from overlaps, which
-join elements into a single large object.
-Reinert et al.~\cite{Reinert2013} generated compositions by 
-projecting objects from a high dimensional feature space down to 2D
-while also inferring users' intentions when manually placing elements. However,
-their goal was to create meaningful compositions without
-an attempt to effectively fill a container.
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\textbf{Animated packings:}
 
-As stated in the introduction, our work is most similar to Jigsaw
-Image Mosaics (JIM)~\cite{Kim2002} and collages based on the Pyramid
-of Arclength Descriptor PAD~\cite{Kwan2016}.  JIM packed
-nearly-convex elements tightly by placing one element at a time and
-backtracking as needed.  PAD developed a sophisticated shape
-descriptor in order to find new elements that partially matched
-existing element boundaries as a container was being filled.  Both
-methods permitted some elements to overlap.  While they could
-both correct gaps and overlaps using deformation, the deformation
-was applied locally near edges in a post-processing step after
-elements were frozen in place. 
-
-\textbf{Text and letter packings:}
-Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
-constructed \textit{calligrams} by filling a container with a small
-number of deformed letters composing one or two words.  Because the
-order of the letterforms was defined by the text, their solutions
-usually required significant distortion of the individual letters.
-Their goal was to balance between filling the container and preserving
-readability.  Maharik et al.~\cite{Maharik2011} explored Digital
-Micrography, in which whole lines of text deform to fit along dense
-streamlines in a flow field. Their results more closely resemble
-textures than packings.
-
-\textbf{Packings for fabrication:}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\textbf{Packings on manifolds:}
 Related work in fabrication has sought to cover surfaces with
 arrangements of deformed ornamental elements that satisfy manufacturing
 constraints such as connectivity.  Chen et al.~\cite{Chen2016}
@@ -119,34 +123,6 @@ In later work, Chen et al.~\cite{Chen2017}
 generated modular surfaces by computing 
 contact point networks of rigid elements.
 
-
-Zehnder et al.~\cite{Zehnder2016} proposed an elegant method to
-cover 3D surfaces with deformed ornamental elastic curves.
-Our method has some similarities to theirs in that both start with 
-scaled-down copies of elements and grow them, but the growth process is quite different.  
-Unlike their approach, our elements exert
-forces on each other throughout the growth process, allowing them a greater
-opportunity to translate, rotate, and deform in search of more even negative
-space.  Furthermore, the goal of their work (3D fabrication) is quite 
-different from ours (2D ornamentation) and our results appear qualitatively
-different.
-
-
-\textbf{Non-rigid packing:}
-Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
-simple polygons and polyominoes. Their method cannot handle more
-complicated shapes, making it unsuitable for our style of packings.
-FLOWPAK by Saputra et al.~\cite{Saputra2017} placed ornamental
-elements to create a visual sense of flow. They used
-skeletal strokes to place elements along streamlines defined from a
-vector field.  However, their elements could not undergo more general
-deformations, and their method did not explicitly control for the evenness
-of the negative space.
-
-\textbf{Physics-based NPR:} Pedersen and
-Singh~\cite{Pedersen2006} grew curves to create organic
-labyrinthine paths. Their algorithm is related to ours by the use
-of repulsion forces to maintain even spacing and parallel segments.
 
 
 

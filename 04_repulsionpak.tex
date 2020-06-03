@@ -63,6 +63,67 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 
 \mynote{only discuss papers whose ideas you use or you're comparing with}
 
+\textbf{Rigid packing:}
+As discussed in Chapter~\ref{chapter_related_work}, a good number of past research  used
+rigid transformations to pack elements, they include
+Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
+Smith et al.~\cite{Smith2005}, Dalal et al.~\cite{Dalal2006},
+and Gal et al.~\cite{Gal2007B}.
+
+Our work is most similar to Jigsaw
+Image Mosaics (JIM)~\cite{Kim2002} and collages based on the Pyramid
+of Arclength Descriptor (PAD)~\cite{Kwan2016}.  JIM packed
+nearly-convex elements tightly by placing one element at a time and
+backtracking as needed.  PAD developed a sophisticated shape
+descriptor in order to find new elements that partially matched
+existing element boundaries as a container was being filled.  Both
+methods permitted some elements to overlap.  While they could
+both correct gaps and overlaps using deformation, the deformation
+was applied locally near edges in a post-processing step after
+elements were frozen in place. 
+
+
+\textbf{Non-rigid packing:}
+Zehnder et al.~\cite{Zehnder2016} proposed a method to
+cover 3D surfaces with deformed ornamental elastic curves.
+Our method has some similarities to theirs in that both start with 
+scaled-down copies of elements and grow them, but the growth process is quite different.  
+Unlike their approach, our elements exert
+forces on each other throughout the growth process, allowing them a greater
+opportunity to translate, rotate, and deform in search of more even negative
+space.  Furthermore, the goal of their work (3D fabrication) is quite 
+different from ours (2D ornamentation) and our results appear qualitatively
+different.
+
+Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
+simple polygons and polyominoes. Their method cannot handle more
+complicated shapes, making it unsuitable for our style of packings.
+FLOWPAK by Saputra et al.~\cite{Saputra2017} placed ornamental
+elements to create a visual sense of flow. They used
+skeletal strokes to place elements along streamlines defined from a
+vector field.  However, their elements could not undergo more general
+deformations, and their method did not explicitly control for the evenness
+of the negative space.
+
+\mynote{meh}
+% read Physically Based Deformable Models in Computer Graphics
+
+\textbf{Physically-based methods:}
+There are many sophisticated physical simulation methods,
+such as Position Based Dynamics~\cite{Muller2007}, 
+Projective Dynamics~\cite{Bouaziz2014}, and the Finite Element Method.
+We decide to use a mass-spring system for RepulsionPak since it is simple to implement and 
+it requires minimum computational time.
+
+
+\textbf{Physics-based NPR:} Pedersen and
+Singh~\cite{Pedersen2006} grew curves to create organic
+labyrinthine paths. Their algorithm is related to ours by the use
+of repulsion forces to maintain even spacing and parallel segments.
+
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -224,15 +285,16 @@ We also add extra edges to prevent
 folding or self-overlaps during simulation
 (Fig.~\ref{fig_discretization}c).  First, if two triangles 
 $ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
-connecting $A$ and $D$. The construction of shear edges is inspired by
-Air Meshes~\cite{Muller2015}.
+connecting $A$ and $D$. 
 Second, we triangulate the negative space
 inside the convex hull of the original Delaunay triangulation, and
 create new \textit{negative space edges} corresponding to the newly 
 created triangulation edges. 
 These negative space edges are used exclusively for internal
 bracing.  The element's concavities can still be occupied by its
-neighbours.}
+neighbours.
+The construction of negative space edges is a simpler variant of
+Air Meshes~\cite{Muller2015}, a technique to detect and resolve collisions.}
 
 Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
 Increasing the mesh resolution produces a more precise result at the expense of greater running time.
