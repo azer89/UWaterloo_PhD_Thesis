@@ -75,13 +75,16 @@ gear-like meshing of oppositely-rotating Lisas.}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{only discuss papers whose ideas you use or you're comparing with}
+\mynote{Only discuss papers whose ideas you use or you're comparing with}
 
-\mynote{animated packings}
-
-\mynote{video mosaics}
-
-\mynote{animated packings}
+\textbf{Packings and mosaics:} 
+Researchers have explored many approaches to creating 2D packings and
+simulated mosaics, including using Centroidal Area Voronoi Diagrams (CAVDs) to
+position elements~\cite{Hausner2001,Hiller2003,Smith2005}, spectral
+approaches to create even negative space~\cite{Dalal2006}, energy
+minimization~\cite{Kim2002}, and shape descriptors~\cite{Kwan2016}.
+Please refer back to Chapter~\ref{chapter_related_work} 
+for a complete list of research in 2D packings.
 
 \textbf{Animated packings and tilings:}
 Animosaics by Smith et al.~\cite{Smith2005} constructed animations 
@@ -111,6 +114,26 @@ Kaplan~\cite{Kaplan2019} explored animations of simple tilings of
 the plane from copies of a single shape.  Elements in a tiling
 fit together by construction, and therefore always consume all 
 the negative space in the animation.
+
+\textbf{3D packings:} 
+AnimationPak fills a 3D container with 3D elements, 
+and is therefore related to other work on constructing freeform 3D
+packings \newtext{although the time axis in the spacetime domain 
+behaves differently than the third spatial axis.}
+Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
+collages reminiscent of portrait paintings by Arcimboldo.  They
+filled a 3D container with overlapping 3D elements using a greedy
+approach and a partial shape matching algorithm.
+Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
+tightly into a small build volume, allowing it to 
+be 3D printed with less waste material and packed into a smaller box.
+Ma et al.~\cite{Ma2018} developed a heuristic method
+to create 3D packings that are overlap free.  Other work has 
+experimented with example-based packing of 3D volumes~\cite{Ma2011},
+or optimized placement based on user interaction~\cite{Hsu2020}.
+\newtext{Several approaches have been proposed to extend 2D packing methods to adapt to
+the challenges of placing them on the surfaces of 3D 
+objects.~\cite{Hu2016,Chen2016,Zehnder2016,Chen2017}.}
 
 
 \textbf{Derived animations:} 
@@ -180,8 +203,6 @@ The creation of a discretized spacetime element.
 A spacetime element with a scripted animation.}
 \end{figure}
 
-\mynote{Need to stitch with repulsionpak}
-
 The input to AnimationPak is a library of animated elements and a
 fixed container shape.  AnimationPak currently supports two kinds
 of animation: the user can animate the shape of each individual
@@ -236,7 +257,7 @@ Figure~\ref{fig_animationpak_discretization}c as a \textit{slice}.
 The entire spacetime packing process operates on slices.  
 However, we will eventually
 need to compute deformed copies of the element's original vector paths 
-when rendering a final animation (Section~\ref{section_rendering}).
+when rendering a final animation (Section~\ref{animationpak_rendering}).
 To that end, we re-express all path information relative to the
 slice triangulation: every path control point is represented using
 barycentric coordinates within one triangle.
@@ -455,7 +476,7 @@ for equations used to generate them.
 
 \newtext
 {
-\textbf{Repulsion Forces} allow elements to push away vertices of 
+\textbf{Repulsion forces} allow elements to push away vertices of 
 neighbouring elements, inducing deformations and transformations that lead 
 to an even distribution of elements within the container
 (Figure~\ref{fig_animationpak_repulsion_force}).
@@ -470,7 +491,7 @@ detail in Section~\ref{animationpak_spatial_queries}.
 
 \newtext
 {
-\textbf{Edge Forces}
+\textbf{Edge forces}
 allow elements to deform in response to repulsion forces.
 The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
 We have five types of springs, with stiffness constants that can be 
@@ -795,6 +816,8 @@ possible for neighbouring elements to overlap briefly during such intervals.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\mynote{the order of figures}
+
 The core AnimationPak algorithm consists of a C++ program that reads 
 in text files describing the spacetime elements and the container, 
 and outputs raster images of animation frames.
@@ -853,6 +876,14 @@ forces and deformation allow AnimationPak to achieve a tighter packing
 that persists across the animation, including gear-like meshing of
 oppositely-rotating stars.
 
+\newtext{
+Figure~\ref{fig_bib_entering_star} shows an unconfined bird enters a packing of smaller birds inside a star.
+This is an example of the benefit of our growth approach.
+As the bigger bird is inside the container, available space is more limited,
+causing them to stop their growths prematurely.
+In the resulted 2D animation, it creates the effect of 
+shrinking elements that give up their space to accommodate another element.
+}
 
 Figure~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
 used as an example in FLOWPAK~\cite{Saputra2017}.  In Figure~\ref{fig_animationpak_lion}b,
@@ -959,6 +990,17 @@ A snake chasing a bird through a packing of animals.  The snake and bird
 Penguins turning into giraffes.  The penguins animate by rotating in place.
 Torsional forces are used to preserve element orientations.
 Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$. 
+}
+\end{figure*}
+
+
+\begin{figure*}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/birb_entering_star.pdf} 
+\caption[An unconfined bird enters a packing of smaller birds inside a star]
+{\label{fig_bib_entering_star} 
+\newtext{An unconfined bird enters a star-shaped packing. 
+The smaller birds shrink to give up their space to accommodate another element.}
 }
 \end{figure*}
 

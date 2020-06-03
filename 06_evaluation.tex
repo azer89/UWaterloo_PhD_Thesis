@@ -13,6 +13,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\mynote{Maybe talk about other principles like in FLOWPAK and we limit ourselves to the evenness, 
+but its already described in future work.}
+
 \newtext
 {
 As with many techniques in artistic applications of computer graphics, evaluating the
@@ -34,7 +37,51 @@ packings and to compare RepulsionPak with other packing algorithms.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Background and Related Work}
+\section{Previous Work}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\mynote{Discuss Wong and FLOWPAK?}
+
+
+
+
+\newtext
+{
+\textbf{Qualitative evaluation:}
+AlMeraj et al.~\cite{AlMerajEval2003} performed a qualitative evaluation to find
+the similarity between smaller texture exemplars and bigger synthesized texture arrangements.
+They performed two user studies: a pile-sorting study and a pairwise comparison study.
+In Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}, Kwan et al. 
+performed a user study of 13 participant.
+Each was shown a random packing and had to give ratings from 1 (worst) to 6 (best)
+to three categories: their subjective preference, 
+element boundary coupling, and stylishness.
+}
+
+\newtext
+{
+\textbf{Quantitative evaluation:}
+In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimization approach
+to pack elements. They penalize a configuration if it has too much negative space,
+too many overlaps, or severely deformed elements. 
+Their energy minimization is useful to backtrack to previous configurations 
+so that they are not stuck at a suboptimal solution.
+Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated stipple images
+with artist-made stipple images using image processing analysis techniques. %distribution
+However, they did not further discuss whether it can be used for quantitative evaluation.
+Related work in fabrication sought to cover surfaces with arrangements of element~\cite{Zehnder2016, Chen2017}.
+Their packing quality is dictated by manufacturing constraints, such as connectivity, % and stability
+which requires element boundaries to be connected.
+If the element boundaries interlock with each other, 
+more contact points can be created so that the strength of the printed object is increased.
+%The stability constraint requires weak part detection, for example a single thin element would likely to break
+%so that structural supports need to be added.
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Analyzing of Negative Space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,7 +92,7 @@ packings and to compare RepulsionPak with other packing algorithms.
 {\label{fig_distance_transform}
 \newtext{
     The image on the right is a distance transform generated from negative space around two rabbits.
-    The whiter the color of a pixel, the farther it is from the nearest boundary.}
+    The brighter the color of a pixel, the farther it is from the nearest boundary.}
   }
 \end{figure}
 
@@ -62,36 +109,14 @@ packings and to compare RepulsionPak with other packing algorithms.
   }
 \end{figure}
 
-\newtext
-{
-\textbf{Related work in qualitative evaluation:}
-In Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}, Kwan et al. 
-performed a user study of 13 participant.
-Each was shown a random packing and had to give ratings from 1 (worst) to 6 (best)
-to three categories: their subjective preference, 
-element boundary coupling, and stylishness.
-}
+\mynote{choppy....}
 
 \newtext
 {
-\textbf{Related work in quantitative evaluation:}
-In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimization approach
-to pack elements. They penalize a configuration if it has too much negative space,
-too many overlaps, or severely deformed elements. 
-Their energy minimization is useful to backtrack to previous configurations 
-so that they are not stuck at a suboptimal solution.
-However, they did not further discuss whether it can be used for quantitative evaluation.
-Related work in fabrication sought to cover surfaces with arrangements of element~\cite{Zehnder2016, Chen2017}.
-Their quantitative measurements are related to satisfying manufacturing constraints, 
-such as connectivity or stability.
-The connectivity constraint requires element boundaries to touch with each other, more contact points mean a better strength.
-The stability constraint requires weak part detection, for example a single thin element would likely to break
-so that structural supports need to be added.
-%, they want element boundaries to
-%connect with each other. 
-%More connected boundaries mean an increased strength so 
-%that printed objects can resist excessive force and avoid breaking.
-%\mynote{structurel stability}
+It is important to familiarize with a few techniques that can be used to analyze the negative space.
+In this section, we discuss distance transforms, Voronoi diagrams, and medial axes.
+All of them have been used extensively in shape distribution or shape analysis.
+They serve as groundwork that help us to design our quantitative metrics.
 }
 
 \newtext
@@ -105,10 +130,6 @@ or $d = 0$ if $p$ belongs to the positive space (inside an element).
 The distance transform gives us a hint about the evenness of negative space.
 An uneven distribution of elements would have significant empty patches,
 causing ``high'' $d$ values locally, which appear as white ridges in Figure~\ref{fig_distance_transform}.
-%Below we discuss \textbf{centroidal area Voronoi diagrams} and \textbf{medial axes}, since
-%the ridges on both structures correspond with ridges in the distance transform.
-%These ridges form a separation structure, which is related to \textbf{centroidal area Voronoi diagrams} and \textbf{medial axes}
-%that we discuss below.
 }
 
 
@@ -129,7 +150,7 @@ Voronoi cell boundaries do not capture the hollow concavities of C-shaped elemen
 \textbf{Medial axis:}
 An alternative to handle concave elements is to generate a medial axis from the negative space.
 We define a medial axis as a set of connected point, each should have more than one closest point on element boundaries.
-In Figure~\ref{fig_skeleton}, the medial axis is a graph-like structure containing branches that extend to element concavities.
+In Figure~\ref{fig_skeleton}, Medial axis is a superset containing branches that extend to element concavities.
 In theory, we can evaluate the distance transform only on pixels that belong to the medial axis to determine the evenness of negative space.
 However, a medial axis contains problematic branches.
 Many branches extend too far inside sharp concavities so that their ends touch (or almost touch) the element boundaries.
@@ -444,6 +465,17 @@ spherical contact probability functions, and distance histograms.
   Figure~\ref{balabolka_comparison}a, even though both have the same total
   amount of negative space.
 
+\item We would like to develop additional metrics to evaluate
+  how well an ornamental design fulfills other design principles.
+  A measure of element deformation in a composition would permit 
+  a comparison against future deformation-driven techniques.
+  \newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
+  ``uniformity amidst variety'' are important to attractive packings.} 
+  In another study, Wong et al.~\cite{Wong1998} describe basic design
+  principles for decorative arts: repetition, balance, and conformation
+  to geometric constraints.  The rigorous expression of aesthetic principles
+  is a fascinating area for future research.
+
 \item Our validation metrics are all based on Minkowski sums or
   differences with discs, corresponding to a form of shape offsetting
   where corners become round.  The result of this rounding is visible in
@@ -459,23 +491,12 @@ spherical contact probability functions, and distance histograms.
   we would like to investigate other visualizations of this information
   that might amplify these differences to make evaluation easier.
 
-\item We would like to develop additional metrics to evaluate
-  how well an ornamental design fulfills other design principles.
-  A measure of element deformation in a composition would permit 
-  a comparison against future deformation-driven techniques.
-  \newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
-  ``uniformity amidst variety'' are important to attractive packings.} 
-  In another study, Wong et al.~\cite{Wong1998} describe basic design
-  principles for decorative arts: repetition, balance, and conformation
-  to geometric constraints.  The rigorous expression of aesthetic principles
-  is a fascinating area for future research.
-
-\item \newtext{All three metrics are only for evaluating 2D packings.
+\item All three metrics are only for evaluating 2D packings.
   While they extend naturally to three purely spatial
   dimensions, it is not clear whether they can be 
   adapted to the spacetime context.  
   We would like to investigate
-  spatial statistics for the quality of animated packings that correlate
-  with human perceptual judgments.}
+  spatial statistics for the quality of animated packings created by AnimationPak that correlate
+  with human perceptual judgments.
 
 \end{itemize}
