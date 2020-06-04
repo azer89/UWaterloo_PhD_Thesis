@@ -65,6 +65,19 @@ A calligraphy packing of an ``elephant'.}
 \end{figure}
 
 
+\textbf{Rigid packings using Lloyd's method:}
+Lloyd's method is a technique to create an even distribution of \textit{sites}.
+Given an initial distribution of $N$ sites, we first compute a Voronoi diagram to partition the plane into $N$ regions.
+All points inside a Voronoi cell are closest to its corresponding site.
+Lloyd's method is an iterative process, we move every site point to the centroid of its Voronoi cell, then the Voronoi diagram is recomputed.
+The process is repeated until the site points reach an even distribution.
+Originally, Lloyd's method can only work if the sites are points.
+Hausner~\cite{Hausner2001} modified the Lloyd's method to pack oriented square elements into a container 
+region, simulating the appearance of traditional mosaics. 
+This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
+Hiller et al.~\cite{Hiller2003} extended Hausner's idea to distribute polygonal
+elements instead of points 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
