@@ -65,6 +65,7 @@ A calligraphy packing of an ``elephant'.}
 \end{figure}
 
 
+% start with initial configuration, then refine
 \textbf{Rigid packings using Lloyd's method:}
 Lloyd's method is a technique to create an even distribution of \textit{sites}.
 Given an initial distribution of $N$ sites, we first compute a Voronoi diagram to partition the plane into $N$ regions.
@@ -100,7 +101,8 @@ earlier methods.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\textbf{Data-driven packing:}
+% JIM --> small deformation
+\textbf{Rigid packings with shape matching methods:}
 JIM and PAD methods require an element database to make their algorithms works.
 JIM uses geometric hashing to find a matching element, 
 while PAD uses a partial shape matching algorithm.
