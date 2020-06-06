@@ -8,8 +8,7 @@
 \begin{packeditems}
 \item More than a literature review
 \item Organize related work - impose structure
-\item Be clear as to how previous work being described relates to your own. 
-      This is not just a list of the related work, you must describe how it is related. How is similar? How is it different?
+\item Be clear as to how previous work being described relates to your own. This is not just a list of the related work, you must describe how it is related. How is similar? How is it different?
 \item The reader should not be left wondering why you've described something!!
 \item Critique the existing work - Where is it strong where is it weak? What are the unreasonable/undesirable assumptions?
 \item Identify opportunities for more research (i.e., your thesis) Are there unaddressed, or more important related topics?
@@ -20,7 +19,8 @@
 
 \mynote
 {
-You need to explain deformation-driven packing vs rigid packing vs data driven packing
+	because it's deformation-driven thesis, 
+	you need to explain deformation-driven packing vs rigid packing vs data driven packing
 }
 
 \begin{figure}[t]
@@ -66,52 +66,53 @@ A calligraphy packing of an ``elephant'.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{2D Packings}
+\section{2D Mosaics and Packings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Rigid packing algorithms attempt to distribute elements through rigid transformations.
-%These algorithms can be categorized into two groups: iterative methods and data-driven methods.
-%Iterative methods start with an initial configuration then they use a variant of Lloyd's method 
-%to refine the configuration to an even distribution of elements.
-%data-driven methods rely on a shape matching algorithm to find a matching element from
-%an element library.
-%Some of rigid packing algorithms have an additional step where they 
-%correct gaps and overlaps using deformation, the deformation was applied
-%locally near edges in a post-processing step after elements
-%were frozen in place.
+Rigid packing algorithms attempt to distribute elements through rigid transformations.
+These algorithms can be categorized into two groups: iterative methods and data-driven methods.
+Iterative methods start with an initial configuration then they use a variant of Lloyd's method 
+to refine the configuration to an even distribution of elements.
+data-driven methods rely on a shape matching algorithm to find a matching element from
+an element library.
+Some of rigid packing algorithms have an additional step where they 
+correct gaps and overlaps using deformation, the deformation was applied
+locally near edges in a post-processing step after elements
+were frozen in place.
 
-\textbf{Lloyd's method:}
-An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
+\textbf{Rigid packings using Lloyd's method:}
+An approach to generate packing is to start with an initial configuration and iteratively refine it using Lloyd's method
 to obtain an even distribution of elements. 
-We first discuss the original Lloyd's method that can only distribute point elements.
-Given an initial distribution of $N$ point elements, 
+We first discuss the simplest example where elements are simply 2D points.
+Given an initial distribution of $N$ points, 
 we first compute a \textit{Voronoi diagram} to partition the plane into $N$ regions such that
-all points inside a Voronoi cell are closest to its associated point element.
+all points inside a Voronoi cell are closest to its associated element.
 As an iterative process, 
-the Lloyd's method moves every point elements to the centroid of its Voronoi cell, 
+the Lloyd's method moves every site to the centroid of its Voronoi cell, 
 then the Voronoi diagram is recomputed.
-The process is repeated until the distribution is even.
+The process is repeated until the site distribution is even.
 The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD), 
-where all the site points are located at the the centroids of the Voronoi cells. 
+where all the sites are located at the the centroids of the Voronoi cells.  
+Originally, Lloyd's method can only distribute points.
 Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics. 
 This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
 However, Hausner's approach can only move these squares, but not rotate them,
-so more complicated shapes such as long rectangles would have severe overlaps.
+so more complicated shapes such as long-shaped rectangles would have severe overlaps.
 Hiller et al.~\cite{Hiller2003} extended Hausner's idea to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
-a variant of CVD that can accept simple polygonal elements.
-This new extension computes main inertia axes for each Voronoi cell so that 
-its element can be rotated to get better alignment
-with the Voronoi cell boundary.
+a variant of CVD that accepts simple polygonal elements as input sites.
+This new extension computes the principal axis for each Voronoi cell so that 
+each element can be rotated to get better alignment
+with its Voronoi cell boundary.
 In a follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
 Dalal et al.~\cite{Dalal2006} impoved upon CAVD using an FFT-based image correlation to reposition
-and rotate elements with their Voronoi cell boundaries, which could be seen as making more effective use of negative
+elements iteratively, which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.
 
 
-%\textbf{Data driven methods:}
-\textbf{Data-driven methods:} A different approach to generate packings is to
+\textbf{Data driven methods:}
+A different approach to generate packings is to
 place elements one by one. This requires a library containing
 a large number of elements. For each step, a shape matching algorithm
 picks an element that has the best fit with the container boundary.
@@ -123,18 +124,21 @@ if previous configuration is more optimal.
 Pyramid of Arclength Descriptor~\cite{Kwan2016} developed
 a partial shape matching algorithm that can match a subset of element boundary with a portion
 of container boundary.
+%Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
+%collages reminiscent of portrait paintings by Arcimboldo.  They
+%filled a 3D container with overlapping 3D elements using a greedy
+%approach and a partial shape matching algorithm. 
 
-\mynote{this paragraph is stoopid}
 It is also possible to partition the container into smaller segments,
 then use a shape matching algorithm to replace each segment with
 a matching element.
 Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
-by arranging cutout images collected from the internet.
+by arranging cutout images taken from the internet.
 Their container is a bigger cutout image which is partitioned into segments
 using an image segmentation algorithm.
 Each segment is then replaced with a cutout image that has a similar shape and color.
 
-All these data-driven methods require an element library that is big enough,
+All three methods above the element library to big enough,
 the more elements in the library will increase their chance to find a compatible element boundary.
 However, bigger database means increased computational time.
 Collecting a large number of elements is also not always feasible,
@@ -142,14 +146,10 @@ for example, if an artist wants to create a packing of a hand-drawn cats,
 they may not want to draw 1000 cats which is tedious and repetitive.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Non-rigid Packing Methods}
+\section{Non-rigid Packing Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Deformation-driven methods:}
-Deformation-driven methods force elements to deform
-to create element compatibility.
-They can use a small size element library but deformation
-generates variations in element shape.
+
 Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes. Their method cannot handle more
 complicated shapes, making it unsuitable for our style of packings.
@@ -162,11 +162,6 @@ Their goal was to balance between filling the container and preserving
 readability.
 Zehnder et al.~\cite{Zehnder2016} proposed an method to
 cover 3D surfaces with deformed ornamental elastic curves.
-
-%Some of rigid packing algorithms have an additional step where they 
-%correct gaps and overlaps using deformation, the deformation was applied
-%locally near edges in a post-processing step after elements
-%were frozen in place.
 
 
 
