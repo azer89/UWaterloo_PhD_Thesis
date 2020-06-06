@@ -111,7 +111,7 @@ earlier methods.
 
 
 %\textbf{Data driven methods:}
-\textbf{Data-driven methods:} A different approach to generate packings is to
+\textbf{Data-driven method:} A different approach to generate packings is to
 place elements one by one. This requires a library containing
 a large number of elements. For each step, a shape matching algorithm
 picks an element that has the best fit with the container boundary.
@@ -145,11 +145,12 @@ they may not want to draw 1000 cats which is tedious and repetitive.
 %\section{Non-rigid Packing Methods}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Deformation-driven methods:}
-Deformation-driven methods force elements to deform
-to create element compatibility.
-They can use a small size element library but deformation
-generates variations in element shape.
+% need to consult to FLOWPAK for variety
+\textbf{Deformation-driven method:}
+Instead of finding compatible elements,
+a deformation-driven method forces elements to create compatibilities
+and shape variations.
+As an advantage, a deformation-driven method can rely on a small size element library.
 Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes. Their method cannot handle more
 complicated shapes, making it unsuitable for our style of packings.
@@ -160,8 +161,14 @@ order of the letterforms was defined by the text, their solutions
 usually required significant distortion of the individual letters.
 Their goal was to balance between filling the container and preserving
 readability.
-Zehnder et al.~\cite{Zehnder2016} proposed an method to
-cover 3D surfaces with deformed ornamental elastic curves.
+Abdrashitov et al.~\cite{Abdrashitov2014} developed
+a sketch-based interface where an artist can draw curves where square-like elements are placed along it
+create a mosaic arrangement.
+After the square elements are frozen in place, 
+they are deformed to eliminate overlap, to create shape variations, 
+and to even even out negative space.  
+%Zehnder et al.~\cite{Zehnder2016} proposed an method to
+%cover 3D surfaces with deformed ornamental elastic curves.
 
 %Some of rigid packing algorithms have an additional step where they 
 %correct gaps and overlaps using deformation, the deformation was applied
@@ -173,9 +180,10 @@ cover 3D surfaces with deformed ornamental elastic curves.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mynote{dihedral escherization}
-Kaplan and Salesin~\cite{Kaplan2000} deformed a single user-supplied 
-input shape into one that could tile the plane.
+As elements reach perfect compatibility, a packing turns to a tiling, 
+the element boundaries interlock, leaving no negative space.
+Kaplan and Salesin~\cite{Kaplan2000, Blah} deformed one or two 
+input elements into ones that can tile the plane.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{3D Packings}
