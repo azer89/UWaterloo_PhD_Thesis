@@ -175,61 +175,74 @@ and to even even out negative space.
 %locally near edges in a post-processing step after elements
 %were frozen in place.
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-As elements reach perfect compatibility, a packing turns to a tiling, 
-the element boundaries interlock, leaving no negative space.
+\mynote{Need more details on how they work.}
+As elements reach perfect compatibility, a packing turns to a tiling.
+The element boundaries interlock, leaving no negative space.
 Kaplan and Salesin~\cite{Kaplan2000, Blah} deformed one or two 
 input elements into ones that can tile the plane.
+Given an input element $E$ they look for a similar tile $T$
+from a parameterized tiling space.
+Due to high frequency deformations,
+$T$ is often perceptually unrecognizable from its silhouette only unless interior drawing is added.
+They can also fail to find $T$ if $E$ has deep concavity, for example, the shape of a ``G'' letter.
+The tile $T$  also cannot fill a container due to its highly structured boundary.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{3D Packings}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% moved to data driven
-%Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-%collages reminiscent of portrait paintings by Arcimboldo.  They
-%filled a 3D container with overlapping 3D elements using a greedy
-%approach and a partial shape matching algorithm.
+Lin et al.~\cite{Lin2018} generated tiling arrangements of two elements that resemble Escher's Sky and Water I.
+Each element gradually transition from positive space to negative space. 
+The transition directions of both elements are the opposite of each other.
 
-% this one is too narrow, kinda unrelated
-%Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
-%tightly into a small build volume, allowing it to 
-%be 3D printed with less waste material and packed into a smaller box.
 
-Ma et al.~\cite{Ma2018} developed a heuristic method
-to create 3D packings that are overlap free.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Texture Synthesis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mynote{Need more details on how they work.}
 Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of rigidly transformed elements
 that mimic the statistics of an exemplar.  Barla et al.~\cite{Barla2006} and
 Ijiri et al.~\cite{Ijiri2008} use a growth model that copies small neighbourhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
 stamp out copies of the exemplar and discard overlapping elements.
-Hurtut et al.~\cite{Hurtut2009} develop a statistical sampling method based
+Hurtut et al.~\cite{Hurtut2009} developed a statistical sampling method based
 on multitype point processes.  
+Loi et al.~\cite{Loi2017} developed a texture synthesis method that
+can specify global arrangements, local arrangements, or a blend of multiple arrangements.
 These techniques are all concerned with replicating
 the uneven element distribution in the exemplar, without regard for negative space.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{3D Packings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mynote{Need more details on how they work.}
+Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
+collages reminiscent of portrait paintings by Arcimboldo.  They
+filled a 3D container with overlapping 3D elements using a greedy
+approach and a partial shape matching algorithm.
+They require a 3D shape database so the method can be considered as data-driven. 
+% this one is too narrow, kinda unrelated
+Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
+tightly into a small build volume, allowing it to 
+be 3D printed with less waste material and packed into a smaller box.
+Ma et al.~\cite{Ma2018} developed a heuristic method
+to create 3D packings that are overlap free.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packings on Surfaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\mynote{Need more details on how they work.}
+\mynote{Chen2016 is also ornamental elastic curves.}
 Related work in fabrication has sought to cover surfaces with
 arrangements of deformed ornamental elements that satisfy manufacturing
 constraints such as connectivity.  Chen et al.~\cite{Chen2016}
-developed a method to synthesize filigree patterns out of simple
-elements. 
+developed a method to synthesize filigree patterns out of simple elements. 
 In later work, Chen et al.~\cite{Chen2017}
 generated modular surfaces by computing 
 contact point networks of rigid elements.
-\mynote{zehnder}
-\mynote{Surface Mosaic Synthesis with Irregular Tiles}
-
+Zehnder et al.~\cite{Zehnder2016} proposed a deformation-driven method to cover
+3D surfaces with ornamental elastic curves.
 
 
 
