@@ -67,8 +67,8 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 As discussed in Chapter~\ref{chapter_related_work}, a good number of past research  used
 rigid transformations to pack elements, they include
 Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
-Smith et al.~\cite{Smith2005}, Dalal et al.~\cite{Dalal2006},
-and Gal et al.~\cite{Gal2007B}.
+Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
+%and Gal et al.~\cite{Gal2007B}.
 
 Our work is most similar to Jigsaw
 Image Mosaics (JIM)~\cite{Kim2002} and collages based on the Pyramid
@@ -105,15 +105,15 @@ vector field.  However, their elements could not undergo more general
 deformations, and their method did not explicitly control for the evenness
 of the negative space.
 
-\mynote{meh}
-% read Physically Based Deformable Models in Computer Graphics
 
 \textbf{Physically-based methods:}
-There are many sophisticated physical simulation methods,
-such as Position Based Dynamics~\cite{Muller2007}, 
-Projective Dynamics~\cite{Bouaziz2014}, and the Finite Element Method.
-We decide to use a mass-spring system for RepulsionPak since it is simple to implement and 
-it requires minimum computational time.
+Contemporary research has yielded many more sophisticated physical simulation methods.
+the Finite Element Method (FEM) is accurate and realistic but notoriously slow.
+Position Based Dynamics (PBD)~\cite{Muller2007} is simple, robust, and efficient to be used in
+real-time applications, but suffers from inaccuracy.
+More recently, Projective Dynamics~\cite{Bouaziz2014} bridges a gap between FEM and PBD.
+Projective dynamics uses a variational implicit time integration and optimize by
+alternating a local constraint step and a global solve step.
 
 
 \textbf{Physics-based NPR:} Pedersen and
