@@ -13,24 +13,21 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{Maybe talk about other principles like in FLOWPAK and we limit ourselves to the evenness, 
-but its already described in future work.}
+\mynote{Looks ok}
 
 \newtext
 {
 As with many techniques in artistic applications of computer graphics, evaluating the
 quality of a computer-generated element packing is a challenge.
-In this chapter, we discuss quantitative measurements of 2D packing
-quality that can be used to evaluate our results and subsequent work. 
-We believe that perceived packing quality is tied to the evenness of negative space.
+The visual appeal of packings follows in part from aligning neighbouring elements along compatible 
+segments of their boundaries, suggesting that they interlock by design. 
+We believe that the evenness of negative space is an indicator 
+on how much the elements interlock.
 The separation between neighbouring elements should be roughly the same everywhere.
 In the limit, as this element separation goes to zero,
 the packing turns into a tessellation: a set of elements that exactly
-fill a container with no overlaps. 
-The challenge---and visual appeal---of packings
-follows in part from aligning neighbouring elements along compatible 
-segments of their boundaries, suggesting that they interlock by design.  
-We have developed several measurements of evenness,
+fill a container with no overlaps.  
+In this chapter, we have developed several measurements of evenness,
 which allow us to examine the behaviour of manually constructed reference
 packings and to compare RepulsionPak with other packing algorithms.
 }
@@ -41,34 +38,27 @@ packings and to compare RepulsionPak with other packing algorithms.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{Discuss Wong and FLOWPAK? Gieseke?}
 
 \newtext
 {
+To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
+a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
+Gieseke et al.~\cite{Gieseke2017} suggested that symmetry is also important.
+However, it remains difficult to measure these principles.
 Research in NPR is lacking of evaluation, both qualitatively and quantitatively.
 A few methods have been proposed for evaluating discrete texture synthesis,
-but past work in measuring packing quality is still inadequate.
+but past work in evaluating packing quality is still inadequate.
 }
-
-\textbf{Qualitative Principles:}
-Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
-a few qualitative principles should be followed to create a good packing, such as
-balance, flow, uniformity amidst variety, and boundary.
-Gieseke et al.~\cite{Gieseke2017} also suggested that symmetry is an important
-for creating decorative ornaments.
-We believe that those principles are useful for a user study. % MEHHHH
 
 \newtext
 {
 \textbf{Qualitative evaluation:}
 AlMeraj et al.~\cite{AlMerajEval2003} performed a qualitative evaluation to find
 the similarity between smaller texture exemplars and bigger synthesized texture arrangements.
-They performed two user studies: a pile-sorting study and a pairwise comparison study.
-In Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}, Kwan et al. 
-performed a user study of 13 participant.
-Each was shown a random packing and had to give ratings from 1 (worst) to 6 (best)
-to three categories: their subjective preference, 
-element boundary coupling, and stylishness.
+They conducted two user studies: a pile-sorting study and a pairwise comparison study.
+Kwan et al. performed a user study of 13 participant to compare Pyramid of Arclength Descriptor (PAD) with previous work~\cite{Kwan2016}.
+A participant was shown a random packing and had to give ratings from 1 (worst) to 6 (best)
+to each of three categories: their subjective preference, element boundary coupling, and stylishness.
 }
 
 \newtext
@@ -79,25 +69,23 @@ to pack elements. They penalize a configuration if it has too much negative spac
 too many overlaps, or severely deformed elements. 
 Their energy minimization is useful to backtrack to previous configurations 
 so that they are not stuck at a suboptimal solution.
+However, they did not further discuss whether it can be used for a quantitative evaluation.
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated stipple images
 with artist-made stipple images using image processing analysis techniques. %distribution
-However, they did not further discuss whether it can be used for quantitative evaluation.
 Related work in fabrication sought to cover surfaces with arrangements of element~\cite{Zehnder2016, Chen2017}.
 Their packing quality is dictated by manufacturing constraints, such as connectivity, % and stability
 which requires element boundaries to be connected.
 If the element boundaries interlock with each other, 
-more contact points can be created so that the strength of the printed object is increased.
-%The stability constraint requires weak part detection, for example a single thin element would likely to break
-%so that structural supports need to be added.
-}
+more contact points can be created so that the strength of the printed object is increased.}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Analyzing the Negative Space}
+%\section{Attempts to Measure the Evenness}
+\section{Distance Transforms of Negative Space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
 \caption[An example of distance transform of negative space]
@@ -121,15 +109,28 @@ more contact points can be created so that the strength of the printed object is
   }
 \end{figure}
 
-\mynote{choppy....}
-
 \newtext
 {
-It is important to familiarize with a few techniques that can be used to analyze the negative space.
-In this section, we discuss distance transforms, Voronoi diagrams, and medial axes.
-All of them have been used extensively in shape distribution or shape analysis.
-They serve as groundwork that help us to design our quantitative metrics.
+In this section, we first discuss distance transforms applied on negative space of a packing,
+as they give us a hint of the evenness.
+We also consider the idea to evaluate distance transforms only on two structures: Voronoi cell boundaries or a medial axis.
+We find these structures have underlying issues, but we believe discussing them would explain our
+brainstorming process in designing proposed quantitative metrics.
 }
+
+%To measure the evenness of negative space, we discuss a few plausible techniques that come into mind:
+%distance transforms, Voronoi diagrams, and medial axes.
+%All of them have been used extensively in shape distribution or shape analysis.
+%We were initially considering to use all of them, but we explain why we only use 
+%distance transforms for our evaluation and we leave out the other two.
+
+%\newtext
+%{
+%It is important to familiarize with a few techniques that can be used to analyze the negative space.
+%In this section, we discuss distance transforms, Voronoi diagrams, and medial axes.
+%All of them have been used extensively in shape distribution or shape analysis.
+%They serve as groundwork that help us to design our quantitative metrics.
+%}
 
 \newtext
 {
