@@ -173,7 +173,6 @@ and to even even out negative space.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mynote{Need more details on how they work.}
 As elements reach perfect compatibility, a packing turns to a tiling.
 The element boundaries interlock, leaving no negative space.
 Kaplan and Salesin~\cite{Kaplan2000, Kaplan2004} deformed one or two 
@@ -195,7 +194,6 @@ The transition directions of both elements are the opposite of each other.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Texture Synthesis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mynote{Need more details on how they work.}
 Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an exemplar.
@@ -217,8 +215,9 @@ They later distributed these points using a neighborhood metric and an iterative
 Unlike previous work, they are able synthesize textures with long deformable elements, for example, spaghetti.
 Ma et al. later extended their work to accept an animated element~\cite{Ma2013}, where
 a sample point resides in a spacetime domain.
-More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into an user interface
-where an artist can create textures by drawing strokes. % weird end
+More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into a user interface
+where an artist can initially distribute elements by drawing strokes
+which are then optimized using a Lloyd-like optimization.
 
 %Most discrete texture synthesis method treat a single element
 %Ma et al.~\cite{Ma2011} used sample-based element representation 
