@@ -197,9 +197,10 @@ The transition directions of both elements are the opposite of each other.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \mynote{Need more details on how they work.}
 Some past work has sought to adapt example-based texture synthesis methods
-from raster images to vector graphics, producing distributions of rigidly transformed elements
-that mimic the statistics of an exemplar.  Barla et al.~\cite{Barla2006} and
-Ijiri et al.~\cite{Ijiri2008} use a growth model that copies small neighbourhoods
+from raster images to vector graphics, producing distributions of
+rigidly transformed elements that mimic the statistics of an exemplar.
+An element is represented as a single point, which is adequate for a small rigid element.
+Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} use a growth model that copies small neighbourhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
 stamp out copies of the exemplar and discard overlapping elements.
 Hurtut et al.~\cite{Hurtut2009} developed a statistical sampling method based
@@ -208,6 +209,21 @@ Loi et al.~\cite{Loi2017} developed a texture synthesis method that
 can specify global arrangements, local arrangements, or a blend of multiple arrangements.
 These techniques are all concerned with replicating
 the uneven element distribution in the exemplar, without regard for negative space.
+
+For more complex elements, a single point representation is not enough.
+Ma et al.~\cite{Ma2011} used sample-based representation 
+that works by distributing a sparse set of points inside an element.
+They later distributed these points using a neighborhood metric and an iterative optimization.
+Unlike previous work, they are able synthesize textures with long deformable elements, for example, spaghetti.
+Ma et al. later extended their work to accept an animated element~\cite{Ma2013}, where
+a sample point resides in a spacetime domain.
+More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into an user interface
+where an artist can create textures by drawing strokes. % weird end
+
+%Most discrete texture synthesis method treat a single element
+%Ma et al.~\cite{Ma2011} used sample-based element representation 
+%Ma et al.~\cite{Ma2011} use sparse point samples to represent an element, which
+%give an advantage of distributing 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{3D Packings}
