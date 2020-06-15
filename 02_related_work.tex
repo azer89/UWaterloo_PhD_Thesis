@@ -89,11 +89,16 @@ then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even.
 The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD), 
 where all the site points are located at the the centroids of the Voronoi cells. 
+
 Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
 This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
 However, Hausner's approach can only move these squares, and a vector field is required to rotate them.
 Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
+In a similar fashion, Javid et al.~\cite{Javid2019} constructed a distance function that 
+incorporates a spatial distance, a color distance, and an elongation factor. Their resulted
+Voronoi cells have elongated shapes, resembling pebble-like mosaics.
+
 Hiller et al.~\cite{Hiller2003} extended Hausner's idea to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
 a variant of CVD that can accept simple polygonal elements.
 This new extension computes main inertia axes for each Voronoi cell so that 
