@@ -227,18 +227,47 @@ which are then optimized using a Lloyd-like optimization.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{3D Packings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mynote{Need more details on how they work.}
+
+Collages are arragements of overlapping elements, similar to
+portrait paintings by Arcimboldo.
 Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-collages reminiscent of portrait paintings by Arcimboldo.  They
-filled a 3D container with overlapping 3D elements using a greedy
+collages.  They filled a 3D container with overlapping 3D elements using a greedy
 approach and a partial shape matching algorithm.
-They require a 3D shape database so the method can be considered as data-driven. 
-% this one is too narrow, kinda unrelated
-Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
-tightly into a small build volume, allowing it to 
-be 3D printed with less waste material and packed into a smaller box.
+Huang et al.~\cite{Huang2014} designed a method
+to generate mechanical collages, such as giant robots.
+Theobalt et al.~\cite{Theobalt2007}
+developed a method to generate animated 3D collages.
+They segment an animated container
+into smaller rigid parts, each is replaced with a matching element.
+The final result of animated collage consists of rigid motions of elements.
+All these collage methods require a 3D shape database so they can be considered as data-driven. 
+%Both these collage methods require a 3D shape database so they can be considered as data-driven. 
+
+The cutting and packing problem is defined (C\&P) as cutting a large object into smaller parts 
+which are then packed inside a container.
+C\&P is popular in manufacturing and 3D printing because
+objects can be produced with less waste material and packed into a smaller box.
+A good cutting process is critical in C\&P, if it can decompose the input object
+into simpler parts, then the packing process can be easier.
+Chernov et al.~\cite{Chernov2010} proposed a method to decompose a large object
+into smaller phi objects which can be packed more efficiently.
+A phi object is defined as a shape whose surface boundaries 
+are flat, spherical, cylindrical, or conical.
+Vanek et al.~\cite{Vanek2014} introduced PackMerger,
+a method to pack thin shells which can be assembled together into
+a larger watertight shape.
+In follow up work, Chen et al.~\cite{Chen2015} introduced Dapper,
+a method to cut and pack solid printed objects.
+
+Packing of irregular 3D elements without overlaps 
+is a still challenging research topic.
+Byholm et al.~\cite{Byholm2009} developed a method
+to pack voxelized elements, which are easier for collision detection.
 Ma et al.~\cite{Ma2018} developed a heuristic method
-to create 3D packings that are overlap free.
+to pack triangular meshes.
+For an in-depth survey, Cagan et al.~\cite{Cagan2002} discussed a few approaches such as
+gradient methods, heuristics, simulated annealing, and genetic algorithms.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packings on Surfaces}
