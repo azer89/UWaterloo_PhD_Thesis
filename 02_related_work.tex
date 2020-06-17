@@ -259,7 +259,7 @@ a larger watertight shape.
 In follow up work, Chen et al.~\cite{Chen2015} introduced Dapper,
 a method to cut and pack solid printed objects.
 
-Packing of irregular 3D elements without overlaps 
+Packing of irregular rigid 3D elements without overlaps 
 is a still challenging research topic.
 Byholm et al.~\cite{Byholm2009} developed a method
 to pack voxelized elements, which are easier for collision detection.
@@ -272,18 +272,23 @@ gradient methods, heuristics, simulated annealing, and genetic algorithms.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packings on Surfaces}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\mynote{Need more details on how they work.}
-\mynote{Chen2016 is also ornamental elastic curves.}
-\mynote{Be careful some are overlapping with FLOWPAK.}
-Related work in fabrication has sought to cover surfaces with
-arrangements of deformed ornamental elements that satisfy manufacturing
-constraints such as connectivity.  Chen et al.~\cite{Chen2016}
-developed a method to synthesize filigree patterns out of simple elements. 
-In later work, Chen et al.~\cite{Chen2017}
-generated modular surfaces by computing 
-contact point networks of rigid elements.
-Zehnder et al.~\cite{Zehnder2016} proposed a deformation-driven method to cover
-3D surfaces with ornamental elastic curves.
+
+Some recent work has explored the elaboration of ornamental
+patterns on surfaces, under constraints imposed by fabrication.  
+Chen et al.~\cite{Chen2016} developed a method to generate a filigree pattern,
+which is an arrangement of decorative thin rod elements on a surface.
+Given an initial random configuration of overlapping elements, their method
+removes overlaps by either deforming or trimming the rods.
+Bian et al.~\cite{Bian2018} later used Wang tiles made of element parts to generate similar filigree patterns.
+In similar work, Zehnder et al.~\cite{Zehnder2016} 
+proposed semi-automated tools for deforming ornamental curves to cover a surface. 
+They start with an initial configuration of scaled down elements
+that has no overlaps. They later extend the rod elements and 
+overlaps can be avoided by deforming the rods.
+Mart\'{\i}nez et al.~\cite{Martinez2019} developed a method to generate
+star-shaped tiling patterns that are printed onto tracery sheets.
+Their method works by constructing a star-shaped metric to generate a Voronoi diagrams with star-shaped cells. 
+
 
 
 
