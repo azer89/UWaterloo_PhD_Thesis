@@ -79,7 +79,8 @@ A calligraphy packing of an ``elephant'.}
 \textbf{Lloyd's method:}
 An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
 to obtain an even distribution of elements. 
-Figure~\ref{fig_lloyds_method} shows an illustration of the original Lloyd's method that can only distribute point elements.
+Figure~\ref{fig_lloyds_method} shows an illustration of the the simplest example of 
+Lloyd's method that distributes point elements.
 Given an initial distribution of $N$ point elements, 
 we first compute a \textit{Voronoi diagram} to partition the plane into $N$ regions such that
 all points inside a Voronoi cell are closest to its associated point element.
@@ -93,25 +94,25 @@ where all the site points are located at the the centroids of the Voronoi cells.
 Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
 This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
-However, Hausner's approach can only move these squares, and a vector field is required to rotate them.
+It turns out that using a customized distance function leads to interesting Voronoi cell shapes,
+we will discuss a few more of related work that use this exploit throughout this chapter. 
+Hausner's approach has a flaw, it can only translate the squares, and a vector field is required to rotate them.
 Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
-In a similar fashion, Javid et al.~\cite{Javid2019} constructed a distance function that 
+Javid et al.~\cite{Javid2019} constructed a distance function that 
 incorporates a spatial distance, a color distance, and an elongation factor. Their resulted
 Voronoi cells have elongated shapes, resembling pebble-like mosaics.
 
-Hiller et al.~\cite{Hiller2003} extended Hausner's idea to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
-a variant of CVD that can accept simple polygonal elements.
+\mynote{Maybe say Schiller generated CAVD, each element can also be rotated...}
+Hiller et al.~\cite{Hiller2003} improved upon Hausner's idea to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
+a variant of CVD that can distribute simple polygonal elements.
 This new extension computes main inertia axes for each Voronoi cell so that 
-its element can be rotated to get better alignment
-with the Voronoi cell boundary.
+its element can be rotated to get better alignment with the Voronoi cell boundary.
 In a follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
 Dalal et al.~\cite{Dalal2006} impoved upon CAVD using an FFT-based image correlation to reposition
 and rotate elements with their Voronoi cell boundaries, which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.
 
-
-%\textbf{Data driven methods:}
 \textbf{Data-driven method:} 
 A different approach to generate packings is to use a shape matching algorithm
 and it requires a library containing a large number of elements.
@@ -127,6 +128,7 @@ of container boundary.
 
 It is also possible to initially partition the container into smaller segments,
 then use a shape matching algorithm to independently replace each segment with a matching element.
+This is desirable if the container has color or salient properties.
 Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
 by arranging cutout images collected from the internet.
 Their container is a larger cutout image which is partitioned into segments
@@ -184,11 +186,15 @@ $T$ is often perceptually unrecognizable from its silhouette unless an interior 
 They can fail to find $T$ if $E$ has deep concavity, for example, a ``G'' shape.
 The tile $T$ also cannot fill a container due to its highly structured boundary.
 
-\mynote{bad...}
-Lin et al.~\cite{Lin2018} generated tiling arrangements of two elements that resemble Escher's Sky and Water I.
-Each element gradually transition from positive space to negative space. 
-The transition directions of both elements are the opposite of each other.
 
+Lin et al.~\cite{Lin2018} generated tiling arrangements that resemble Escher's Sky and Water I.
+Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas.
+Then copies of each element are placed in sequence, 
+until they meet and tile each other in the middle of the canvas.
+The farther a copy from the original element, the more deformed it is, so that they
+create a ``fading effect, the elements spatially transition to negative space.
+This work is data-driven, as it only requires a single input element $S_1$, 
+and they find a compatible element $S_2$ from a library.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
