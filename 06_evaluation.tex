@@ -458,7 +458,7 @@ The lower overlap functions indicate fewer narrow gaps between elements.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions and Future Work}
+\section{Conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtext{
@@ -466,52 +466,6 @@ We hypothesized that the evenness of negative space is an indicator
 for the quality of a packing. 
 Negative space between elements should be uniform in width.
 we validate our deformation-driven approach using overlap functions,
-spherical contact probability functions, and distance histograms.
+spherical contact probability functions, and histograms of distance transform.
 }
 
-\begin{itemize}
-
-\item We would like to conduct experiments that investigate the
-  extent to which quantitative measurements of the evenness of negative
-  space in a packing correlate with the human perception of a
-  packing's quality.  In informal evaluations, some viewers found that
-  the packing in Figure~\ref{balabolka_comparison}b, created with RepulsionPak,
-  was packed more tightly than the artist's packing in
-  Figure~\ref{balabolka_comparison}a, even though both have the same total
-  amount of negative space.
-
-\item We would like to develop additional metrics to evaluate
-  how well an ornamental design fulfills other design principles.
-  A measure of element deformation in a composition would permit 
-  a comparison against future deformation-driven techniques.
-  \newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
-  ``uniformity amidst variety'' are important to attractive packings.} 
-  In another study, Wong et al.~\cite{Wong1998} describe basic design
-  principles for decorative arts: repetition, balance, and conformation
-  to geometric constraints.  The rigorous expression of aesthetic principles
-  is a fascinating area for future research.
-
-\item Our validation metrics are all based on Minkowski sums or
-  differences with discs, corresponding to a form of shape offsetting
-  where corners become round.  The result of this rounding is visible in
-  our graphs, for example in the gradual flattening of the SCP for
-  the squares in Figure~\ref{hsr_viz}e.  It would be worthwhile to repeat
-  these measurements using mitered offsetting, and to evaluate whether
-  rounded or mitered offsetting is a closer match to human perceptual
-  judgment of evenness.
-
-\item When comparing calibrated packings, SCPs communicate 
-  differences in the evenness of negative space, but the differences 
-  between SCPs can be subtle.  In addition to distance histograms, 
-  we would like to investigate other visualizations of this information
-  that might amplify these differences to make evaluation easier.
-
-\item All three metrics are only for evaluating 2D packings.
-  While they extend naturally to three purely spatial
-  dimensions, it is not clear whether they can be 
-  adapted to the spacetime context.  
-  We would like to investigate
-  spatial statistics for the quality of animated packings created by AnimationPak that correlate
-  with human perceptual judgments.
-
-\end{itemize}

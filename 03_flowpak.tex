@@ -893,12 +893,14 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions and Future Work}
-\label{flowpak_conclusions_and_future_work}
+\section{Conclusions}
+\label{flowpak_conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We have demonstrated a method to create ornamental packings
+\mynote{streamlines}
+
+We demonstrated a method to create ornamental packings
 in which vector fields are used to provide a sense of visual flow.
 We achieve a degree of uniformity by using repeated copies of a small
 set of initial decorative elements, but balance that uniformity with
@@ -906,40 +908,4 @@ variety by deforming those elements.  An iterative refinement process
 improves upon an initial placement of elements, arriving at a final
 composition with a more even use of negative space.
 
-We see many possibilities for further improvements to our algorithm and
-future research on ornamental packing.  
 
-\begin{itemize}
-
-\item In our current algorithm, elements must completely fill streamlines.
-It would be worthwhile to investigate whether multiple shorter elements
-could be threaded along streamlines.
-
-\item Our results do not have significant high-curvature streamlines like u-turns, since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
-
-%\item \textcolor{red}{If we compare our results with examples in Figure\ref{some_examples}, one obvious future work is eliminating the negative space even more.}
-
-\item Our iterative refinement process uses a greedy approach, in which we 
-iterate over all placed elements in a fixed order from smallest to largest.
-We would like to investigate global optimizations
-that could be applied to improve the overall composition in an 
-order-independent way.  A natural first choice would be an approach based
-on simulated annealing, although performance could become a more serious
-issue in that case.
-
-\item \mynote{delet this or move to chapter} As with many research projects in non-photorealistic rendering, this
-work raises deep questions about the aesthetics of ornamental packings.
-What compositions are most appealing?  What is the most effective
-way to distribute
-negative space?  Some hand-drawn compositions insert additional small elements,
-like circles and squares, to break up large areas of negative space;
-an automated simulation of this process would be helpful.
-
-\item We would like to explore the automatic creation and placement of 
-the fixed elements, perhaps by discovering them as salient regions 
-in source photographs, and extracting and vectorizing them.  This 
-extraction must be carried out carefully, yielding enough fixed elements
-to communicate a container clearly without disrupting the uniformity of
-the design.
-
-\end{itemize}

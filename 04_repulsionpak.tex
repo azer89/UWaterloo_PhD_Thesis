@@ -993,55 +993,22 @@ container effectively.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions and Future Work}
-\label{repulsionpak_conclusions_and_future_work}
+\section{Conclusions}
+\label{repulsionpak_conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{need to move a few sentences to evaluation}
-
-\mynote{remove validation}
+%\mynote{need to move a few sentences to evaluation}
+%\mynote{remove validation}
 
 We presented RepulsionPak, a method to create packings with deformable elements.
 The combination of repulsion forces and controlled deformation
 allows RepulsionPak to discover shape compatibilities that
 eliminate the need for a large element library
 and fill the target container effectively.
-\newtext{
-Our compositions have negative space between elements that
-is approximately uniform in width, and we validate our approach using overlap functions,
-spherical contact probability functions, and distance histograms.
-}
+%\newtext{
+%Our compositions have negative space between elements that
+%is approximately uniform in width, and we validate our approach using overlap functions,
+%spherical contact probability functions, and distance histograms.
+%}
 
-We see many possibilities for further improvements to RepulsionPak
-and future research on element packings.
-
-
-\begin{itemize}
-\item 
-	Because our main goal was to demonstrate the validity of a 
-	deformation-driven approach, and not to contribute a new
-	physical simulation method, we deliberately chose a simple 
-	simulation model based on springs and forward Euler integration.
-	Contemporary research has yielded many more sophisticated 
-	physical simulation methods, such as Position Based Dynamics~\cite{Muller2007}, 
-	Projective Dynamics~\cite{Bouaziz2014}, and the Finite Element Method.
-	No one method is obviously best suited to this problem, and
-	we intend to experiment with several to investigate if any offers
-	a suitable trade-off between performance and quality.
-
-\item We would like to explore the use of RepulsionPak in a fabrication context.
-      For example, our boundary compatibilities might be used to create a connected object.
-      Alternatively, it would be interesting to 3D print the 
-      negative space, which is already connected,
-	  leaving holes that surround the element shapes.
-
-\item Our barycentric warping method can
-	introduce undesirable artifacts in highly deformed elements, as
-	in the swallow tails in the left result of Figure~\ref{three_packings}.
-	We would like to explore other methods for warping an element's
-	geometry based on the correspondences between the triangles of its original
-	mesh and the deformed meshes in the final packing, based for example on the
-	work of Jacobson et al.~\cite{Jacobson2011} and Liu et al.~\cite{Liu2014}.
-
-\end{itemize}
