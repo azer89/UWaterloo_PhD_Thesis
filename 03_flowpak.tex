@@ -898,14 +898,23 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{streamlines}
+We presented FLOWPAK, a method to create ornamental packings
+in which vector fields are used to provide a sense of visual flow. 
+The elements were deformed to flow along a direction field interpolated
+from user-supplied strokes, giving a sense of visual flow to the final composition.
+Our implementation computed a vector field based on user strokes,
+constructed streamlines that conform to the vector field, and placed an
+element over each streamline. An iterative refinement process then
+shifted and stretched the elements to improve the composition.
 
-We demonstrated a method to create ornamental packings
-in which vector fields are used to provide a sense of visual flow.
-We achieve a degree of uniformity by using repeated copies of a small
-set of initial decorative elements, but balance that uniformity with
-variety by deforming those elements.  An iterative refinement process
-improves upon an initial placement of elements, arriving at a final
-composition with a more even use of negative space.
+%\mynote{vector fields, trace streamlines, bend elements}
+
+%We demonstrated a method to create ornamental packings
+%in which vector fields are used to provide a sense of visual flow.
+%We achieve a degree of uniformity by using repeated copies of a small
+%set of initial decorative elements, but balance that uniformity with
+%variety by deforming those elements.  An iterative refinement process
+%improves upon an initial placement of elements, arriving at a final
+%composition with a more even use of negative space.
 
 
