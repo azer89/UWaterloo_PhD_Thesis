@@ -838,8 +838,7 @@ container points with additional springs.
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/allresults.pdf} 
 \caption[Three packings created using RepulsionPak: Birds, Bats, and Butterflies]
-{\label{three_packings} Three packings created using RepulsionPak: \newline Birds, Bats, and Butterflies. The results are visually appealing overall,
-though some birds' tails suffer from excessive deformation in
+{\label{three_packings} Three packings created using RepulsionPak: Birds, Bats, and Butterflies. The results are visually appealing overall, though some birds' tails suffer from excessive deformation in
 the packing on the left.}
 \end{figure*}
 
@@ -957,14 +956,13 @@ than nearly convex elements like the cat and mouse.
 
 
 The butterfly packing in Figure~\ref{three_packings} is an attempt to reproduce 
-the visual style of a 
-dense packing (or tessellation), similar to Jigsaw Image Mosaics~\cite{Kim2002}
+the visual style of a dense packing (or tessellation), similar to Jigsaw Image Mosaics~\cite{Kim2002}
 or the ``Butterflies in Butterfly'' example from the
 Pyramid of Arclength Descriptor paper~\cite[Figure 21]{Kwan2016}. 
 The target container is made from two regions,
 one with internal holes.  The resulting packing is tight but overlap-free.
 
-The packing on the left in Figure~\ref{three_packings}
+\mynote{Left???} The packing on the left in Figure~\ref{three_packings}
 exhibits significant deformation in the wings and the tails of the birds.
 In particular, the thin tails of the swallows have some unaesthetic
 sharp bends.  We would like to investigate ways to ensure these bends are
@@ -1005,10 +1003,14 @@ container effectively.
 %\mynote{remove validation}
 
 We presented RepulsionPak, a method to create packings with deformable elements.
+Each element is represented as a
+mass-spring system, allowing it to deform to achieve a better fit with
+its neighbours and the container.
 The combination of repulsion forces and controlled deformation
 allows RepulsionPak to discover shape compatibilities that
 eliminate the need for a large element library
 and fill the target container effectively.
+
 %\newtext{
 %Our compositions have negative space between elements that
 %is approximately uniform in width, and we validate our approach using overlap functions,

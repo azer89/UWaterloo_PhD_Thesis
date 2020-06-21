@@ -65,47 +65,26 @@ Elements are shapes like animals, plants, abstract, geometric, or man-made objec
 Figure~\ref{fig_logo_packing}a shows the Unilever logo,
 which is a packing of elements arranged inside a ``U'' container.
 
-%Figure~\ref{fig_graphic_designs}a is an ornamental packing
-%of long thin elements that has a flow visual style.
-%Figure~\ref{fig_graphic_designs}b is a packing
-%of autumn-themed elements. The artist further eliminates large gaps of
-%negative space using small triangle or circle elements.
-%Figure \ref{fig_woodland} is a packing of leaves, each is oriented toward the center of the container.
+The subset of the container that does not belong to any element is
+called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
+We can also interpret negative space as separation and gaps between elements.
+The evenness of negative space plays an important role in  packings.  
+The artist should arrange elements in a way that their boundaries interlock with each other,
+causing the separation between neighbouring elements to become roughly the same everywhere.
+After all, the evenness of negative space is imperfect, it is not uncommon that 
+the artist artfully placed small elements to eliminate the remaining negative space,
+for example, small circles and triangles in Figure~\ref{fig_graphic_designs}X.
 
-%(Figure~\ref{fig_logo_packing}, \ref{fig_graphic_designs}, \ref{fig_woodland}).
-%\mynote{Explain each figures}.
+%The artist should align elements in a way that their boundaries interlock with each other.
+%Unlike jigsaw puzzles that have perfect interlocking, 
+%packings contain unused container space that does not belong to any element,
+%which is called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
+%The more the elements interlock, the more even the negative space becomes.
+%After all, element interlocking ends up imperfect, it is not uncommon that 
+%the artist artfully placed small elements
+%to eliminate remaining negative (Figure~\ref{fig_graphic_designs}X).
 
-%Creating a packing is a challenging process.
-The artist should align elements in a way that their boundaries interlock with each other.
-Unlike jigsaw puzzles that have perfect interlocking, 
-packings contain unused container space that does not belong to any element,
-which is called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
-The more the elements interlock, the more even the negative space becomes.
-We hypothesize that the evenness of negative space is an indicator of the quality of a packing.
-After all, element interlocking ends up imperfect, it is not uncommon that 
-the artist artfully placed small elements
-to eliminate remaining negative (Figure~\ref{fig_graphic_designs}X).
-%In Figure~\ref{fig_graphic_designs}X the artist artfully placed small triangle or circle elements
-%to eliminate remaining negative space without improving element interlocking.
-%In Figure~\ref{fig_graphic_designs}X the artist artfully placed small triangle or circle elements
-%to eliminate remaining large gaps of negative space without improving element interlocking.
-
-%\mynote{need to juggle sentence in paragraph 2}
-%%An artist distributes elements so that they communicate the shape of the container. 
-%Creating a packing is a challenging process.
-%%The artist should align the elements with the container boundary to emphasize the container shape.
-%The artist should align elements in a way that their boundaries interlock with each other,
-%causing the separation between neighbouring elements to become roughly the same everywhere.
-%%Unlike jigsaw puzzles that have perfect interlocking, 
-%%packings contain unused container space that does not belong to any element,
-%%which is called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
-%The unused space that does not belong to any element is called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
-%We can also interpret negative space as gaps between elements.
-%We believe that the evenness of negative space is an indicator on how good the elements interlock.
-%In Figure~\ref{fig_graphic_designs}X the artist artfully placed small triangle or circle elements
-%to eliminate remaining negative space without improving element interlocking.
-
-Elements can also be oriented because of aesthetic reasons.
+Elements can also be oriented to follow certain directions for aesthetic reasons.
 Figure~\ref{fig_graphic_designs}X is an ornamental packing
 of long thin elements that are oriented outward from the center of the dog to create a flow visual style.
 Figure \ref{fig_woodland}X is a packing of leaves, each is oriented toward the center of the container.
@@ -151,8 +130,9 @@ We can achieve a degree of uniformity by using repeated copies of a small librar
 variety by deforming those elements. 
 We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
 
-We are also interested in methods for measuring the evenness of negative space
-in a packing, which provides a quantitative means of evaluating
+We hypothesize that the evenness of negative space is an indicator of the quality of a packing.
+The more the elements interlock, the more even the negative space becomes.
+Methods for measuring the evenness provide a quantitative means of evaluating
 and comparing packing algorithms.  In this paper we discuss
 several possible measurements of evenness based on methods from
 spatial statistics.
