@@ -9,7 +9,7 @@
 \includegraphics[width=1.0\textwidth]{figures/intro/unilever_w_neg_space.pdf} 
 \caption[Unilever logo]
 {\label{fig_logo_packing} 
-(a) Unilever logo which is a packing of 25 elements inside a ``U'' container. 
+(a) Unilever logo which is a packing of 25 elements inside a ``U'' container. \newline
 (b) Negative space which is the remaining area that is not claimed by the elements. }
 \end{figure}
 
@@ -18,8 +18,9 @@
 \includegraphics[width=1.0\textwidth]{figures/intro/balabolka_dog_flow.pdf} 
 \caption[Packings in graphic design]
 {\label{fig_graphic_designs} 
-(a) A packing of abstract-shaped elements, created by ComicVector703.
-(b) A packing of autumn-themed elements, created by Balabolka.  }
+(a) A packing of autumn-themed elements, created by Balabolka.
+(b) A packing of abstract-shaped elements that has a flow visual style, created by ComicVector703.
+ }
 \end{figure}
 
 \begin{figure}
@@ -71,9 +72,10 @@ We can also interpret negative space as separation and gaps between elements.
 The evenness of negative space plays an important role in  packings.  
 The artist should arrange elements in a way that their boundaries interlock with each other,
 causing the separation between neighbouring elements to become roughly the same everywhere.
-After all, the evenness of negative space is imperfect, it is not uncommon that 
-the artist artfully placed small elements to eliminate the remaining negative space,
-for example, small circles and triangles in Figure~\ref{fig_graphic_designs}X.
+After all, element interlocking is imperfect. It is not uncommon that 
+the artist artfully placed small elements to reduce remaining large gaps,
+see two examples in Figure~\ref{fig_graphic_designs}.
+%Figure~\ref{fig_graphic_designs} shows two examples that contain small circle or triangle elements.
 
 %The artist should align elements in a way that their boundaries interlock with each other.
 %Unlike jigsaw puzzles that have perfect interlocking, 
@@ -85,9 +87,9 @@ for example, small circles and triangles in Figure~\ref{fig_graphic_designs}X.
 %to eliminate remaining negative (Figure~\ref{fig_graphic_designs}X).
 
 Elements can also be oriented to follow certain directions for aesthetic reasons.
-Figure~\ref{fig_graphic_designs}X is an ornamental packing
-of long thin elements that are oriented outward from the center of the dog to create a flow visual style.
-Figure \ref{fig_woodland}X is a packing of leaves, each is oriented toward the center of the container.
+Figure~\ref{fig_graphic_designs}b is an ornamental packing
+of long thin elements that are bent and oriented outward from the center of the dog to create a flow visual style.
+Figure \ref{fig_woodland} is a packing of leaves, each is oriented toward the center of the container.
 
 There has been a moderate amount of past research in computer
 graphics, particularly in the field of non-photorealistic rendering,
@@ -130,12 +132,15 @@ We can achieve a degree of uniformity by using repeated copies of a small librar
 variety by deforming those elements. 
 We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
 
-We hypothesize that the evenness of negative space is an indicator of the quality of a packing.
-The more the elements interlock, the more even the negative space becomes.
-Methods for measuring the evenness provide a quantitative means of evaluating
-and comparing packing algorithms.  In this paper we discuss
-several possible measurements of evenness based on methods from
-spatial statistics.
+% https://learningenglish.voanews.com/a/the-more-i-practice-the-more-i-remember/4995040.html
+We believe that the evenness of negative space is an indicator of the quality of a packing.
+The more the elements interlock, the more even the negative space. % becomes
+%Methods for measuring the evenness provide a quantitative means of evaluating
+%and comparing packing algorithms.  
+We are interested in quantitative measurements of the evenness 
+in order to evaluate and compare packing algorithms.
+In this paper we discuss several possible measurements of 
+evenness based on methods from spatial statistics.
 
 In this thesis, our contribution is developing three deformation-driven packing methods and 2D packing quantitative metrics:
 \begin{enumerate}

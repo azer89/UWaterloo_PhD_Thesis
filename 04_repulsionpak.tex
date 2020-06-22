@@ -36,8 +36,8 @@
 
 \newtext
 {
-RepulsionPak~\cite{Saputra2018, Saputra2019} is a technique
-to pack elements using a simple physical simulation, 
+RepulsionPak is a technique
+to pack elements using a physical simulation, 
 in which each element is represented
 by a mass-spring system called an \textit{element mesh}.  
 \textit{Repulsion forces} between neighbouring meshes work to even out the negative
@@ -47,6 +47,16 @@ they gradually adapt to the shapes of their neighbours
 and the container boundary.  
 To control the amount of deformation,
 we use \textit{spring forces} within a mesh to preserve element shapes.
+}
+
+\newtext
+{
+By building an algorithm
+with a controllable deformation model at its core, we achieve a
+more even distribution of negative space, even with a small library
+of element shapes. We believe that the aesthetic quality
+of the packing as a whole more than compensates for the relatively
+small deformations applied to the elements.
 }
 
 %\newtext
@@ -73,11 +83,21 @@ Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
 Although they can generate appealing results, they can only accept
 convex or near convex elements as their only optimize the alignments between
 element boundaries and Voronoi cells.
-RepulsionPak can be categorized as a variant of Lloyd's method that distributes
-2D points. To allow RepulsionPak to pack elements and treat them as deformable shapes, 
-we made key differences are: (1) We spread vertices but they are binded together by elastic spring,
-forming 2D elements. (2) We use repulsion forces to distribute these vertices and we do not compute
-a Voronoi diagram.
+RepulsionPak can be categorized as a variant of Lloyd's method since it essentially
+aims to distribute 2D vertices, however, there are key differences: 
+(1) Vertices are connected by springs, forming a 2D element.
+(2) Repulsion forces distribute these vertices without computing a Voronoi diagram.
+%RepulsionPak can be categorized as a variant of Lloyd's method.
+%Elements are composed of vertices which are distributed by repulsion forces,
+%but they are still binded together by spring.
+%RepulsionPak can be categorized as a variant of Lloyd's method since
+%repulsion forces aim to distribute 2D vertices, but they are connected
+%together by springs.
+
+%RepulsionPak can be categorized as a variant of Lloyd's method since it also
+%aims to distribute 2D points, however, it has key differences: 
+%(1) Elements are represented sampled vertices but they are binded together by elastic springs. 
+%(2) Repulsion forces then distribute these vertices, but we do not compute a Voronoi diagram.
 
 \textbf{Data-driven methods:}
 Data-driven methods include Image Mosaics (JIM)~\cite{Kim2002}, 
@@ -93,7 +113,6 @@ elements were frozen in place.
 2D {Arcimboldo} Collage~\cite{Huang2011} and 3D {Arcimboldo} Collage~\cite{Gal2007B}
 are also data-driven, but they permit large overlaps
 resemble the aesthetic style of Arcimboldo's artwork. 
-
 
 \textbf{Deformation-driven methods:}
 Zehnder et al.~\cite{Zehnder2016} proposed a method to
@@ -115,12 +134,12 @@ deformed letters of one or two words to fit into a container.
 Because the order of the letterforms was defined by the text, their solutions
 usually required significant distortion of the individual letters.
 
-FLOWPAK (Chapter~\ref{flowpak_chapter}) placed ornamental
-elements to create a visual sense of flow. They used
-skeletal strokes to place elements along streamlines defined from a
-vector field.  However, their elements could not undergo more general
-deformations, and their method did not explicitly control for the evenness
-of the negative space.
+%FLOWPAK (Chapter~\ref{flowpak_chapter}) placed ornamental
+%elements to create a visual sense of flow. They used
+%skeletal strokes to place elements along streamlines defined from a
+%vector field.  However, their elements could not undergo more general
+%deformations, and their method did not explicitly control for the evenness
+%of the negative space.
 
 \textbf{Physically-based methods to simulate elastic objects:}
 Contemporary research has yielded many more sophisticated physical simulation methods.
@@ -213,8 +232,6 @@ either when the elements occupy a sufficient proportion of the container area, o
 when some number of simulation steps fail to
 significantly reduce the negative space
 (Section~\ref{repulsionpak_stopping_criteria}).
-
-\mynote{Show balabolka with and without secondary}
 
 Finally, an optional second simulation further reduces and evens out the
 negative space.  It begins by placing small secondary elements in large
