@@ -643,7 +643,7 @@ outer shell of the $5\times 5\times 5$ block around that
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[t]
+\begin{figure}[h!]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/constraints.pdf} 
 \caption[Constraints]
@@ -831,7 +831,6 @@ possible for neighbouring elements to overlap briefly during such intervals.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\mynote{the order of figures}
 
 The core AnimationPak algorithm consists of a C++ program that reads 
 in text files describing the spacetime elements and the container, 
@@ -839,7 +838,7 @@ and outputs raster images of animation frames.
 
 Large parts of AnimationPak can benefit from parallelism.  In
 our implementation we update the cells of the collision grid
-(Section~\ref{sect_spatial_queries}) in parallel by distributing them
+(Section~\ref{animationpak_spatial_queries}) in parallel by distributing them
 across a pool of threads.  When the updated collision grid is ready,
 we distribute the spacetime elements over threads.  We calculate
 forces, perform numerical integration, and apply the end-to-end and
@@ -856,7 +855,53 @@ of springs, and requires about an hour to complete.
 We enable the loop constraint in all results.  The paper shows selected frames from the
 results; see the accompanying videos for full animations.
 
-\mynote{birb entering stars !!!}
+%\begin{comment}
+\begin{table}[ht]
+\centering 
+\caption[Data and statistics for the AnimationPak results]
+{
+   Data and statistics for the AnimationPak results.  The table shows the
+   number of elements,
+   the number of vertices, 
+   the number of springs, 
+    the number of envelope triangles, and 
+   the running time of the simulation in hours, minutes, and seconds.
+   }
+\label{table_packing_statistics}
+\definecolor{lg}{rgb}{0.73,0.867,0.98}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+  \cellcolor{lg}Packing &
+  \cellcolor{lg}Elements &
+  \cellcolor{lg}Vertices & 
+  \cellcolor{lg}Springs &
+  \cellcolor{lg}Triangles &
+  \cellcolor{lg}Time \\ \hline
+\makecell{Aquatic fauna  \\ (Figure~\ref{fig_animationpak_teaser})}  
+& 37         & 97,800             & 623,634            & 106,000    & 01:06:35        
+\\ \hline
+\makecell{Snake and birb     \\ (Figure~\ref{fig_animationpak_chasing_bird})}  
+& 37         & 58,700             & 370,571            & 58,700   & 01:01:32        
+\\ \hline
+\makecell{Penguin to giraffe \\ (Figure~\ref{fig_animationpak_penguin_giraffe})}  
+& 33         & 124,300            & 824,164            & 143,000    & 01:19:50        
+\\ \hline
+\makecell{\newtext{Star birds} \\ (Figure~\ref{fig_bib_entering_star})}  
+& 32         & 63,700            & 389,373            & 70,100    & 00:19:24        
+\\ \hline
+\makecell{Lion               \\ (Figure~\ref{fig_animationpak_lion}b)}  
+& 16         & 39,400             & 236,086            & 41,800   & 00:41:56        
+\\ \hline
+\makecell{Animals            \\ (Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak}b)}  
+& 34         & 69,600             & 444,337            & 69,800   & 01:00:19        
+\\ \hline
+\makecell{Heart stars         \\ (Figure~\ref{fig_animationpak_star_comparison}c)}  
+& 26         & 85,200             & 598,218            & 85,800   & 00:23:08        
+\\ \hline
+\end{tabular}
+\end{table}
+
+
 
 Figure~\ref{fig_animationpak_teaser} is an animation of aquatic fauna featuring two
 penguins as guided elements.  During one loop the penguins move clockwise
@@ -873,24 +918,6 @@ packings.  Figure~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to
 illusion shown as a static packing in RepulsionPak.  This example
 uses torsional forces to control slice orientations.
 
-Figure~\ref{fig_animationpak_star_comparison} offers a direct comparison between
-packings computed using Centroidal Area Voronoi Diagrams
-(CAVD)~\cite{Smith2005}, the spectral approach~\cite{Dalal2006}, and
-AnimationPak.
-These packings use stars that rotate and pulsate.
-For each method we show the initial frame ($t=0$) and the halfway point
-($t=0.5$).  The CAVD approach produces a satisfactory---albeit
-loosely coupled---packing for the first frame, but because the 
-algorithm was not intended to work on animated elements, 
-the evenness of the packing quickly degrades in later frames.
-The spectral approach is much better
-than CAVD, but their animated elements still have fixed spacetime shapes
-and can only translate and rotate to improve their fit. 
-Repulsion
-forces and deformation allow AnimationPak to achieve a tighter packing
-that persists across the animation, including gear-like meshing of
-oppositely-rotating stars.
-
 \newtext{
 Figure~\ref{fig_bib_entering_star} shows an unconfined bird enters a packing of smaller birds inside a star.
 This is an example of the benefit of our growth approach.
@@ -901,7 +928,7 @@ shrinking elements that give up their space to accommodate another element.
 }
 
 Figure~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
-used as an example in FLOWPAK~\cite{Saputra2017}.  In Figure~\ref{fig_animationpak_lion}b,
+used as an example in FLOWPAK (Chapter~\ref{chapter_flowpak}).  In Figure~\ref{fig_animationpak_lion}b,
 we reproduce it with animated elements for the mane.
 The orientations of elements follow a vector field inside
 the container, and are maintained during the animation by 
@@ -916,6 +943,26 @@ The extra negative space in AnimationPak comes partly from the trade-off
 between temporal coherence and tight packing, and partly from the lack
 of secondary elements, which were used in a second pass in RepulsionPak 
 to fill pockets of negative space.
+
+
+Figure~\ref{fig_animationpak_star_comparison} offers a direct comparison between
+packings computed using Centroidal Area Voronoi Diagrams
+(CAVD)~\cite{Smith2005}, the spectral approach~\cite{Dalal2006}, and AnimationPak.
+These packings use stars that rotate and pulsate.
+For each method we show the initial frame ($t=0$) and the halfway point
+($t=0.5$).  The CAVD approach produces a satisfactory---albeit
+loosely coupled---packing for the first frame, but because the 
+algorithm was not intended to work on animated elements, 
+the evenness of the packing quickly degrades in later frames.
+The spectral approach is much better
+than CAVD, but their animated elements still have fixed spacetime shapes
+and can only translate and rotate to improve their fit. 
+Repulsion forces and deformation allow AnimationPak to achieve a tighter packing
+that persists across the animation, including gear-like meshing of
+oppositely-rotating stars.
+
+
+
 
 Figure~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
 temporal coherence and evenness of negative space by creating two animations
@@ -943,51 +990,27 @@ AnimationPak is not directly comparable to a
 packing quality of an animation that has already been blocked out at a 
 high level.
 
-%\begin{comment}
-\begin{table}[]
-\centering 
-\caption[Data and statistics for the AnimationPak results]
-{
-   Data and statistics for the AnimationPak results.  The table shows the
-   number of elements,
-   the number of vertices, 
-   the number of springs, 
-    the number of envelope triangles, and 
-   the running time of the simulation in hours, minutes, and seconds.
-   }
-\label{table_packing_statistics}
-\definecolor{lg}{rgb}{0.73,0.867,0.98}
-\begin{tabular}{|c|c|c|c|c|c|}
-\hline
-	\cellcolor{lg}Packing &
-	\cellcolor{lg}Elements &
-	\cellcolor{lg}Vertices & 
-	\cellcolor{lg}Springs &
-	\cellcolor{lg}Triangles &
-	\cellcolor{lg}Time \\ \hline
-\makecell{Aquatic fauna  \\ (Figure~\ref{fig_animationpak_teaser})}  
-& 37         & 97,800             & 623,634            & 106,000		& 01:06:35        
-\\ \hline
-\makecell{Snake and birb     \\ (Figure~\ref{fig_animationpak_chasing_bird})}  
-& 37         & 58,700             & 370,571            & 58,700		& 01:01:32        
-\\ \hline
-\makecell{Penguin to giraffe \\ (Figure~\ref{fig_animationpak_penguin_giraffe})}  
-& 33         & 124,300            & 824,164            & 143,000		& 01:19:50        
-\\ \hline
-\makecell{\newtext{A bird enters a star} \\ (Figure~\ref{fig_bib_entering_star})}  
-& 32         & 63,700            & 389,373            & 70,100    & 00:19:24        
-\\ \hline
-\makecell{Heart stars         \\ (Figure~\ref{fig_animationpak_star_comparison}c)}  
-& 26         & 85,200             & 598,218            & 85,800		& 00:23:08        
-\\ \hline
-\makecell{Animals            \\ (Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak}b)}  
-& 34         & 69,600             & 444,337            & 69,800		& 01:00:19        
-\\ \hline
-\makecell{Lion               \\ (Figure~\ref{fig_animationpak_lion}b)}  
-& 16         & 39,400             & 236,086            & 41,800		& 00:41:56        
-\\ \hline
-\end{tabular}
-\end{table}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+\label{animationpak_conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+We introduced AnimationPak, a system for 
+generating animated packings by filling a static container with animated
+elements.  Every animated 2D element is represented by an extruded 
+spacetime tube.
+We discretize elements into triangle mesh slices connected by time edges,
+and deform element shapes and animations using a spacetime physical
+simulation.  The result is a temporally coherent 2D animation of elements
+that attempt both to perform their scripted motions and consume the negative
+space of the container.
+We show a variety of results where
+2D elements move around inside the container.
+
+
 
 
 \begin{figure*}
@@ -1023,6 +1046,34 @@ The smaller birds shrink to give up their space to accommodate another element.}
 \end{figure*}
 
 \begin{figure*}
+  \centering
+  \includegraphics[width=1.0\textwidth]{figures/animationpak/lion_comparison.pdf}
+  \caption[A packing of lion's mane]
+  {
+  \label{fig_animationpak_lion}
+    (a) A static packing made by an artist, taken from StockUnlimited. 
+  (b) The first frame from an AnimationPak packing. 
+  (c) The input animated elements and the container shape with a vector field.
+  Torsional forces keep elements oriented in the direction of the
+  vector field.  We simulate half of the lion's mane and render the other
+  half using a reflection, and add the facial features by hand.
+  }  
+\end{figure*}
+\begin{figure*}
+  \centering
+  \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsionpak_vs_animationpak.pdf}
+  \caption[A comparison between RepulsionPak and AnimationPak]
+  {
+  \label{fig_animationpak_repulsionpak_vs_animationpak}
+    (a) A static packing created with RepulsionPak.
+  (b) The first frame of a comparable AnimationPak packing.
+    The input spacetime elements are shown on the right.
+  The AnimationPak packing has more negative space because
+  we must tradeoff between temporal coherence and packing density.
+  }  
+\end{figure*}
+
+\begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/star_comparison.pdf} 
 \caption[An comparison between CAVD, The spectral approach, and AnimationPak]
@@ -1038,33 +1089,7 @@ The AnimationPak packing has less negative space that is more even.}
 \end{figure*}
 
 
-\begin{figure*}
-  \centering
-  \includegraphics[width=1.0\textwidth]{figures/animationpak/lion_comparison.pdf}
-  \caption[A packing of lion's mane]
-  {
-  \label{fig_animationpak_lion}
-    (a) A static packing made by an artist, taken from StockUnlimited. 
-	(b) The first frame from an AnimationPak packing. 
-	(c) The input animated elements and the container shape with a vector field.
-	Torsional forces keep elements oriented in the direction of the
-	vector field.  We simulate half of the lion's mane and render the other
-	half using a reflection, and add the facial features by hand.
-  }  
-\end{figure*}
-\begin{figure*}
-  \centering
-  \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsionpak_vs_animationpak.pdf}
-  \caption[A comparison between RepulsionPak and AnimationPak]
-  {
-  \label{fig_animationpak_repulsionpak_vs_animationpak}
-  	(a) A static packing created with RepulsionPak.
-	(b) The first frame of a comparable AnimationPak packing.
-    The input spacetime elements are shown on the right.
-	The AnimationPak packing has more negative space because
-	we must tradeoff between temporal coherence and packing density.
-  }  
-\end{figure*}
+
 
 
 \begin{figure}[t]
@@ -1097,24 +1122,7 @@ The red circle demonstrates one such maneuver.
 \end{figure}
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
-\label{animationpak_conclusions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We introduced AnimationPak, a system for 
-generating animated packings by filling a static container with animated
-elements.  Every animated 2D element is represented by an extruded 
-spacetime tube.
-We discretize elements into triangle mesh slices connected by time edges,
-and deform element shapes and animations using a spacetime physical
-simulation.  The result is a temporally coherent 2D animation of elements
-that attempt both to perform their scripted motions and consume the negative
-space of the container.
-We show a variety of results where
-2D elements move around inside the container.
 
 
 
