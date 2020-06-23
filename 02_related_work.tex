@@ -74,26 +74,27 @@ all points inside a Voronoi cell are closest to its associated point element.
 As an iterative process, 
 the Lloyd's method moves every point elements to the centroid of its Voronoi cell, 
 then the Voronoi diagram is recomputed.
-The process is repeated until the distribution is even.
-The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD), 
-where all the site points are located at the the centroids of the Voronoi cells. 
+The process is repeated until the distribution is even,
+that means all the point elements are located at the the centroids of the Voronoi cells.
+The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD).
+ 
 
 Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
 This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
 It turns out that using a customized distance function leads to interesting Voronoi cell shapes,
 we will discuss a few more of related work that use this exploit throughout this chapter. 
-Hausner's approach has a flaw, it can only translate the squares, and a vector field is required to rotate them.
+However, Hausner's approach can only translate the squares, and a vector field is required to rotate them.
 Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
 Javid et al.~\cite{Javid2019} constructed a distance function that 
 incorporates a spatial distance, a color distance, and an elongation factor. Their resulted
 Voronoi cells have elongated shapes, resembling pebble-like mosaics.
 
 Hiller et al.~\cite{Hiller2003} improved upon Hausner's idea to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
-a variant of CVD that can distribute simple polygonal elements.
-This new extension computes main inertia axes for each Voronoi cell so that 
+a variant of CVD that is a distribution of simple polygonal elements.
+This new extension computes the main inertia axis for each Voronoi cell so that 
 its element can be rotated to get better alignment with the Voronoi cell boundary.
-In a follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
+In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
 Dalal et al.~\cite{Dalal2006} impoved upon CAVD using an FFT-based image correlation to reposition
 and rotate elements with their Voronoi cell boundaries, which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
@@ -112,9 +113,10 @@ Pyramid of Arclength Descriptor~\cite{Kwan2016} developed
 a partial shape matching algorithm that can match a subset of element boundary with a portion
 of container boundary.
 
-It is also possible to initially partition the container into smaller segments,
-then use a shape matching algorithm to independently replace each segment with a matching element.
-This is desirable if the container has color or salient properties.
+It is also possible to initially partition the container into smaller segments.
+This is desirable if the container has colors or salient parts,
+so that they can independently replace each segment with a matching element.
+This is desirable if the container has colors or salient parts.
 Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
 by arranging cutout images collected from the internet.
 Their container is a larger cutout image which is partitioned into segments
@@ -139,7 +141,7 @@ a deformation-driven method forces elements to create compatibilities and shape 
 As an advantage, a deformation-driven method can rely on a small size element library.
 Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes, although their method cannot handle more
-complicated shapes, making it unsuitable for our style of packings.
+complicated shapes.
 Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
 constructed \textit{calligrams} by filling a container with a small
 number of deformed letters composing one or two words (Figure~\ref{fig_calligraphy_packing}).  
@@ -169,7 +171,7 @@ A tiling of cats. }
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-As elements reach perfect compatibility, a packing turns to a tiling (Figure~\ref{fig_related_escherization}).
+As elements reach perfect compatibility, a packing turns to a tiling, see Figure~\ref{fig_related_escherization} for an example.
 The element boundaries interlock, leaving no negative space.
 Kaplan and Salesin~\cite{Kaplan2000, Kaplan2004} deformed one or two 
 input elements into ones that can tile the plane.
@@ -182,11 +184,14 @@ The tile $T$ also cannot fill a container due to its highly structured boundary.
 
 
 Lin et al.~\cite{Lin2018} generated tiling arrangements that resemble Escher's Sky and Water I.
-Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas.
-Then copies of each element are placed in sequence, 
-until they meet and tile each other in the middle of the canvas.
-The farther a copy from the original element, the more deformed it is, so that they
-create a ``fading effect, the elements spatially transition to negative space.
+Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas,
+then they are copied and arranged in rows such 
+that the copies right in the middle of canvas tile each other.
+%Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas.
+%Then copies of each element are spread away in rows, 
+%until they meet and tile each other right in the middle of the canvas.
+The farther a copy from the original element, the more deformed it is, 
+creating a ``fading effect'', the elements spatially transition to negative space.
 This work is data-driven, as it only requires a single input element $S_1$, 
 and they find a compatible element $S_2$ from a library.
 
@@ -198,9 +203,9 @@ Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an exemplar.
 An element is represented as a single point, which is adequate for a small rigid element.
-Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} use a growth model that copies small neighbourhoods
+Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighbourhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
-stamp out copies of the exemplar and discard overlapping elements.
+stamped out copies of the exemplar and discard overlapping elements.
 Hurtut et al.~\cite{Hurtut2009} developed a statistical sampling method based
 on multitype point processes.  
 Loi et al.~\cite{Loi2017} developed a texture synthesis method that
@@ -213,8 +218,8 @@ Ma et al.~\cite{Ma2011} used sample-based representation
 that works by distributing a sparse set of points inside an element.
 They later distributed these points using a neighborhood metric and an iterative optimization.
 Unlike previous work, they are able synthesize textures with long deformable elements, for example, spaghetti.
-Ma et al. later extended their work to accept an animated element~\cite{Ma2013}, where
-a sample point resides in a spacetime domain.
+Ma et al. later extended their work to accept animated elements~\cite{Ma2013}, where
+a sample point has spatial and time positions, turning the problem to spacetime texture synthesis.
 More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into a user interface
 where an artist can initially distribute elements by drawing strokes
 which are then optimized using a Lloyd-like optimization.
@@ -224,6 +229,9 @@ which are then optimized using a Lloyd-like optimization.
 %Ma et al.~\cite{Ma2011} use sparse point samples to represent an element, which
 %give an advantage of distributing 
 
+
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{3D Packings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -231,7 +239,7 @@ which are then optimized using a Lloyd-like optimization.
 Collages are arragements of overlapping elements, similar to
 portrait paintings by Arcimboldo.
 Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-collages.  They filled a 3D container with overlapping 3D elements using a greedy
+collages (Figure~\ref{fig_related_gal_zehnder}a).  They filled a 3D container with overlapping 3D elements using a greedy
 approach and a partial shape matching algorithm.
 Huang et al.~\cite{Huang2014} designed a method
 to generate mechanical collages, such as giant robots.
@@ -243,7 +251,7 @@ The final result of animated collage consists of rigid motions of elements.
 All these collage methods require a 3D shape database so they can be considered as data-driven. 
 %Both these collage methods require a 3D shape database so they can be considered as data-driven. 
 
-The cutting and packing problem is defined (C\&P) as cutting a large object into smaller parts 
+The cutting and packing problem (C\&P) is defined as cutting a large object into smaller parts 
 which are then packed inside a container.
 C\&P is popular in manufacturing and 3D printing because
 objects can be produced with less waste material and packed into a smaller box.
@@ -270,13 +278,6 @@ gradient methods, heuristics, simulated annealing, and genetic algorithms.
 
 
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/zehnder.pdf} 
-\caption[An example of decorative ornaments filling a surface]
-{\label{fig_related_zehnder} 
-An example of decorative ornaments that fill a surface~\cite{Zehnder2016}.}
-\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packings on Surfaces}
@@ -288,16 +289,24 @@ Chen et al.~\cite{Chen2016} developed a method to generate a filigree pattern,
 which is an arrangement of decorative thin rod elements on a surface.
 Given an initial random configuration of overlapping elements, their method
 removes overlaps by either deforming or trimming the rods.
-Bian et al.~\cite{Bian2018} later used Wang tiles made of element parts to generate similar filigree patterns.
+Bian et al.~\cite{Bian2018} used Wang tiles made of element parts to generate similar filigree patterns.
 In similar work, Zehnder et al.~\cite{Zehnder2016} 
-proposed semi-automated tools for deforming ornamental curves to cover a surface (Figure~\ref{fig_related_zehnder}). 
+proposed semi-automated tools for deforming ornamental curves to cover a surface (Figure~\ref{fig_related_gal_zehnder}b). 
 They start with an initial configuration of scaled down elements
 that has no overlaps. They later extend the rod elements and 
 overlaps can be avoided by deforming the rods.
 Mart\'{\i}nez et al.~\cite{Martinez2019} developed a method to generate
 star-shaped tiling patterns that are printed onto tracery sheets.
-Their method works by constructing a star-shaped metric to generate a Voronoi diagrams with star-shaped cells. 
+Their method works by constructing a star-shaped distance function to generate a Voronoi diagrams with star-shaped cells. 
 
-
-
-
+\makeatletter % brooo
+\setlength{\@fptop}{0pt} % brooo
+\makeatother % brooo
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/gal_zehnder.pdf} 
+\caption[An example of decorative ornaments filling a surface]
+{\label{fig_related_gal_zehnder} 
+(a) Arcimboldo-like 3D packing~\cite{Gal2007B}. 
+(b) Decorative elements that fill a surface~\cite{Zehnder2016}.}
+\end{figure}
