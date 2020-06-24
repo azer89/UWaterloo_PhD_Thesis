@@ -337,7 +337,7 @@ be used to set various parameters in the synthesis process.
 
 An ornamental element is defined as one or more closed curves.  Our placement method will
 eventually deform copies of the element (Section~\ref{flowpak_shape_matching_and_deformation}) 
-using a simple skeletal stroke algorithm~\cite{Hsu93},
+using a simple skeletal stroke algorithm~\cite{Hsu1993},
 so each element must be annotated with a straight spine to guide the deformation.  The spine
 does not need to go through the center of the element---it can be anywhere.
 
@@ -539,7 +539,7 @@ this computation to be more expensive without providing significant
 advantages over our LR functions.
 
 Once we have chosen an element, we place it along the streamline using a
-simple skeletal stroke algorithm~\cite{Hsu93}. We uniformly scale the element's width
+simple skeletal stroke algorithm~\cite{Hsu1993}. We uniformly scale the element's width
 to make it as wide as possible while still staying inside the blob
 (Figure~\ref{shape_deformation}).
 
@@ -682,7 +682,7 @@ $\bm{p'_\mathrm{start}}$ and $\bm{p'_\mathrm{end}}$. Our goal
 is to create a path that is smooth and does not deviate too much from the vector
 field.  We calculate the shifted streamline by performing Dijkstra's
 algorithm on a non-rectangular graph that respects the vector field
-(Figure~\ref{dijkstra}), using a method similar to one by Xu and Mould~\cite{Mould2015} for
+(Figure~\ref{dijkstra}), using a method similar to one by Xu and Mould~\cite{Xu2015} for
 pathfinding in a vector field.
 
 To construct the graph, we begin by densely sampling the original

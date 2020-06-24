@@ -802,6 +802,7 @@ animation frame-by-frame by cutting through this volume at
 evenly spaced $t$ values from $t=0$ to $t=1$.  For our results, we
 typically render 500-frame animations.
 
+
 During simulation, a given spacetime element's slices may drift from their
 original creation times.  However, time springs keep the sequence
 monotonic, and the simultaneity constraint ensures that every slice
@@ -812,7 +813,7 @@ bound the interval containing $t_f$ and linearly interpolate the vertex
 positions of the triangulations at those two slices to obtain a new
 triangulation at $t_f$.  We can then compute a deformed copy of the
 original element paths by ``replaying'' the barycentric coordinates 
-computed in Section~\ref{sect_animated_elements} relative to the displaced
+computed in Section~\ref{animationpak_spacetime_extrusion} relative to the displaced
 triangulation vertices.  We repeat this process for every spacetime element
 to obtain a rendering of the frame at $t_f$.
 
@@ -851,11 +852,11 @@ of eight threads, corresponding to the number of logical CPU cores.
 Table~\ref{table_packing_statistics} shows statistics for our results.
 Each packing has tens of thousands of vertices and hundreds of thousands
 of springs, and requires about an hour to complete.
-We enable the loop constraint in all results.  The paper shows selected frames from the
-results; see the accompanying videos for full animations.
+We enable the loop constraint in all results.  \newtext{This chapter shows selected frames from the
+results; see supplemental videos for full animations\footnote{\url{https://cs.uwaterloo.ca/~radhitya/animationpak/videos.zip}}.}
 
 %\begin{comment}
-\begin{table}[ht]
+\begin{table}[t!]
 \centering 
 \caption[Data and statistics for the AnimationPak results]
 {
