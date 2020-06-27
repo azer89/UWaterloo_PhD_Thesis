@@ -9,8 +9,12 @@
 \includegraphics[width=1.0\textwidth]{figures/intro/unilever_w_neg_space.pdf} 
 \caption[Unilever logo]
 {\label{fig_logo_packing} 
+\newtext
+{
 (a) Unilever logo which is a packing of 25 elements inside a ``U'' container. \newline
-(b) Negative space which is the remaining area that is not claimed by the elements. }
+(b) Negative space which is the remaining area that is not claimed by the elements. 
+}
+}
 \end{figure}
 
 \begin{figure}
@@ -18,8 +22,11 @@
 \includegraphics[width=1.0\textwidth]{figures/intro/balabolka_dog_flow.pdf} 
 \caption[Packings in graphic design]
 {\label{fig_graphic_designs} 
+\newtext
+{
 (a) A packing of autumn-themed elements, created by Balabolka.
 (b) A packing of abstract-shaped elements that has a flow visual style, created by ComicVector703.
+}
  }
 \end{figure}
 
@@ -28,7 +35,11 @@
 \includegraphics[width=1.0\textwidth]{figures/intro/woodland.jpg} 
 \caption[Packing in art]
 {\label{fig_woodland} 
-A packing of leaves by James Brunt. Each leaf is oriented toward the center of the circle. }
+\newtext
+{
+A packing of leaves by James Brunt. Each leaf is oriented toward the center of the circle.
+}
+ }
 \end{figure}
 
 %\begin{figure}
@@ -56,6 +67,8 @@ A packing of leaves by James Brunt. Each leaf is oriented toward the center of t
 
 %\mynote{align with boundary}
 
+\newtext
+{
 A \textit{packing} is an arrangement of 2D geometric
 \textit{elements} within a \textit{container} region in the plane.
 Packings can communicate a relationship between a whole and the parts that make it up.
@@ -65,7 +78,10 @@ Packings are popular in logo design, graphics design, and art.
 Elements are shapes like animals, plants, abstract, geometric, or man-made objects.
 Figure~\ref{fig_logo_packing}a shows the Unilever logo,
 which is a packing of elements arranged inside a ``U'' container.
+}
 
+\newtext
+{
 The subset of the container that does not belong to any element is
 called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
 We can also interpret negative space as separation and gaps between elements.
@@ -75,6 +91,7 @@ causing the separation between neighbouring elements to become roughly the same 
 After all, element interlocking is imperfect. It is not uncommon that 
 the artist artfully placed small elements to reduce remaining large gaps,
 see two examples in Figure~\ref{fig_graphic_designs}.
+}
 %Figure~\ref{fig_graphic_designs} shows two examples that contain small circle or triangle elements.
 
 %The artist should align elements in a way that their boundaries interlock with each other.
@@ -86,11 +103,16 @@ see two examples in Figure~\ref{fig_graphic_designs}.
 %the artist artfully placed small elements
 %to eliminate remaining negative (Figure~\ref{fig_graphic_designs}X).
 
+\newtext
+{
 Elements can also be oriented to follow certain directions for aesthetic reasons.
 Figure~\ref{fig_graphic_designs}b is an ornamental packing
 of long thin elements that are bent and oriented outward from the center of the dog to create a flow visual style.
 Figure \ref{fig_woodland} is a packing of leaves, each is oriented toward the center of the container.
+}
 
+\newtext
+{
 There has been a moderate amount of past research in computer
 graphics, particularly in the field of non-photorealistic rendering,
 on the generation of packings, or mosaics.  
@@ -114,7 +136,10 @@ However, a large library may not be feasible or artistically desirable.
 If an artist wants a packing of hand-drawn cats, and a data-driven approach 
 cannot find a good result with ten cat shapes, 
 the artist may not want to draw 100 or 1000 cats to ensure a better fit.
+}
 
+\newtext
+{
 We propose \textit{deformation-driven} methods.
 Instead of finding compatible elements,
 we intend to \textit{create compatible elements} through deformation
@@ -124,14 +149,20 @@ to trade off between the evenness of the element distribution and
 the deformations of the individual elements.
 By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, even with a small library of element shapes.
+}
 
+\newtext
+{
 Deformation-driven methods also allow us to work toward a design principle called \textit{uniformity amidst variety}~\cite{Hutcheson1729, Gombrich}. 
 \textit{Uniformity} aims for an overall unity of design and 
 \textit{variety} seeks to break up the monotony of pure repetition.
 We can achieve a degree of uniformity by using repeated copies of a small library of elements, but balance that uniformity with
 variety by deforming those elements. 
 We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
+}
 
+\newtext
+{
 % https://learningenglish.voanews.com/a/the-more-i-practice-the-more-i-remember/4995040.html
 We believe that the evenness of negative space is an indicator of the quality of a packing.
 The more the elements interlock, the more even the negative space. % becomes
@@ -141,7 +172,10 @@ We are interested in quantitative measurements of the evenness
 in order to evaluate and compare packing algorithms.
 In this paper we discuss several possible measurements of 
 evenness based on methods from spatial statistics.
+}
 
+\newtext
+{
 In this thesis, our contribution is developing three deformation-driven packing methods and 2D packing quantitative metrics:
 \begin{enumerate}
 \item FLOWPAK is a packing method that deforms long thin elements to follow a user-defined vector field (Chapter~\ref{chapter_flowpak}).
@@ -152,7 +186,7 @@ In this thesis, our contribution is developing three deformation-driven packing 
 \item  Quantitative metrics for 2D packings: the overlap functions, spherical contact probability functions,
 and histograms of the distance transforms (Chapter~\ref{chapter_qualitative_metrics}). 
 \end{enumerate}
-
+}
 
 
 %\begin{labeling}{alligator}

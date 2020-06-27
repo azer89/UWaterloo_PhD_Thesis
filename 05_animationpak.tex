@@ -75,7 +75,7 @@ gear-like meshing of oppositely-rotating Lisas.}}
 
 %\mynote{Only discuss papers whose ideas you use or you're comparing with}
 
-\textbf{Packings and mosaics:} 
+\textbf{Packings and Mosaics:} 
 Researchers have explored many approaches to creating 2D packings and
 simulated mosaics, including using Centroidal Area Voronoi Diagrams (CAVDs) to
 position elements~\cite{Hausner2001,Hiller2003,Smith2005}, spectral
@@ -84,7 +84,7 @@ minimization~\cite{Kim2002}, and shape descriptors~\cite{Kwan2016}.
 Please refer back to Chapter~\ref{chapter_related_work} 
 for a complete list of research in 2D packings.
 
-\textbf{Animated packings and tilings:}
+\textbf{Animated Packings and Tilings:}
 Animosaics by Smith et al.~\cite{Smith2005} constructed animations 
 in which static elements without scripted
 animations follow the motion of an animated container.  Elements are
@@ -112,7 +112,7 @@ the plane from copies of a single shape.  Elements in a tiling
 fit together by construction, and therefore always consume all 
 the negative space in the animation.
 
-\textbf{3D packings:} 
+\textbf{3D Packings:} 
 AnimationPak fills a 3D container with 3D elements, 
 and is therefore related to other work on constructing freeform 3D
 packings, \newtext{although the time axis in the spacetime domain 
@@ -146,7 +146,7 @@ However, as a texture syntesis method,
 the goal of DET is to distribute elements, and not fill the negative space.
 }
 
-\textbf{Derived animations:} 
+\textbf{Derived Animations:} 
 AnimationPak falls into the category of systems that create a derived
 animation based on some input animation. This problem, which
 requires preserving the visual character of the input, is a 
@@ -442,7 +442,7 @@ initial placement of spacetime elements.
 \begin{figure} [t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsion_force.pdf} 
-\caption[Repulsion forces applied to a vertex $\bm{x}$]
+\caption[Repulsion forces applied to a vertex]
 {\label{fig_animationpak_repulsion_force} 
 Repulsion forces applied to a vertex $\bm{x}$, 
 allowing the element to deform and move away from a neighbouring element.}
@@ -563,7 +563,7 @@ where
 
 \newtext
 {
-\textbf{Numerical integration:}
+\textbf{Numerical Integration:}
 We use explicit Euler integration to simulate the motions of the mesh vertices under the
 forces described above.  Every vertex has a position and a velocity vector; in
 every iteration, we update velocities using forces, and update positions using
@@ -662,14 +662,14 @@ which must be enforced throughout the simulation.  Each of the following
 constraints is reapplied after each physical simulation step described above.
 
 \begin{enumerate}
-\item \textbf{End-to-end constraint:}
+\item \textbf{End-To-End Constraint:}
 A spacetime element must be present for the full length of the animation
 from $t=0$ to $t=1$.  After every simulation step, every vertex belonging
 to an element's first slice has its $t$ value set to $0$, and every vertex
 of the last slice has its $t$ value set to $1$
 (Figure~\ref{fig_animationpak_constraints}a).
 
-\item \textbf{Simultaneity constraint:}
+\item \textbf{Simultaneity Constraint:}
 During simulation, the vertices of a slice can drift away from each
 other in time, which could lead to rendering artifacts in the animation.
 After every simulation step, we compute the average $t$ value of all
@@ -677,7 +677,7 @@ vertices belonging to each slice other than the first and last slices, and
 snap all the slice's vertices to that $t$ value 
 (Figure~\ref{fig_animationpak_constraints}b).
 
-\item \textbf{Loop constraint:}
+\item \textbf{Loop Constraint:}
 AnimationPak optionally supports looping animations.
 When looping is enabled, we must ensure that the $t=0$ and $t=1$ planes
 of the spacetime container are identical.  
@@ -728,7 +728,7 @@ element shapes will lead to imperfect packings with additional pockets
 of negative space.
 
 
-\textbf{Element growth:}
+\textbf{Element Growth:}
 We induce elements to grow spatially by gradually increasing the rest 
 lengths of their springs.
 The initial rest length of each spring is determined by the vertex positions in
@@ -794,7 +794,7 @@ at evenly spaced time values from $t=0$ to $t=1$.
 }
 \end{figure*}
 
-The result of the simulation described \newtext{previously} is a packing of spacetime 
+The result of the simulation described previously is a packing of spacetime 
 elements within a spacetime container.  We can render an
 animation frame-by-frame by cutting through this volume at 
 evenly spaced $t$ values from $t=0$ to $t=1$.  For our results, we

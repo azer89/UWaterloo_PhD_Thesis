@@ -213,7 +213,7 @@ The containers are then seeded with randomly placed
 copies of scaled-down elements 
 (Section~\ref{repulsionpak_preprocessing}).
 
-\newtext{RepulsionPak then performs a physics simulation on the meshes, 
+RepulsionPak then performs a physics simulation on the meshes, 
 making them simultaneously grow and repel each other. As a
 proof of concept, we implement a spring-based 
 simulation, which yields satisfactory results despite its simplicity;
@@ -225,7 +225,6 @@ places where meshes overlap or vertices move outside target containers
 (Section~\ref{repulsionpak_simulation}).
 After each iteration of the simulation, meshes grow into adjacent space
 if possible, so that they gradually consume the negative space in the container.
-}
 
 The simulation concludes 
 either when the elements occupy a sufficient proportion of the container area, or 
@@ -373,11 +372,11 @@ We prepare our simulation by randomly placing non-overlapping elements.
 We design a simulation in which we generate 
 forces that transform elements by transforming their meshes.
 Let $\bm{x} = (x, y)$ be a vertex of an element mesh. 
-The total force $\bm{F}$ applied to $\bm{x}$ is
+The total force $\simforce{total}$ applied to $\bm{x}$ is
 \begin{equation}
-\bm{F} = \simforce{r} + \simforce{e} + \simforce{b} + \simforce{o} + \simforce{t}
+\simforce{total} = \simforce{rpl} + \simforce{edg} + \simforce{bdr} + \simforce{ovr} + \simforce{tor}
 \end{equation}
-where $\simforce{r}$, $\simforce{e}$, $\simforce{b}$, $\simforce{o}$ and $\simforce{t}$ are 
+where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$ and $\simforce{tor}$ are 
 the repulsion force, the edge force, the boundary force, the overlap force, and the torsional force.
 These forces combine with the growth process, described in
 Section~\ref{repulsionpak_element_growth}, to completely fill the target container.
@@ -391,7 +390,7 @@ Section~\ref{repulsionpak_element_growth}, to completely fill the target contain
 %% How do we know which neighbours to iterate over?
 
 \medskip
-\textbf{Repulsion force:} 
+\textbf{Repulsion Force:} 
 The repulsion force tries to push element meshes apart when they approach
 each other, with the goal of
 making them transform to align their boundaries (Figure~\ref{fig_forces}a).
@@ -401,7 +400,7 @@ experience an inverse square repulsive force, inspired by Coulomb's law,
 from all nearby meshes.  We use the following formula:
 
 \begin{equation}
-\simforce{r} = k_\mathrm{rpl} \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{\varsigma  +\| \bm{u} \|^2 }
+\simforce{rpl} = k_\mathrm{rpl} \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{\varsigma  +\| \bm{u} \|^2 }
 \end{equation}
 where 
 \begin{packeddescriptions}
@@ -433,7 +432,7 @@ correct it.
 %%%%%%%%%%%%%%%%%%%% EDGE FORCE %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \medskip
-\textbf{Edge force:} 
+\textbf{Edge Force:} 
 \newtext{
 A mesh's edges are treated as longitudinal \textit{ springs};
 displacement of these springs allows a mesh to deform in response to repulsion forces
@@ -445,7 +444,7 @@ mesh vertices connected by a spring.  We compute the spring force as follows:
 }
 \begin{equation}
 \label{eq_edge_force}
-\simforce{e} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
+\simforce{edg} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
 \end{equation}
 where
 \begin{packeddescriptions}
@@ -473,7 +472,7 @@ when subjected to powerful forces.
 %% CSK TODO: verify that "centroid" is the right word here.
 
 \medskip
-\textbf{Overlap force:}
+\textbf{Overlap Force:}
 Occasionally, a vertex $\bm{x}$ from one mesh can be pushed inside the skin of a
 neighbouring mesh.  In such cases, we temporarily disable the repulsion force
 on this vertex
@@ -483,7 +482,7 @@ as a vertex will pull $\bm{x}$ in the direction of its centroid.  The overlap
 force is thus given by:
 
 \begin{equation}
-\simforce{o} = k_\mathrm{ovr} \sum_{i = 1}^{n} (\bm{p_{i}} - \bm{x})
+\simforce{ovr} = k_\mathrm{ovr} \sum_{i = 1}^{n} (\bm{p_{i}} - \bm{x})
 \end{equation}
 where
 \begin{packeddescriptions}
@@ -498,7 +497,7 @@ The overlap force is zero for vertices that are not within another mesh.
 %%%%%%%%%%%%%%%%%%%% BOUNDARY FORCE %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \medskip
-\textbf{Boundary force:}
+\textbf{Boundary Force:}
 The boundary force causes element meshes to stay inside the target container
 and conform to its boundary. It applies to any vertex $\bm{x}$ that
 is outside the container, and moves the vertex towards the closest point
@@ -506,7 +505,7 @@ on the container's boundary, by an amount proportional to the distance to
 the boundary:
 %%% EQ
 \begin{equation}
-\simforce{b} = k_\mathrm{bdr} (\bm{p_b} - \bm{x})
+\simforce{bdr} = k_\mathrm{bdr} (\bm{p_b} - \bm{x})
 \end{equation}
 where
 \begin{packeddescriptions}
@@ -517,7 +516,7 @@ where
 The boundary force is zero for any point inside the container.
 
 \medskip
-\textbf{Torsional force:} 
+\textbf{Torsional Force:} 
 As forces propagate through an element mesh, the aggregate velocity
 vectors of the vertices can induce a rotation of the entire element.
 However, some elements may have a preferred orientation,
@@ -535,7 +534,7 @@ the element and let $\bm{u}=\bm{x}-\bm{c}$.  Then the torsional force
 is
 
 \begin{equation}
-  \simforce{t} =\begin{cases}
+  \simforce{tor} =\begin{cases}
     k_\mathrm{tor}\bm{u}^\perp, & \theta > 0\\
     -k_\mathrm{tor}\bm{u}^\perp, & \theta < 0
   \end{cases}
@@ -557,7 +556,7 @@ Unlike the first four force types, the torsional force is optional.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \medskip
-\textbf{Simulation details:} 
+\textbf{Simulation Details:} 
 We use explicit Euler integration to simulate the motions of the mesh vertices under the
 forces described above.  Every vertex has a position and a velocity vector; in
 every iteration, we update velocities using forces, and update positions using
@@ -698,7 +697,7 @@ simulation and growth process again, but freeze the primary elements:
 they exert repulsion forces on secondary elements and can induce
 overlaps, but primary mesh vertices cannot move.  The secondary
 elements gradually grow to consume some of the remaining negative
-space until the packing satisfies the same stopping \newtext{criteria}
+space until the packing satisfies the same stopping criteria
 described above.
 
 %Packings with secondary elements are shown throughout the paper; 
