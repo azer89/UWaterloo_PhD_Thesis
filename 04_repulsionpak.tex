@@ -51,8 +51,8 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 
 \newtext
 {
-By building an algorithm
-with a controllable deformation model at its core, we achieve a
+Unlike FLOWPAK that deforms long thin elements, we design RepulsionPak to deform arbitrary shaped elements.
+By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, even with a small library
 of element shapes. We believe that the aesthetic quality
 of the packing as a whole more than compensates for the relatively
@@ -76,7 +76,7 @@ small deformations applied to the elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\textbf{Lloyd's method:}
+\textbf{Lloyd's Method:}
 Variants of Lloyd's method include
 Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
 Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
@@ -99,7 +99,7 @@ aims to distribute 2D vertices, however, there are key differences:
 %(1) Elements are represented sampled vertices but they are binded together by elastic springs. 
 %(2) Repulsion forces then distribute these vertices, but we do not compute a Voronoi diagram.
 
-\textbf{Data-driven methods:}
+\textbf{Data-driven Methods:}
 Data-driven methods include Image Mosaics (JIM)~\cite{Kim2002}, 
 the Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}.
 JIM packed nearly-convex elements tightly by placing one element at a time and
@@ -114,7 +114,7 @@ elements were frozen in place.
 are also data-driven, but they permit large overlaps
 resemble the aesthetic style of Arcimboldo's artwork. 
 
-\textbf{Deformation-driven methods:}
+\textbf{Deformation-Driven Methods:}
 Zehnder et al.~\cite{Zehnder2016} proposed a method to
 cover 3D surfaces with deformed ornamental elastic curves.
 Our method has some similarities to theirs in that both start with 
@@ -141,7 +141,7 @@ usually required significant distortion of the individual letters.
 %deformations, and their method did not explicitly control for the evenness
 %of the negative space.
 
-\textbf{Physically-based methods to simulate elastic objects:}
+\textbf{Physically-Based Methods for Deformable Objects:}
 Contemporary research has yielded many more sophisticated physical simulation methods.
 the Finite Element Method (FEM) is accurate and realistic but notoriously slow.
 Position Based Dynamics (PBD)~\cite{Muller2007} is simple, robust, and efficient to be used in
@@ -151,7 +151,7 @@ Projective dynamics uses a variational implicit time integration and optimize by
 alternating a local constraint step and a global solve step.
 
 
-\textbf{Physics-based NPR:} Pedersen and
+\textbf{Physics-Based NPR:} Pedersen and
 Singh~\cite{Pedersen2006} grew curves to create organic
 labyrinthine paths. Their algorithm is related to ours by the use
 of repulsion forces to maintain even spacing and parallel segments.
@@ -313,7 +313,7 @@ their neighbours.
 \newtext{
 We also add extra edges to prevent
 folding or self-overlaps during simulation
-(Fig.~\ref{fig_discretization}c).  First, if two triangles 
+(Fig.~\ref{fig_forces}b).  First, if two triangles 
 $ABC$ and $BCD$ share edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$. 
 Second, we triangulate the negative space
@@ -329,7 +329,7 @@ Air Meshes~\cite{Muller2015}, a technique to detect and resolve collisions.}
 Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
 Increasing the mesh resolution produces a more precise result at the expense of greater running time.
 
-\textbf{Barycentric coordinates:}
+\textbf{Barycentric Coordinates:}
 The simulation operates on meshes, not element geometry.  In the final
 rendering phase, we will redraw an element relative to a deformed copy of
 its mesh.  To do so, we first re-express every vertex of an element path in 
@@ -337,7 +337,7 @@ terms of the mesh triangles.  Every element vertex lies either inside a mesh
 triangle or just beyond a border edge.  We encode each vertex in barycentric
 coordinates relative to its enclosing or nearest triangle.
 
-\textbf{Initial element placement:}
+\textbf{Initial Element Placement:}
 We prepare our simulation by randomly placing non-overlapping elements.
 \begin{enumerate}
 	\item Generate random points $P = \{ p_1, p_2,..., p_n \}$ 
@@ -684,8 +684,8 @@ We seed the container with secondary elements by finding points
 that are far from any existing element mesh.  Specifically, we
 compute a discrete approximation of the distance transform of the
 negative space. We then create an initial candidate list of all
-points for which the distance value is above a threshold $d_\mathrm{min}$, sorted
-by decreasing distance.  We consider each of these candidates in turn,
+points for which the distance value is above a threshold $d_\mathrm{min}$, 
+sorted by decreasing distance.  We consider each of these candidates in turn,
 adding it to a final list of seed locations provided that no previously
 chosen seed is within distance $d_\mathrm{sep}$ of the candidate.
 In our implementation, if the distance transform is computed on a 
@@ -701,8 +701,8 @@ elements gradually grow to consume some of the remaining negative
 space until the packing satisfies the same stopping \newtext{criteria}
 described above.
 
-Packings with secondary elements are shown throughout the paper; 
-see Figs.~\ref{pipeline}e, \ref{cat_packing}, and \ref{three_packings}.
+%Packings with secondary elements are shown throughout the paper; 
+%see Figs.~\ref{pipeline}e, \ref{cat_packing}, and \ref{three_packings}.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -727,7 +727,7 @@ of $\tau$, the integral of absolute curvature along their lengths.
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
-\caption[A demonstration of shape matching of leaf shapes inside a rhinoceros]
+\caption[A demonstration of shape matching to place elements]
 {\label{rhino_packing}
 { 
 A demonstration of shape matching of leaf shapes inside a rhinoceros. 
@@ -962,7 +962,7 @@ The packing in Figure~\ref{cat_packing}
 uses six cat-shaped primary elements and one secondary cat head.
 RepulsionPak naturally bends legs and tails to fill the container more evenly.
 
-The animal packing in Figure~\ref{pipeline} 
+The animal packing in Figure~\ref{fig_repulsionpak_pipeline} 
 has several elements with limbs (the bear, fox, chick, and penguin),  
 extensions (the dog and bunny ears), and long shapes (the snake).
 Figure~\ref{fig_defviz} highlights the deformations for some of these elements;

@@ -64,8 +64,8 @@ The following served on the Examining Committee for this thesis. The decision of
   \noindent
 \begin{tabbing}
 Internal-External Member: \=  \kill % using longest text to define tab length
-External Examiner: \>  LOLOL LOLOL \\ 
-\> Professor, Dept. of Philosophy of Zoology, University of Wallamaloo \\
+External Examiner: \>  YYY YYY \\ 
+\> Professor, Dept. of YYY, University of YYY \\
 \end{tabbing} 
   \bigskip
   
@@ -80,24 +80,24 @@ Supervisor(s): \> Craig S. Kaplan \\
   \noindent
   \begin{tabbing}
 Internal-External Member: \=  \kill % using longest text to define tab length
-Internal Member: \> LOLOL LOLOL \\
-\> Professor, Dept. of Zoology, University of Waterloo \\
+Internal Member: \> Christopher Batty \\
+\> Professor, Dept. of Computer Science, University of Waterloo \\
 \end{tabbing}
   \bigskip
   
   \noindent
 \begin{tabbing}
 Internal-External Member: \=  \kill % using longest text to define tab length
-Internal-External Member: \> LOLOL LOLOL \\
-\> Professor, Dept. of Philosophy, University of Waterloo \\
+Internal-External Member: \> YYY YYY \\
+\> Professor, Dept. of YYY, University of Waterloo \\
 \end{tabbing}
   \bigskip
   
   \noindent
 \begin{tabbing}
 Internal-External Member: \=  \kill % using longest text to define tab length
-Other Member(s): \> LOLOL LOLOL \\
-\> Professor, Dept. of Fine Art, University of Waterloo \\
+Other Member(s): \> Daniel Vogel \\
+\> Professor, Dept. of Computer Science, University of Waterloo \\
 \end{tabbing}
 
 \cleardoublepage
@@ -162,9 +162,42 @@ AnimationPak in Chapter~\ref{chapter_animationpak} was taken from ``AnimationPak
 \addcontentsline{toc}{chapter}{Abstract}
 \begin{center}\textbf{Abstract}\end{center}
 
-We present methods to fill a container shape with deformable instances of geometric elements selected from a library,
-creating a 2D artistic composition called an element packing.
+\newtext{
+We present three methods to fill a container shape with deformable instances of geometric elements selected from a library,
+creating a 2D artistic composition called a packing.
+}
 
+\newtext{
+The first method is FLOWPAK that deforms elements to flow along a vector field interpolated
+from user-supplied strokes, giving a sense of visual flow to the final composition.
+FLOWPAK constructs streamlines that conform to the vector field, and places an
+element over each streamline. 
+}
+
+\newtext{
+The second method is RepulsionPak that utilizes physical simulations to deform
+elements, each is represented as a mass-spring system, allowing them to deform
+to achieve a better fit with their neighbours and the container.
+RepulsionPak start with an initial random placement of small elements and gradually transform them using 
+repulsion forces that trade off between the evenness of the packing and the deformations of the individual elements.
+}
+
+\newtext{
+The last method is AnimationPak that creates animated packings
+by arranging animated two-dimensional elements inside a static
+container. We represent animated elements in a three-dimensional
+spacetime domain, and view the animated packing problem as a
+three-dimensional packing in that domain. Every element is represented as a discretized spacetime mesh. 
+In a physical simulation, meshes grow and repel each other, consuming the negative space
+in the container. The final animation frames are cross sections of
+the three-dimensional packing at a sequence of time values. 
+}
+
+\newtext{
+Finally, we propose statistical methods for measuring the evenness of
+negative space in a 2D packing, which provide a quantitative
+means of evaluating and comparing packing algorithms.
+}
 
 \cleardoublepage
 
@@ -173,19 +206,22 @@ creating a 2D artistic composition called an element packing.
 
 \begin{center}\textbf{Acknowledgements}\end{center}
 
-I would like to thank all the little people who made this thesis possible.
+I would like to thank all people who have helped me during my PhD study:
 
 
 \begin{itemize}  
-\item Craig S. Kaplan
-\item Paul Asente 
-\item Radom\'ir M\v{e}ch 
-\item Daichi Ito
-\item Dietrich Stoyan 
-\item Danny Kaufman
-\item Steve Mann
-\item Matt Thorne, Alex Pytel, and Tyler Nowicki.
-\item All my running friends in Kitchener-Waterloo and ultra-trail running community in Ontario. 
+\item Craig S. Kaplan, for being the best teacher.
+\item Paul Asente, for his guidance and wisdom. 
+\item Radom\'ir M\v{e}ch, for the internship and the help with FLOWPAK paper. 
+\item Daichi Ito, for the discussion about FLOWPAK and creating a packing with RepulsionPak.
+\item Dietrich Stoyan, for the discussion about spatial statistics.
+\item Danny Kaufman, for the discussion about physical simulations.
+\item Steve Mann, for giving me valuable lessons.
+\item Bill Cowan, for his advice.
+\item Christopher Batty and Dan Vogel, for being my PhD committee members.
+\item Matt Thorne, Alex Pytel, and Tyler Nowicki, for all the lunches together. 
+\item All my running friends in Kitchener-Waterloo and ultra running community in \mbox{Ontario}, 
+who teach me on how to keep grinding.
 \end{itemize}
 
 \cleardoublepage
@@ -195,7 +231,7 @@ I would like to thank all the little people who made this thesis possible.
 
 \begin{center}\textbf{Dedication}\end{center}
 
-For my family.
+For my Mom, Dad, and my sister.
 \cleardoublepage
 
 % T A B L E   O F   C O N T E N T S

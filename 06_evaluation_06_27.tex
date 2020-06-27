@@ -81,78 +81,127 @@ more contact points can be created so that the strength of the printed object is
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{Attempts to Measure the Evenness}
-%\section{Distance Transforms of Negative Space}
+\section{Distance Transforms of Negative Space}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\begin{figure}[ht]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
+\caption[An example of distance transform of negative space]
+{\label{fig_distance_transform}
+\newtext{
+    The image on the right is a distance transform generated from negative space around two rabbits.
+    The brighter the color of a pixel, the farther it is from the nearest boundary.}
+  }
+\end{figure}
 
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/cs.pdf}
+\caption[A Voronoi diagram of three ``C'' shapes]
+{\label{fig_cs}
+\newtext{
+    A Voronoi diagram of three ``C'' shapes. 
+    The Voronoi boundaries does not capture the shape concavities.
+    If we use discs with the same size to replace the shapes, 
+    the Voronoi diagram will be unchanged.}
+  }
+\end{figure}
 
-%\begin{figure}[t]
-%\centering
-%\includegraphics[width=1.0\textwidth]{figures/metrics/cs.pdf}
-%\caption[A Voronoi diagram of three ``C'' shapes]
-%{\label{fig_cs}
-%\newtext{
-%    A Voronoi diagram of three ``C'' shapes. 
-%    The Voronoi boundaries does not capture the shape concavities.
-%    If we use discs with the same size to replace the shapes, 
-%    the Voronoi diagram will be unchanged.}
-%  }
-%\end{figure}
-
-% Check 06_evauation_06_27
-
-%\newtext
-%{
+\newtext
+{
+In this section, we discuss distance transforms applied on the negative space as they give us a hint of the evenness.
+We also considered an idea of augment distance transforms with two structures: Centroidal area Voronoi diagram and medial axes,
+as they bisect the gaps of negative space.
+%CAVD has been used extensively in past work and medial axes are important for shape analysis.
+In the end we discarded the idea, and this section explains why both structures have underlying issues 
+so that we have to come up with the proposed quantitative metrics.
+%In the end we discarded the idea since we find they have underlying issues.
+%However, by explaining them, it would become clear on reasons why we decide to use the proposed quantitative metrics.
 %In this section, we discuss distance transforms applied on the negative space as they give us a hint of the evenness.
-%We also considered an idea of augment distance transforms with two structures: Centroidal area Voronoi diagram and medial axes,
-%as they bisect the gaps of negative space.
-%In the end we discarded the idea, and this section explains why both structures have underlying issues 
-%so that we have to come up with the proposed quantitative metrics.
-%}
+%We also considered an idea of evaluating distance transforms only on two structures: Voronoi cell boundaries and medial axes.
+%Although we discarded the idea since we find these structures have underlying issues, 
+%we think discussing them would explain readers' questions that might arise
+%regarding our decision to use the proposed quantitative metrics. 
+}
+
+%To measure the evenness of negative space, we discuss a few plausible techniques that come into mind:
+%distance transforms, Voronoi diagrams, and medial axes.
+%All of them have been used extensively in shape distribution or shape analysis.
+%We were initially considering to use all of them, but we explain why we only use 
+%distance transforms for our evaluation and we leave out the other two.
 
 %\newtext
 %{
-%\textbf{Distance Transform:} 
-%In the context of 2D packing, we define a distance transform as a 2D image whose pixels labelled with distance values. 
-%We compute a distance value $d$ as the Euclidean distance to the closest element boundary (Figure~\ref{fig_distance_transform}).
-%We only evaluate the distance transform on all pixels inside the negative space.
-%Distance $d > 0$ if $\bm{p}$ belongs to the negative space (outside all elements), 
-%or $d = 0$ if $p$ belongs to the positive space (inside an element).
-%The distance transform gives us a hint about the evenness of negative space.
-%An uneven distribution of elements would have significant empty patches,
-%causing ``high'' $d$ values locally, which appear as white ridges in Figure~\ref{fig_distance_transform}.
-%These ridges are the local maxima of the distance transform. 
-%To evaluate the evenness of negative space we can evaluate the values of all local maxima, 
-%however, it is not an easy task because the value term of ``local''.
+%It is important to familiarize with a few techniques that can be used to analyze the negative space.
+%In this section, we discuss distance transforms, Voronoi diagrams, and medial axes.
+%All of them have been used extensively in shape distribution or shape analysis.
+%They serve as groundwork that help us to design our quantitative metrics.
 %}
 
-
-%\newtext
-%{
-%All $d$ values on the Voronoi cell boundaries can be considered local.
-%The spectral packing~\cite{Dalal2006} utilized a centroidal area Voronoi diagram for their optimization approach.
-%For each element, they aim to minimize $\sum_{\bm{p} \in I} d^2$,
-%where $I$ is the negative space inside the element's Voronoi cell.
-%That is, they seek the best alignment of every element with the boundary of its voronoi cell,
-%which can be achieved using a Fourier-based correlation.
-%However, Voronoi cell boundaries cannot capture local maxima that is created by concave elements,
-%hollow concavities of C-shaped elements shown in Figure~\ref{fig_cs} are left out.
-%}
-
-%\newtext
-%{
-%An alternative to handle concave elements is to generate a medial axis from the negative space.
-%We define a medial axis as a set of connected point, each should have more than one closest point on element boundaries.
-%In Figure~\ref{fig_skeleton}, Medial axis is a superset containing branches that extend to element concavities.
-%A medial axis does seem to capture more local maxima than Voronoi cell boundaries.
-%However, a medial axis contains problematic branches.
-%Many branches extend too far inside sharp concavities so that their ends touch (or almost touch) the element boundaries.
-%We also need to prune short unnecessary branches.
-%}
+\newtext
+{
+\textbf{Distance Transform:} 
+In the context of 2D packing, we define a distance transform as a 2D image whose pixels labelled with distance values. 
+We compute a distance value $d$ as the Euclidean distance to the closest element boundary (Figure~\ref{fig_distance_transform}).
+We only evaluate the distance transform on all pixels inside the negative space.
+Distance $d > 0$ if $\bm{p}$ belongs to the negative space (outside all elements), 
+or $d = 0$ if $p$ belongs to the positive space (inside an element).
+The distance transform gives us a hint about the evenness of negative space.
+An uneven distribution of elements would have significant empty patches,
+causing ``high'' $d$ values locally, which appear as white ridges in Figure~\ref{fig_distance_transform}.
+These ridges are the local maxima of the distance transform. 
+To evaluate the evenness of negative space we can evaluate the values of all local maxima, 
+however, it is not an easy task because the value term of ``local''.
+}
 
 
+\newtext
+{
+%\textbf{Centroidal Area Voronoi Diagram:} 
+All $d$ values on the Voronoi cell boundaries can be considered local.
+The spectral packing~\cite{Dalal2006} utilized a centroidal area Voronoi diagram for their optimization approach.
+For each element, they aim to minimize $\sum_{\bm{p} \in I} d^2$,
+where $I$ is the negative space inside the element's Voronoi cell.
+That is, they seek the best alignment of every element with the boundary of its voronoi cell,
+which can be achieved using a Fourier-based correlation.
+%However, this minimization strategy does not work well on concave elements, for example, 
+However, Voronoi cell boundaries cannot capture local maxima that is created by concave elements,
+hollow concavities of C-shaped elements shown in Figure~\ref{fig_cs} are left out.
+}
 
+\newtext
+{
+%\textbf{Medial Axes:}
+An alternative to handle concave elements is to generate a medial axis from the negative space.
+We define a medial axis as a set of connected point, each should have more than one closest point on element boundaries.
+In Figure~\ref{fig_skeleton}, Medial axis is a superset containing branches that extend to element concavities.
+%In theory, we can evaluate the distance transform only on pixels 
+%that belong to the medial axis to determine the evenness of negative space.
+A medial axis does seem to capture more local maxima than Voronoi cell boundaries.
+However, a medial axis contains problematic branches.
+Many branches extend too far inside sharp concavities so that their ends touch (or almost touch) the element boundaries.
+We also need to prune short unnecessary branches.
+}
+
+%%\mynote{bad paragraph lol}
+%%It is apparent that a medial axis corresponds to the ridges in the distance transform.
+%%However, obtaining a high quality medial axis is difficult but we believe that the answer lies within the distance transform.
+
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/unilever_with_skeleton.pdf}
+\caption[An example of a skeleton of negative space]
+{\label{fig_skeleton}
+\newtext{
+    A skeleton generated from negative space of the Unilever packing using
+    \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
+    The skeleton contains unnecessarily long branches that touch the element boundaries and 
+    short branches that should be deleted.}
+  }
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -160,18 +209,22 @@ more contact points can be created so that the strength of the printed object is
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\newtext
+{
 Two packings must be calibrated to each other before our measurements 
 can be compared meaningfully.  
 We can compare packings of different sizes by normalizing their containers to
 have unit area.  We must also arrange for the packings to have the same
+} % newtext ends here
 \textit{negative space ratio} 
-(the overall amount of negative space as a 
+ \newtext
+{(the overall amount of negative space as a 
 fraction of container area), so that our measurements can focus on the
 distribution of negative space and not just the amount.  Given two
 calibrated packings, we examine three main evenness metrics:
 overlap of offset elements, spherical contact probability functions,
-and distance histograms. 
+and distance histograms. %We discuss each of these metrics in detail below.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -236,7 +289,7 @@ radius $d_\mathrm{gap}\sqrt{2}/2$.  These pockets tend to raise the SCP
 slightly everywhere, and cause it to bend into a small tail that
 approaches zero gradually.
 For a given set of elements in a container, the best packings will
-have a steeply-decreasing SCP that stays close to the idealized stripe function most
+have \newtext{a steeply-decreasing} SCP that stays close to the idealized stripe function most
 of the way down, has a low value at $r=d_\mathrm{gap}/2$,
 and then bends towards horizontal near that value.
 Note that there is always a largest disc that can fit in a packing's
@@ -248,7 +301,7 @@ will be narrower in
 some places and wider in others, recognizable as a shallower SCP
 with a longer tail.
 
-We geometrically compute SCP by offsetting the negative
+\newtext{We geometrically compute SCP} by offsetting the negative
 space inward.  Let $N$ be the shape of the negative space (essentially
 the container region with holes where elements are).  For a given radius
 $r$, we compute $N(r)$, the Minkowski difference of $N$ with a disc of
@@ -260,29 +313,14 @@ the area of the container.
 \subsection{Histograms of the Distance Transform}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-\newtext{
-The distance transform of the negative space provides insights into how negative space varies. 
-In the context of 2D packings, a distance transform is a 2D image where each pixel
-contains the radius $r$ value to the nearest element.
-Figure~\ref{fig_distance_transform} shows an example for a distance transform,
-lighter a color of a pixel, higher the $r$ value, showing a pattern of white ridges
-that correspond to a medial axis.
-One idea is to evaluate $r$ values only on a medial axis since they can be considered as local maxima of the distance transform.
-However, creating a high quality medial axis is difficult,
-as shown in Figure~\ref{fig_skeleton}, the biggest issue is to prune problematic branches
-that are either too long or too short.
-}
-
-We opt to analyze the entire distance transform of the negative space by generating a histogram of all $r$ values.
-We could calculate a standard \textbf{histogram of the
+The distance transform of the negative space \newtext{provides insights} into
+how negative space varies.  We could calculate a standard \textbf{histogram of the
 distance transform}, but that would require quantizing distances into bins.
 Instead, note that the SCP $Q_s(r)$ is precisely the normalized area of 
 negative space for which the distance transform is at least $r$. 
-Looked at another way, if we offset each element by a
-radius $r$, then $1-Q_s(r)$ must be the normalized 
-area of the union of these offset elements.
+ Looked at another way, if we offset each element by a
+   radius $r$, then $1-Q_s(r)$ must be the normalized 
+     area of the union of these offset elements.
 % Looked at
 % another way, we can offset each element by a radius $r$, in which case 
 % $1-Q_s(r)$ must be the normalized area of the union of these offset elements.
@@ -291,7 +329,7 @@ a cumulative distribution function of distance.  From this observation
 we can compute a continuous variant of the distance histogram as a 
 probability density function via the derivative of the SCP: $H(r)=-Q_s'(r)$.
 
-
+\newtext{
 Given two calibrated packings, the areas under their distance histograms
 are the same.  But a more even packing will have a shorter tail,
 indicating a tighter upper bound on gap size, and it will have a larger
@@ -303,31 +341,7 @@ steeply.  The other two packings have shallower, smoother histograms.
 Note also that high values of the distance histogram near $d_\mathrm{gap}/2$
 correspond to a rapid negative change in the SCP, suggesting a more even
 packing.
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
-\caption[An example of distance transform of negative space]
-{\label{fig_distance_transform}
-\newtext{
-    The image on the right is a distance transform generated from negative space around two rabbits.
-    The brighter the color of a pixel, the farther it is from the nearest boundary.}
-  }
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
-\caption[An example of a skeleton of negative space]
-{\label{fig_skeleton}
-\newtext{
-    A medial axis generated from negative space of the Unilever packing using
-    \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
-    The medial axis contains unnecessarily long branches that touch the element boundaries and 
-    short branches that should be deleted.
-  }
 }
-\end{figure}
 
 \begin{figure}[t]
 \centering
@@ -352,6 +366,7 @@ in~(e) and~(f).}
 
 
 \textbf{Comparison to PAD:} 
+\newtext{
 Figure~\ref{pad_comparison} compares
 RepulsionPak and PAD~\cite{Kwan2016}.  Packing (a) is
 a result from the PAD\ paper; Packing (b) was created with RepulsionPak using
@@ -365,6 +380,7 @@ indicating more even negative space, and has a shorter tail,
 indicating fewer large empty areas.
 Our result also has a histogram bump around $d_\mathrm{gap}/2$, and 
 a lower overlap function.
+}
 
 \begin{figure}[t]
 \centering
@@ -383,6 +399,7 @@ a lower overlap function.
 \end{figure}
 
 \textbf{Comparison to an Artist-Made Packing:} 
+\newtext{
 In Figure~\ref{balabolka_comparison} we show a RepulsionPak result created 
 using the elements from the artist-made packing.
 Our packing was calibrated to match the artist's.
@@ -393,6 +410,7 @@ in its SCP.
 Our result also has a histogram bump around $d_\mathrm{gap}/2$, and a lower overlap function.
 The result shows the effectiveness of the repulsion forces in successfully
 discovering compatibilities in the element boundaries and filling the space effectively.
+}
 
 \begin{figure}[t]
 \centering
@@ -410,6 +428,7 @@ discovering compatibilities in the element boundaries and filling the space effe
 \end{figure}
 
 \textbf{Comparison to Rigid Packings}: 
+\newtext{
 To evaluate the effect of deformation on negative space, we compute all three metrics under
 increasing values of $k_e$, the edge spring strength.  Increasing $k_e$
 allows the element meshes to resist deformation, ultimately
@@ -425,6 +444,7 @@ $k_e$ leads to greater deformation and steeper SCPs.
 The more pronounced histogram bump at $r=d_\mathrm{gap}/2$ suggests
 more even negative space.
 The lower overlap functions indicate fewer narrow gaps between elements.
+}
 
 \begin{figure}[t]
 \centering
@@ -454,9 +474,9 @@ The lower overlap functions indicate fewer narrow gaps between elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newtext{
-The evenness of negative space is an indicator
+We hypothesized that the evenness of negative space is an indicator
 for the quality of a packing. 
-The more the elements interlock, the more even the negative space.
+Negative space between elements should be uniform in width.
 we validate our deformation-driven approach using overlap functions,
 spherical contact probability functions, and histograms of distance transform.
 }

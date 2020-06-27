@@ -28,8 +28,7 @@
 
 
 AnimationPak is a physics-based packing method for elements with scripted animations.
-An element can have an animated deformation, such as a bird flapping its
-wings or a fish flicking its tail.
+An element can have an animated deformation, \newtext{such as a slithering snake or a dancing bear}.
 It can also have an animated transformation, giving a changing
 position, size, and orientation within the container.
 Our goal is producing an \textit{animated packing}, with elements
@@ -53,13 +52,12 @@ of motion graphics, presumably because of the difficulty of creating
 an animated packing by hand.  
 Finding motivating examples created by artists is difficult.
 We only found one shown in Figure~\ref{fig_animationpak_lisa_packing},
-which is animated gear-like meshing of copies of Lisa's spiky head.
-There is also very little past research
-on animated packings; we discuss the work that does exist in the next
-section. 
+which is animated gear-like meshing of copies of Lisa Simpson's spiky head.
+The discussion in Section~\ref{animationpak_previous_work} shows there is also very little past research
+on animated packings.
 }
 
-\begin{figure}[t]
+\begin{figure}[ht]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/lisa_packing.pdf} 
 \caption[An animated packing of Lisas from The Simpsons.]
@@ -462,7 +460,7 @@ $s_i$ are drawn back towards time $t$.
 
 \newtext
 {
-We now perform a physics simulation on the spacetime elements and the 
+We perform a physics simulation on the spacetime elements and the 
 container.  Elements are subject to a number of forces that cause them
 to simultaneously grow, deform, and repel each other (Figure~\ref{fig_animationpak_simulation_process}).
 In Section~\ref{animationpak_slice_constraints} we introduce some new hard
@@ -482,10 +480,10 @@ The total force $\simforce{total} $ applied to $\bm{x}$ is
 \end{equation}
 where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$,  $\simforce{tor}$ and $\simforce{tmp}$ are 
 the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, and the temporal force.
-The first five forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
-In this section, we will explain these five forces briefly 
-so please refer back to Chapter~\ref{chapter_repulsionpak} Section~\ref{repulsionpak_simulation}
-for equations used to generate them.
+The these forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
+In this section, we explain the first five forces briefly 
+so readers can refer back to Section~\ref{repulsionpak_simulation}
+for more details.
 }
 
 \newtext
@@ -735,7 +733,7 @@ We induce elements to grow spatially by gradually increasing the rest
 lengths of their springs.
 The initial rest length of each spring is determined by the vertex positions in
 the shrunken version of the spacetime element constructed in 
-Section~\ref{sect_initial_config}.
+Section~\ref{animationpak_initial_configuration}.
 We allow an element's slices to grow independently of each other, which
 complicates the calculation of new rest lengths for time springs.
 Therefore, we create a duplicate of every shrunken spacetime element
@@ -787,7 +785,7 @@ slices exceed that threshold.
 \begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/rendering.pdf} 
-\caption[An illustration of rendering spacetime elements to generate 2D frames]
+\caption[An illustration of rendering spacetime elements]
 {\label{fig_animationpak_render} 
 \newtext{
 An illustration of rendering spacetime elements to generate 2D frames by cutting them
@@ -919,12 +917,12 @@ illusion shown as a static packing in RepulsionPak.  This example
 uses torsional forces to control slice orientations.
 
 \newtext{
-Figure~\ref{fig_bib_entering_star} shows an unconfined bird enters a packing of smaller birds inside a star.
+Figure~\ref{fig_bib_entering_star} shows an loose bird enters and leaves a packing of smaller birds.
 This is an example of the benefit of our growth approach.
 As the bigger bird is inside the container, available space is more limited,
-causing them to stop their growths prematurely.
-In the resulted 2D animation, it creates the effect of 
-shrinking elements that give up their space to accommodate another element.
+causing smaller birds to stop some of their slice growths.
+In the resulted 2D animation, the non-uniform slice growths create the shrinking effect on 2D elements,
+causing them to give up their space to accommodate another element.
 }
 
 Figure~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
@@ -1038,9 +1036,9 @@ Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$.
 \begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/birb_entering_star.pdf} 
-\caption[An unconfined bird enters a packing of smaller birds inside a star]
+\caption[An loose bird enters a packing of smaller birds inside a star]
 {\label{fig_bib_entering_star} 
-\newtext{An unconfined bird enters a star-shaped packing. 
+\newtext{An loose bird enters a star-shaped packing. 
 The smaller birds shrink to give up their space to accommodate another element.}
 }
 \end{figure*}
