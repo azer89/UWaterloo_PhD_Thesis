@@ -42,12 +42,15 @@ The colours in the final rendering were added manually. }
 \includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
 \caption[An example of flow visual style]{
   \label{dog_flow}  
+\newtext
+{
 Examples of ornamental packings: 
 (a) Dog (by ComicVector703 on Shutterstock), 
 including an inset visualizing the flow directions of elements; 
-(b) Fish in the style of Haida art (by Russ Jones, used with permission); 
-(c) Lion (from StockUnlimited);  
-(d) Skull (by alitdesign on Shutterstock).
+(b) Lion (from StockUnlimited);  
+(c) Skull (by alitdesign on Shutterstock).
+(d) Fish in the style of Haida art (by Russ Jones, used with permission); 
+}
 }
 \end{figure}
 
@@ -412,7 +415,7 @@ The next step is to trace streamlines in the vector field, guided by three input
 \newtext{s\_min} & the minimum desired streamline length   
 \end{conditions}
 Because we will ultimately place elements along streamlines without overlap, \newtext{$s\_gap$} determines
-the approximate width of the placed elements, and $s\_max$ the maximum length.  We also derive
+the approximate width of the placed elements, and \newtext{$s\_max$} the maximum length.  We also derive
 a value \newtext{$s\_stop$} that prevents streamlines from coming too close to each other; in our implementation we
 compute \newtext{$s\_stop = 0.8\,s\_gap$}.
 
