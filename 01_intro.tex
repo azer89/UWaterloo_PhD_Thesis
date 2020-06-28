@@ -11,7 +11,7 @@
 {\label{fig_logo_packing} 
 \newtext
 {
-(a) Unilever packing consists of 25 elements inside a ``U'' container. \newline
+(a) Unilever packing that consists of 25 elements inside a ``U'' container. \newline
 (b) Negative space which is the remaining area that is not claimed by the elements. 
 }
 }
@@ -75,7 +75,7 @@ Packings can communicate a relationship between a whole and the parts that make 
 Elements are united to emphasize the shape of the container,
 but each is large enough to be appreciated individually.
 Packings are popular in logo design, graphics design, and art.
-Elements are shapes like animals, plants, abstract, geometric, or man-made objects.
+Elements are shapes like man-made objects, animals, plants, abstract, or geometric.
 Figure~\ref{fig_logo_packing}a shows the Unilever logo,
 which is a packing of elements arranged inside a ``U'' container.
 }
@@ -84,7 +84,7 @@ which is a packing of elements arranged inside a ``U'' container.
 {
 The subset of the container that does not belong to any element is
 called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
-We can also interpret negative space as separation and gaps between elements.
+We can also define negative space as separation and gaps between elements.
 The evenness of negative space plays an important role in  packings.  
 The artist should arrange elements in a way that their boundaries interlock with each other,
 causing the separation between neighbouring elements to become roughly the same everywhere.
@@ -107,8 +107,8 @@ see two examples in Figure~\ref{fig_graphic_designs}.
 {
 Elements can also be oriented to follow certain directions for aesthetic reasons.
 Figure~\ref{fig_graphic_designs}b is an ornamental packing
-of long thin elements that are bent and oriented outward from the center of the dog to create a flow visual style.
-Figure \ref{fig_woodland} is a packing of leaves, each is oriented toward the center of the container.
+of long thin elements that are bent and oriented outward from the center of the torso to create a flow visual style.
+Another example is shown in Figure \ref{fig_woodland}, which is a packing of leaves, each is oriented toward the center of the container.
 }
 
 \newtext
@@ -121,7 +121,7 @@ However,  most techniques pack elements via rigid transformations, leading to
 uneven element distribution and overlaps.  
 Jigsaw Image Mosaics~\cite{Kim2002} and collages based on the Pyramid of Arclength
 Descriptor~\cite{Kwan2016} are \textit{data-driven}.
-These techniques rely on assembling a large library of elements, so that given an
+These techniques rely on a large library of elements, so that given an
 area to fill in a partial composition, there is likely to be an
 element in the library with a compatible shape.  The challenge is 
 \textit{finding compatible elements},
@@ -142,7 +142,7 @@ the artist may not want to draw 100 or 1000 cats to ensure a better fit.
 {
 We propose \textit{deformation-driven} methods.
 Instead of finding compatible elements,
-we intend to \textit{create compatible elements} through deformation
+our intention is \textit{creating compatible elements} through deformation
 that can adapt to the shapes of neighboring elements and the container boundary.
 We allow elements to deform in a controlled way,
 to trade off between the evenness of the element distribution and 
@@ -164,7 +164,7 @@ We believe that there is a value in deformation that can generate plausible fami
 \newtext
 {
 % https://learningenglish.voanews.com/a/the-more-i-practice-the-more-i-remember/4995040.html
-We believe that the evenness of negative space is an indicator of the quality of a packing.
+The evenness of negative space is an indicator of the quality of a packing.
 The more the elements interlock, the more even the negative space. % becomes
 %Methods for measuring the evenness provide a quantitative means of evaluating
 %and comparing packing algorithms.  
@@ -181,8 +181,10 @@ In this thesis, our contribution is developing three deformation-driven packing 
 \item FLOWPAK is a packing method that deforms long thin elements to follow a user-defined vector field (Chapter~\ref{chapter_flowpak}).
 \item RepulsionPak is a packing method that utilizes repulsion forces to distribute and deform elements,
 	each is represented as a mass-spring system (Chapter~\ref{chapter_repulsionpak}).
-\item AnimationPak is a method to pack 2D animated elements, each is an extruded 3D shape
-	in a spacetime domain (Chapter~\ref{chapter_animationpak}). 
+\item AnimationPak is a method to pack 2D animated elements inside a static 2D container. 
+	Each element is an extruded 3D shape in a spacetime domain 
+	and we view the animated packing problem as a three-dimensional packing in that domain.
+	(Chapter~\ref{chapter_animationpak}). 
 \item  Quantitative metrics for 2D packings: the overlap functions, spherical contact probability functions,
 and histograms of the distance transforms (Chapter~\ref{chapter_qualitative_metrics}). 
 \end{enumerate}

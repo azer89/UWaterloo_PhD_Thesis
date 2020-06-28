@@ -408,16 +408,19 @@ Step~3 of Figure~\ref{fig_flowpak_pipeline},
 fixed elements do not affect the vector field.  
 The artist can include directional guides to guide the vector field around fixed elements if desired.
 
+\newtext
+{
 The next step is to trace streamlines in the vector field, guided by three input parameters:
-\begin{conditions}
-\newtext{s\_gap} \enspace & the desired space between streamlines \\
-\newtext{s\_max} & the maximum desired streamline length \\
-\newtext{s\_min} & the minimum desired streamline length   
-\end{conditions}
+\begin{packeddescriptions}
+\item[$s\_gap$] is the desired space between streamlines 
+\item[$s\_max$] is the maximum desired streamline length 
+\item[$s\_min$] is the minimum desired streamline length   
+\end{packeddescriptions}
 Because we will ultimately place elements along streamlines without overlap, \newtext{$s\_gap$} determines
 the approximate width of the placed elements, and \newtext{$s\_max$} the maximum length.  We also derive
 a value \newtext{$s\_stop$} that prevents streamlines from coming too close to each other; in our implementation we
 compute \newtext{$s\_stop = 0.8\,s\_gap$}.
+}
 
 We adapt the streamline tracing algorithm of Jobard and Lefer~\cite{Jobard1997}.
 First we generate a set of potential seed points $P = \{ \bm{p_{1}}, \bm{p_{2}}, ... , \bm{p_{n\text{\_}p}}\}$  by

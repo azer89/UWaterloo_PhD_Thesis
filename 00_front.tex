@@ -164,35 +164,31 @@ AnimationPak in Chapter~\ref{chapter_animationpak} was taken from ``AnimationPak
 
 \newtext{
 We present three methods to fill a container shape with deformable instances of geometric elements selected from a library,
-creating a 2D artistic composition called a packing.
-}
-
+creating a 2D artistic composition called a packing.}
 \newtext{
 The first method is FLOWPAK that deforms elements to flow along a vector field interpolated
 from user-supplied strokes, giving a sense of visual flow to the final composition.
-FLOWPAK constructs streamlines that conform to the vector field, and places an
-element over each streamline. 
+%FLOWPAK constructs streamlines that conform to the vector field, and places an
+%element over each streamline. 
 }
-
 \newtext{
 The second method is RepulsionPak that utilizes physical simulations to deform
 elements, each is represented as a mass-spring system, allowing them to deform
 to achieve a better fit with their neighbours and the container.
-RepulsionPak start with an initial random placement of small elements and gradually transform them using 
-repulsion forces that trade off between the evenness of the packing and the deformations of the individual elements.
+%RepulsionPak start with an initial random placement of small elements and gradually transform them using 
+%repulsion forces that trade off between the evenness of the packing and the deformations of the individual elements.
 }
-
 \newtext{
 The last method is AnimationPak that creates animated packings
 by arranging animated two-dimensional elements inside a static
 container. We represent animated elements in a three-dimensional
 spacetime domain, and view the animated packing problem as a
-three-dimensional packing in that domain. Every element is represented as a discretized spacetime mesh. 
-In a physical simulation, meshes grow and repel each other, consuming the negative space
-in the container. The final animation frames are cross sections of
-the three-dimensional packing at a sequence of time values. 
+three-dimensional packing in that domain. 
+%Every element is represented as a discretized spacetime mesh. 
+%In a physical simulation, meshes grow and repel each other, consuming the negative space
+%in the container. The final animation frames are cross sections of
+%the three-dimensional packing at a sequence of time values. 
 }
-
 \newtext{
 Finally, we propose statistical methods for measuring the evenness of
 negative space in a 2D packing, which provide a quantitative
