@@ -197,17 +197,7 @@ and to even even out the negative space.
 %locally near edges in a post-processing step after elements
 %were frozen in place.
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/escherization.pdf} 
-\caption[An example of a tiling]
-{\label{fig_related_escherization} 
-\newtext
-{
-A tiling of cats~\cite{Kaplan2000}. 
-}
-}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Tilings}
@@ -241,6 +231,18 @@ creating a ``fading effect'', $S_1$ and $S_2$ spatially transition to negative s
 This work is data-driven, the user needs to provide $S_1$, 
 and the method tries to find a compatible element $S_2$ from a library.
 }
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/escherization.pdf} 
+\caption[An example of a tiling]
+{\label{fig_related_escherization} 
+\newtext
+{
+A tiling of cats~\cite{Kaplan2000}. 
+}
+}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Discrete Texture Synthesis}
@@ -338,7 +340,21 @@ For an in-depth survey, Cagan et al.~\cite{Cagan2002} discussed a few approaches
 gradient methods, heuristics, simulated annealing, and genetic algorithms.
 }
 
-
+%\makeatletter % brooo
+%\setlength{\@fptop}{0pt} % brooo
+%\makeatother % brooo
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/gal_zehnder.pdf} 
+\caption[An example of decorative ornaments filling a surface]
+{\label{fig_related_gal_zehnder} 
+\newtext
+{
+(a) Arcimboldo-like 3D packing~\cite{Gal2007B}. 
+(b) Decorative elements that fill a surface~\cite{Zehnder2016}.
+}
+}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Packings on Surfaces}
@@ -363,18 +379,3 @@ star-shaped tiling patterns that are printed onto tracery sheets.
 Similar to Hausner's exploit, their method works by constructing a star-shaped distance function to manipulate the shapes of Voronoi cells. 
 }
 
-\makeatletter % brooo
-\setlength{\@fptop}{0pt} % brooo
-\makeatother % brooo
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/gal_zehnder.pdf} 
-\caption[An example of decorative ornaments filling a surface]
-{\label{fig_related_gal_zehnder} 
-\newtext
-{
-(a) Arcimboldo-like 3D packing~\cite{Gal2007B}. 
-(b) Decorative elements that fill a surface~\cite{Zehnder2016}.
-}
-}
-\end{figure}

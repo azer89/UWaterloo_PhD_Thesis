@@ -33,7 +33,7 @@ packings and to compare RepulsionPak with other packing algorithms.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Previous Work}
+\section{Related Work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -269,9 +269,9 @@ contains the radius $r$ value to the nearest element.
 Figure~\ref{fig_distance_transform} shows an example for a distance transform,
 lighter a color of a pixel, higher the $r$ value, showing a pattern of white ridges
 that correspond to a medial axis.
-One idea is to analyze $r$ values only on a medial axis since they can be considered as widths of negative space gaps between elements.
+We investigated the idea of analyzing $r$ values only on a medial axis since they can be considered as the widths of negative space gaps.
 However, creating a high quality medial axis is difficult,
-as shown in Figure~\ref{fig_skeleton}, the issue is the large number of problematic branches
+as shown in Figure~\ref{fig_skeleton}, the challenge is to prune a large number of problematic branches
 that are either too long or too short.
 }
 
