@@ -28,7 +28,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-AnimationPak is a physics-based packing method for elements with scripted animations.
+AnimationPak is a method to pack elements with scripted animations.
 An element can have an animated deformation, \newtext{such as a slithering snake or a dancing bear}.
 It can also have an animated transformation, giving a changing
 position, size, and orientation within the container.
@@ -58,14 +58,7 @@ The discussion in Section~\ref{animationpak_previous_work} shows there is also v
 on animated packings.
 }
 
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/lisa_packing.pdf} 
-\caption[An animated packing of Lisas from The Simpsons.]
-{\label{fig_animationpak_lisa_packing} 
-\newtext{Three frames of an animated packing from The Simpsons Season 31, Episode 19 ($\copyright$ FOX), showing
-gear-like meshing of oppositely-rotating Lisas.}}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -82,8 +75,20 @@ simulated mosaics, including using Centroidal Area Voronoi Diagrams (CAVDs) to
 position elements~\cite{Hausner2001,Hiller2003,Smith2005}, spectral
 approaches to create even negative space~\cite{Dalal2006}, energy
 minimization~\cite{Kim2002}, and shape descriptors~\cite{Kwan2016}.
-Please refer back to Chapter~\ref{chapter_related_work} 
-for a complete list of research in 2D packings.
+%\newtext
+%{
+%Chapter~\ref{chapter_related_work} 
+%provides a complete list of research in 2D packings.
+%}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/lisa_packing.pdf} 
+\caption[An animated packing of Lisas from The Simpsons.]
+{\label{fig_animationpak_lisa_packing} 
+\newtext{Three frames of an animated packing from The Simpsons Season 31, Episode 19 ($\copyright$ FOX), showing
+gear-like meshing of oppositely-rotating Lisas.}}
+\end{figure}
 
 \textbf{Animated Packings and Tilings:}
 Animosaics by Smith et al.~\cite{Smith2005} constructed animations 
@@ -113,32 +118,38 @@ the plane from copies of a single shape.  Elements in a tiling
 fit together by construction, and therefore always consume all 
 the negative space in the animation.
 
+\newtext{
 \textbf{3D Packings:} 
 AnimationPak fills a 3D container with 3D elements, 
-and is therefore related to other work on constructing freeform 3D
-packings, \newtext{although the time axis in the spacetime domain 
-behaves differently than the third spatial axis.}
-Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-collages reminiscent of portrait paintings by Arcimboldo.  They
-filled a 3D container with overlapping 3D elements using a greedy
-approach and a partial shape matching algorithm.
-Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
-tightly into a small build volume, allowing it to 
-be 3D printed with less waste material and packed into a smaller box.
-Ma et al.~\cite{Ma2018} developed a heuristic method
-to create 3D packings that are overlap free.  Other work has 
-experimented with example-based packing of 3D volumes~\cite{Ma2011},
-or optimized placement based on user interaction~\cite{Hsu2020}.
-\newtext{Several approaches have been proposed to extend 2D packing methods to adapt to
-the challenges of placing them on the surfaces of 3D 
-objects.~\cite{Hu2016,Chen2016,Zehnder2016,Chen2017}.}
+and is therefore related to approaches that construct 3D
+packings, although the time axis in the spacetime domain 
+behaves differently than the third spatial axis.
+Related work includes methods to generate 3D collages~\cite{Gal2007B, Theobalt2007, Huang2014},
+cutting and packing methods~\cite{Chernov2010, Vanek2014, Chen2015}, 
+irregular 3D element packing method~\cite{Byholm2009,Ma2018},
+and packing methods for engineering purposes~\cite{Cagan2002}.
+} 
+%Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
+%collages reminiscent of portrait paintings by Arcimboldo.  They
+%filled a 3D container with overlapping 3D elements using a greedy
+%approach and a partial shape matching algorithm.
+%Attene~\cite{Attene2015} decomposed a 3D model into parts that pack
+%tightly into a small build volume, allowing it to 
+%be 3D printed with less waste material and packed into a smaller box.
+%Ma et al.~\cite{Ma2018} developed a heuristic method
+%to create 3D packings that are overlap free.  Other work has 
+%experimented with example-based packing of 3D volumes~\cite{Ma2011},
+%or optimized placement based on user interaction~\cite{Hsu2020}.
+%\newtext{Several approaches have been proposed to extend 2D packing methods to adapt to
+%the challenges of placing them on the surfaces of 3D 
+%objects.~\cite{Hu2016,Chen2016,Zehnder2016,Chen2017}.}
 
 \newtext{
 \textbf{Animated Textures:}
 Ma et al.~\cite{Ma2013} developed Dynamic Element Textures (DET), a method
 to synthesize animated textures of a group of identical elements, such as shoals or particles.
-For each animated element in a small exemplar, they generate sample points in
-spatially and temporally.
+For each animated element in a small exemplar, they generate sample points
+both in spatial and temporal domains.
 To generate a large texture, they copy and distribute the sample points,
 which are repositioned to resemble the original point distribution in the exemplar.
 Similar to DET, AnimationPak treats an animated element as an object that
@@ -179,6 +190,8 @@ to avoid collisions in a crowd of moving characters.
 They defined a motion patch containing temporal trajectories of interacting
 characters, and arranged deformed patches to prevent collisions between
 characters.
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1116,6 +1129,9 @@ high frequency fluctuation in its position.
 }
 \end{figure}
 
+\makeatletter % bruh
+\setlength{\@fptop}{0pt} % bruh
+\makeatother % bruh
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/blender.pdf} 
