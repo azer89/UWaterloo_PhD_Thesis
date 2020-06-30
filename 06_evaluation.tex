@@ -44,7 +44,7 @@ To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wo
 a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
 However, it remains challenging to measure these principles.
 Isenberg has compiled a survey of NPR evaluation~\cite{Isenberg2013}, 
-and we find that past work in 2D packing evaluation is still limited.
+but we find that past work in 2D packing evaluation is still limited.
 }
 %To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
 %a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
@@ -61,7 +61,7 @@ and we find that past work in 2D packing evaluation is still limited.
 \newtext
 {
 \textbf{Qualitative Evaluation:}
-AlMeraj et al.~\cite{AlMerajEval2013} performed a qualitative evaluation to find
+AlMeraj et al.~\cite{AlMerajEval2013} conducted a qualitative evaluation to find
 the similarity between smaller texture exemplars and bigger synthesized texture arrangements.
 They conducted two user studies: a pile-sorting study and a pairwise comparison study.
 These user studies concerned about element distributions, but not element interlocking or the evenness of negative space, 
@@ -79,7 +79,7 @@ In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimiza
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 They did not further discuss whether it can be used for a quantitative evaluation,
-but we get inspiration from their work to develop a metric based on shape overlaps.
+but we get inspiration from their work to develop a metric based on shape overlaps that is discussed in the next section.
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
@@ -281,7 +281,7 @@ the area of the container.
 \newtext{
 The distance transform of the negative space provides insights into how negative space varies. 
 In the context of 2D packings, a distance transform is a 2D image where each pixel
-contains the radius $r$ value to the nearest element.
+contains the radius $r$ value from the nearest element.
 Figure~\ref{fig_distance_transform} shows an example for a distance transform,
 lighter a color of a pixel, higher the $r$ value, showing a pattern of white ridges
 that correspond to a medial axis.
