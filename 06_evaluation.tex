@@ -40,12 +40,19 @@ packings and to compare RepulsionPak with other packing algorithms.
 
 \newtext
 {
-To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
-a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
-However, it remains challenging to measure these principles.
-Isenberg has compiled a survey of NPR evaluation~\cite{Isenberg2013}, 
-but we find that past work in 2D packing evaluation is still limited.
+%Isenberg has compiled a survey of NPR evaluation~\cite{Isenberg2013},
+%but we find that past work in 2D packing evaluation is still limited.
+In this section, we discuss a few related methods for evaluating discrete texture synthesis,
+stippling, or packings.
+For more in-depth discussion, 
+Isenberg compiled a survey of evaluation methods in NPR research~\cite{Isenberg2013}.
+%For a compilation of NPR evaluation in general, please refer to a survey by Isenberg~\cite{Isenberg2013}.
 }
+
+%To create a good packing, Chapter~\ref{chapter_flowpak} describes
+%a few design principles should be followed: balance, flow, uniformity amidst variety, and boundary.
+%However, it remains challenging to measure these principles.
+
 %To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
 %a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
 %%Gieseke et al.~\cite{Gieseke2017} suggested that symmetry is also important.
@@ -79,14 +86,13 @@ In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimiza
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 They did not further discuss whether it can be used for a quantitative evaluation,
-but we get inspiration from their work to develop a metric based on shape overlaps that is discussed in the next section.
+but we get inspiration from their work to develop a metric based on shape overlaps that we describe in the next section.
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
-GLCM works best for analyzing dense point distributions and it unfortunately cannot be used to analyze geometric element arrangements.
-The packing quality in fabrication~\cite{Chen2016, Zehnder2016, Martinez2019} 
-is dictated by manufacturing constraints, such as connectivity,
-so that printed objects can resist from breaking.
+GLCM works best for analyzing dense point distributions, but it unfortunately cannot be used to analyze shape arrangements.
+In fabrication, the packing quality is dictated by manufacturing constraints, such as connectivity,
+so that printed objects can resist from breaking~\cite{Chen2016, Zehnder2016, Martinez2019}.
 However, our objective is more about the evenness of negative space and less about strengths.
 }
 
@@ -323,20 +329,17 @@ Note also that high values of the distance histogram near $d_\mathrm{gap}/2$
 correspond to a rapid negative change in the SCP, suggesting a more even
 packing.
 
-\begin{figure}[t]
+\begin{figure}[!ht]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
+\includegraphics[width=0.9\textwidth]{figures/metrics/rabbit.pdf}
 \caption[An example of distance transform of negative space]
 {\label{fig_distance_transform}
 \newtext{
     The image on the right is a distance transform generated from negative space around two rabbits.
     The brighter the color of a pixel, the farther it is from the nearest boundary.}
   }
-\end{figure}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
+\bigskip
+\includegraphics[width=0.9\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
 \caption[An example of a skeleton of negative space]
 {\label{fig_skeleton}
 \newtext{
@@ -348,19 +351,6 @@ packing.
 }
 \end{figure}
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/hsr_viz.pdf}
-\caption[Spherical contact probabilities and distance histograms \newline for reference packings]
-{\label{hsr_viz}
-Spherical contact probabilities and distance histograms for 
-reference packings.
-A ``perfect packing'' of infinite stripes is shown in~(a),
-followed by a square packing with the same area fraction and $d_\mathrm{gap}$
-in~(b).  The square packing is then perturbed with random rotations in~(c)
-and translations in~(d). The corresponding SCP functions and histograms are plotted
-in~(e) and~(f).}
-\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -399,36 +389,11 @@ Our result also has a histogram bump around $d_\mathrm{gap}/2$, and a lower over
 The result shows the effectiveness of the repulsion forces in successfully
 discovering compatibilities in the element boundaries and filling the space effectively.
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/pad_comparison.pdf}
-\caption[A comparison between a PAD~packing and a RepulsionPak packing \newline  with their corresponding SCPs]
-{\label{pad_comparison}
-    A comparison between a PAD~packing shown in~(a) and a RepulsionPak packing in~(b) 
-    with their corresponding SCPs~(c), distance histograms~(d), and overlap functions~(e). 
-  The PAD and RepulsionPak packings are calibrated
-  to have the same negative space ratio.
-    Our SCP is lower and shorter than the PAD's result,
-    our histogram shows higher concentration around $d_\mathrm{gap} / 2$,
-    indicating more even negative space,
-    and our packing has a lower overlap function.
-}
-\end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/balabolka_comparison.pdf}
-\caption[A comparison between the artist-made packing \newline  and a RepulsionPak packing]
-{ \label{balabolka_comparison} 
-    A comparison between the artist-made packing (Artist: Balabolka on Shutterstock) shown in~(a), and a RepulsionPak packing
-  with the same elements in~(b).  We plot the corresponding SCPs~(c),
-  distance histograms~(d), and overlap functions~(e).
-    For comparison purposes we remove secondary elements from the artist's
-  packing.  Our SCP is lower and shorter than the artist's result,
-    our histogram shows more concentration around $d_\mathrm{gap} / 2$,
-    and RepulsionPak also has a lower overlap function.
-}
-\end{figure}
+
+
+
+
 
 \textbf{Comparison to Rigid Packings}: 
 To evaluate the effect of deformation on negative space, we compute all three metrics under
@@ -447,7 +412,50 @@ The more pronounced histogram bump at $r=d_\mathrm{gap}/2$ suggests
 more even negative space.
 The lower overlap functions indicate fewer narrow gaps between elements.
 
-\begin{figure}[t]
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/hsr_viz.pdf}
+\caption[Spherical contact probabilities and distance histograms \newline for reference packings]
+{\label{hsr_viz}
+Spherical contact probabilities and distance histograms for 
+reference packings.
+A ``perfect packing'' of infinite stripes is shown in~(a),
+followed by a square packing with the same area fraction and $d_\mathrm{gap}$
+in~(b).  The square packing is then perturbed with random rotations in~(c)
+and translations in~(d). The corresponding SCP functions and histograms are plotted
+in~(e) and~(f).}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/pad_comparison.pdf}
+\caption[A comparison between a PAD~packing and a RepulsionPak packing \newline  with their corresponding SCPs]
+{\label{pad_comparison}
+    A comparison between a PAD~packing shown in~(a) and a RepulsionPak packing in~(b) 
+    with their corresponding SCPs~(c), distance histograms~(d), and overlap functions~(e). 
+  The PAD and RepulsionPak packings are calibrated
+  to have the same negative space ratio.
+    Our SCP is lower and shorter than the PAD's result,
+    our histogram shows higher concentration around $d_\mathrm{gap} / 2$,
+    indicating more even negative space,
+    and our packing has a lower overlap function.
+}
+\end{figure}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/balabolka_comparison.pdf}
+\caption[A comparison between the artist-made packing \newline  and a RepulsionPak packing]
+{ \label{balabolka_comparison} 
+    A comparison between the artist-made packing (Artist: Balabolka on Shutterstock) shown in~(a), and a RepulsionPak packing
+  with the same elements in~(b).  We plot the corresponding SCPs~(c),
+  distance histograms~(d), and overlap functions~(e).
+    For comparison purposes we remove secondary elements from the artist's
+  packing.  Our SCP is lower and shorter than the artist's result,
+    our histogram shows more concentration around $d_\mathrm{gap} / 2$,
+    and RepulsionPak also has a lower overlap function.
+}
+\end{figure}
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/metrics/evaluation.pdf}
 \caption[A demonstration of the effect of deformation \newline on the evenness of negative space]
