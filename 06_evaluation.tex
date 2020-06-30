@@ -42,12 +42,21 @@ packings and to compare RepulsionPak with other packing algorithms.
 {
 To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
 a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
-Gieseke et al.~\cite{Gieseke2017} suggested that symmetry is also important.
-However, it remains difficult to measure these principles.
-Research in NPR is lacking of evaluation, both qualitatively and quantitatively.
-A few methods have been proposed for evaluating discrete textures or stippling,
-but past work in evaluating 2D packing quality is still limited.
+However, it remains challenging to measure these principles.
+Isenberg has compiled a survey of NPR evaluation~\cite{Isenberg2013}, 
+and we find that past work in 2D packing evaluation is still limited.
 }
+%To create a good packing, Chapter~\ref{chapter_flowpak} and Wong et al.~\cite{Wong1998} describe
+%a few qualitative principles should be followed: balance, flow, uniformity amidst variety, and boundary.
+%%Gieseke et al.~\cite{Gieseke2017} suggested that symmetry is also important.
+%However, it remains difficult to measure these principles.
+%%Research in NPR is lacking of evaluation, both qualitatively and quantitatively.
+%Isenberg has compiled a survey of NPR evaluation~\cite{Isenberg2013}, 
+%and we find that past work in 2D packing evaluation is still limited.
+%%In this section, we discuss relevant work in qualitative evaluation and quantitative evaluation.
+%%A few methods have been proposed for evaluating discrete textures or stippling,
+%%but they cannot be extended to our work and past work in 2D packing evaluation is still limited.
+
 
 \newtext
 {
@@ -55,10 +64,12 @@ but past work in evaluating 2D packing quality is still limited.
 AlMeraj et al.~\cite{AlMerajEval2013} performed a qualitative evaluation to find
 the similarity between smaller texture exemplars and bigger synthesized texture arrangements.
 They conducted two user studies: a pile-sorting study and a pairwise comparison study.
-Kwan et al. performed a user study of 13 participant to compare Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} 
-with previous methods.
+These user studies concerned about element distributions, but not element interlocking or the evenness of negative space, 
+so their work is not suitable for our research.
+Kwan et al. performed a simple user study of 13 participant to compare 
+Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} with previous methods.
 A participant was shown a computer-generated packing randomly and they had to give ratings from 1 (worst) to 6 (best)
-to each of three categories: their subjective preference, element boundary coupling, and stylishness.
+to each of three categories: their subjective preference, element interlocking, and stylishness.
 }
 
 \newtext
@@ -67,16 +78,21 @@ to each of three categories: their subjective preference, element boundary coupl
 In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimization approach
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
-Their energy minimization is useful to backtrack to previous configurations 
-so that they are not stuck at a suboptimal solution.
-However, they did not further discuss whether it can be used for a quantitative evaluation.
+They did not further discuss whether it can be used for a quantitative evaluation,
+but we get inspiration from their work to develop a metric based on shape overlaps.
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
-with artist-made stipple artwork using image processing analysis techniques.
-Related work in fabrication sought to cover surfaces with arrangements of element~\cite{Zehnder2016, Chen2017}.
-Their packing quality is dictated by manufacturing constraints, such as connectivity, % and stability
-which requires element boundaries to be connected.
-If the element boundaries interlock with each other, 
-more contact points can be created so that the strength of the printed object is increased.}
+with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
+which measures spatial relationships between pixel intensities.
+GLCM works best for analyzing dense point distributions and it unfortunately cannot be used to analyze geometric element arrangements.
+The packing quality in fabrication~\cite{Chen2016, Zehnder2016, Martinez2019} 
+is dictated by manufacturing constraints, such as connectivity,
+so that printed objects can resist from breaking.
+However, our objective is more about the evenness of negative space and less about strengths.
+}
+
+
+%A few methods have been proposed for evaluating discrete textures or stippling,
+%but they cannot be extended to our work and past work in 2D packing evaluation is still limited.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -369,7 +385,21 @@ indicating fewer large empty areas.
 Our result also has a histogram bump around $d_\mathrm{gap}/2$, and 
 a lower overlap function.
 
-\begin{figure}[t]
+
+
+\textbf{Comparison to an Artist-Made Packing:} 
+In Figure~\ref{balabolka_comparison} we show a RepulsionPak result created 
+using the elements from the artist-made packing.
+Our packing was calibrated to match the artist's.
+Looking closely, the artist's packing has a few elements 
+separated by narrow gaps, such as the cherries and the corn on the top left.
+Our result has fewer large empty gaps, as indicated by a short tail
+in its SCP.
+Our result also has a histogram bump around $d_\mathrm{gap}/2$, and a lower overlap function.
+The result shows the effectiveness of the repulsion forces in successfully
+discovering compatibilities in the element boundaries and filling the space effectively.
+
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/metrics/pad_comparison.pdf}
 \caption[A comparison between a PAD~packing and a RepulsionPak packing \newline  with their corresponding SCPs]
@@ -385,19 +415,7 @@ a lower overlap function.
 }
 \end{figure}
 
-\textbf{Comparison to an Artist-Made Packing:} 
-In Figure~\ref{balabolka_comparison} we show a RepulsionPak result created 
-using the elements from the artist-made packing.
-Our packing was calibrated to match the artist's.
-Looking closely, the artist's packing has a few elements 
-separated by narrow gaps, such as the cherries and the corn on the top left.
-Our result has fewer large empty gaps, as indicated by a short tail
-in its SCP.
-Our result also has a histogram bump around $d_\mathrm{gap}/2$, and a lower overlap function.
-The result shows the effectiveness of the repulsion forces in successfully
-discovering compatibilities in the element boundaries and filling the space effectively.
-
-\begin{figure}[t]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/metrics/balabolka_comparison.pdf}
 \caption[A comparison between the artist-made packing \newline  and a RepulsionPak packing]
