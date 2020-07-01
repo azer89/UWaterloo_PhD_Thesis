@@ -37,22 +37,7 @@ The colours in the final rendering were added manually. }
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 
-\begin{figure}[t!] %%% ELEMENT IMAGE
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
-\caption[An example of flow visual style]{
-  \label{dog_flow}  
-\newtext
-{
-Examples of ornamental packings: 
-(a) Dog (by ComicVector703 on Shutterstock), 
-including an inset visualizing the flow directions of elements; 
-(b) Lion (from StockUnlimited);  
-(c) Skull (by alitdesign on Shutterstock).
-(d) Fish in the style of Haida art (by Russ Jones, used with permission); 
-}
-}
-\end{figure}
+
 
 
 \newtext
@@ -73,6 +58,24 @@ Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which 
 %this past work is not appropriate for creating flow-like
 %designs similar to the dog example.
 }
+
+\begin{figure}[t!] %%% ELEMENT IMAGE
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
+\caption[An example of flow visual style]{
+  \label{dog_flow}  
+\newtext
+{
+Examples of ornamental packings: 
+(a) Dog (by ComicVector703 on Shutterstock), 
+including an inset visualizing the flow directions of elements; 
+(b) Lion (from StockUnlimited);  
+(c) Skull (by alitdesign on Shutterstock).
+(d) Fish in the style of Haida art (by Russ Jones, used with permission); 
+}
+}
+\end{figure}
+
 
 In studying designs like those in Figure~\ref{dog_flow}, we 
 have identified high-level principles that are important
@@ -140,7 +143,6 @@ to their construction:
 
 
 
-
 In FLOWPAK, elements can be oriented in the local direction 
 of flow, but can also be deformed to capture changes in flow direction.
 We express the user's desired flow by placing evenly spaced streamlines
@@ -150,6 +152,8 @@ to communicate flow, and also deformed to balance the usage of negative space
 with elements placed on adjacent streamlines.  The final designs, such
 as the lion and unicorn shown in Figure~\ref{fig_lion_unicorn}, aim to obey the
 design principles articulated above.
+
+
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -164,7 +168,7 @@ design principles articulated above.
 There has been a moderate amount of past research in computer
 graphics, particularly in the field of non-photorealistic rendering,
 on the generation of packings or mosaics.  See Chapter~\ref{chapter_related_work}
-for specific examples.  However, this past work is not appropriate
+for specific examples.  However, past work is not appropriate
 for creating designs like those of Figure~\ref{dog_flow}.
 Most techniques pack elements via rigid transformations, leading to
 high uniformity but insufficient variety.  We believe that FLOWPAK, 
@@ -184,7 +188,7 @@ went on to describe a grammar-like system for laying out floral ornament.
 Bene\v{s} et al.~\cite{Benes2011} developed an interactive 
 interface to guide procedural models in generating decorative elements.
 The recent PATEX system by Guerrero 
-et al.~\cite{Guerrero2016} preserves high-level geometric relationships
+et al.~\cite{Guerrero2016} preserved high-level geometric relationships
 like symmetry and repetition while ornamental designs are edited.
 Gieseke et al.~\cite{Gieseke2017} developed a user interface where an artist 
 can generate a decorative pattern by specifying design principles such as flow, balance, and symmetry.

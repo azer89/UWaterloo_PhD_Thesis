@@ -72,10 +72,19 @@ The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD).
 
 \newtext
 {
+Secord~\cite{Secord2002} distributed point elements using weighted centroidal Voronoi diagram.
+Given an input greyscale image, he incorporated pixel intensities into the centroid calculation, 
+so that points elements are attracted to darker regions and the resulting point distribution
+resembles a stippling drawing.
+}
+
+
+\newtext
+{
+A customized distance function can be used to manipulate the shapes of Voronoi cells.
 Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
 This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
-It turns out that a customized distance function can be used to manipulate the shapes of Voronoi cells.
 %we will discuss a few more of related work that use this exploit throughout this chapter. 
 However, Hausner's approach can only translate the squares, and a vector field is required to rotate them.
 Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
@@ -100,8 +109,7 @@ earlier methods.
 \newtext
 {
 \textbf{Data-Driven Method:} 
-A different approach to generate packings is to use a shape matching algorithm
-and it requires a library containing a large number of elements (Figure~\ref{fig_related_jim_pad}).
+A different approach to generate packings is to use a shape matching algorithm (Figure~\ref{fig_related_jim_pad}).
 This is usually done by placing an element one by one until the container area is filled.
 For each step, a shape matching algorithm selects an 
 element that has the best fit with the previously placed elements or the container boundary.
@@ -116,8 +124,8 @@ of container boundary.
 \newtext
 {
 It is also possible to initially partition the container into smaller segments
-and independently replace each segment with a matching element.
-This is desirable if the container has colors or salient parts that need to be preserved.
+then independently replace each segment with a matching element.
+This is desirable if the container has colors or salient parts that need to be emphasized.
 Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
 by arranging cutout images collected from the internet.
 Their container is a larger cutout image which is partitioned into segments
@@ -252,7 +260,7 @@ A tiling of cats~\cite{Kaplan2000}.
 Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an exemplar.
-An element is represented as a single point, which is adequate for a small rigid element.
+An element is represented as a single point, which is adequate for small rigid elements.
 Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighbourhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
 stamped out copies of the exemplar and discard overlapping elements.
@@ -273,7 +281,7 @@ They later distributed these points using a neighborhood metric and an iterative
 Unlike previous work, they are able synthesize textures with long deformable elements, for example, spaghetti.
 Ma et al. later extended their work to accept animated elements~\cite{Ma2013}, where
 a sample point has spatial and time positions, turning the problem to spacetime texture synthesis.
-More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into a user interface
+More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into an interactive app
 where an artist can initially distribute elements by drawing strokes
 which are then optimized using a Lloyd-like optimization.
 }

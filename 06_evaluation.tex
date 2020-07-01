@@ -44,7 +44,7 @@ packings and to compare RepulsionPak with other packing algorithms.
 %but we find that past work in 2D packing evaluation is still limited.
 In this section, we discuss a few related methods for evaluating discrete texture synthesis,
 stippling, or packings.
-For more in-depth discussion, 
+For more general discussion, 
 Isenberg compiled a survey of evaluation methods in NPR research~\cite{Isenberg2013}.
 %For a compilation of NPR evaluation in general, please refer to a survey by Isenberg~\cite{Isenberg2013}.
 }
@@ -86,14 +86,14 @@ In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimiza
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 They did not further discuss whether it can be used for a quantitative evaluation,
-but we get inspiration from their work to develop a metric based on shape overlaps that we describe in the next section.
+but we get inspiration from their work to develop a metric based on shape overlaps that we describe in Section~\ref{section_overlap_function}.
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
-GLCM works best for analyzing dense point distributions, but it unfortunately cannot be used to analyze shape arrangements.
+GLCM works best for analyzing dense point distributions, but it unfortunately cannot be used to analyze arrangements with larger shapes.
 In fabrication, the packing quality is dictated by manufacturing constraints, such as connectivity,
 so that printed objects can resist from breaking~\cite{Chen2016, Zehnder2016, Martinez2019}.
-However, our objective is more about the evenness of negative space and less about strengths.
+However, our objective is more about the evenness of negative space and less about connectivity strengths.
 }
 
 
@@ -192,8 +192,9 @@ have unit area.  We must also arrange for the packings to have the same
 fraction of container area), so that our measurements can focus on the
 distribution of negative space and not just the amount.  Given two
 calibrated packings, we examine three main evenness metrics:
-overlap of offset elements, spherical contact probabilities,
-and distance histograms. 
+spherical contact probabilities,
+distance histograms,
+and overlap of offset elements. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -326,6 +327,7 @@ packing.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{The Overlap Function}
+\label{section_overlap_function}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 

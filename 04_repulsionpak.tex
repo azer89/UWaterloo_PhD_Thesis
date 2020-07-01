@@ -85,8 +85,9 @@ Variants of Lloyd's method include
 Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
 Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
 Although they can generate appealing results, they can only accept
-convex or near convex elements as their only optimize the alignments between
-element boundaries and Voronoi cells.
+convex or near convex elements. 
+%as their only optimize the alignments between
+%element boundaries and Voronoi cells.
 RepulsionPak can be categorized as a variant of Lloyd's method.
 Repulsion forces act onto vertices that are grouped into elements using elastic springs, 
 effectively pack and deform them without computing a Voronoi diagram.
@@ -104,21 +105,33 @@ effectively pack and deform them without computing a Voronoi diagram.
 Data-driven methods include Image Mosaics (JIM)~\cite{Kim2002}, 
 the Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}.
 JIM packed nearly-convex elements tightly by placing one element at a time and
-backtracking as needed.  PAD developed a sophisticated shape
-descriptor in order to find new elements that partially matched
+backtracking as needed.  As a shape descriptor, 
+PAD is used to find to find new elements that partially matched
 existing element boundaries as a container was being filled.  Both
 methods permitted some elements to overlap.  While they could
 both correct gaps and overlaps using deformation, the deformation
 was applied locally near edges in a post-processing step after
 elements were frozen in place. 
 2D {Arcimboldo} Collage~\cite{Huang2011} and 3D {Arcimboldo} Collage~\cite{Gal2007B}
-are also data-driven, but they permit large overlaps
+are also data-driven, but they permit large overlaps to 
 resemble the aesthetic style of Arcimboldo's artwork. 
 }
 
 \newtext
 {
 \textbf{Deformation-Driven Methods:}
+\newtext
+{
+Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
+simple polygons and polyominoes. Their method cannot handle more
+complicated shapes, making it unsuitable for our style of packings.
+Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
+deformed letters of one or two words to fit into a container.
+Because the order of the letterforms was defined by the text, their solutions
+usually required significant distortion of the individual letters.
+}
+
+
 Zehnder et al.~\cite{Zehnder2016} proposed a method to
 cover 3D surfaces with deformed ornamental elastic curves.
 Our method has some similarities to theirs in that both start with 
@@ -131,16 +144,7 @@ different from ours (2D ornamentation) and our results appear qualitatively
 different.
 }
 
-\newtext
-{
-Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
-simple polygons and polyominoes. Their method cannot handle more
-complicated shapes, making it unsuitable for our style of packings.
-Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
-deformed letters of one or two words to fit into a container.
-Because the order of the letterforms was defined by the text, their solutions
-usually required significant distortion of the individual letters.
-}
+
 
 %FLOWPAK (Chapter~\ref{flowpak_chapter}) placed ornamental
 %elements to create a visual sense of flow. They used
