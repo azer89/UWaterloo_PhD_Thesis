@@ -195,35 +195,6 @@ calibrated packings, we examine three main evenness metrics:
 overlap of offset elements, spherical contact probabilities,
 and distance histograms. 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{The Overlap Function}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/overlap_metric.pdf}
-\caption[An illustration of offsetting elements outward]
-{\label{fig_overlap_function}
-    An illustration of offsetting elements outward. The packings have $d_\mathrm{gap} / 2 = 5.7$.  
-    At an offset of 5, which is slightly less than $d_\mathrm{gap} / 2$,
-    the overlap for the PAD packing is 1.462\% of the total area, while the overlap for our packing is only 0.039\%.
-    At an offset of 11.4, which equals $d_\mathrm{gap}$, the PAD packing shows more empty space (1.05\%) than RepulsionPak (0.07\%).
-    As the offset is increased, overlaps in the PAD packing create channels
-  with uneven widths, whereas ours are more uniform.
-  }
-\end{figure}
-
-The overlap function is a function of a non-negative offset amount
-$r$.  For any given $r$, we offset every element by computing its Minkowski
-sum with a disc of radius $r$.  As $r$ grows, elements will start overlapping;
-the overlap function measures the total area of these overlaps, normalized
-by container area, as a function of $r$.  We can also visualize these 
-overlapping areas directly as in Figure~\ref{fig_overlap_function}.  In a 
-perfect packing, we would expect no overlaps until $r=d_\mathrm{gap}/2$,
-our desired gap distance, at which point overlapping areas would start to
-grow into channels of roughly even width.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -331,7 +302,7 @@ packing.
 
 \begin{figure}[!ht]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/metrics/rabbit.pdf}
+\includegraphics[width=0.85\textwidth]{figures/metrics/rabbit.pdf}
 \caption[An example of distance transform of negative space]
 {\label{fig_distance_transform}
 \newtext{
@@ -339,7 +310,7 @@ packing.
     The brighter the color of a pixel, the farther it is from the nearest boundary.}
   }
 \bigskip
-\includegraphics[width=0.9\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
+\includegraphics[width=0.85\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
 \caption[An example of a skeleton of negative space]
 {\label{fig_skeleton}
 \newtext{
@@ -350,6 +321,37 @@ packing.
   }
 }
 \end{figure}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{The Overlap Function}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/metrics/overlap_metric.pdf}
+\caption[An illustration of offsetting elements outward]
+{\label{fig_overlap_function}
+    An illustration of offsetting elements outward. The packings have $d_\mathrm{gap} / 2 = 5.7$.  
+    At an offset of 5, which is slightly less than $d_\mathrm{gap} / 2$,
+    the overlap for the PAD packing is 1.462\% of the total area, while the overlap for our packing is only 0.039\%.
+    At an offset of 11.4, which equals $d_\mathrm{gap}$, the PAD packing shows more empty space (1.05\%) than RepulsionPak (0.07\%).
+    As the offset is increased, overlaps in the PAD packing create channels
+  with uneven widths, whereas ours are more uniform.
+  }
+\end{figure}
+
+The overlap function is a function of a non-negative offset amount
+$r$.  For any given $r$, we offset every element by computing its Minkowski
+sum with a disc of radius $r$.  As $r$ grows, elements will start overlapping;
+the overlap function measures the total area of these overlaps, normalized
+by container area, as a function of $r$.  We can also visualize these 
+overlapping areas directly as in Figure~\ref{fig_overlap_function}.  In a 
+perfect packing, we would expect no overlaps until $r=d_\mathrm{gap}/2$,
+our desired gap distance, at which point overlapping areas would start to
+grow into channels of roughly even width.
 
 
 
@@ -420,7 +422,7 @@ spherical contact probabilities, and histograms of distance transform.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/hsr_viz.pdf}
+\includegraphics[width=1.0\textwidth]{figures/metrics/hsr_viz_big.pdf}
 \caption[Spherical contact probabilities and distance histograms \newline for reference packings]
 {\label{hsr_viz}
 Spherical contact probabilities and distance histograms for 
@@ -432,9 +434,11 @@ and translations in~(d). The corresponding SCP functions and histograms are plot
 in~(e) and~(f).}
 \end{figure}
 
+
+
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/pad_comparison.pdf}
+\includegraphics[width=1.0\textwidth]{figures/metrics/pad_comparison_big.pdf}
 \caption[A comparison between a PAD~packing and a RepulsionPak packing \newline  with their corresponding SCPs]
 {\label{pad_comparison}
 A comparison between a PAD~packing shown in~(a) and a RepulsionPak packing in~(b) 
@@ -451,7 +455,7 @@ and our packing has a lower overlap function.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/balabolka_comparison.pdf}
+\includegraphics[width=1.0\textwidth]{figures/metrics/balabolka_comparison_big.pdf}
 \caption[A comparison between the artist-made packing \newline  and a RepulsionPak packing]
 { \label{balabolka_comparison} 
 A comparison between the artist-made packing (Artist: Balabolka on Shutterstock) shown in~(a), and a RepulsionPak packing
@@ -466,7 +470,7 @@ and RepulsionPak also has a lower overlap function.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/metrics/evaluation.pdf}
+\includegraphics[width=1.0\textwidth]{figures/metrics/evaluation_big.pdf}
 \caption[A demonstration of the effect of deformation \newline on the evenness of negative space]
 {\label{fifteen_packings}
 A demonstration of the effect of deformation on the evenness of negative space.  
