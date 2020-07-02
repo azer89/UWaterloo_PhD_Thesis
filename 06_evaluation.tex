@@ -23,9 +23,9 @@ segments of their boundaries, suggesting that they interlock by design.
 We believe that the evenness of negative space is an indicator 
 on how much the elements interlock.
 The separation between neighbouring elements should be roughly the same everywhere.
-In the limit, as this element separation goes to zero,
-the packing turns into a tessellation: a set of elements that exactly
-fill a container with no overlaps.  
+%In the limit, as this element separation goes to zero,
+%the packing turns into a tessellation: a set of elements that exactly
+%fill a container with no overlaps.  
 In this chapter, we have developed several measurements of evenness,
 which allow us to examine the behaviour of manually constructed reference
 packings and to compare RepulsionPak with other packing algorithms.
@@ -71,7 +71,7 @@ Isenberg compiled a survey of evaluation methods in NPR research~\cite{Isenberg2
 AlMeraj et al.~\cite{AlMerajEval2013} conducted a qualitative evaluation to find
 the similarity between smaller texture exemplars and bigger synthesized texture arrangements.
 They conducted two user studies: a pile-sorting study and a pairwise comparison study.
-These user studies concerned about element distributions, but not element interlocking or the evenness of negative space, 
+These user studies concerned about small-sized element distributions, but not element interlocking or the evenness of negative space, 
 so their work is not suitable for our research.
 Kwan et al. performed a simple user study of 13 participant to compare 
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} with previous methods.
@@ -86,7 +86,7 @@ In Jigsaw Image Mosaics (JIM)~\cite{Kim2002}, Kim et al. uses an energy minimiza
 to pack elements. They penalize a configuration if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 They did not further discuss whether it can be used for a quantitative evaluation,
-but we get inspiration from their work to develop a metric based on shape overlaps that we describe in Section~\ref{section_overlap_function}.
+but we are inspired by their work to develop a metric based on shape overlaps (Section~\ref{section_overlap_function}).
 Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
@@ -185,7 +185,7 @@ However, our objective is more about the evenness of negative space and less abo
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+\textbf{Calibration:}
 Two packings must be calibrated to each other before our measurements 
 can be compared meaningfully.  
 We can compare packings of different sizes by normalizing their containers to

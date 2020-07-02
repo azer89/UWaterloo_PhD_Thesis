@@ -171,8 +171,8 @@ on the generation of packings or mosaics.  See Chapter~\ref{chapter_related_work
 for specific examples.  However, past work is not appropriate
 for creating designs like those of Figure~\ref{dog_flow}.
 Most techniques pack elements via rigid transformations, leading to
-high uniformity but insufficient variety.  We believe that FLOWPAK, 
-as a deformation-driven approach, can generate plausible families of related decorative elements
+high uniformity but insufficient variety.  We design FLOWPAK 
+to be a deformation-driven approach so that it can generate plausible families of related decorative elements
 from a single input shape.  %They also focus on packing large numbers
 %of small elements.  We are interested in the compositional properties
 %of large, visually distinct elements.
@@ -528,10 +528,10 @@ to place in the blob by finding the element that minimizes a sum of least square
 where
 %\vspace*{-4pt}
 \begin{conditions}
-\alpha_{l}\enspace & the element left function\\
-\alpha_{r} &  the element right function \\   
-\beta_{l}  &  the blob left function \\
-\beta_{r}  &  the blob right function
+\alpha_{l}\enspace & the element left function;\\
+\alpha_{r} &  the element right function; \\   
+\beta_{l}  &  the blob left function; and \\
+\beta_{r}  &  the blob right function.
 \end{conditions}
 %\vspace{-4pt}
 
@@ -714,10 +714,10 @@ w = w_f (1 - f^p) + w_d \: D(s_i, \bm{n_a})
 \end{equation}
 where
 \begin{conditions}
-f                  & $(\bm{n_b} - \bm{n_a}) \cdot \bm{v}$ \\
-\bm{v} 		   & a sampled vector of the vector field \\
-s_i                & the original streamline \\   
-D()\enspace        & a distance function between a polyline and a point
+f                  & $(\bm{n_b} - \bm{n_a}) \cdot \bm{v}$; \\
+\bm{v} 		   & a sampled vector of the vector field; \\
+s_i                & the original streamline; and \\   
+D()\enspace        & a distance function between a polyline and a point.
 \end{conditions}
 
 In practice, we set $w_d = 0.1$, $w_f=1$, and $p = 3$.

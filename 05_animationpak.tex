@@ -453,6 +453,140 @@ initial placement of spacetime elements.
 %\subsection{Forces}
 %\label{animationpak_forces}
 
+
+
+\newtext
+{
+We perform a physics simulation on the spacetime elements and the 
+container.  Elements are \newtext{subjected} to a number of forces that cause them
+to simultaneously grow, deform, and repel each other (Figure~\ref{fig_animationpak_simulation_process}).
+In Section~\ref{animationpak_slice_constraints} we introduce some new hard
+constraints that must be applied after every time step.
+Note that we must distinguish two notions of time in this simulation.  We use
+$t$ to refer to the time axis of our spacetime volume, which will become
+the time dimension of the final animation, and $t_\mathrm{sim}$ to
+refer to the time domain in which the simulation is taking place.
+}
+
+\newtext
+{
+Let $\bm{x} = (x, y, t)$ be a vertex of a slice.
+The total force $\simforce{total} $ applied to $\bm{x}$ is
+\begin{equation}
+\simforce{total}  = \simforce{rpl} + \simforce{edg} + \simforce{bdr} + \simforce{ovr} + \simforce{tor} + \simforce{tmp}
+\end{equation}
+where 
+\begin{packeddescriptions}
+  \item[$\simforce{rpl}$] is the repulsion force;
+  \item[$\simforce{edg}$] is the edge force;
+  \item[$\simforce{bdr}$] is the boundary force;
+  \item[$\simforce{ovr}$] is the overlap force;
+  \item[$\simforce{tor}$] is the torsional force; and 
+  \item[$\simforce{tmp}$] is the temporal force.  
+\end{packeddescriptions}
+%where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$,  $\simforce{tor}$ and $\simforce{tmp}$ are 
+%the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, and the temporal force.
+The these forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
+In this section, we explain the first five forces briefly 
+and readers can refer back to Section~\ref{repulsionpak_simulation}
+for more details.
+}
+
+\newtext
+{
+\textbf{Repulsion forces} allow elements to push away vertices of 
+neighbouring elements, inducing deformations and transformations that lead 
+to an even distribution of elements within the container
+(Figure~\ref{fig_animationpak_repulsion_force}).
+Since the simulation operates in the spacetime domain,
+vertex $\bm{x}$ accumulates repulsion forces from points at
+various time positions.
+To locate these points on neighbouring elements that are considered 
+nearest, we use a collision grid data structure, described in greater
+detail in Section~\ref{animationpak_spatial_queries}.
+}
+
+\newtext
+{
+\textbf{Edge forces}
+allow elements to deform in response to repulsion forces.
+The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
+We have five types of springs, with stiffness constants that can be 
+set independently.
+}
+
+\newtext
+{
+\textbf{Overlap forces} resolve a vertex penetrating a
+neighboring spacetime element.
+Overlaps can occur later in the simulation when negative space is 
+limited.  Once we detect a penetration,  
+we temporarily disable the repulsion force on vertex $\bm{x}$, and apply
+an overlap force $\simforce{ovr}$ to push it out.
+}
+
+\newtext
+{
+\textbf{Boundary forces} keep vertices inside the container.
+If an element vertex $\bm{x}$
+is outside the container, the boundary force $\simforce{bdr}$ moves
+it towards the closest point
+on the container's boundary by an amount proportional to the distance to
+the boundary.
+}
+
+\newtext
+{
+\textbf{Torsional forces} allow an element's slices to be given
+preferred orientations, to which they attempt to return.
+}
+
+\newtext
+{
+\textbf{Temporal forces} prevent slices from drifting too far
+from their original positions along the time axis positions
+(Fig.~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
+and decelerations in the final animation.  For every vertex, we compute
+the temporal force $\simforce{tmp}$ as
+\begin{equation}
+\simforce{tmp} = k_\mathrm{tmp} \bm{u}^t(t - t')
+\end{equation}
+where
+\begin{packeddescriptions}
+  \item[$k_\mathrm{tmp}$] is the relative strength of $\simforce{tmp}$;
+  \item[$t$] is the initial time of the slice to which the vertex belongs;
+  \item[$t'$] is the current time value of the vertex; and
+  \item[$\bm{u}^t = (0,0,1)$.]
+\end{packeddescriptions}
+}
+
+
+
+\newtext
+{
+\textbf{Numerical Integration:}
+We use explicit Euler integration to simulate the motions of the mesh vertices under the
+forces described above.  Every vertex has a position and a velocity vector; in
+every iteration, we update velocities using forces, and update positions using
+velocities.  These updates are scaled by a time step 
+$\Delta t_\mathrm{sim}$ that we set to $0.01$.
+We cap velocities at $10 \Delta t_\mathrm{sim}$ 
+to dissipate extra energy from the simulation.
+}
+
+\newtext
+{
+The constants $k_\mathrm{rpl}$, $k_\mathrm{ovr}$, $k_\mathrm{bdr}$  $k_\mathrm{edg}$, $k_\mathrm{tor}$ 
+and $k_\mathrm{tmp}$ control the relative strengths
+of the six forces in the simulation.  They must also be chosen relative to
+the time step $\Delta t_\mathrm{sim}$ and the size of the container.
+Note that container's bounding box is resized to a unit cube,
+so we set $k_\mathrm{rpl}=10$, $k_\mathrm{ovr}=k_\mathrm{bdr}=5$, $k_\mathrm{tor}=k_\mathrm{tmp}=1$.
+We set $k_\mathrm{edg} = 0.01$ for time springs,
+$k_\mathrm{edg} = 0.1$ for negative-space springs, and $k_\mathrm{edg} = 10$ for edge springs, shear springs,
+and target point springs.
+}
+
 \begin{figure} [t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsion_force.pdf} 
@@ -472,130 +606,6 @@ $s_i$ are drawn back towards time $t$.
 }
 \end{figure}
 
-\newtext
-{
-We perform a physics simulation on the spacetime elements and the 
-container.  Elements are subject to a number of forces that cause them
-to simultaneously grow, deform, and repel each other (Figure~\ref{fig_animationpak_simulation_process}).
-In Section~\ref{animationpak_slice_constraints} we introduce some new hard
-constraints that must be applied after every time step.
-Note that we must distinguish two notions of time in this simulation.  We use
-$t$ to refer to the time axis of our spacetime volume, which will become
-the time dimension of the final animation, and $t_\mathrm{sim}$ to
-refer to the time domain in which the simulation is taking place.
-}
-
-\newtext
-{
-Let $\bm{x} = (x, y, t)$ be a vertex of a slice.
-The total force $\simforce{total} $ applied to $\bm{x}$ is
-\begin{equation}
-\simforce{total}  = \simforce{rpl} + \simforce{edg} + \simforce{bdr} + \simforce{ovr} + \simforce{tor} + \simforce{tmp}
-\end{equation}
-where 
-\begin{packeddescriptions}
-  \item[$\simforce{rpl}$] is the repulsion force
-  \item[$\simforce{edg}$] is the edge force
-  \item[$\simforce{bdr}$] is the boundary force
-  \item[$\simforce{ovr}$] is the overlap force
-  \item[$\simforce{tor}$] is the torsional force  
-  \item[$\simforce{tmp}$] is the temporal force  
-\end{packeddescriptions}
-%where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$,  $\simforce{tor}$ and $\simforce{tmp}$ are 
-%the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, and the temporal force.
-The these forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
-In this section, we explain the first five forces briefly 
-and readers can refer back to Section~\ref{repulsionpak_simulation}
-for more details.
-}
-
-\newtext
-{
-\textbf{Repulsion forces} allow elements to push away vertices of 
-neighbouring elements, inducing deformations and transformations that lead 
-to an even distribution of elements within the container
-(Figure~\ref{fig_animationpak_repulsion_force}).
-The relative strength of repulsion forces $k_\mathrm{rpl}$ is set to $10$.
-Since the simulation operates in the spacetime domain,
-vertex $\bm{x}$ accumulates repulsion forces from points at
-various time positions.
-To locate these points on neighbouring elements that are considered 
-nearest, we use a collision grid data structure, described in greater
-detail in Section~\ref{animationpak_spatial_queries}.
-}
-
-\newtext
-{
-\textbf{Edge forces}
-allow elements to deform in response to repulsion forces.
-The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
-We have five types of springs, with stiffness constants that can be 
-set independently.  In our implementation we set $k_\mathrm{edg}$ 
-to $0.01$ for time springs, $0.1$ for negative-space springs,
-and 10 for edge springs, shear springs, and target point springs.
-}
-
-\newtext
-{
-\textbf{Overlap forces} resolve a vertex penetrating a
-neighboring spacetime element.
-Overlaps can occur later in the simulation when negative space is 
-limited.  Once we detect a penetration,  
-we temporarily disable the repulsion force on vertex $\bm{x}$, and apply
-an overlap force $\simforce{ovr}$ to push it out.
-The relative strength of overlap forces $k_\mathrm{ovr}$ is set to $5$.
-}
-
-\newtext
-{
-\textbf{Boundary forces} keep vertices inside the container.
-If an element vertex $\bm{x}$
-is outside the container, the boundary force $\simforce{bdr}$ moves
-it towards the closest point
-on the container's boundary by an amount proportional to the distance to
-the boundary.
-The relative strength of boundary forces $k_\mathrm{bdr}$ is set to $5$.
-}
-
-\newtext
-{
-\textbf{Torsional forces} allow an element's slices to be given
-preferred orientations, to which they attempt to return.
-The relative strength of torsional forces $k_\mathrm{tor}$ is set to $0.1$.
-}
-
-\newtext
-{
-\textbf{Temporal forces} prevent slices from drifting too far
-from their original positions along the time axis positions
-(Fig.~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
-and decelerations in the final animation.  For every vertex, we compute
-the temporal force $\simforce{tmp}$ as
-\begin{equation}
-\simforce{tmp} = k_\mathrm{tmp} \bm{u}^t(t - t')
-\end{equation}
-where
-\begin{packeddescriptions}
-  \item[$k_\mathrm{tmp}$] is the relative strength of 
-    $\simforce{tmp}$. We set $k_\mathrm{tmp} = 1$;
-  \item[$t$] is the initial time of the slice to which the vertex belongs;
-  \item[$t'$] is the current time value of the vertex; and
-  \item[$\bm{u}^t = (0,0,1)$].
-\end{packeddescriptions}
-}
-
-\newtext
-{
-\textbf{Numerical Integration:}
-We use explicit Euler integration to simulate the motions of the mesh vertices under the
-forces described above.  Every vertex has a position and a velocity vector; in
-every iteration, we update velocities using forces, and update positions using
-velocities.  These updates are scaled by a time step 
-$\Delta t_\mathrm{sim}$ that we set to $0.01$.
-We cap velocities at $10 \Delta t_\mathrm{sim}$ 
-to dissipate extra energy from the simulation.
-}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Spatial Queries}
@@ -603,23 +613,7 @@ to dissipate extra energy from the simulation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/collision_grid.pdf} 
-\caption[An envelope and a collision grid]
-{\label{fig_animationpak_collision_grid} 
-(a) The triangles that connect consecutive slices define the envelope of the
-element.  The midpoints of these triangles are stored in a collision grid.
-(b) A 2D visualization of the region of collision
-grid cells around a query point 
-$\bm{x}$ 
-in which repulsion and overlap forces will be computed.  In the central blue
-region, we check overlaps and compute exact repulsion forces relative to
-closest points on triangles of neighbouring elements; in the peripheral
-red region we do not compute overlaps, and repulsion forces are approximated
-using triangle midpoints only.}
-%% \craig{Do we really need this figure?}
-\end{figure}
+
 
 Repulsion and overlap forces rely on being able to find points on
 neighbouring elements that are close to a given query vertex.
@@ -631,7 +625,7 @@ shown in Figure~\ref{fig_animationpak_collision_grid}a.  Given a query vertex
 $\bm{x}$, we need to find nearby envelope triangles that belong to
 other elements.
 
-To accelerate this computation, we first find and store the centroids of
+To accelerate this computation, we first compute and store the centroids of
 every element's envelope triangles in a uniformly subdivided 3D grid that
 surrounds the spacetime volume of the animation.  In using this data
 structure, we make two simplifying assumptions; first, that because 
@@ -654,6 +648,25 @@ are the 27 cells making up a $3\times 3\times 3$ block around the cell
 containing the point; the more distant cells are the 98 that make up the
 outer shell of the $5\times 5\times 5$ block around that 
 (Figure~\ref{fig_animationpak_collision_grid}).
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/collision_grid.pdf} 
+\caption[An envelope and a collision grid]
+{\label{fig_animationpak_collision_grid} 
+(a) The triangles that connect consecutive slices define the envelope of the
+element.  The midpoints of these triangles are stored in a collision grid.
+(b) A 2D visualization of the region of collision
+grid cells around a query point 
+$\bm{x}$ 
+in which repulsion and overlap forces will be computed.  In the central blue
+region, we check overlaps and compute exact repulsion forces relative to
+closest points on triangles of neighbouring elements; in the peripheral
+red region we do not compute overlaps, and repulsion forces are approximated
+using triangle midpoints only.}
+%% \craig{Do we really need this figure?}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

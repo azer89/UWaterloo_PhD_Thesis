@@ -55,7 +55,7 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 Unlike FLOWPAK that deforms long thin elements, we design RepulsionPak to deform arbitrary shaped elements.
 By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, even with a small library
-of element shapes. We believe that the aesthetic quality
+of element shapes. We argue that the aesthetic quality
 of the packing as a whole more than compensates for the relatively
 small deformations applied to the elements.
 }
@@ -396,7 +396,7 @@ We prepare our simulation by randomly placing non-overlapping elements.
 \newtext
 {
 We design a simulation in which we generate 
-forces that transform elements by transforming their meshes.
+forces that pack and deform elements by transforming their meshes.
 Let $\bm{x} = (x, y)$ be a vertex of an element mesh. 
 The total force $\simforce{total}$ applied to $\bm{x}$ is
 \begin{equation}
@@ -404,11 +404,11 @@ The total force $\simforce{total}$ applied to $\bm{x}$ is
 \end{equation}
 where 
 \begin{packeddescriptions}
-	\item[$\simforce{rpl}$] is the repulsion force
-	\item[$\simforce{edg}$] is the edge force
-	\item[$\simforce{bdr}$] is the boundary force
-	\item[$\simforce{ovr}$] is the overlap force
-	\item[$\simforce{tor}$] is the torsional force	
+	\item[$\simforce{rpl}$] is the repulsion force;
+	\item[$\simforce{edg}$] is the edge force;
+	\item[$\simforce{bdr}$] is the boundary force;
+	\item[$\simforce{ovr}$] is the overlap force; and
+	\item[$\simforce{tor}$] is the torsional force.	
 \end{packeddescriptions}
 %where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$ and $\simforce{tor}$ are 
 %the repulsion force, the edge force, the boundary force, the overlap force, and the torsional force.
@@ -439,10 +439,10 @@ from all nearby meshes.  We use the following formula:
 where 
 \begin{packeddescriptions}
 	\item[$k_\mathrm{rpl}$]        is the strength of the repulsion force relative to
-						other forces in the simulation.
-	\item[$n$]        is the number of nearest neighbouring meshes to $\bm{x}$. 
-	\item[$\bm{x_{i}}$] is the closest point on the skin of the $i$th neighbour.
-	\item[$\bm{u}$]  $= \bm{x} - \bm{x_{i}}$
+						other forces in the simulation;
+	\item[$n$]        is the number of nearest neighbouring meshes to $\bm{x}$; 
+	\item[$\bm{x_{i}}$] is the closest point on the skin of the $i$th neighbour;
+	\item[$\bm{u}$]  $= \bm{x} - \bm{x_{i}}$; and
 	
 						% mesh from $\bm{x}$.		
 	
@@ -482,9 +482,9 @@ mesh vertices connected by a spring.  We compute the spring force as follows:
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_\mathrm{edg}$] is the strength of the edge force relative to other forces.
-	\item[$\bm{u}$] $= \bm{x_{b}} - \bm{x_{a}}$
-	\item[$\ell$] is the rest length of the spring.
+	\item[$k_\mathrm{edg}$] is the strength of the edge force relative to other forces;
+	\item[$\bm{u}$] $= \bm{x_{b}} - \bm{x_{a}}$;
+	\item[$\ell$] is the rest length of the spring; and
 	\item[$s$] is +1 or -1, according to whether $(\| \bm{u} \| - \ell)$ 
 		is positive or negative.
 \end{packeddescriptions}
@@ -520,8 +520,8 @@ force is thus given by:
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_\mathrm{ovr}$] is the relative strength of the overlap force.
-	\item[$n$] is the number of mesh triangles that have $\bm{x}$ as a vertex.
+	\item[$k_\mathrm{ovr}$] is the relative strength of the overlap force;
+	\item[$n$] is the number of mesh triangles that have $\bm{x}$ as a vertex; and
 	\item[$\bm{p_{i}}$] is the centroid of the $i$th triangle incident on $\bm{x}$.
 \end{packeddescriptions}
 
@@ -543,7 +543,7 @@ the boundary:
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_\mathrm{bdr}$] is the relative strength of the boundary force.
+	\item[$k_\mathrm{bdr}$] is the relative strength of the boundary force; and
 	\item[$\bm{p_b}$] is the closest point on the target container to $\bm{x}$.
 \end{packeddescriptions}
 
@@ -575,10 +575,10 @@ is
 \end{equation}
 where
 \begin{packeddescriptions}
-	\item[$k_\mathrm{tor}$]  is the relative strength of the torsional force.
-	\item[$\theta$] is the signed angle between $\bm{u}_r$ and $\bm{u}$;
+	\item[$k_\mathrm{tor}$]  is the relative strength of the torsional force;
+	\item[$\theta$] is the signed angle between $\bm{u}_r$ and $\bm{u}$; and
 	\item[$\bm{u}^\perp$] is a unit vector rotated $90^\circ$
-		counterclockwise relative to $\bm{u}$; and
+		counterclockwise relative to $\bm{u}$;
 \end{packeddescriptions}
 
 Using the equation above, $\simforce{tor}$ is always perpendicular to $\bm{u}$
@@ -621,18 +621,14 @@ The constants $k_\mathrm{rpl}$, $k_\mathrm{ovr}$, $k_\mathrm{bdr}$  $k_\mathrm{e
 control the relative strengths
 of the five forces in the simulation.  They must also be chosen relative to
 the time step $\Delta t$ and the overall width and height of the container.
-%We find that our simulation produces satisfactory results when 
-%$k_r \approx k_o \approx k_b \geq k_e > k_t$.
-%For example, 
-In practice, if the container's bounding box is approximately $1000\times 1000$,
+We find that our simulation produces satisfactory results when 
+$k_\mathrm{rpl} \approx k_\mathrm{ovr} \approx k_\mathrm{bdr} \geq k_\mathrm{edg} > k_\mathrm{tor}$.
+For example, if the container's bounding box is approximately $1000\times 1000$,
 we set $k_\mathrm{rpl}=k_\mathrm{ovr}=k_\mathrm{bdr}=80$, and $k_\mathrm{tor}=1$.
 We set $k_\mathrm{edg} = 10$ 
 for negative-space springs, and $k_\mathrm{edg} = 40$ for edge springs and shear springs,
-since weaker springs are sufficient to avoid self-intersections.
+since weaker negative-space springs are sufficient to avoid self-intersections.
 We also set $\varsigma=1$ to avoid explosive repulsion forces. 
-In summary,
-We find that our simulation produces satisfactory results when 
-$k_\mathrm{rpl} \approx k_\mathrm{ovr} \approx k_\mathrm{bdr} \geq k_\mathrm{edg} > k_\mathrm{tor}$.
 Increasing $k_\mathrm{edg}$
 relative to the other forces suppresses deformation, yielding a close approximation
 of packing with rigid elements.
