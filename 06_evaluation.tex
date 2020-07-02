@@ -91,6 +91,9 @@ Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated vs.
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
 GLCM works best for analyzing dense point distributions, but it unfortunately cannot be used to analyze arrangements with larger shapes.
+In medical research, Aliy et al.~\cite{Aliy2013} proposed a method to analyze small biological objects in a histology image.
+They treated these objects as a point distribution by computing their centroids and encoded their spatial relationships, 
+so their work is unsuitable for our research.
 In fabrication, the packing quality is dictated by manufacturing constraints, such as connectivity,
 so that printed objects can resist from breaking~\cite{Chen2016, Zehnder2016, Martinez2019}.
 However, our objective is more about the evenness of negative space and less about connectivity strengths.
@@ -271,8 +274,7 @@ that are either too long or too short.
 
 \newtext
 {
-We opt to analyze the entire negative space by generating a histogram of all $r$ values.
-}
+We opt to analyze the entire negative space by generating a histogram of all $r$ values.}
 We could calculate a standard \textbf{histogram of the
 distance transform}, but that would require quantizing distances into bins.
 Instead, note that the SCP $Q_s(r)$ is precisely the normalized area of 
