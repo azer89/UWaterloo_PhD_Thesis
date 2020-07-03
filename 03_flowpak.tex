@@ -59,6 +59,14 @@ Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which 
 %designs similar to the dog example.
 }
 
+
+
+\newtext{
+In studying designs like those in Figure~\ref{dog_flow}, we 
+have identified five high-level principles that are important
+to ornamental packing construction:
+}
+
 \begin{figure}[t!] %%% ELEMENT IMAGE
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
@@ -76,10 +84,6 @@ including an inset visualizing the flow directions of elements;
 }
 \end{figure}
 
-
-In studying designs like those in Figure~\ref{dog_flow}, we 
-have identified high-level principles that are important
-to their construction:
 
 \begin{items}%[leftmargin=*]
 \item \textbf{Balance.} A composition does not exhibit too
@@ -384,7 +388,7 @@ in blue and their right values in red. We have found that $n = 100$ gives suffic
 granularity for our algorithm.
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
 \caption[Ornamental elements and their LR functions]
@@ -416,9 +420,9 @@ The artist can include directional guides to guide the vector field around fixed
 {
 The next step is to trace streamlines in the vector field, guided by three input parameters:
 \begin{packeddescriptions}
-\item[$s\_gap$] is the desired space between streamlines 
-\item[$s\_max$] is the maximum desired streamline length 
-\item[$s\_min$] is the minimum desired streamline length   
+\item[$s\_gap$] is the desired space between streamlines;
+\item[$s\_max$] is the maximum desired streamline length; and
+\item[$s\_min$] is the minimum desired streamline length.   
 \end{packeddescriptions}
 Because we will ultimately place elements along streamlines without overlap, \newtext{$s\_gap$} determines
 the approximate width of the placed elements, and \newtext{$s\_max$} the maximum length.  We also derive
@@ -456,7 +460,18 @@ boundary $T$ and the directional guides in $D$, with closer points first and equ
 points ordered randomly. Because the initial points are all on $T$ or on a path in $D$, their
 sort value is zero, and they will be processed before any derived points. 
 
-\begin{algorithm}[h!]
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
+\caption[The streamline tracing process]
+{\label{streamline_tracing}
+The streamline tracing process. The first streamline $s_1$ always begins
+on a directional guide or the container boundary.  Subsequent streamlines begin
+on the container boundary, a directional guide, or at a point that is 
+\newtext{$s\_gap$} away from a previous streamline.}
+\end{figure}
+
+\begin{algorithm}
 \caption{Tracing Streamlines} 
 \label{tracing_streamlines}
 \begin{algorithmic} 
@@ -478,17 +493,10 @@ sort value is zero, and they will be processed before any derived points.
 \end{algorithmic}
 \end{algorithm}
 
+
+
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
-\caption[The streamline tracing process]
-{\label{streamline_tracing}
-The streamline tracing process. The first streamline $s_1$ always begins
-on a directional guide or the container boundary.  Subsequent streamlines begin
-on the container boundary, a directional guide, or at a point that is 
-\newtext{$s\_gap$} away from a previous streamline.}
-\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -557,27 +565,13 @@ to make it as wide as possible while still staying inside the blob
 (Figure~\ref{shape_deformation}).
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/shape_deformation.pdf}
 \caption[Shape deformation]
 {\label{shape_deformation}
 The deformation process bends the element along the streamline and
 scales it to fit inside the blob.}
-\bigskip
- \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
- \caption[Shift a streamline]
- {\label{shift_streamline}
- Streamline shifting.
- 	We move the streamline's start and end points along 
-	perpendiculars, stopping before intersecting neighbouring elements.}
-\bigskip
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
- \caption[Trace a shortest path]
- {\label{dijkstra}
- Tracing a shortest path using Dijkstra's algorithm.  We generate the 
- orange nodes by resampling and offsetting the blue red streamline.
-          The search directions at a node are shown with green arrows.}
 \end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -622,7 +616,7 @@ Note that in Algorithm~\ref{iterative_refinement_algorithm}, the variable
 $E$ is the list of placed, distorted ornamental elements, and
 not the set of prototype elements discussed earlier.
 
-\begin{algorithm}[h!] 
+\begin{algorithm}
 \caption{Iterative Refinement} 
 \label{iterative_refinement_algorithm}
 \begin{algorithmic} 
@@ -662,6 +656,24 @@ not the set of prototype elements discussed earlier.
 \ENDFOR
 \end{algorithmic}
 \end{algorithm}
+
+\begin{figure}
+ \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
+ \caption[Shift a streamline]
+ {\label{shift_streamline}
+ Streamline shifting.
+  We move the streamline's start and end points along 
+  perpendiculars, stopping before intersecting neighbouring elements.}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
+ \caption[Trace a shortest path]
+ {\label{dijkstra}
+ Tracing a shortest path using Dijkstra's algorithm.  We generate the 
+ orange nodes by resampling and offsetting the blue red streamline.
+          The search directions at a node are shown with green arrows.}
+\end{figure}
 
 \textbf{Shifting Streamlines.}
 There are two issues that keep the initial placement of elements from being
@@ -751,7 +763,7 @@ and precompute LR functions for each. The shape matching algorithm
 can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/stretch.pdf}
 \caption[Enlarge an element]
@@ -784,63 +796,7 @@ across its spine, along its spine, or both.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/result_02.pdf} %RHINO
-\caption[A packing of a rhinoceros]
-{\label{result_rhino}
-A packing of a rhinoceros.  Simple teardrop-shaped 
-elements lead to variety in size and curvature.}
-\bigskip
-\includegraphics[width=1.0\textwidth]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
-\caption[A packing of a bear with leaf elements]
-{\label{result_bear_leaves}
-  A bear packing with leaf elements.  We manually add noise to the 
-  elements in the output to create a distressed look.}
-\end{figure}
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/cat.pdf}
-\caption[A packing of a cat]
-{A packing with a symmetric layout; we only compute the left half and reflect the result. The elements around the cheeks and the chin are not aligned to the boundary, creating a fur-like effect.}
-\label{result_cat}
-\end{figure}
-
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_flower.pdf}
-\caption[A packing of a dog]
-{A packing of a dog. The fixed elements, shown as green
-  shapes in the diagram, are copied as-is to the output; fixed spines,
-  shown as green paths, force the placement of new elements at the given
-  locations.}
-\label{result_dog}
-\end{figure}
-
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/bear_offset_space.pdf}
-\caption[A packing of a bear with elements created from negative space]
-{A packing of the same container as in Figure~\ref{result_bear_leaves}.
-  We place longer and sparser elements and synthesize additional forms to
-  fill negative space.}
-\label{result_bear_offset}
-\end{figure}
-
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/bird_square.pdf}
-\caption[A packing of a bird]
-{A packing of a bird, based on input provided by
-  an artist.}
-\label{bird_square}
-\end{figure}
 
 We design our containers and decorative elements in a vector graphics 
 editor, and then use them as input to a C++ program that outputs final
@@ -902,7 +858,63 @@ different container regions; the result has sparse ``Y'' elements in
 the breast and head, and denser ``O'' elements in the wings. The artist was pleased with the results.
 
 
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/result_02.pdf} %RHINO
+\caption[A packing of a rhinoceros]
+{\label{result_rhino}
+A packing of a rhinoceros.  Simple teardrop-shaped 
+elements lead to variety in size and curvature.}
+\bigskip
+\includegraphics[width=1.0\textwidth]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
+\caption[A packing of a bear with leaf elements]
+{\label{result_bear_leaves}
+  A bear packing with leaf elements.  We manually add noise to the 
+  elements in the output to create a distressed look.}
+\end{figure}
 
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/cat.pdf}
+\caption[A packing of a cat]
+{A packing with a symmetric layout; we only compute the left half and reflect the result. The elements around the cheeks and the chin are not aligned to the boundary, creating a fur-like effect.}
+\label{result_cat}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_flower.pdf}
+\caption[A packing of a dog]
+{A packing of a dog. The fixed elements, shown as green
+  shapes in the diagram, are copied as-is to the output; fixed spines,
+  shown as green paths, force the placement of new elements at the given
+  locations.}
+\label{result_dog}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/bear_offset_space.pdf}
+\caption[A packing of a bear with elements created from negative space]
+{A packing of the same container as in Figure~\ref{result_bear_leaves}.
+  We place longer and sparser elements and synthesize additional forms to
+  fill negative space.}
+\label{result_bear_offset}
+\end{figure}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/bird_square.pdf}
+\caption[A packing of a bird]
+{A packing of a bird, based on input provided by
+  an artist.}
+\label{bird_square}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
