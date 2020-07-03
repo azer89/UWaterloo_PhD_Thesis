@@ -657,23 +657,9 @@ not the set of prototype elements discussed earlier.
 \end{algorithmic}
 \end{algorithm}
 
-\begin{figure}
- \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
- \caption[Shift a streamline]
- {\label{shift_streamline}
- Streamline shifting.
-  We move the streamline's start and end points along 
-  perpendiculars, stopping before intersecting neighbouring elements.}
-\end{figure}
 
-\begin{figure}
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
- \caption[Trace a shortest path]
- {\label{dijkstra}
- Tracing a shortest path using Dijkstra's algorithm.  We generate the 
- orange nodes by resampling and offsetting the blue red streamline.
-          The search directions at a node are shown with green arrows.}
-\end{figure}
+
+
 
 \textbf{Shifting Streamlines.}
 There are two issues that keep the initial placement of elements from being
@@ -738,6 +724,24 @@ After finding a set of points, we fit cubic B\'ezier curves using a method
 devised by Schneider \cite{Schneider1990} and extend the path at both ends 
 by following
 the vector field until it intersects the edges of its blob. 
+
+\begin{figure}
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
+ \caption[Trace a shortest path]
+ {\label{dijkstra}
+ Tracing a shortest path using Dijkstra's algorithm.  We generate the 
+ orange nodes by resampling and offsetting the blue red streamline.
+          The search directions at a node are shown with green arrows.}
+\end{figure}
+
+\begin{figure}
+ \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
+ \caption[Shift a streamline]
+ {\label{shift_streamline}
+ Streamline shifting.
+  We move the streamline's start and end points along 
+  perpendiculars, stopping before intersecting neighbouring elements.}
+\end{figure}
 
 \textbf{Growing Blobs.} The growth process tries to enlarge each sub-region blob to
 claim empty space.
