@@ -165,7 +165,7 @@ different.
 %deformations, and their method did not explicitly control for the evenness
 %of the negative space.
 
-\mynote{Shape deformation algorithms: ARAP, Bounded Biharmonics, etc.?}
+
 
 \newtext
 {
@@ -301,29 +301,7 @@ simulation.
 }
 \end{figure}
 
-\begin{figure*}[!ht]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces_new.pdf}
-\caption[Forces]{
-\label{fig_forces}
-Illustrations of the forces in our simulation.
-\;\textbf{(a)~Repulsion force}:
-The closest point on the snake's mesh
-repels a vertex $\bm{x}$ in the bird mesh.
-\textbf{(b)~Edge force}: 
-We generate edge forces using
-\newtext{edge springs (black), shear springs (red), and negative-space springs (dashed blue).}
-\textbf{(c)~Overlap force}: 
-Centres of triangles $\bm{p_1}$ and $\bm{p_2}$ attract a vertex
-$\bm{x}$ that lies in the interior of another mesh.
-\;\textbf{(d)~Boundary force}: A vertex $\bm{x}$ moves toward $\bm{p_b}$,
-the closest point on a target container, when it is outside the container.
-\textbf{(e)~Torsional force}: We restrict the orientation of the element by generating 
-a torsional force at every boundary vertex $\bm{x}$
-to restore its angular position relative to $\bm{c}$, 
-the center of mass of the element.
-}
-\end{figure*}
+
 
 
 The \textit{skin} of an element is a simple closed polygon 
@@ -599,6 +577,30 @@ Using the equation above, $\simforce{tor}$ is always perpendicular to $\bm{u}$
 and the direction of $\simforce{tor}$ points to the left or to the right depending on $\theta$.
 Unlike the first four force types, the torsional force is optional.
 
+\begin{figure*}[!ht]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces_new.pdf}
+\caption[Forces]{
+\label{fig_forces}
+Illustrations of the forces in our simulation.
+\;\textbf{(a)~Repulsion force}:
+The closest point on the snake's mesh
+repels a vertex $\bm{x}$ in the bird mesh.
+\textbf{(b)~Edge force}: 
+We generate edge forces using
+\newtext{edge springs (black), shear springs (red), and negative-space springs (dashed blue).}
+\textbf{(c)~Overlap force}: 
+Centres of triangles $\bm{p_1}$ and $\bm{p_2}$ attract a vertex
+$\bm{x}$ that lies in the interior of another mesh.
+\;\textbf{(d)~Boundary force}: A vertex $\bm{x}$ moves toward $\bm{p_b}$,
+the closest point on a target container, when it is outside the container.
+\textbf{(e)~Torsional force}: We restrict the orientation of the element by generating 
+a torsional force at every boundary vertex $\bm{x}$
+to restore its angular position relative to $\bm{c}$, 
+the center of mass of the element.
+}
+\end{figure*}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% THE SIMULATION %%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -757,30 +759,7 @@ described above.
 
 
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/descriptor_2.pdf}
-\caption[A local shape descriptor for shape matching]
-{\label{fig_shape_matching}
-An illustration of a local shape descriptor with $n = 3$. 
-These segments have varying arclengths but they all have the same value
-of $\tau$, the integral of absolute curvature along their lengths.
-}
-\end{figure}
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
-\caption[A demonstration of shape matching to place elements]
-{\label{rhino_packing}
-{ 
-A demonstration of shape matching of leaf shapes inside a rhinoceros. 
-(a) We detect nine salient features, namely sharp convex corners, and 
-assign an element to each.
-(b) A spring holds each element in place.
-(c) The final result.
-}
-}
-\end{figure}
+
 
 The motions and deformations of elements, as described
 in the previous sections, give them an opportunity to conform to each 
@@ -831,6 +810,32 @@ on $L_s$ makes the measurement robust against changes in absolute container
 size, and the factor of $0.001$ was determined through experimentation.
 We further choose $n=5$, yielding a 10-dimensional descriptor. We compute
 this descriptor for all the container and element samples defined above.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/descriptor_2.pdf}
+\caption[A local shape descriptor for shape matching]
+{\label{fig_shape_matching}
+An illustration of a local shape descriptor with $n = 3$. 
+These segments have varying arclengths but they all have the same value
+of $\tau$, the integral of absolute curvature along their lengths.
+}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
+\caption[A demonstration of shape matching to place elements]
+{\label{rhino_packing}
+{ 
+A demonstration of shape matching of leaf shapes inside a rhinoceros. 
+(a) We detect nine salient features, namely sharp convex corners, and 
+assign an element to each.
+(b) A spring holds each element in place.
+(c) The final result.
+}
+}
+\end{figure}
 
 Based on these descriptors, we now use a simple greedy heuristic to identify salient container features where shape matching will be used.
 Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Figure~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.

@@ -201,30 +201,7 @@ characters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/discretization.pdf} 
-\caption[The creation of a discretized spacetime element]
-{\label{fig_animationpak_discretization} 
-The creation of a discretized spacetime element.  
-(a) A 2D element shape offset by $\Delta s$.
-(b) A single triangle mesh slice.
-(c) Shear edges (red) and negative space edges (blue).
-(d) A set of five slices placed along the time axis.
-(e) The vertices on the boundaries of the slices are joined by 
-	time edges.  The black edges in~(e) define a triangle mesh
-	called the envelope of the element.
-	In practice we use a larger number of slices in~(d) and~(e).
-}
-\end{figure*}
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/spacetime_element.pdf} 
-\caption[A spacetime element with a scripted animation]
-{\label{fig_animationpak_spacetime_element} 
-A spacetime element with a scripted animation.}
-\end{figure}
 
 The input to AnimationPak is a library of animated elements and a
 fixed container shape.  AnimationPak currently supports two kinds
@@ -240,6 +217,8 @@ elements can be given transformation trajectories within the
 container. Size and orientation of an element can be animated
 either way; they can be specified as an animation of the element's
 shape, or they can be part of the transformation trajectory.
+
+
 
 
 
@@ -309,6 +288,31 @@ time, maintaining temporal coherence by smoothing out deformation and
 transformations.
 Figure~\ref{fig_animationpak_discretization}e shows time edges for $n_s=5$.
 
+\begin{figure*}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/discretization.pdf} 
+\caption[The creation of a discretized spacetime element]
+{\label{fig_animationpak_discretization} 
+The creation of a discretized spacetime element.  
+(a) A 2D element shape offset by $\Delta s$.
+(b) A single triangle mesh slice.
+(c) Shear edges (red) and negative space edges (blue).
+(d) A set of five slices placed along the time axis.
+(e) The vertices on the boundaries of the slices are joined by 
+  time edges.  The black edges in~(e) define a triangle mesh
+  called the envelope of the element.
+  In practice we use a larger number of slices in~(d) and~(e).
+}
+\end{figure*}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/spacetime_element.pdf} 
+\caption[A spacetime element with a scripted animation]
+{\label{fig_animationpak_spacetime_element} 
+A spacetime element with a scripted animation.}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -344,35 +348,7 @@ the compatibility of nearby shapes in the final animation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/guided_element.pdf} 
-\caption[A 2D illustration of a guided element]{
-\label{fig_animationpak_guided_element} A 2D illustration of a guided element.
-Slices are depicted as black lines and slice vertices as black dots.
-A spring connects the centermost vertex $\bm{x}$ of a slice $s$ to a target
-point $p$.
-(a) The initial shape of a guided element is a polygonal extrusion.
-(b) The spacetime element deforms but the springs pull it back towards
-the target points.}
-\end{figure}
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/simulation_process.pdf} 
-\caption[AnimationPak simulation process]{
-\label{fig_animationpak_simulation_process} The simulation process. 
-(a) Initial placement of 
-shrunken spacetime elements inside a static 2D disc, extruded into a 
-cylindrical spacetime domain.
-Guided elements are shown in red and unguided elements in blue.
-(b) A physics simulation causes the spacetime elements to bend. They
-also grow gradually.
-(c) The spacetime elements occupy the container space.
-(d) The simulation stops when elements do not have sufficient negative
-space in which to grow, or have reached their target sizes.
-}
-\end{figure*}
 
 We begin the packing process by constructing a 3D spacetime volume for
 the container by extruding its static shape in
@@ -442,6 +418,21 @@ collisions.
 The blue extrusions in Figure~\ref{fig_animationpak_simulation_process}a show an
 initial placement of spacetime elements.
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/guided_element.pdf} 
+\caption[A 2D illustration of a guided element]{
+\label{fig_animationpak_guided_element} A 2D illustration of a guided element.
+Slices are depicted as black lines and slice vertices as black dots.
+A spring connects the centermost vertex $\bm{x}$ of a slice $s$ to a target
+point $p$.
+(a) The initial shape of a guided element is a polygonal extrusion.
+(b) The spacetime element deforms but the springs pull it back towards
+the target points.}
+\end{figure}
+
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -453,7 +444,22 @@ initial placement of spacetime elements.
 %\subsection{Forces}
 %\label{animationpak_forces}
 
-
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/simulation_process.pdf} 
+\caption[AnimationPak simulation process]{
+\label{fig_animationpak_simulation_process} The simulation process. 
+(a) Initial placement of 
+shrunken spacetime elements inside a static 2D disc, extruded into a 
+cylindrical spacetime domain.
+Guided elements are shown in red and unguided elements in blue.
+(b) A physics simulation causes the spacetime elements to bend. They
+also grow gradually.
+(c) The spacetime elements occupy the container space.
+(d) The simulation stops when elements do not have sufficient negative
+space in which to grow, or have reached their target sizes.
+}
+\end{figure}
 
 \newtext
 {
@@ -491,6 +497,8 @@ In this section, we explain the first five forces briefly
 and readers can refer back to Section~\ref{repulsionpak_simulation}
 for more details.
 }
+
+
 
 \newtext
 {
@@ -587,7 +595,7 @@ $k_\mathrm{edg} = 0.1$ for negative-space springs, and $k_\mathrm{edg} = 10$ for
 and target point springs.
 }
 
-\begin{figure} [t]
+\begin{figure} 
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsion_force.pdf} 
 \caption[Repulsion forces applied to a vertex]
@@ -596,7 +604,7 @@ Repulsion forces applied to a vertex $\bm{x}$,
 allowing the element to deform and move away from a neighbouring element.}
 \end{figure}
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/t_force.pdf} 
 \caption[An illustration of the temporal force]
@@ -605,6 +613,8 @@ An illustration of the temporal force.  The vertices in slice
 $s_i$ are drawn back towards time $t$.
 }
 \end{figure}
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -739,17 +749,7 @@ $\bm{p}_2$ to $(\frac{x_1+x_1}{2},\frac{y_2+y_2}{2},0)$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/growth.pdf} 
-\caption[Element growths]
-{\label{fig_animationpak_growth} 
-A spacetime element shown (a) shrunken at the beginning of the simulation,
-and (b) grown later in the simulation. (c) When two elements overlap
-somewhere along their lengths, they are temporarily prohibited from growing
-there.
-}
-\end{figure}
+
 
 We begin the spacetime packing process with all element slices scaled
 down in $x$ and $y$, guaranteeing that elements do not 
@@ -810,6 +810,18 @@ growth.  In that case, we set a separate threshold for the slice scaling
 factors $g$ described above, and stop when the $g$ values of all
 slices exceed that threshold.
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/growth.pdf} 
+\caption[Element growths]
+{\label{fig_animationpak_growth} 
+A spacetime element shown (a) shrunken at the beginning of the simulation,
+and (b) grown later in the simulation. (c) When two elements overlap
+somewhere along their lengths, they are temporarily prohibited from growing
+there.
+}
+\end{figure}
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -818,17 +830,7 @@ slices exceed that threshold.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure*}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/rendering.pdf} 
-\caption[An illustration of rendering spacetime elements]
-{\label{fig_animationpak_render} 
-\newtext{
-An illustration of rendering spacetime elements to generate 2D frames by cutting them
-at evenly spaced time values from $t=0$ to $t=1$.
-}
-}
-\end{figure*}
+
 
 The result of the simulation described previously is a packing of spacetime 
 elements within a spacetime container.  We can render an
@@ -856,6 +858,18 @@ the animation.  A rendered frame can fall between
 the discretely sampled slices for two elements at an intermediate time
 where physical forces were not computed explicitly.  It is therefore
 possible for neighbouring elements to overlap briefly during such intervals.
+
+\begin{figure*}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/rendering.pdf} 
+\caption[An illustration of rendering spacetime elements]
+{\label{fig_animationpak_render} 
+\newtext{
+An illustration of rendering spacetime elements to generate 2D frames by cutting them
+at evenly spaced time values from $t=0$ to $t=1$.
+}
+}
+\end{figure*}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
