@@ -52,13 +52,25 @@ we use \textit{spring forces} within a mesh to preserve element shapes.
 
 \newtext
 {
-Unlike FLOWPAK that deforms long thin elements, we design RepulsionPak to deform arbitrary shaped elements.
-By building an algorithm with a controllable deformation model at its core, we achieve a
-more even distribution of negative space, even with a small library
-of element shapes. We argue that the aesthetic quality
-of the packing as a whole more than compensates for the relatively
-small deformations applied to the elements.
+Unlike FLOWPAK that is optimized to deform long thin elements, 
+we design RepulsionPak to support arbitrary shaped elements.
+RepulsionPak is also intended to fulfill three of five design principles:
+balance, uniformity amidst variety, and boundaries (Section~\ref{flowpak_introduction}). 
+We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
+We are able to use repeated copies taken from a small library of elements 
+but their final shapes are varied thanks to element deformation.
+We also show that by carefully placing element in the initial distribution using a shape matching algorithm, 
+we can emphasize the shape of the container boundary.
 }
+
+%\newtext
+%{
+%By building an algorithm with a controllable deformation model at its core, we achieve a
+%more even distribution of negative space, even with a small library
+%of element shapes. We argue that the aesthetic quality
+%of the packing as a whole more than compensates for the relatively
+%small deformations applied to the elements.
+%}
 
 %\newtext
 %{
@@ -152,6 +164,8 @@ different.
 %vector field.  However, their elements could not undergo more general
 %deformations, and their method did not explicitly control for the evenness
 %of the negative space.
+
+\mynote{Shape deformation algorithms: ARAP, Bounded Biharmonics, etc.?}
 
 \newtext
 {
