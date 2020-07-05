@@ -72,7 +72,7 @@ The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD).
 
 \newtext
 {
-Secord~\cite{Secord2002} distributed point elements using weighted centroidal Voronoi diagram.
+Secord~\cite{Secord2002} distributed point elements using a weighted centroidal Voronoi diagram.
 Given an input greyscale image, pixel intensities are incorporated into the centroid calculation, 
 so that darker regions have more point element densities and the resulting point distribution
 resembles a stippling drawing.
@@ -296,7 +296,8 @@ which are then optimized using a Lloyd-like optimization.
 Collages are arragements of overlapping elements, similar to
 portrait paintings by Arcimboldo.
 Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-collages (Figure~\ref{fig_related_gal_zehnder}a).  They filled a 3D container with overlapping 3D elements using a greedy
+collages (Figure~\ref{fig_related_gal_zehnder}a).  
+They filled a 3D container with overlapping 3D elements using a greedy
 approach and a partial shape matching algorithm.
 Huang et al.~\cite{Huang2014} designed a method
 to generate mechanical collages, such as giant robots.
@@ -332,12 +333,10 @@ a method to cut and pack volumetric printed objects.
 {
 In engineering, packings are useful for a number of applications, 
 such as product packaging, circuit designs, or mechanical layouts.
-Packing of irregular rigid 3D elements without overlaps 
-is a still challenging research topic.
+This requires elements to be packed without any overlap.
 Byholm et al.~\cite{Byholm2009} developed a method
-to pack voxelized elements, which are easier for collision detection.
-Ma et al.~\cite{Ma2018} developed a heuristic method
-to pack triangular meshes.
+to pack voxelized elements, which are computationally easier for collision detection.
+Ma et al.~\cite{Ma2018} proposed a heuristic method to pack triangular meshes.
 For an in-depth survey, Cagan et al.~\cite{Cagan2002} discussed a few approaches such as
 gradient methods, heuristics, simulated annealing, and genetic algorithms.
 }

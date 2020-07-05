@@ -357,7 +357,7 @@ coordinates relative to its enclosing or nearest triangle.
 \textbf{Initial Element Placement:}
 We prepare our simulation by randomly placing non-overlapping elements.
 \begin{enumerate}
-	\item Generate random points $P = \{ p_1, p_2,..., p_n \}$ 
+	\item Generate random points \newtext{$P = \{ \bm{p}_1, \bm{p}_2,..., \bm{p}_n \}$ }
 		  inside the target container 
 	      via blue noise sampling~\cite{Bridson2007}.
 	      The user controls the number of points; using more points gives results
@@ -610,10 +610,10 @@ the center of mass of the element.
 We use explicit Euler integration to simulate the motions of the mesh vertices under the
 forces described above.  Every vertex has a position and a velocity vector; in
 every iteration, we update velocities using forces, and update positions using
-velocities.  These updates are scaled by a time step $\Delta t$, typically
+velocities.  These updates are scaled by \newtext{a simulation time step $\Delta t_\mathrm{sim}$}, typically
 chosen from the range $[0.01,0.1]$.  A smaller time step results in a more
 stable simulation at the cost of additional running time.  We cap velocities
-at $5\Delta t$ to dissipate extra energy from the system.
+at \newtext{$5\Delta t_\mathrm{sim}$} to dissipate extra energy from the system.
 
 %% CSK TODO: verify these measurements.
 
@@ -641,8 +641,8 @@ We find that our simulation produces satisfactory results when
 $k_\mathrm{rpl} \approx k_\mathrm{ovr} \approx k_\mathrm{bdr} \geq k_\mathrm{edg} > k_\mathrm{tor}$.
 For example, if the container's bounding box is approximately $1000\times 1000$,
 we set $k_\mathrm{rpl}=k_\mathrm{ovr}=k_\mathrm{bdr}=80$, and $k_\mathrm{tor}=1$.
-We set $k_\mathrm{edg} = 10$ 
-for negative-space springs, and $k_\mathrm{edg} = 40$ for edge springs and shear springs,
+We set $k_\mathrm{edg} = 40$ for edge springs and shear springs,
+and $k_\mathrm{edg} = 10$ for negative-space springs,
 since weaker negative-space springs are sufficient to avoid self-intersections.
 We also set $\varsigma=1$ to avoid explosive repulsion forces. 
 Increasing $k_\mathrm{edg}$

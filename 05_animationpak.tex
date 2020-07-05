@@ -87,7 +87,7 @@ minimization~\cite{Kim2002}, and shape descriptors~\cite{Kwan2016}.
 \caption[An animated packing of copies of Lisa Simpson]
 {\label{fig_animationpak_lisa_packing} 
 \newtext{Three frames of an animated packing from The Simpsons Season 31, Episode 19 ($\copyright$ FOX), showing
-gear-like meshing of oppositely-rotating Lisas.}}
+gear-like meshing of oppositely-rotating copies of Lisa Simpson.}}
 \end{figure}
 
 \textbf{Animated Packings and Tilings:}
@@ -124,9 +124,9 @@ AnimationPak fills a 3D container with 3D elements,
 and is therefore related to approaches that construct 3D
 packings, although the time axis in the spacetime domain 
 behaves differently than the third spatial axis.
-Related work includes methods to generate 3D collages~\cite{Gal2007B, Theobalt2007, Huang2014},
+Related work includes 3D collages methods~\cite{Gal2007B, Theobalt2007, Huang2014},
 cutting and packing methods~\cite{Chernov2010, Vanek2014, Chen2015}, 
-non-overlapping 3D packing methods~\cite{Byholm2009,Ma2018},
+non-overlapping 3D element packing methods~\cite{Byholm2009,Ma2018},
 and packing methods for engineering purposes~\cite{Cagan2002}.
 } 
 %Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
@@ -334,9 +334,9 @@ of all other vertices can be interpolated using the as-rigid-as-possible
 technique.  The result is a smoothly animated spacetime volume like the one
 visualized in Figure~\ref{fig_animationpak_spacetime_element}.
 
-Unlike data-driven packing methods like PAD~\cite{Kwan2016}, methods that
-allow distortions do not require a large library of distinct elements
-to generate successful packings.  The results in this paper all use
+\newtext{Unlike data-driven packing methods, AnimationPak allows 
+distortions so it does not require a large library of distinct elements
+to generate successful packings.}  The results in this paper all use
 fewer than ten input elements, and some use only one.
 The physical simulation induces deformation to enhance 
 the compatibility of nearby shapes in the final animation.
@@ -495,7 +495,7 @@ where
 The these forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
 In this section, we explain the first five forces briefly 
 and readers can refer back to Section~\ref{repulsionpak_simulation}
-for more details.
+for equations used to generate them.
 }
 
 
@@ -586,7 +586,9 @@ to dissipate extra energy from the simulation.
 {
 The constants $k_\mathrm{rpl}$, $k_\mathrm{ovr}$, $k_\mathrm{bdr}$  $k_\mathrm{edg}$, $k_\mathrm{tor}$ 
 and $k_\mathrm{tmp}$ control the relative strengths
-of the six forces in the simulation.  They must also be chosen relative to
+of repulsion, overlap, boundary, edge, torsional, and temporal forces, respectively.
+%of the six forces in the simulation.  
+They must also be chosen relative to
 the time step $\Delta t_\mathrm{sim}$ and the size of the container.
 Note that container's bounding box is resized to a unit cube,
 so we set $k_\mathrm{rpl}=10$, $k_\mathrm{ovr}=k_\mathrm{bdr}=5$, $k_\mathrm{tor}=k_\mathrm{tmp}=1$.
@@ -781,8 +783,8 @@ When we wish to grow the slice, we increase its $g$ value.
 We can compute new rest lengths for all springs by scaling every slice
 of the reference element by a factor of $g$ relative to the
 slice's centroid, and measuring distances between the scaled vertex
-positions.  \newtext{These new rest lengths are then used as the $\ell$ values
-in Equation~\ref{eq_edge_force} to calculate edge forces.}
+positions.  These new rest lengths are then used as the $\ell$ values
+in Equation~\ref{eq_edge_force} to calculate edge forces.
 
 Every element slice has its $g$ value initialized to $1$.  After every
 simulation step, if none of the slice's vertices were found to 
@@ -835,7 +837,7 @@ there.
 The result of the simulation described previously is a packing of spacetime 
 elements within a spacetime container.  We can render an
 animation frame-by-frame by cutting through this volume at 
-evenly spaced $t$ values from $t=0$ to $t=1$.  For our results, we
+evenly spaced $t$ values from $t=0$ to $t=1$, \newtext{as shown in Figure~\ref{fig_animationpak_render}}.  For our results, we
 typically render 500-frame animations.
 
 
@@ -934,7 +936,7 @@ results; see supplemental videos for full animations\footnote{\url{https://cs.uw
 \makecell{Penguin to giraffe \\ (Figure~\ref{fig_animationpak_penguin_giraffe})}  
 & 33         & 124,300            & 824,164            & 143,000    & 01:19:50        
 \\ \hline
-\makecell{\newtext{Star birds} \\ (Figure~\ref{fig_bib_entering_star})}  
+\makecell{\newtext{Loose bird} \\ (Figure~\ref{fig_bib_entering_star})}  
 & 32         & 63,700            & 389,373            & 70,100    & 00:19:24        
 \\ \hline
 \makecell{Lion               \\ (Figure~\ref{fig_animationpak_lion}b)}  
@@ -967,15 +969,17 @@ illusion shown as a static packing in RepulsionPak.  This example
 uses torsional forces to control slice orientations.
 
 \newtext{
-Figure~\ref{fig_bib_entering_star} shows a loose bird enters and leaves a packing of smaller birds.
-This is a demonstration of the benefit of the non-uniform slice growths.
-As the bigger bird is inside the container, available space is more limited,
-causing smaller birds to stop some of their slice growths.
-In the resulted 2D animation, the non-uniform slice growths create the shrinking effect on 2D elements,
-causing them to give up their space to accommodate another element.
+Figure~\ref{fig_bib_entering_star} shows 
+a loose bird as a guided element that is not constricted inside a container.
+The loose bird moves from left to right, passing through the container.
+Some slices of the loose bird are inside the container, taking up more space,
+so that smaller birds have to stop some of their slice growths prematurely.
+This is a demonstration of the benefit of the non-uniform slice growths so that
+elements can adapt to changes in container area.
+In the resulted 2D animation, the non-uniform slice sizes create the shrinking-and-expanding effect on 2D elements.
 }
 
-Figure~\ref{fig_animationpak_lion}a is a static packing of a lion created by an artist and
+Figure~\ref{fig_animationpak_lion}a is a static packing of \newtext{lion's mane} created by an artist and
 used as an example in FLOWPAK (Chapter~\ref{chapter_flowpak}).  In Figure~\ref{fig_animationpak_lion}b,
 we reproduce it with animated elements for the mane.
 The orientations of elements follow a vector field inside
@@ -1088,8 +1092,8 @@ Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$.
 \includegraphics[width=1.0\textwidth]{figures/animationpak/birb_entering_star.pdf} 
 \caption[An loose bird enters a packing of smaller birds inside a star]
 {\label{fig_bib_entering_star} 
-\newtext{An loose bird enters a star-shaped packing. 
-The smaller birds shrink to give up their space to accommodate another element.}
+\newtext{An animation of a loose bird enters and leaves a packing of smaller birds inside a star. 
+The smaller birds adapt to the more limited space by prematurely stop some of their slices' growths.}
 }
 \end{figure*}
 
