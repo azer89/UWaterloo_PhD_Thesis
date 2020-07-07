@@ -45,9 +45,9 @@ The colours in the final rendering were added manually. }
 FLOWPAK~\cite{Saputra2017} is a technique for filling a container 
 region with elements that are deformed 
 to communicate a sense of directionality or flow.
-Flow adds visual interest to a composition,
-engaging the viewer by providing a sense of progression and
-movement through elements.
+%Flow adds visual interest to a composition,
+%engaging the viewer by providing a sense of progression and
+%movement through elements.
 Elements have designs of simple geometric forms, often stylized flora, spirals, or other abstract shapes. 
 Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
 %A hand-drawn dog example in Figure~\ref{dog_flow}a shows many elements that appear to flow
@@ -67,22 +67,7 @@ have identified five high-level principles that are important
 to ornamental packing construction:
 }
 
-\begin{figure}[t!] %%% ELEMENT IMAGE
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
-\caption[Examples of flow visual style]{
-  \label{dog_flow}  
-\newtext
-{
-Examples of ornamental packings: 
-(a) Dog (by ComicVector703 on Shutterstock), 
-including an inset visualizing the flow directions of elements; 
-(b) Lion (from StockUnlimited);  
-(c) Skull (by alitdesign on Shutterstock).
-(d) Fish in the style of Haida art (by Russ Jones, used with permission); 
-}
-}
-\end{figure}
+
 
 
 \begin{items}%[leftmargin=*]
@@ -101,8 +86,8 @@ including an inset visualizing the flow directions of elements;
   up the neck and down into the legs.  The scales and other elements
   on the fish flow along the length of its body.  In the lion and skull,
   elements flow horizontally outward from a central axis of symmetry,
-  suggesting fur in the case of the lion.  Flow
-  adds visual interest to a composition, engaging the viewer 
+  suggesting fur in the case of the lion.  
+  Flow  adds visual interest to a composition, engaging the viewer 
   by providing a sense of progression and movement through elements.
 
 \item \textbf{Uniformity Amidst Variety.} Repeated elements must balance
@@ -145,7 +130,22 @@ including an inset visualizing the flow directions of elements;
   indistinct boundary, helping to convey the appearance of fur.
 \end{items}
 
-
+\begin{figure}[t!] %%% ELEMENT IMAGE
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dog_ornament_flow.pdf}
+\caption[Examples of flow visual style]{
+  \label{dog_flow}  
+\newtext
+{
+Examples of ornamental packings: 
+(a) Dog (by ComicVector703 on Shutterstock), 
+including an inset visualizing the flow directions of elements; 
+(b) Lion (from StockUnlimited);  
+(c) Skull (by alitdesign on Shutterstock).
+(d) Fish in the style of Haida art (by Russ Jones, used with permission); 
+}
+}
+\end{figure}
 
 In FLOWPAK, elements can be oriented in the local direction 
 of flow, but can also be deformed to capture changes in flow direction.
@@ -166,6 +166,8 @@ design principles articulated above.
 \label{flowpak_previous_work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
 
 \newtext{
 \textbf{Packings:}
@@ -212,7 +214,7 @@ Lu et al. developed DecoBrush~\cite{Lu2014} that can join multiple decorative pa
 
 \newtext
 {
-\textbf{Vector Field-Guided Arrangements:} 
+\textbf{Vector Field-Guided Compositions:} 
 FLOWPAK requires elements to be deformed and oriented according to a vector field.
 Maharik et al. explored Digital Micrography~\cite{Maharik2011}, in which
 lines of small-scale text are deformed to fit along dense streamlines in a container.
@@ -229,10 +231,10 @@ Li et al.~\cite{Li2010} developed a method to decorate a surface using a shape g
 {
 \textbf{Decorative Ornaments on Surfaces:} 
 Related methods in fabrication has sought to cover surfaces with
-arrangements of decorative thin rods that satisfy manufacturing
+arrangements of decorative elements that satisfy manufacturing
 constraints such as connectivity~\cite{Chen2016, Zehnder2016, Bian2018, Martinez2019}.
 These methods to satisfy both aesthetic and structural
-goals---most obviously, rods must be tightly connected to produce a connected result
+goals---most obviously, elements must be tightly connected to produce a connected result
 that will hold together when 3D printed.
 In the case of FLOWPAK, we seek to distribute disconnected elements inside a container.
 }
@@ -927,6 +929,8 @@ elements lead to variety in size and curvature.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newtext
+{
 We presented FLOWPAK, a method to create ornamental packings
 in which vector fields are used to provide a sense of visual flow. 
 The elements were deformed to flow along a direction field interpolated
@@ -935,7 +939,7 @@ Our implementation computed a vector field based on user strokes,
 constructed streamlines that conform to the vector field, and placed an
 element over each streamline. An iterative refinement process then
 shifted and stretched the elements to improve the composition.
-
+}
 %\mynote{vector fields, trace streamlines, bend elements}
 
 %We demonstrated a method to create ornamental packings

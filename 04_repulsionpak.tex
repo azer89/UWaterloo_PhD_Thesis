@@ -18,7 +18,7 @@
   		   \newtext{
            (a) A packing of six cat elements inside a fish-shaped target container. 
            (b) Input elements.
-           (c) lined up deformed elements in the packing. }
+           (c) lined up deformed elements in the packing.}
            Controllable deformation and repulsion forces allow the elements to deform,
            efficiently filling the container and creating a uniform distribution of
            negative space. We then reduce the remaining negative space by placing smaller
@@ -98,12 +98,32 @@ Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003},
 Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
 Although they can generate appealing results, they can only accept
 convex or near convex elements. 
-%as their only optimize the alignments between
-%element boundaries and Voronoi cells.
-RepulsionPak can be categorized as a variant of Lloyd's method.
-Repulsion forces act onto vertices that are grouped into elements using elastic springs, 
-effectively pack and deform them without computing a Voronoi diagram.
+RepulsionPak can be categorized as a variant of point-based Lloyd's method without explicitly computing a Voronoi diagram.
+Forces do not act onto elements, but their vertices.
+During the simulation, these vertices are spread apart but still connected using elastic springs,
+allowing RepulsionPak to pack and deform the elements.
+%RepulsionPak can be categorized as a variant of Lloyd's method without explicitly computing a Voronoi diagram.
+%Repulsion forces try to distribute vertices that are grouped together into elements using elastic springs, 
+%effectively emulating a packing process of deformable 2D elements.
 }
+
+
+
+%RepulsionPak represent an element with a set of discrete vertices.
+%Similar to Lloyd's method, repulsion forces distribute vertices evenly but 
+%without explicitly computes a Voronoi diagram.
+%However, these vertices are collectively grouped into 2D elements, allowing
+%RepulsionPak to pack and deform elements. 
+%although it does not explicitly compute Voronoi diagrams.
+%RepulsionPak is able to pack and deformable elements, each is
+%represented as a collection of vertices that are connected using springs.
+%Repulsion forces try to distribute these vertices evenly but since
+%they are connected by springs, RepulsionPak can effectively
+%Repulsion forces act onto vertices to distribute them evenly,
+%but they are connected using elastic springs to form 2D elements.
+%Repulsion forces act onto vertices that are grouped together into elements using elastic springs, 
+%effectively pack and deform the elements.
+
 
 %RepulsionPak can be categorized as a variant of Lloyd's method since it essentially
 %aims to distribute 2D vertices, however, there are key differences: 
@@ -118,7 +138,7 @@ Data-driven methods include Image Mosaics (JIM)~\cite{Kim2002},
 the Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}.
 JIM packed nearly-convex elements tightly by placing one element at a time and
 backtracking as needed.  As a shape descriptor, 
-PAD is used to find to find new elements that partially matched
+PAD is used to find new elements that partially match
 existing element boundaries as a container was being filled.  Both
 methods permitted some elements to overlap.  While they could
 both correct gaps and overlaps using deformation, the deformation
@@ -183,8 +203,8 @@ alternating a local constraint step and a global solve step.
 {
 \textbf{Sample-Based Representation:}
 A few of texture synthesis methods represent an element as a collection of sparse points~\cite{Ma2011, Ma2013, Hsu2020}.
-This representation allows them to synthesize texture withs elements
-that have more complex shapes, such as long-shaped elements, 3D elements, or animated elements.
+This representation allows them to synthesize textures withs elements
+that have bigger and more complex shapes.
 Our RepulsionPak has a similar approach, but we represent an element
 with denser vertices that are connected with elastic springs.
 }
@@ -636,7 +656,7 @@ distant vertices.
 The constants $k_\mathrm{rpl}$, $k_\mathrm{ovr}$, $k_\mathrm{bdr}$  $k_\mathrm{edg}$, and $k_\mathrm{tor}$ 
 control the relative strengths
 of the five forces in the simulation.  They must also be chosen relative to
-the time step $\Delta t$ and the overall width and height of the container.
+the time step $\Delta t_\mathrm{sim}$ and the overall width and height of the container.
 We find that our simulation produces satisfactory results when 
 $k_\mathrm{rpl} \approx k_\mathrm{ovr} \approx k_\mathrm{bdr} \geq k_\mathrm{edg} > k_\mathrm{tor}$.
 For example, if the container's bounding box is approximately $1000\times 1000$,
@@ -679,7 +699,7 @@ progresses.  Every mesh $M$ has a counter $n_M$ that records the number of
 times it has grown.  When a mesh is permitted
 to grow, we add 1 to the counter.  Then, if $L_i$ is the rest length
 of the $i$th spring in the original undeformed mesh, we increase its rest
-length to $(1+n_Mk_g\Delta t)L_i$.  The constant $k_g$,
+length to \newtext{$(1+n_Mk_g\Delta t_\mathrm{sim})L_i$}.  The constant $k_g$,
 usually 0.01 in our system, controls the growth rate.
 
 
@@ -792,8 +812,10 @@ distance $\delta$.  We set $\delta=0.002L_s$, where $L_s$ is the
 side length of the container's bounding square.
 
 We define a local descriptor based on integral of absolute curvature~\cite{Cui2009,Kwan2016}.
-Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent the curvature of the curve at $P(t)$.  For a given interval $[s,t]$ within the curve's domain, we may define the integral of absolute curvature
-$\tau(s,t) = \int_{s}^{t} | \kappa(x) | dx$.
+Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent the curvature of the curve at $P(t)$.  For a given interval $[s,t]$ within the curve's domain, we may define the integral of absolute curvature:
+\begin{equation}
+\tau(s,t) = \int_{s}^{t} | \kappa(x) | dx.
+\end{equation}
 In practice, we estimate curvature from the discrete sample points
 using second-order forward finite differences~\cite{Banchoff2015} 
 and compute $\tau$ by summing curvature estimates using the trapezoid rule.
@@ -991,7 +1013,7 @@ and 16 GB of RAM.  As a post-process, we optionally read packings
 back into Illustrator, fit smooth curves to polygonal paths, and
 apply colours and other visual effects.  Table~\ref{packing_statistics}
 shows statistics for the results in the paper.  All results in this
-paper use $\Delta t = 0.1$.
+paper use \newtext{$\Delta t_\mathrm{sim} = 0.1$}.
 Torsional forces are used only in Figure~\ref{giraffe_penguin_packing},
 and shape matching is used only in Figure~\ref{rhino_packing}.
 We also use our improved method for resolving self intersection in

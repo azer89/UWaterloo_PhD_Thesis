@@ -15,19 +15,20 @@ RepulsionPak is a method that uses repulsion forces to pack
 elements that are represented as mass-spring systems.
 AnimationPak is an extension of RepulsionPak that packs animated 2D elements,
 each is an extruded 3D shape in a spacetime domain.
-We show that deformation-driven methods can create element compatibilities.
 }
 
 \newtext
 {
+We demonstrated that deformation-driven methods can create element compatibilities.
 Given a small size element library, repeated elements
 give a sense of uniformity but deformation creates a sense of variety.
-As element compatibilities are increased,
-the negative space is more even.
+%As element compatibilities are increased, the negative space is more even.
 }
+
 \newtext
 {
-We quantify the evenness of negative space using three statistical metrics:
+We discussed that the evenness of negative space is an indicator of the quality of element interlocking.
+We measured the evenness three statistical metrics:
 spherical contact probabilities, histograms of distance transforms, and overlap functions.
 }
 
@@ -164,7 +165,7 @@ Our barycentric warping method can
   which the user and the computer work together to create a desired
   composition.  Examples of recent work in this style include research
   by Zehnder et al.~\cite{Zehnder2016}, Gieseke et
-  al.~\cite{Gieseke2017}, and Hsu et al.~\cite{Hsu2020}, which let the user directly manipulate
+  al.~\cite{Gieseke2017}, and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
   elements while a composition is being created.
   It would also be interesting to display an interactive packing on a large touch screen,
   and let people to move elements around by touching and dragging gestures.}
@@ -217,13 +218,21 @@ Like the spectral method~\cite{Dalal2006}, and unlike
 	our work to also handle animated containers. 
 	\newtext
 	{
-	It would be interesting to investigate whether we could adapt to changes in
-	container area by adding and removing elements. 
-	We are certain that it would not create undesirable element scaling as demonstrated 
-	by the packing in Figure~\ref{fig_bib_entering_star}.
-	However, this extension would certainly affect the initial element placement, which 
+	As demonstrated by the packing with a loose bird in Figure~\ref{fig_bib_entering_star},
+	elements can vary their slice sizes to adapt to changes in container area.
+	A more challenging solution is adding and removing elements,
+	as this would certainly affect the initial element placement, which 
 	would need to ensure that elements are placed fully inside the
-	spacetime volume of the container.  
+	spacetime volume of the container.  		
+	%It would be interesting to investigate whether we could adapt to changes in
+	%container area		
+	%It would be interesting to investigate whether we could adapt to changes in
+	%container area by adding and removing elements. 
+	%We are certain that it would not create undesirable element scaling as demonstrated 
+	%by the packing in Figure~\ref{fig_bib_entering_star}.
+	%However, this extension would certainly affect the initial element placement, which 
+	%would need to ensure that elements are placed fully inside the
+	%spacetime volume of the container.  
 	}
 
 \item \newtext{\textbf{Deformation-Driven 3D Packings:}}
@@ -248,7 +257,7 @@ There are many examples of static two-dimensional packings
 
 \begin{itemize}
 
-\item \newtext{\textbf{Human Perception of the Evenness:}}We would like to conduct experiments that investigate the
+\item \newtext{\textbf{Human Perception of the Evenness:}} We would like to conduct experiments that investigate the
   extent to which quantitative measurements of the evenness of negative
   space in a packing correlate with the human perception of a
   packing's quality.  In informal evaluations, some viewers found that
@@ -264,7 +273,7 @@ There are many examples of static two-dimensional packings
 %like circles and squares, to break up large areas of negative space;
 %an automated simulation of this process would be helpful.
 
-\item \newtext{\textbf{Measuring Other Design Principles:}}We would like to develop additional metrics to evaluate
+\item \newtext{\textbf{Measuring Other Design Principles:}} We would like to develop additional metrics to evaluate
   how well an ornamental design fulfills other design principles.
   A measure of element deformation in a composition would permit 
   a comparison against future deformation-driven techniques.
@@ -305,15 +314,15 @@ All three metrics are only for evaluating 2D packings.
 
 
 
-\mynote{TODO:
-\begin{packeditems}
-\item Enlarge figures
-\item Remove 1-2 text rows on a page if figures are too big.
-\item Landscape pages in AnimationPak? 
-https://tex.stackexchange.com/questions/337/how-to-change-certain-pages-into-landscape-portrait-mode
-\item streamline $sl$ and slice $s$
-\item Conclusions are past tense
-\item Figures after texts.
-\item RepulsionPak related work: Shape deformation algorithms: ARAP, Bounded Biharmonics, etc.?
-\end{packeditems}
-}
+%\mynote{TODO:
+%\begin{packeditems}
+%\item Enlarge figures
+%\item Remove 1-2 text rows on a page if figures are too big.
+%\item Landscape pages in AnimationPak? 
+%https://tex.stackexchange.com/questions/337/how-to-change-certain-pages-into-landscape-portrait-mode
+%\item streamline $sl$ and slice $s$
+%\item Conclusions are past tense
+%\item Figures after texts.
+%\item RepulsionPak related work: Shape deformation algorithms: ARAP, Bounded Biharmonics, etc.?
+%\end{packeditems}
+%}

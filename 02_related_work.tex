@@ -60,10 +60,9 @@ to obtain an even distribution of elements.
 Figure~\ref{fig_lloyds_method} shows an illustration of the simplest example of 
 Lloyd's method that distributes point elements.
 Given $N$ point elements, 
-we first compute a \textit{Voronoi diagram} to partition the plane into $N$ regions such that
+we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
 all points inside a Voronoi cell are closest to its associated point element.
-As an iterative process, 
-the Lloyd's method moves every point elements to the centroid of its Voronoi cell, 
+Lloyd's method moves every point elements to the centroid of its Voronoi cell, 
 then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even,
 that means all the point elements are located at the the centroids of the Voronoi cells.
@@ -72,9 +71,9 @@ The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD).
 
 \newtext
 {
-Secord~\cite{Secord2002} distributed point elements using a weighted centroidal Voronoi diagram.
-Given an input greyscale image, pixel intensities are incorporated into the centroid calculation, 
-so that darker regions have more point element densities and the resulting point distribution
+Secord~\cite{Secord2002} distributed point elements by computing a weighted centroidal Voronoi diagram.
+The gradient of an input image is incorporated into the centroid calculation, 
+so that darker regions ``attract'' more point elements and the resulting point distribution
 resembles a stippling drawing.
 }
 
@@ -90,12 +89,10 @@ However, Hausner's approach can only translate the squares, and a vector field i
 Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
 More recently, Javid et al.~\cite{Javid2019} constructed a distance function that 
 incorporates a spatial distance, a color distance, and an elongation factor. Their resulted
-Voronoi cells have elongated shapes, resembling pebble-like mosaics.
-}
+Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
 \newtext
-{
-Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
+{Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
 a variant of CVD that is a distribution of simple polygonal elements.
 This new extension computes the main inertia axis for each Voronoi cell so that 
 its element can be rotated to get better alignment with the Voronoi cell boundary.
@@ -115,7 +112,7 @@ For each step, a shape matching algorithm selects an
 element that has the best fit with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} used a geometric hashing to find
 a compatible element. JIM places elements using a greedy approach, but is able to backtrack 
-if previous configuration is more optimal.
+if a previous configuration is more optimal.
 Pyramid of Arclength Descriptor~\cite{Kwan2016} developed
 a partial shape matching algorithm that can match a subset of element boundary with a portion
 of container boundary.
@@ -137,10 +134,10 @@ Each segment is then replaced with a smaller cutout image that has a similar sha
 {
 All these data-driven methods require an element library that is big enough,
 the more elements in the library will increase their chance to find a compatible element boundary.
-However, bigger database means increased computational time.
-Collecting a large number of elements is also not always feasible,
-for example, if an artist wants to create a packing of a hand-drawn cats,
-they may not want to draw 1000 cats which is tedious and repetitive.
+However, bigger database means increased computational time and
+collecting a large number of elements is also not always feasible.
+%for example, if an artist wants to create a packing of a hand-drawn cats,
+%they may not want to draw 1000 cats which is tedious and repetitive.
 }
 
 \begin{figure}
@@ -221,18 +218,23 @@ The tile $T$ also cannot fill a container due to its highly structured boundary.
 
 \newtext
 {
-Lin et al.~\cite{Lin2018} generated tiling arrangements that resemble Escher's Sky and Water I.
-Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas,
- they are then copied and arranged in rows such 
-that the copies in the middle of canvas tile each other.
-%Two original elements $S_1$ and $S_2$ are placed on the opposite sides of a rectangular canvas.
-%Then copies of each element are spread away in rows, 
-%until they meet and tile each other right in the middle of the canvas.
+Lin et al.~\cite{Lin2018} generated ground-reversal arrangements that resemble Escher's Sky and Water I,
+where elements serve as both positive and negative space depending on the viewer's perception.
+%Given two elements $S_1$ and $S_2$, each is copied, deformed, and arranged to interlock each other.
+Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas.
+They are then copied, arranged, and deformed to interlock each other.
 The farther a copy from the original element, the more deformed it is, 
-creating a ``fading effect'', $S_1$ and $S_2$ spatially transition to negative space.
+creating a ``fading effect'', $S_1$ and $S_2$ spatially fade to nothingness.
 This work is data-driven, the user needs to provide $S_1$, 
 and the method tries to find a compatible element $S_2$ from a library.
+%Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas,
+%they are then copied, deformed, and arranged in rows.  
+%The farther a copy from the original element, the more deformed it is. 
+%creating a ``fading effect'', $S_1$ and $S_2$ spatially transition to ``nothingness''.
+%The gradual deformation also allows the copies perfectly interlock each other.
 }
+
+
 
 \begin{figure}[t]
 \centering
@@ -241,7 +243,7 @@ and the method tries to find a compatible element $S_2$ from a library.
 {\label{fig_related_escherization} 
 \newtext
 {
-A tiling of cats~\cite{Kaplan2000}. 
+A tiling of cats~\cite{Kaplan2000}, elements perfectly interlock each other and the arrangement does not have negative space. 
 }
 }
 \end{figure}
@@ -269,13 +271,13 @@ the uneven element distribution in the exemplar, without regard for negative spa
 
 \newtext
 {
-For more complex elements, a single point representation is not enough.
+For more complex shapes, a single point representation is not enough.
 Ma et al.~\cite{Ma2011} used sample-based representation 
-that works by distributing a sparse set of points inside an element.
+is created by distributing a sparse set of points inside an element.
 They later distributed these points using a neighborhood metric and an iterative optimization.
 Unlike previous work, they are able synthesize textures with long deformable elements, for example, spaghetti.
 Ma et al. later extended their work to accept animated elements~\cite{Ma2013}, where
-a sample point has spatial and time positions, turning the problem to spacetime texture synthesis.
+each sample point has a spatial and time position, turning the problem to spacetime texture synthesis.
 More recently, Hsu et al.~\cite{Hsu2020} adapted the sample-based representation into an interactive app
 where an artist can initially distribute elements by drawing strokes
 which are then optimized using a Lloyd-like optimization.
@@ -365,7 +367,7 @@ that has no overlaps. They later extend the rod elements and
 overlaps can be avoided by deforming the rods.
 Mart\'{\i}nez et al.~\cite{Martinez2019} developed a method to generate
 star-shaped tiling patterns that are printed onto tracery sheets.
-Similar to Hausner's exploit, their method works by constructing a star-shaped distance function to manipulate the shapes of Voronoi cells. 
+Their method works by constructing a star-shaped distance function to manipulate the shapes of Voronoi cells. 
 }
 
 %\makeatletter % brooo
@@ -381,7 +383,7 @@ Similar to Hausner's exploit, their method works by constructing a star-shaped d
 {\label{fig_related_gal_zehnder} 
 \newtext
 {
-(a) Arcimboldo-like 3D packing~\cite{Gal2007B}. 
+(a) An Arcimboldo-like 3D packing~\cite{Gal2007B}. 
 (b) Decorative elements that fill a surface~\cite{Zehnder2016}.
 }
 }
