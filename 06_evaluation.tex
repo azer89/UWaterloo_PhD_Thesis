@@ -76,9 +76,9 @@ so their work is not suitable for our research.
 Kwan et al. performed a simple user study of 13 participant to compare 
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} with previous methods.
 A participant was randomly shown a computer-generated packing  and they had to give ratings from 1 (worst) to 6 (best)
-to each of three categories: their preference, stylishness, interlocking.
-The study revealed that PAD have the highest scores,
-but the first two categories are questionable and they also overlooked overlaps that present in their packings.
+to each of three factor: their preference, stylishness, interlocking.
+%The study revealed that PAD have the highest scores,
+%but the first two factor are questionable and they also omitted element overlaps as a factor.
 %We argue that the first two categories are ambiguous and does not give better understanding of the quality of a packing.
 %The study revealed that PAD have the highest scores but they overlooked
 %other important factors, such as the evenness of negative space or overlaps.
@@ -269,17 +269,21 @@ The distance transform of the negative space provides insights into how negative
 In the context of 2D packings, a distance transform is a 2D image where each pixel
 contains the radius $r$ value from the nearest element.
 Figure~\ref{fig_distance_transform} shows an example for a distance transform,
-lighter a color of a pixel, higher the $r$ value, showing a pattern of white ridges
-that correspond to a medial axis.
-We investigated the idea of analyzing $r$ values only on a medial axis since they can be considered as the widths of negative space gaps.
+lighter a color of a pixel, higher the $r$ value.%, showing a pattern of white ridges
+%that correspond to a medial axis.
+We investigated the idea of analyzing $r$ values only on a medial axis 
+since it bisects the gaps of negative space.
+%since they can be considered as the widths of negative space gaps.
 However, creating a high quality medial axis is difficult,
 as shown in Figure~\ref{fig_skeleton}, the challenge is to prune a large number of problematic branches
 that are either too long or too short.
 }
 
-\newtext
-{
-We opt to analyze the entire negative space by generating a histogram of all $r$ values.}
+%\newtext
+%{
+%We decide to analyze the entire negative space by generating a histogram of all $r$ values.}
+The distance transform of the negative space can also
+provide insights into how negative space varies
 We could calculate a standard \textbf{histogram of the
 distance transform}, but that would require quantizing distances into bins.
 Instead, note that the SCP $Q_s(r)$ is precisely the normalized area of 
@@ -417,9 +421,23 @@ more even negative space.
 The lower overlap functions indicate fewer narrow gaps between elements.
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtext{
+The evenness of negative space is an indicator
+for the quality of a packing. 
+The more the elements interlock, the more even the negative space.
+we validated our deformation-driven approach using overlap functions,
+spherical contact probabilities, and histograms of distance transform.
+A packing with a more even negative space has a steeper and shorter SCP, 
+more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.
+}
 
 
-\begin{figure}
+\begin{figure}[h]
+\vspace{75pt}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/metrics/hsr_viz_big.pdf}
 \caption[Spherical contact probabilities and distance histograms \newline for reference packings]
@@ -481,17 +499,4 @@ more histogram concentrations around $d_\mathrm{gap} / 2$, and lower overlap fun
 }
 \end{figure}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newtext{
-The evenness of negative space is an indicator
-for the quality of a packing. 
-The more the elements interlock, the more even the negative space.
-we validated our deformation-driven approach using overlap functions,
-spherical contact probabilities, and histograms of distance transform.
-A packing with a more even negative space has a steeper and shorter SCP, 
-more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.
-}
 
