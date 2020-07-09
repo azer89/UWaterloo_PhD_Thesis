@@ -287,19 +287,7 @@ The next section describes how we achieve these results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
-\begin{figure}[h!]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/flowpak/pipeline.pdf} 
-\caption[FLOWPAK pipeline]
-{\label{fig_flowpak_pipeline} 
-A visualization of the steps in our ornamental packing algorithm.
-The input containers are shown as three black outlines in (a): the body
-and two fins.  They are annotated with directional guides in red and fixed elements (in this 
-case, the eye) in green.  The steps in the algorithm follow the
-description at the beginning of Section~\ref{flowpak_approach}.
-}
-\end{figure}
+
 
 Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. The numbers in the following
 steps correspond to parts of the figure.
@@ -318,6 +306,20 @@ steps correspond to parts of the figure.
         spine to the streamline (Section~\ref{flowpak_shape_matching_and_deformation}).
   \item Iteratively refine the placement to eliminate empty areas and make the spacing more even (Section~\ref{flowpak_iterative_refinement}).
 \end{enumerate}
+
+%FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\begin{figure}[th]
+\centering
+\includegraphics[width=1.0\textwidth]{figures/flowpak/pipeline.pdf} 
+\caption[FLOWPAK pipeline]
+{\label{fig_flowpak_pipeline} 
+A visualization of the steps in our ornamental packing algorithm.
+The input containers are shown as three black outlines in (a): the body
+and two fins.  They are annotated with directional guides in red and fixed elements (in this 
+case, the eye) in green.  The steps in the algorithm follow the
+description at the beginning of Section~\ref{flowpak_approach}.
+}
+\end{figure}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -678,6 +680,16 @@ This allows the streamline's element to become wider and fill more of the space
 extend if its endpoints were too close to boundaries of other placed
 elements.
 
+\begin{figure}
+ \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
+ \caption[Shifting a streamline]
+ {\label{shift_streamline}
+ Streamline shifting.
+  We move the streamline's start and end points along 
+  perpendiculars, stopping before intersecting neighbouring elements.}
+\end{figure}
+
+
 Given the endpoints $\bm{p_\mathrm{start}}$ and $\bm{p_\mathrm{end}}$, we 
 calculate new endpoints $\bm{p'_\mathrm{start}}$ and $\bm{p'_\mathrm{end}}$.
 We generate perpendicular
@@ -696,6 +708,15 @@ field.  We calculate the shifted streamline by performing Dijkstra's
 algorithm on a non-rectangular graph that respects the vector field
 (Figure~\ref{dijkstra}), using a method similar to one by Xu and Mould~\cite{Xu2015} for
 pathfinding in a vector field.
+
+\begin{figure}
+\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
+ \caption[Tracing a shortest path]
+ {\label{dijkstra}
+ Tracing a shortest path using Dijkstra's algorithm.  We generate the 
+ orange nodes by resampling and offsetting the blue red streamline.
+          The search directions at a node are shown with green arrows.}
+\end{figure}
 
 To construct the graph, we begin by densely sampling the original
 streamline with a distance of $0.25\,g_\mathrm{limit}$. We then duplicate
@@ -726,23 +747,8 @@ devised by Schneider \cite{Schneider1990} and extend the path at both ends
 by following
 the vector field until it intersects the edges of its blob. 
 
-\begin{figure}
-\includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
- \caption[Tracing a shortest path]
- {\label{dijkstra}
- Tracing a shortest path using Dijkstra's algorithm.  We generate the 
- orange nodes by resampling and offsetting the blue red streamline.
-          The search directions at a node are shown with green arrows.}
-\end{figure}
 
-\begin{figure}
- \includegraphics[width=1.0\textwidth]{figures/flowpak/shift_streamline.pdf}
- \caption[Shifting a streamline]
- {\label{shift_streamline}
- Streamline shifting.
-  We move the streamline's start and end points along 
-  perpendiculars, stopping before intersecting neighbouring elements.}
-\end{figure}
+
 
 \textbf{Growing Blobs.} The growth process tries to enlarge each sub-region blob to
 claim empty space.

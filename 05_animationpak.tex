@@ -51,7 +51,7 @@ cross sections perpendicular to the time axis.
 Animated packings are a largely unexplored style
 of motion graphics, presumably because of the difficulty of creating 
 an animated packing by hand.  
-Finding motivating examples created by artists is difficult, as
+Finding motivating examples created by artists is difficult, and
 we only found a single animated packing shown in Figure~\ref{fig_animationpak_lisa_packing},
 which is animated gear-like meshing of copies of Lisa Simpson's spiky head.
 The discussion in Section~\ref{animationpak_previous_work} shows there is also very little past research
@@ -526,6 +526,18 @@ nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
 }
 
+
+\begin{figure} 
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/repulsion_force.pdf} 
+\caption[Repulsion forces applied to a vertex]
+{\label{fig_animationpak_repulsion_force} 
+Repulsion forces applied to a vertex $\bm{x}$, 
+allowing the element to deform and move away from a neighbouring element.}
+\end{figure}
+
+
+
 \newtext
 {
 \textbf{Edge forces}
@@ -580,7 +592,15 @@ where
 \end{packeddescriptions}
 }
 
-
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/t_force.pdf} 
+\caption[An illustration of the temporal force]
+{\label{fig_animationpak_t_force} 
+An illustration of the temporal force.  The vertices in slice
+$s_i$ are drawn back towards time $t$.
+}
+\end{figure}
 
 \newtext
 {
@@ -608,24 +628,7 @@ $k_\mathrm{edg} = 0.1$ for negative-space springs, and $k_\mathrm{edg} = 10$ for
 and target point springs.
 }
 
-\begin{figure} 
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/repulsion_force.pdf} 
-\caption[Repulsion forces applied to a vertex]
-{\label{fig_animationpak_repulsion_force} 
-Repulsion forces applied to a vertex $\bm{x}$, 
-allowing the element to deform and move away from a neighbouring element.}
-\end{figure}
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/t_force.pdf} 
-\caption[An illustration of the temporal force]
-{\label{fig_animationpak_t_force} 
-An illustration of the temporal force.  The vertices in slice
-$s_i$ are drawn back towards time $t$.
-}
-\end{figure}
 
 
 
@@ -979,6 +982,27 @@ packings.  Figure~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to
 illusion shown as a static packing in RepulsionPak.  This example
 uses torsional forces to control slice orientations.
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/chasing_bird.pdf} 
+\caption[An animated packing of a snake chases a bird]
+{\label{fig_animationpak_chasing_bird} 
+A snake chasing a bird through a packing of animals.  The snake and bird 
+  are both guided elements that move clockwise around the annular 
+  container.}
+\end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/penguin_giraffe.pdf} 
+\caption[An animated packing of the penguins-to-giraffes illusion]
+{\label{fig_animationpak_penguin_giraffe} 
+Penguins turning into giraffes.  The penguins animate by rotating in place.
+Torsional forces are used to preserve element orientations.
+Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$. 
+}
+\end{figure}
+
 \newtext{
 Figure~\ref{fig_bib_entering_star} shows 
 a loose bird as a guided element that is not constricted inside a container.
@@ -1076,37 +1100,23 @@ We show a variety of results where
 
 
 
-\begin{figure*}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/chasing_bird.pdf} 
-\caption[An animated packing of a snake chases a bird]
-{\label{fig_animationpak_chasing_bird} 
-A snake chasing a bird through a packing of animals.  The snake and bird 
-	are both guided elements that move clockwise around the annular 
-	container.}
-\end{figure*}
-
-\begin{figure*}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/animationpak/penguin_giraffe.pdf} 
-\caption[An animated packing of the penguins-to-giraffes illusion]
-{\label{fig_animationpak_penguin_giraffe} 
-Penguins turning into giraffes.  The penguins animate by rotating in place.
-Torsional forces are used to preserve element orientations.
-Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$. 
-}
-\end{figure*}
 
 
 \begin{figure*}
+\vspace{-50px}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/birb_entering_star.pdf} 
 \caption[An loose bird enters a packing of smaller birds inside a star]
 {\label{fig_bib_entering_star} 
-\newtext{An animation of a loose bird enters and leaves a packing of smaller birds inside a star. 
+\newtext{An animation of a loose bird that comes in and out a packing of smaller birds inside a star. 
 The smaller birds adapt to the reduced space by prematurely stopping some of their slices' growths.}
 }
 \end{figure*}
+
+
+
+
+
 
 \begin{figure*}
   \centering
