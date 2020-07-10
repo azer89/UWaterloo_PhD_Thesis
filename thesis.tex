@@ -203,8 +203,10 @@
 %%% REZAREZAREZAREZAREZA
 %%% REZAREZAREZAREZAREZA
 
+\usepackage{datetime}
 \usepackage{filemod}
-%\renewcommand{\filemodprinttime}[4]{\formattime{#1}{#2}{#3}}
+%\renewcommand*{\thefilemodtime}[4]{#1 #2 #3}
+%\renewcommand*{\thefilemodtime}[4]{\formattime{#1}{#2}{#3}}
 
 % line numbering
 \usepackage{lineno}

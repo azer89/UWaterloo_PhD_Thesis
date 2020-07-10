@@ -66,15 +66,16 @@ Lloyd's method moves every point elements to the centroid of its Voronoi cell,
 then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even,
 that means all the point elements are located at the the centroids of the Voronoi cells.
-The final structure is called a \textit{Centroidal Voronoi Diagram} (CVD).
+The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 }
 
 \newtext
 {
 Secord~\cite{Secord2002} distributed point elements by computing a weighted centroidal Voronoi diagram.
 The gradient of an input image is incorporated into the centroid calculation, 
-so that darker regions ``attract'' more point elements and the resulting point distribution
-resembles a stippling drawing.
+%so that darker regions ``attract'' more point elements 
+attracting point elements to low-intensity regions so that
+the final point distribution resembles a stippling drawing.
 }
 
 
@@ -92,13 +93,14 @@ incorporates a spatial distance, a color distance, and an elongation factor. The
 Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
 \newtext
-{Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{Centroidal Area Voronoi Diagram} (CAVD),
+{Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{centroidal area Voronoi diagram} (CAVD),
 a variant of CVD that is a distribution of simple polygonal elements.
 This new extension computes the main inertia axis for each Voronoi cell so that 
 its element can be rotated to get better alignment with the Voronoi cell boundary.
 In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
 Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
-and rotate elements with their Voronoi cell boundaries, which could be seen as making more effective use of negative
+and rotate elements to achieve the best alignments with their Voronoi cell boundaries, 
+which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.
 }
@@ -113,9 +115,9 @@ element that has the best fit with the previously placed elements or the contain
 Jigsaw Image Mosaics~\cite{Kim2002} used a geometric hashing to find
 a compatible element. JIM places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
-Pyramid of Arclength Descriptor~\cite{Kwan2016} developed
-a partial shape matching algorithm that can match a subset of element boundary with a portion
-of container boundary.
+Pyramid of Arclength Descriptor~\cite{Kwan2016} is
+a partial shape matching algorithm that can match
+subsets of element boundaries.
 }
 
 \newtext
@@ -218,7 +220,7 @@ The tile $T$ also cannot fill a container due to its highly structured boundary.
 
 \newtext
 {
-Lin et al.~\cite{Lin2018} generated ground-reversal arrangements that resemble Escher's Sky and Water I,
+Lin et al.~\cite{Lin2018} generated ground-reversal compositions that resemble Escher's Sky and Water I,
 where elements serve as both positive and negative space depending on the viewer's perception.
 %Given two elements $S_1$ and $S_2$, each is copied, deformed, and arranged to interlock each other.
 Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas.
@@ -257,7 +259,7 @@ A tiling of cats~\cite{Kaplan2000}, elements perfectly interlock each other and 
 Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an exemplar.
-An element is represented as a single point, which is adequate for small rigid elements.
+An element is represented as a single point, which is adequate for small or near-convex elements.
 Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighbourhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
 stamped out copies of the exemplar and discard overlapping elements.
@@ -271,7 +273,7 @@ the uneven element distribution in the exemplar, without regard for negative spa
 
 \newtext
 {
-For more complex shapes, a single point representation is not enough.
+For larger concave elements, a single point representation is not enough.
 Ma et al.~\cite{Ma2011} used sample-based representation 
 is created by distributing a sparse set of points inside an element.
 They later distributed these points using a neighborhood metric and an iterative optimization.
