@@ -11,7 +11,7 @@
 {\label{fig_lloyds_method} 
 \newtext
 {
-An illustration of Lloyd's method.
+An illustration of point-based Lloyd's method.
 A Voronoi diagram is generated from the input point elements (drawn as red dots).
 We then move the point elements to the centroids of Voronoi cells (drawn as plus signs).
 The process is repeated until convergence, producing a centroidal Voronoi diagram.
@@ -57,8 +57,9 @@ Mosaics of square elements generated using Lloyd's method with Manhattan distanc
 \textbf{Lloyd's Method:}
 An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
 to obtain an even distribution of elements. 
-Figure~\ref{fig_lloyds_method} shows an illustration of the simplest example of 
-Lloyd's method that distributes point elements.
+%Figure~\ref{fig_lloyds_method} shows an illustration of the simplest example of 
+%Lloyd's method that distributes point elements.
+Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
 Given $N$ point elements, 
 we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
 all points inside a Voronoi cell are closest to its associated point element.
@@ -127,9 +128,9 @@ then independently replace each segment with a matching element.
 This is desirable if the container has colors or salient parts that need to be emphasized.
 Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
 by arranging cutout images collected from the internet.
-Their container is a larger cutout image which is partitioned into segments
+Their container is a larger cutout image which is partitioned into parts
 using an image segmentation algorithm.
-Each segment is then replaced with a smaller cutout image that has a similar shape and color.
+Each part is then replaced with a smaller cutout image that has a similar shape and color.
 }
 
 \newtext
@@ -180,7 +181,7 @@ A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
 {
 \textbf{Deformation-Driven Method:}
 Instead of finding compatible elements,
-a deformation-driven method forces elements to create compatibilities and shape variations.
+a deformation-driven method allows elements to create compatibilities and shape variations.
 As an advantage, a deformation-driven method can rely on a small size element library.
 Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes, although their method cannot handle more
@@ -260,7 +261,7 @@ Some past work has sought to adapt example-based texture synthesis methods
 from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an exemplar.
 An element is represented as a single point, which is adequate for small near-convex elements.
-Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighbourhoods
+Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighborhoods
 from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
 stamped out copies of the exemplar and discard overlapping elements.
 Hurtut et al.~\cite{Hurtut2009} developed a statistical sampling method based
@@ -298,7 +299,7 @@ which are then optimized using a Lloyd-like optimization.
 \newtext
 {
 Collages are arrangements of overlapping elements, similar to
-portrait paintings by Arcimboldo.
+portrait paintings byGiuseppe Arcimboldo.
 Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
 collages (Figure~\ref{fig_related_gal_zehnder}a).  
 They filled a 3D container with overlapping 3D elements using a greedy

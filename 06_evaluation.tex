@@ -18,16 +18,16 @@
 {
 As with many techniques in artistic applications of computer graphics, evaluating the
 quality of a computer-generated element packing is a challenge.
-The visual appeal of packings follows in part from aligning neighbouring elements along compatible 
+The visual appeal of packings follows in part from aligning neighboring elements along compatible 
 segments of their boundaries, suggesting that they interlock by design. 
 We believe that the evenness of negative space is an indicator 
 on how much the elements interlock.
-The separation between neighbouring elements should be roughly the same everywhere.
+The separation between neighboring elements should be roughly the same everywhere.
 %In the limit, as this element separation goes to zero,
 %the packing turns into a tessellation: a set of elements that exactly
 %fill a container with no overlaps.  
 In this chapter, we have developed several measurements of evenness,
-which allow us to examine the behaviour of manually constructed reference
+which allow us to examine the behavior of manually constructed reference
 packings and to compare RepulsionPak with other packing algorithms.
 }
 
@@ -77,6 +77,7 @@ Kwan et al. performed a simple user study of 13 participant to compare
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} with previous methods.
 A participant was randomly shown a computer-generated packing  and they had to give ratings from 1 (worst) to 6 (best)
 to each of three factor: their preference, stylishness, interlocking.
+We argue that the first two factors are ambiguous and do not give better understanding to the quality of a packing.
 %The study revealed that PAD have the highest scores,
 %but the first two factor are questionable and they also omitted element overlaps as a factor.
 %We argue that the first two categories are ambiguous and does not give better understanding of the quality of a packing.
@@ -299,7 +300,7 @@ in~(e) and~(f).}
 \newtext{
     A medial axis generated from the negative space of the Unilever packing using
     \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
-    The medial axis contains long branches that touch the element boundaries and 
+    The medial axis contains unnecessarily long branches that touch the element boundaries and 
     short branches that should be deleted.
   }
 }
@@ -502,13 +503,12 @@ more histogram concentrations around $d_\mathrm{gap} / 2$, and lower overlap fun
 
 \newtext{
 The evenness of negative space is an indicator
-for the quality of a packing. 
+of the quality of a packing. 
 The more the elements interlock, the more even the negative space.
 we validated our deformation-driven approach using overlap functions,
 spherical contact probabilities, and histograms of distance transform.
 A packing with a more even negative space has a steeper and shorter SCP, 
-more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.
-}
+more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.}
 
 
 

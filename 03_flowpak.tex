@@ -22,7 +22,7 @@ red spine that is used to deform it along a streamline.  In
 the containers, black curves represent boundaries, red
 curves with arrows represent directional guides, and green
 curves are fixed elements copied into the final design.
-The colours in the final rendering were added manually. }
+The colors in the final rendering were added manually. }
 \end{figure}
 
 
@@ -82,7 +82,7 @@ to ornamental packing construction:
   are oriented to communicate a sense of directionality or flow.
   All of the examples in Figure~\ref{dog_flow} exhibit 
   some amount of flow.  In the dog, many elements appear to flow
-  outward from the flower in the centre of the torso, and then
+  outward from the flower in the center of the torso, and then
   up the neck and down into the legs.  The scales and other elements
   on the fish flow along the length of its body.  In the lion and skull,
   elements flow horizontally outward from a central axis of symmetry,
@@ -103,7 +103,7 @@ to ornamental packing construction:
   In our examples, the dog's spirals and the
   fish's scales both obey this principle.  The lion and skull do as well,
   except that half of the elements are reflected copies of the other
-  half, across a vertical line through the centre of the composition.
+  half, across a vertical line through the center of the composition.
   This repetition emphasizes the bilateral symmetry in the design.
 
 \item \textbf{Fixed Elements.} Compositions use a small number of fixed
@@ -198,8 +198,8 @@ like symmetry and repetition while ornamental designs are edited.
 Gieseke et al.~\cite{Gieseke2017} developed a user interface where an artist 
 can generate a decorative pattern by specifying design principles such as flow, balance, and symmetry.
 Li et al.~\cite{Li2019} developed a method that can produce a 2D quilting pattern
-by generating connected stitch paths that fill a container, 
-each path is then decorated by ornamental elements.
+by generating connected stitch paths, 
+each is then decorated by ornamental elements.
 }
 
 \newtext
@@ -516,7 +516,7 @@ The streamlines are then extended at each end, following the vector field, until
 they encounter the boundaries of their Voronoi regions.
 We call the area around each streamline a \textit{sub-region blob}.
 Step~4 of Figure~\ref{fig_flowpak_pipeline} 
-shows the blobs for the sample fish.
+\newtext{shows the blobs of the fish.}
 
 We then compute an LR function for each blob as described in Section~\ref{flowpak_ornamental_element_and_lr_functions},
 using the streamline as the spine. Because the streamline is not usually straight, we 
@@ -686,7 +686,7 @@ elements.
  {\label{shift_streamline}
  Streamline shifting.
   We move the streamline's start and end points along 
-  perpendiculars, stopping before intersecting neighbouring elements.}
+  perpendiculars, stopping before intersecting neighboring elements.}
 \end{figure}
 
 
@@ -816,7 +816,7 @@ for calculation of LR functions and for testing polygon intersections
 during deformation and growth.
 As a postprocess, we optionally smooth outlines and replace polygonal
 paths with B\'{e}zier curves.
-Finally, we apply colours and other treatments in an editor.
+Finally, we apply colors and other treatments in an editor.
 
 Our technique is fast except for the iterative refinement process,
 which considers a large number of variations to the composition via
@@ -938,22 +938,10 @@ elements lead to variety in size and curvature.}
 \newtext
 {
 We presented FLOWPAK, a method to create ornamental packings
-in which vector fields are used to provide a sense of visual flow. 
-The elements were deformed to flow along a direction field interpolated
-from user-supplied strokes, giving a sense of visual flow to the final composition.
+in which the elements were deformed to give a sense of visual flow to the final composition.
 Our implementation computed a vector field based on user strokes,
 constructed streamlines that conform to the vector field, and placed an
 element over each streamline. An iterative refinement process then
 shifted and stretched the elements to improve the composition.
 }
-%\mynote{vector fields, trace streamlines, bend elements}
-
-%We demonstrated a method to create ornamental packings
-%in which vector fields are used to provide a sense of visual flow.
-%We achieve a degree of uniformity by using repeated copies of a small
-%set of initial decorative elements, but balance that uniformity with
-%variety by deforming those elements.  An iterative refinement process
-%improves upon an initial placement of elements, arriving at a final
-%composition with a more even use of negative space.
-
 
