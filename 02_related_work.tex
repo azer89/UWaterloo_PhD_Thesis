@@ -112,7 +112,7 @@ earlier methods.
 A different approach to generate packings is to use a shape matching algorithm (Figure~\ref{fig_related_jim_pad}).
 This is usually done by placing an element one by one until the container area is filled.
 For each step, a shape matching algorithm selects an 
-element that has the best fit with the previously placed elements or the container boundary.
+element that has the best compatibility with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} used a geometric hashing to find
 a compatible element. JIM places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
@@ -181,7 +181,7 @@ A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
 {
 \textbf{Deformation-Driven Method:}
 Instead of finding compatible elements,
-a deformation-driven method allows elements to create compatibilities and shape variations.
+a deformation-driven method allows elements to create compatibilities.
 As an advantage, a deformation-driven method can rely on a small size element library.
 Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes, although their method cannot handle more
