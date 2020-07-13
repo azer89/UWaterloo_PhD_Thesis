@@ -468,17 +468,20 @@ and RepulsionPak also has a lower overlap function.
 
 \textbf{Comparison to Rigid Packings}: 
 To evaluate the effect of deformation on negative space, we compute all three metrics under
-increasing values of $k_e$, the edge spring strength.  Increasing $k_e$
+increasing values of \newtext{$k_\mathrm{edg}$, the edge force relative strength}.  
+\newtext{Note that we only modify the strengths of edge springs and shear springs, 
+and the strength of negative space springs are unchanged.}
+Increasing $k_\mathrm{edg}$
 allows the element meshes to resist deformation, ultimately
 approximating a rigid packing algorithm.  We created 15 packings,
-five for each of three values of $k_e$ (5, 250, and 1000).  Each packing
+five for each of three values of $k_\mathrm{edg}$ (5, 250, and 1000).  Each packing
 used 25 elements chosen at random from a library of 60, with
 no secondary elements.  
 All packings are partly calibrated: they all have the same negative
 space ratio, but elements are chosen at random and have some
 variation in their sizes.
 As shown in Figure~\ref{fifteen_packings}, a low value of
-$k_e$ leads to greater deformation and steeper SCPs.
+$k_\mathrm{edg}$ leads to greater deformation and steeper SCPs.
 The more pronounced histogram bump at $r=d_\mathrm{gap}/2$ suggests
 more even negative space.
 The lower overlap functions indicate fewer narrow gaps between elements.
@@ -489,9 +492,9 @@ The lower overlap functions indicate fewer narrow gaps between elements.
 \caption[A demonstration of the effect of deformation \newline on the evenness of negative space]
 {\label{fifteen_packings}
 A demonstration of the effect of deformation on the evenness of negative space.  
-The packings in (a), (b) and (c) are representative results using three values of the edge force strength $k_e$,
-from rigid ($k_e=1000$) to moderate ($k_e=250$) to deformable ($k_e=5$).
-We construct five random packings for each value of $k_e$, and plot their SCPs~(d), histograms~(e), and overlap functions~(f).
+The packings in (a), (b) and (c) are representative results using three values of the edge force strength $k_\mathrm{edg}$,
+from rigid ($k_\mathrm{edg}=1000$) to moderate ($k_\mathrm{edg}=250$) to deformable ($k_\mathrm{edg}=5$).
+We construct five random packings for each value of $k_\mathrm{edg}$, and plot their SCPs~(d), histograms~(e), and overlap functions~(f).
 Packings with the most deformation have steeper and shorter SCPs, 
 more histogram concentrations around $d_\mathrm{gap} / 2$, and lower overlap functions.
 }
