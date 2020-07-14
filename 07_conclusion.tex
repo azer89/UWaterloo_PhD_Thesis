@@ -19,9 +19,9 @@ each is an extruded 3D shape in a spacetime domain.
 
 \newtext
 {
-We demonstrated that deformation-driven methods can create element compatibilities.
-Given a small size element library, repeated elements
-give a sense of uniformity but deformation creates a sense of variety.
+Given a small size element library, 
+we demonstrated that deformation-driven methods can create element compatibilities.
+Repeated elements give a sense of uniformity but deformation creates a sense of variety.
 %As element compatibilities are increased, the negative space is more even.
 }
 
@@ -96,8 +96,11 @@ order-independent way.  A natural first choice would be an approach based
 on simulated annealing, although performance could become a more serious
 issue in that case.
 \newtext{
-Another idea is to use RepulsionPak to refine the packing but 
-elements' spines still need to adhere to the vector field.}
+Another idea is to use RepulsionPak to refine the packing 
+but we need to enforce a constraint on elements' spines to ensure they 
+adhere to the vector field.
+%but elements' spines still need to adhere to the vector field.
+}
 
 \item \newtext{\textbf{Automatic Fixed Element Creation:}}
 We would like to explore the automatic creation and placement of 
@@ -179,7 +182,7 @@ Our barycentric warping method can
 
 \begin{itemize}
 \item \newtext{\textbf{2D Vector Graphics Interpolation:}}
-Because we use linear interpolation to synthesize an element's shape
+Because we use linear interpolation to \newtext{render} an element's shape
 	between slices, we require elements not to undergo changes in 
 	topology.  More sophisticated representations of vector shapes,
 	such as that of Dalstein et al.~\cite{Dalstein2015}, could support
@@ -207,9 +210,9 @@ In RepulsionPak~\cite{Saputra2018}, an additional pass with
 	distribution of negative space in the final packing.  It may be
 	possible to identify stretches of unused spacetime that can be filled
 	opportunistically with additional elements.  The challenge would be
-	to locate tubes of empty space that run the full duration of the
-	animation, always of sufficient diameter to accommodate an added
-	element.
+	to locate tubes of empty space that run the full duration of the animation
+	\newtext{and have sufficient diameters to accommodate added elements.}
+	%always of sufficient diameter to accommodate an added element.
 
 \item \newtext{\textbf{Animated Containers:}}
 Like the spectral method~\cite{Dalal2006}, and unlike

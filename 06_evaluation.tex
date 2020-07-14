@@ -93,7 +93,7 @@ that penalizes a packing if it has too much negative space,
 too many overlaps, or severely deformed elements. 
 They did not further discuss whether it can be used for a quantitative evaluation,
 but we are inspired by their work to develop a metric based on shape overlaps (Section~\ref{section_overlap_function}).
-Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated 
+Maciejewski et al.~\cite{Maciejewski2008} compared computer-generated stippling artwork
 with artist-made stipple artwork using the Gray-Level Co-Occurrence Matrix (GLCM),
 which measures spatial relationships between pixel intensities.
 GLCM works best for analyzing dense point distributions, but it unfortunately cannot be used to analyze arrangements with larger shapes.
@@ -324,12 +324,15 @@ that are either too long or too short.
 
 
 \newtext
-{A histogram of all $r$ values is a better way to analyze the distance transform.}
+{We decide to compute \newtext{histogram of the distance transform} to evaluate the negative space.}
+%{A histogram of all $r$ values is a better way to analyze the distance transform.}
 %{We decide to analyze the entire negative space by generating a histogram of all $r$ values.}
 %The distance transform of the negative space can 
 %provide insights into how negative space varies
-We could calculate a standard \textbf{histogram of the
-distance transform}, but that would require quantizing \newtext{$r$ values} into bins.
+%We could calculate a standard \textbf{histogram of the
+%distance transform}, 
+%but that would require quantizing \newtext{$r$ values} into bins.
+However, this would require quantizing \newtext{$r$ values} into bins.
 Instead, note that the SCP $Q_s(r)$ is precisely the normalized area of 
 negative space for which the distance transform is at least $r$. 
 Looked at another way, if we offset each element by a
@@ -510,8 +513,9 @@ more histogram concentrations around $d_\mathrm{gap} / 2$, and lower overlap fun
 The evenness of negative space is an indicator
 of the quality of a packing. 
 The more the elements interlock, the more even the negative space.
-we validated our deformation-driven approach using overlap functions,
-spherical contact probabilities, and histograms of distance transform.
+%we validated our deformation-driven approach 
+We evaluated the evenness of negative space
+using overlap functions, spherical contact probabilities, and histograms of distance transform.
 A packing with a more even negative space has a steeper and shorter SCP, 
 more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.}
 
