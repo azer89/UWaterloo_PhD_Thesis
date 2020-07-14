@@ -482,7 +482,7 @@ correct it.
 \textbf{Edge Force:} 
 \newtext{
 A mesh's edges are treated as longitudinal \textit{ springs};
-displacement of these springs allows a mesh to deform in response to repulsion forces
+displacements of these springs allow a mesh to deform in response to repulsion forces
 by neighboring meshes.
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
@@ -848,6 +848,12 @@ of $\tau$, the integral of absolute curvature along their lengths.
 }
 \end{figure}
 
+
+
+Based on these descriptors, we now use a simple greedy heuristic to identify salient container features where shape matching will be used.
+Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Figure~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
+Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
@@ -862,10 +868,6 @@ assign an element to each.
 }
 }
 \end{figure}
-
-Based on these descriptors, we now use a simple greedy heuristic to identify salient container features where shape matching will be used.
-Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Figure~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
-Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
 
 Even when an element's descriptor is a close match to a segment of 
 target container, 
