@@ -47,7 +47,18 @@ These displacements translate, rotate, and deform the elements as
 they gradually adapt to the shapes of their neighbors
 and the container boundary.  
 To control the amount of deformation,
-we use \textit{spring forces} within a mesh to preserve element shapes.
+we use \textit{spring forces} within a mesh to preserve element shapes.}
+
+\newtext{Most of the elements in a packing are large shapes of real-world objects like animals,
+plants, or man-made objects.  We refer to these as \textit{primary elements}.
+An artist distributes primary elements so that they communicate
+the shape of the container, while attempting as much as possible to ensure
+an even distribution of negative space.
+When the primary elements leave behind large
+pockets of negative space, the artist typically fills those pockets with
+small \textit{secondary elements}, often simple abstract shapes like 
+circles or triangles.
+A packing example with primary and secondary elements is shown in Figure~\ref{fig_primary_secondary}.
 }
 
 \newtext
@@ -59,9 +70,12 @@ balance, uniformity amidst variety, and boundaries (Section~\ref{flowpak_introdu
 We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
 We are able to use repeated copies taken from a small library of elements 
 but their final shapes are varied thanks to element deformation.
-We also show that by carefully placing element in the initial distribution using a shape matching algorithm, 
-we can emphasize the shape of the container boundary.
+We also show that by carefully placing elements in the initial distribution using a shape matching algorithm, 
+the shape of the container boundary can be more emphasized.
+%we can emphasize the shape of the container boundary better.
 }
+
+
 
 %\newtext
 %{
@@ -107,7 +121,20 @@ effectively creating an element representation that can be packed and deformed.
 %effectively emulating a packing process of deformable 2D elements.
 }
 
-
+\begin{figure}
+%\vspace{10pt}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/primary_secondary.pdf}
+\caption[Primary and secondary elements]{
+  \label{fig_primary_secondary}
+  \newtext
+  {
+  A packing created by Balabolka.
+  (a) The packing with primary elements only. \newline
+  (b) Secondary elements are added.
+  }
+}
+\end{figure}
 
 %RepulsionPak represent an element with a set of discrete vertices.
 %Similar to Lloyd's method, repulsion forces distribute vertices evenly but 
@@ -227,7 +254,7 @@ of repulsion forces to maintain even spacing and parallel segments.
 
 
 
-\begin{figure}[h]
+\begin{figure}[t]
 \vspace{-30pt}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/pipeline.pdf} 
