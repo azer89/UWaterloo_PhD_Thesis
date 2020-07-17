@@ -318,14 +318,14 @@ lighter a color of a pixel, higher the $r$ value. %, showing a pattern of white 
 We investigated the idea of analyzing $r$ values only on a medial axis 
 since it bisects the gaps of negative space.
 %since they can be considered as the widths of negative space gaps.
-However, creating a high quality medial axis is difficult,
-as shown in Figure~\ref{fig_skeleton}, the challenge is to prune a large number of problematic branches
-that are either too long or too short.
+However, the challenge is to prune a significant number of problematic branches
+that are either too long or too short, as shown in Figure~\ref{fig_skeleton}.
 }
 
 
 \newtext
-{We decide to analyze the entire negative space by computing the histogram of the distance transform.}
+{As creating a high quality medial axis is difficult,
+we decide to analyze the entire negative space by computing the histogram of the distance transform.}
 %{A histogram of all $r$ values is a better way to analyze the distance transform.}
 %{We decide to analyze the entire negative space by generating a histogram of all $r$ values.}
 %The distance transform of the negative space can 
@@ -516,7 +516,7 @@ of the quality of a packing.
 The more the elements interlock, the more even the negative space.
 %we validated our deformation-driven approach 
 We evaluated the evenness of negative space
-using overlap functions, spherical contact probabilities, and histograms of distance transform.
+using spherical contact probabilities, histograms of distance transform, and overlap functions.
 A packing with a more even negative space has a steeper and shorter SCP, 
 more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.}
 
