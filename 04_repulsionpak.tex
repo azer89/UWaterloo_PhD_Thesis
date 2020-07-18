@@ -110,7 +110,7 @@ the shape of the container boundary can be more emphasized.
 Variants of Lloyd's method have been proposed by
 Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
 Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
-Although these methods can generate appealing results, they can only accept
+Although these approaches can generate appealing results, they can only accept
 convex or near convex elements. 
 RepulsionPak can be categorized as a variant of point-based Lloyd's method without explicitly computing a Voronoi diagram.
 Forces do not act onto elements, but their mesh vertices.
@@ -165,7 +165,7 @@ Data-driven methods include Image Mosaics (JIM)~\cite{Kim2002},
 the Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}.
 JIM is able to pack nearly-convex elements tightly by placing one element at a time and
 backtracking as needed.  As a shape descriptor, 
-PAD is used to find new elements that partially match
+PAD can find new elements that partially match
 existing element boundaries as a container was being filled.  Both
 methods permit some elements to overlap.  While they can
 both correct gaps and overlaps using deformation, the deformation
@@ -238,10 +238,12 @@ with denser vertices that are connected with elastic springs.
 
 \newtext
 {
-\textbf{Physics-Based NPR:} Pedersen and
+\textbf{Curve Simulation:} Pedersen and
 Singh~\cite{Pedersen2006} grew curves to create organic
 labyrinthine paths. Their algorithm is related to ours by the use
 of repulsion forces to maintain even spacing and parallel segments.
+More recently, Yu et al.~\cite{Yu2020} used tangent-point energy
+to pack curves inside a container while avoiding self-intersections.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
