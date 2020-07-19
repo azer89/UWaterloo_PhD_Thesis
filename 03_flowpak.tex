@@ -712,9 +712,10 @@ pathfinding in a vector field.
 \includegraphics[width=1.0\textwidth]{figures/flowpak/dijkstra.pdf}
  \caption[Tracing a shortest path]
  {\label{dijkstra}
+ \newtext{
  Tracing a shortest path using Dijkstra's algorithm.  We generate the 
- orange nodes by resampling and offsetting the blue red streamline.
-          The search directions at a node are shown with green arrows.}
+ blue nodes by resampling and offsetting the blue streamline.
+          The search directions at a node are shown with green arrows.}}
 \end{figure}
 
 To construct the graph, we begin by densely sampling the original
@@ -786,9 +787,9 @@ can also choose to reflect the element across its spine, along its spine, or bot
 \includegraphics[width=1.0\textwidth]{figures/flowpak/rotate_ornament.pdf}
 \caption[Rotating an element]
 {\label{rotate_ornament}
-Top row: rotated versions of the original element. 
+\newtext{Left}: rotated versions of the original element. 
          The best rotation angle is chosen via least squares matching.
-         Bottom row: original, rotated, and enlarged versions of an element.}
+         \newtext{Right}: original, rotated, and enlarged versions of an element.}
 \bigskip
 
 \includegraphics[width=1.0\textwidth]{figures/flowpak/flip.pdf}
