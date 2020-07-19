@@ -1,0 +1,53 @@
+red dark E56161
+
+red light FFC0C0
+
+greeb dark 18C100
+
+green light ADFF9F
+
+blue dark 29A3E6
+
+blue light 88DBFF
+
+
+
+ani
+
+blue dark 1F7EB1
+
+blue light 3095C1
+
+flowpak pipeline
+
+red dark F26B6D
+
+red light FFB6BA
+
+
+teaser lion
+
+yellow FFCE43
+
+orange FF9D45
+
+
+teaser unicorn
+
+blue light ACD1DD
+
+blue dark 7EACB7
+
+
+bear
+
+dark brown C45400
+
+light brown FF9A55
+
+leaf light FFAF78
+
+leaf dark FF761A
+
+
+
