@@ -379,7 +379,7 @@ their neighbors.
 %\mynote{this is perfect place to describe negative space springs}
 \newtext{
 We also add extra edges to prevent
-folding or self-overlaps during simulation
+folding and self-intersections during simulation
 (Figure~\ref{fig_forces}b).  First, if two triangles 
 $ABC$ and $BCD$ share an edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$. 
@@ -1110,7 +1110,7 @@ Two \newtext{examples} of how extreme parameter values can lead to
 	low-quality results.  In~(a), we allow repulsion to overwhelm element
 	shape by setting $k_\mathrm{rpl}$ to 200 and $k_\mathrm{edg}$ to 20; the resulting packing 
 	has even negative space, but elements suffer from high deformation
-	and self intersections.  In~(b), we minimize repulsion and prioritize
+	and \newtext{self-intersections}.  In~(b), we minimize repulsion and prioritize
 	orientation by setting $k_\mathrm{edg}$, $k_\mathrm{tor}$, and $k_\mathrm{rpl}$ to 200, 100, and 50,
 	respectively.  The elements deviate minimally from their original shapes 
 	and orientations, but cannot fill the container effectively.
