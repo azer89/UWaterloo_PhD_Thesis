@@ -85,14 +85,17 @@ attracting point elements to low-intensity regions.
 
 \newtext
 {
-A customized distance function can be used to manipulate the shapes of Voronoi cells.
-Hausner~\cite{Hausner2001} modified the Lloyd's method to distribute square elements into a container 
+A standard CVD is generated using Euclidean distance metric, but it can be replaced
+to manipulate the shapes of Voronoi cells.
+Hausner~\cite{Hausner2001} used this idea to distribute square elements into a container 
 region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
-This can be achieved by replacing Euclidean distance with Manhattan distance so that Voronoi cells resemble squares instead of hexagons.
-%we will discuss a few more of related work that use this exploit throughout this chapter. 
-However, Hausner's approach can only translate the squares, and a vector field is required to rotate them.
-Furthermore, more complicated shapes such as long rectangles would have severe overlaps.
-More recently, Javid et al.~\cite{Javid2019} constructed a distance function that 
+This can be achieved by using Manhattan distance metric so that Voronoi cells resemble squares instead of hexagons,
+each is then replaced with a square element.
+In addition, Hausner incorporated a vector field to modify the orientation of the metric
+so that the square elements can be rotated. 
+However, Hausner's approach is only suitable for square elements as
+more complicated shapes such as long rectangles would have severe overlaps.
+More recently, Javid et al.~\cite{Javid2019} constructed a metric that 
 incorporates a spatial distance, a color distance, and an elongation factor. Their resulting
 Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
@@ -374,7 +377,7 @@ They started with an initial configuration of scaled down elements
 that has no overlaps. They later grew the elements and avoided overlaps using curve deformation.
 Mart\'{\i}nez et al.~\cite{Martinez2019} developed a CVD-based method to generate
 star-shaped tiling patterns that are printed onto tracery sheets.
-Their method works by constructing a star-shaped distance function to manipulate the Voronoi cell shapes. 
+Their method works by constructing a star-shaped metric to manipulate the Voronoi cell shapes. 
 }
 
 %\makeatletter % brooo
