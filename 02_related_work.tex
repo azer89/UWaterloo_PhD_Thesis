@@ -57,8 +57,6 @@ Mosaics of square elements generated using Lloyd's method with Manhattan distanc
 \textbf{Lloyd's Method:}
 An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
 to obtain an even distribution of elements. 
-%Figure~\ref{fig_lloyds_method} shows an illustration of the simplest example of 
-%Lloyd's method that distributes point elements.
 Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
 Given $N$ point elements, 
 we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
@@ -82,30 +80,42 @@ attracting point elements to low-intensity regions.
 %the final point distribution resembles a stippling drawing.
 }
 
-
 \newtext
 {
 A standard CVD is generated using Euclidean distance metric, but it can be replaced
 to manipulate the shapes of Voronoi cells.
-Hausner~\cite{Hausner2001} used this idea to distribute square elements into a container 
-region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
-This can be achieved by using Manhattan distance metric so that Voronoi cells resemble squares instead of hexagons,
-each is then replaced with a square element.
-This approach can only position the square elements, and it must
+Hausner~\cite{Hausner2001} used Manhattan distance metric so that Voronoi cells resemble squares instead of hexagons.
+Each Voronoi cell is then replaced with a square element and the resulting arrangement
+resembles the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
+However, this approach can only position the square elements, and it must
 incorporate a vector field to modify the orientation of the metric
 and rotate the square elements. 
-%This approach can only position the square elements but not rotate them.
-%Therefore, Hausner incorporated a vector field to modify the orientation of the metric
-%so that the square elements can be rotated. 
-Therefore, Hausner's approach is only suitable for square elements as
+Hausner's approach is only suitable for square elements as
 more complicated shapes such as long rectangles would have severe overlaps.
 More recently, Javid et al.~\cite{Javid2019} constructed a metric that 
 incorporates a spatial distance, a color distance, and an elongation factor. Their resulting
-Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
+Voronoi cells have elongated shapes, resembling pebble-like mosaics.
+}
+
+%\newtext
+%{
+%A standard CVD is generated using Euclidean distance metric, but it can be replaced
+%to manipulate the shapes of Voronoi cells.
+%Hausner~\cite{Hausner2001} used this idea to distribute square elements into a container 
+%region, simulating the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
+%This can be achieved by using Manhattan distance metric so that Voronoi cells resemble squares instead of hexagons.
+%This approach can only position the square elements to be centered at the Voronoi centroids, and it must
+%incorporate a vector field to modify the orientation of the metric
+%and rotate the square elements. 
+%In conclusion, Hausner's approach is only suitable for square elements as
+%more complicated shapes such as long rectangles would have severe overlaps.
+%More recently, Javid et al.~\cite{Javid2019} constructed a metric that 
+%incorporates a spatial distance, a color distance, and an elongation factor. Their resulting
+%Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
 \newtext
 {Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{centroidal area Voronoi diagram} (CAVD),
-a variant of CVD that is a distribution of simple polygonal elements.
+a variant of CVD that is a distribution of polygonal elements.
 This new extension computes the main inertia axis for each Voronoi cell so that 
 its element can be rotated to get better alignment with the Voronoi cell boundary.
 In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
