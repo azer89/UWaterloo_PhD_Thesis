@@ -203,13 +203,13 @@ A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
 Instead of finding compatible elements,
 a deformation-driven method allows elements to create compatibilities.
 As an advantage, a deformation-driven method can rely on a small size element library.
-Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
-simple polygons and polyominoes, although their method cannot handle more
-complicated shapes.
 Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
 constructed \textit{calligrams} by filling a container with a small
 number of deformed letters composing one or two words (Figure~\ref{fig_calligraphy_packing}).  
 Their goal was to balance between filling the container and preserving readability.
+Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
+simple polygons and polyominoes, although their method cannot handle more
+complicated shapes.
 Abdrashitov et al.~\cite{Abdrashitov2014} developed
 a sketch-based interface where an artist can draw curves where square-like elements are placed along it
 create a mosaic arrangement.
@@ -284,10 +284,11 @@ from raster images to vector graphics, producing distributions of
 rigidly transformed elements that mimic the statistics of an \textit{exemplar}.
 An element is represented as a single point, which is adequate for small near-convex elements.
 Barla et al.~\cite{Barla2006} and Ijiri et al.~\cite{Ijiri2008} used a growth model that copies small neighborhoods
-from the exemplar into a larger output texture.  AlMeraj et al.~\cite{AlMeraj2013}
-stamped out copies of the exemplar and discarded overlapping elements.
+from the exemplar into a larger output texture.  
 Hurtut et al.~\cite{Hurtut2009} developed a statistical sampling method based
 on multitype point processes.  
+AlMeraj et al.~\cite{AlMeraj2013}
+stamped out copies of the exemplar and discarded overlapping elements.
 Loi et al.~\cite{Loi2017} developed a texture synthesis method that
 can specify global arrangements, local arrangements, or a blend of multiple arrangements.
 These techniques are all concerned with replicating
@@ -326,13 +327,13 @@ Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
 collages (Figure~\ref{fig_related_gal_zehnder}a).  
 They filled a 3D container with overlapping 3D elements using a greedy
 approach and a partial shape matching algorithm.
-Huang et al.~\cite{Huang2014} designed a method
-to generate mechanical collages, such as giant robots.
 Theobalt et al.~\cite{Theobalt2007}
 developed a method to generate animated 3D collages.
 They segmented an animated container
 into smaller rigid parts, each is replaced with a matching element.
 The final result of animated collage consists of rigid motions of elements.
+Huang et al.~\cite{Huang2014} designed a method
+to generate mechanical collages, such as giant robots.
 All these collage methods require a 3D shape database so they are considered as data-driven. 
 %Both these collage methods require a 3D shape database so they can be considered as data-driven. 
 }
@@ -361,11 +362,11 @@ a method to cut and pack volumetric printed objects.
 In engineering, packings are useful for a number of applications, 
 such as product packaging, circuit designs, or mechanical layouts.
 This requires elements to be packed without any overlap.
+Cagan et al.~\cite{Cagan2002} compiled a survey of 3D packing approaches such as
+gradient methods, simulated annealing, and genetic algorithms.
 Byholm et al.~\cite{Byholm2009} developed a method
 to pack voxelized elements, which are computationally easier for collision detection.
 Ma et al.~\cite{Ma2018} proposed a heuristic method to pack triangular meshes.
-For an in-depth survey, Cagan et al.~\cite{Cagan2002} discussed a few approaches such as
-gradient methods, heuristics, simulated annealing, and genetic algorithms.
 }
 
 
@@ -379,16 +380,16 @@ gradient methods, heuristics, simulated annealing, and genetic algorithms.
 \newtext
 {
 Some recent work has explored the elaboration of ornamental
-patterns on surfaces, under constraints imposed by fabrication.  
+patterns on surfaces, under constraints imposed by fabrication, such as connectivity.  
 Chen et al.~\cite{Chen2016} developed a method to generate a filigree pattern,
 which is an arrangement of decorative thin rod elements on a surface.
 Given an initial random configuration of overlapping elements, their method
 removes overlaps by either deforming or trimming the rods.
-Bian et al.~\cite{Bian2018} used Wang tiles made of element parts to generate filigree patterns.
 In similar work, Zehnder et al.~\cite{Zehnder2016} 
 proposed a semi-automated tool for deforming ornamental curves to cover a surface (Figure~\ref{fig_related_gal_zehnder}b). 
 They started with an initial configuration of scaled down elements
 that has no overlaps. They later grew the elements and avoided overlaps using curve deformation.
+Bian et al.~\cite{Bian2018} used Wang tiles made of element parts to generate filigree patterns.
 Mart\'{\i}nez et al.~\cite{Martinez2019} developed a CVD-based method to generate
 star-shaped tiling patterns that are printed onto tracery sheets.
 Their method works by constructing a star-shaped metric to manipulate the Voronoi cell shapes. 
