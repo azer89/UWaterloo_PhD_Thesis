@@ -10,7 +10,7 @@
 \caption[Unilever logo packing and its negative space]
 {\label{fig_logo_packing} 
 (a) The Unilever logo packing that consists of 25 elements arranged inside an \nnewtext{estimated U-shaped container}. 
-(b) The red region is called negative space, which is the remaining area that is not claimed by the elements. 
+(b) \nnewtext{The red region, consisting of the remaining area not claimed by the elements, is referred to as negative space.}
 }
 \end{figure}
 
@@ -225,8 +225,6 @@ area to fill in a partial composition, there is likely to be an
 element in the library with a compatible shape.  The challenge is 
 \textit{finding compatible elements},
 which requires designing a shape matching technique that is fast and robust.
-%The search space is enormous, since a single element
-%can have many configurations through scaling or rotation.
 Additionally, they cannot guarantee to find a compatible element
 at every iteration, and elements typically do not fit perfectly with each other 
 or the container boundary.
@@ -239,25 +237,30 @@ the artist may not want to draw 100 or 1000 cats to ensure a better fit.
 
 \textbf{Deformation-Driven Methods:} \newtext{In this thesis, we propose \textit{deformation-driven} methods.
 Instead of finding compatible elements,
-we intent to \textit{create} compatible elements through deformation
-that can adapt to the shapes of neighboring elements and the container boundary.
+we intent to \textit{create} compatible elements through deformation; 
+these deformed elements can adapt to the shapes of neighboring elements and the container boundary.
 We allow elements to deform in a controlled way,
 to trade off between the evenness of the element distribution and 
 the deformations of the individual elements.
 By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, 
-and we only require a small library of element shapes.
-}
-
-\newtext
-{
-Deformation-driven methods also allow us to work toward a design principle called \textit{uniformity amidst variety}~\cite{Hutcheson1729, Gombrich}. 
-\textit{Uniformity} aims for an overall unity of design and 
-\textit{variety} seeks to break up the monotony of pure repetition.
+and we only require a small library of element shapes.}
+\nnewtext{
+Deformation-driven methods also allow us to work toward the principle of uniformity amidst variety.
 We can achieve a degree of uniformity by using repeated copies of a small library of elements, but balance that uniformity with
 variety by deforming those elements. 
 We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
 }
+
+%\newtext
+%{
+%Deformation-driven methods also allow us to work toward a design principle called \textit{uniformity amidst variety}~\cite{Hutcheson1729, Gombrich}. 
+%\textit{Uniformity} aims for an overall unity of design and 
+%\textit{variety} seeks to break up the monotony of pure repetition.
+%We can achieve a degree of uniformity by using repeated copies of a small library of elements, but balance that uniformity with
+%variety by deforming those elements. 
+%We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
+%}
 
 \newtext
 {
@@ -272,7 +275,8 @@ evenness based on methods from spatial statistics.
 
 \textbf{Contributions:} \newtext
 {
-In this thesis, our contribution is developing three deformation-driven packing methods and 2D packing quantitative metrics:
+In this thesis, we develop three specific deformation-driven packing methods, 
+and then study investigate the quantitative evaluation of packing quality in greater detail:
 \begin{enumerate}
 \item FLOWPAK is a packing method that deforms long thin elements to follow a user-defined vector field (Chapter~\ref{chapter_flowpak}).
 \item RepulsionPak is a packing method that utilizes repulsion forces to distribute and deform elements,
@@ -285,6 +289,8 @@ In this thesis, our contribution is developing three deformation-driven packing 
 histograms of the distance transforms, and the overlap functions (Chapter~\ref{chapter_qualitative_metrics}). 
 \end{enumerate}
 }
+
+It would be nice to say *something* in the introduction about physics.  Not necessarily here, but perhaps earlier.  A lot of the techniques developed in the thesis are motivated by physical simulation, even though the simulation itself is not the final goal. In this work, simulation of physical forces can be thought of as a kind of optimization process, with the resulting physical equilibrium as the desired output.
 
 
 %\begin{labeling}{alligator}
