@@ -35,13 +35,12 @@
 {\label{fig_dog_flow} 
 \nnewtext
 {
-Packings with flow visual styles:
+Packings with flow visual styles:}
 (a) Dog (by ComicVector703 on Shutterstock), 
 including a visualization showing the flow directions of elements; 
 (b) Lion (from StockUnlimited);  
 (c) Skull (by alitdesign on Shutterstock).
 (d) Fish in the style of Haida art (by Russ Jones, used with permission); 
-}
  }
 \end{figure}
 
@@ -113,9 +112,10 @@ Figure~\ref{fig_logo_packing}a shows the Unilever logo,
 which is a 2D packing of elements arranged inside a U-shaped container.}
 
 
-\nnewtext{The subset of the container that does not belong to any element is
+\newtext{The subset of the container that does not belong to any element is
 called \textit{negative space} (Figure~\ref{fig_logo_packing}b).
-We can also interpret negative space as separation and gaps between elements.
+We can also interpret negative space as separation and gaps between elements.}
+\nnewtext{
 On the other hand, elements can be interpreted as \textit{positive space}.
 In this thesis, we narrow our focus in packings without element overlaps,
 which makes it meaningful to discuss positive and negative space without 
@@ -159,8 +159,8 @@ to packing construction:
   on the fish flow along the length of its body.  In the lion and skull,
   elements flow horizontally outward from a central axis of symmetry,
   suggesting fur in the case of the lion.  
-  Another example is shown in Figure \ref{fig_woodland}, which is a packing of leaves, 
-  each is oriented toward the center of the container.}   
+  Another example is shown in Figure \ref{fig_woodland}, which is a packing of leaves
+  that are oriented toward the center of the container.}   
   Flow  adds visual interest to a composition, engaging the viewer 
   by providing a sense of progression and movement through elements.
 
@@ -237,14 +237,14 @@ the artist may not want to draw 100 or 1000 cats to ensure a better fit.
 
 \textbf{Deformation-Driven Methods:} \newtext{In this thesis, we propose \textit{deformation-driven} methods.
 Instead of finding compatible elements,
-we intent to \textit{create} compatible elements through deformation; 
+we \textit{create} compatible elements through deformation; 
 these deformed elements can adapt to the shapes of neighboring elements and the container boundary.
 We allow elements to deform in a controlled way,
 to trade off between the evenness of the element distribution and 
 the deformations of the individual elements.
 By building an algorithm with a controllable deformation model at its core, we achieve a
 more even distribution of negative space, 
-and we only require a small library of element shapes.}
+and we require only a small library of element shapes.}
 \nnewtext{
 Deformation-driven methods also allow us to work toward the principle of uniformity amidst variety.
 We can achieve a degree of uniformity by using repeated copies of a small library of elements, but balance that uniformity with
@@ -262,12 +262,22 @@ We believe that there is a value in deformation that can generate plausible fami
 %We believe that there is a value in deformation that can generate plausible families of related elements from a single input shape.
 %}
 
+\nnewtext{
+In this thesis, many techniques are inspired by physical simulations.
+Specifically, we have to create an element representation 
+that can be deformed by pseudo-physical forces. 
+Even though we do not contribute to a new physically-based technique,
+we treat a physical simulation as an optimization process that allows us to
+reach a physical equilibrium where the resulting packing has approximately uniform
+distribution of both positive and negative space.
+}
+
 \newtext
 {
 % https://learningenglish.voanews.com/a/the-more-i-practice-the-more-i-remember/4995040.html
 The perceived packing quality is closely tied to the evenness of negative space.
 The more the elements interlock, the more even the negative space. 
-We are interested in quantitative measurements of the evenness 
+We are interested in quantitative measurements of evenness 
 in order to evaluate and compare packing algorithms.
 In this thesis we discuss several possible measurements of 
 evenness based on methods from spatial statistics.
@@ -289,9 +299,6 @@ and then study investigate the quantitative evaluation of packing quality in gre
 histograms of the distance transforms, and the overlap functions (Chapter~\ref{chapter_qualitative_metrics}). 
 \end{enumerate}
 }
-
-It would be nice to say *something* in the introduction about physics.  Not necessarily here, but perhaps earlier.  A lot of the techniques developed in the thesis are motivated by physical simulation, even though the simulation itself is not the final goal. In this work, simulation of physical forces can be thought of as a kind of optimization process, with the resulting physical equilibrium as the desired output.
-
 
 %\begin{labeling}{alligator}
 %\item [ant] really busy all the time
