@@ -12,9 +12,13 @@
 \nnewtext
 {
 A taxonomy of packing methods.
-From upper middle to lower right, images are taken from AlMeraj et al.~\cite{AlMeraj2013},
-Kaplan and Salesin~\cite{Kaplan2000}, Saputra et al.~\cite{Saputra2018},
-Gal et al.~\cite{Gal2007B}, Zehnder et al.~\cite{Zehnder2016}, and Saputra et al.~\cite{Saputra2020}.
+From upper middle to lower right, images are taken from 
+Kaplan and Salesin~\cite{Kaplan2000}, 
+AlMeraj et al.~\cite{AlMeraj2013},
+Hausner~\cite{Hausner2001},
+Gal et al.~\cite{Gal2007B}, 
+Chen et al.~\cite{Chen2017}, 
+and Saputra et al.~\cite{Saputra2020}.
 }
 }
 \end{figure}
@@ -401,8 +405,11 @@ Chen et al.~\cite{Chen2016} developed a method to generate a filigree pattern,
 which is an arrangement of decorative thin rod elements on a surface.
 Given an initial random configuration of overlapping elements, their method
 removes overlaps by either deforming or trimming the rods.
+} In later work, Chen et al.~\cite{Chen2017} generated modular surfaces by
+computing contact point networks of rigid elements
+{
 In similar work, Zehnder et al.~\cite{Zehnder2016} 
-proposed a semi-automated tool for deforming ornamental curves to cover a surface (Figure~\ref{fig_related_gal_zehnder}b). 
+proposed a semi-automated tool for deforming ornamental curves to cover a surface. 
 They started with an initial configuration of scaled down elements
 that has no overlaps. They later grew the elements and avoided overlaps using curve deformation.
 Bian et al.~\cite{Bian2018} used Wang tiles made of element parts to generate filigree patterns.
@@ -411,21 +418,49 @@ star-shaped tiling patterns that are printed onto tracery sheets.
 Their method works by constructing a star-shaped metric to manipulate the Voronoi cell shapes. 
 }
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/arcimboldo_gal.pdf} 
+\caption[Examples of 3D packing arrangements]
+{\label{fig_related_arcimboldo_gal} 
+\newtext
+{
+3D packing arrangements:
+(Left) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden). 
+(Right) An Arcimboldo-like 3D packing~\cite{Gal2007B}.
+}
+}
+\end{figure}
+
+\makeatletter % brooo
+\setlength{\@fptop}{0pt} % brooo
+\makeatother % brooo
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/chen_zehnder.pdf} 
+\caption[Two example of packings on surfaces]
+{\label{fig_related_chen_zehnder} 
+\nnewtext
+{
+Two example of packings on surfaces:
+(a) Elements packed on a surface and connected by hinges~\cite{Chen2017}.
+(b) Curve elements arranged on a bunny surface~\cite{Zehnder2016}.
+}
+}
+\end{figure}
+
 %\makeatletter % brooo
 %\setlength{\@fptop}{0pt} % brooo
 %\makeatother % brooo
-\begin{figure}[h]
-\bigskip
-\bigskip
-\bigskip
+\begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/related/gal_zehnder.pdf} 
+\includegraphics[width=1.0\textwidth]{figures/related/gal_chen.pdf} 
 \caption[A 3D packing and a packing on a surface]
-{\label{fig_related_gal_zehnder} 
+{\label{fig_related_gal_chen} 
 \newtext
 {
 (a) An Arcimboldo-like 3D packing~\cite{Gal2007B}. 
-(b) Decorative elements that fill a surface~\cite{Zehnder2016}.
+(b) Elements that fill a surface~\cite{Chen2017}.
 }
 }
 \end{figure}
