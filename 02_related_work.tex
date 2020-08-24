@@ -16,37 +16,30 @@ An informal taxonomy of element arrangements with the focus on element packings.
 }
 \end{figure}
 
+\nnewtext
+{
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
-Figure~\ref{fig_taxonomy} shows the taxonomy of elements arrangements subcategories.
+Figure~\ref{fig_taxonomy} shows the taxonomy of elements arrangement subcategories.
 The taxonomy is more focused on packings because our proposed methods do not attempt to generate tilings or discrete textures.
-Many previous techniques discussed in this chapter aim to avoid or
-minimize element overlaps, even though a few figures shown in this thesis 
+Many related packing methods discussed in this chapter aim to minimize element overlaps. 
+Looking closely, few packings shown in this chapter 
 contain overlaps to some degree due to the challenge of 
 finding and aligning compatible elements.
-
-
-
-
-
-
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{2D Packings}
+\section{2D Mosaics and Packings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Rigid packing algorithms attempt to distribute elements through rigid transformations.
-%These algorithms can be categorized into two groups: iterative methods and data-driven methods.
-%Iterative methods start with an initial configuration then they use a variant of Lloyd's method 
-%to refine the configuration to an even distribution of elements.
-%data-driven methods rely on a shape matching algorithm to find a matching element from
-%an element library.
-%Some of rigid packing algorithms have an additional step where they 
-%correct gaps and overlaps using deformation, the deformation was applied
-%locally near edges in a post-processing step after elements
-%were frozen in place.
-
-\newtext
+\nnewtext
 {
+This section discusses previous methods to arrange 2D elements in the plane.
+Elements in traditional mosaics are made of stone, ceramics, or glass.
+We can argue that traditional mosaics have a different visual style than 2D packings in graphic design,
+but technically, these two can be grouped into a single category
+as methods to generate 2D mosaics or packings are intertwined to each other.
+}
+
 \textbf{Lloyd's Method:}
 An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
 to obtain an even distribution of elements. 
@@ -59,7 +52,6 @@ then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even,
 that means all the point elements are located at the centroids of the Voronoi cells.
 The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
-}
 
 \newtext
 {
@@ -67,10 +59,6 @@ Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point ele
 resembles a stippling artwork.
 His method incorporates the gradient of an input image into the centroid calculation, 
 attracting point elements to low-intensity regions.
-%Secord~\cite{Secord2002} distributed point elements by computing a weighted centroidal Voronoi diagram.
-%The gradient of an input image is incorporated into the centroid calculation, 
-%attracting point elements to low-intensity regions so that
-%the final point distribution resembles a stippling drawing.
 }
 
 \begin{figure}
