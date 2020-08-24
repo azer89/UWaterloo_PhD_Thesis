@@ -4,14 +4,14 @@
 \label{chapter_related_work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}
+\begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy.pdf} 
 \caption[A taxonomy of packing methods]
 {\label{fig_taxonomy} 
 \nnewtext
 {
-An informal taxonomy of element arrangements with the focus on element packings.
+An informal taxonomy of element arrangements with the focus on 2D mosaics/packings.
 }
 }
 \end{figure}
@@ -21,8 +21,8 @@ An informal taxonomy of element arrangements with the focus on element packings.
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
 Figure~\ref{fig_taxonomy} shows the taxonomy of elements arrangement subcategories.
 The taxonomy is more focused on packings because our proposed methods do not attempt to generate tilings or discrete textures.
-Many related packing methods discussed in this chapter aim to minimize element overlaps. 
-Looking closely, few packings shown in this chapter 
+Many related methods discussed in this chapter aim to minimize element overlaps. 
+Looking closely, a few packings shown in this chapter 
 contain overlaps to some degree due to the challenge of 
 finding and aligning compatible elements.
 }
@@ -36,13 +36,11 @@ finding and aligning compatible elements.
 This section discusses previous methods to arrange 2D elements in the plane.
 Elements in traditional mosaics are made of stone, ceramics, or glass.
 We can argue that traditional mosaics have a different visual style than 2D packings in graphic design,
-but technically, these two can be grouped into a single category
-as methods to generate 2D mosaics or packings are intertwined to each other.
+but these two can be grouped into a single category of tight arrangements of 2D elements.
 }
 
-\textbf{Lloyd's Method:}
-An approach to generate a packing is to start with an initial configuration and iteratively refine it using Lloyd's method
-to obtain an even distribution of elements. 
+An approach to generate a packing is to start with an initial configuration and iteratively refine it using \textbf{Lloyd's method}
+to obtain \nnewtext{an even distribution of elements, which means the distribution of positive and negative space is uniform.}
 Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
 Given $N$ point elements, 
 we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
