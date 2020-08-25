@@ -19,12 +19,13 @@ An informal taxonomy of element arrangements with the focus on 2D mosaics/packin
 \nnewtext
 {
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
-Figure~\ref{fig_taxonomy} shows the taxonomy of elements arrangement subcategories.
-The taxonomy is more focused on packings because our proposed methods do not attempt to generate tilings or discrete textures.
-Many related methods discussed in this chapter aim to minimize element overlaps. 
-Looking closely, a few packings shown in this chapter 
-contain overlaps to some degree due to the challenge of 
-finding and aligning compatible elements.
+Decades of research in NPR have produced copious amount of techniques for producing computer-generated element arrangements.
+Figure~\ref{fig_taxonomy} shows an informal taxonomy of elements arrangements 
+that is focused on packings, tilings, and discrete textures as they are more related to our proposed methods.
+We further break down the mosaics and packing category into subcategories, each discussed in a separate section.
+Many packing methods discussed in this chapter aim to minimize element overlaps. 
+Looking closely, a few computer-generated packings shown in this chapter 
+contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -33,14 +34,28 @@ finding and aligning compatible elements.
 
 \nnewtext
 {
-This section discusses previous methods to arrange 2D elements in the plane.
-Elements in traditional mosaics are made of stone, ceramics, or glass.
-We can argue that traditional mosaics have a different visual style than 2D packings in graphic design,
-but these two can be grouped into a single category of tight arrangements of 2D elements.
+This section discusses related methods that generate 2D mosaics or packings,
+which are about arranging 2D elements tightly in a 2D container.
+Both mosaics and packings have a similar goal of creating a composition that have even distribution while minimizing overlaps.
+A packing with an even distribution has its positive and negative space approximately uniform.
+The gaps between elements should roughly have the same width.
+Visually, traditional mosaics often use near convex elements made of stone, ceramics, or glass,
+while 2D packings are composed of elements that have more general 
+shapes that are either convex or concave.
 }
 
-An approach to generate a packing is to start with an initial configuration and iteratively refine it using \textbf{Lloyd's method}
-to obtain \nnewtext{an even distribution of elements, which means the distribution of positive and negative space is uniform.}
+%\nnewtext
+%{
+%This section discusses previous methods to arrange 2D elements tightly in a 2D container.
+%Elements in traditional mosaics are made of stone, ceramics, or glass.
+%We can argue that traditional mosaics have a different visual style than 2D packings in graphic design,
+%but these two can be grouped into a single category of tight arrangements of 2D elements.
+%}
+
+\nnewtext{
+An approach to generate a packing is to start with an initial configuration and 
+iteratively refine it using \textit{Lloyd's method}~\cite{McCool1992}.}
+\newtext{
 Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
 Given $N$ point elements, 
 we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
@@ -50,14 +65,17 @@ then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even,
 that means all the point elements are located at the centroids of the Voronoi cells.
 The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
+}
 
 \newtext
 {
 Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
-resembles a stippling artwork.
-His method incorporates the gradient of an input image into the centroid calculation, 
-attracting point elements to low-intensity regions.
-}
+resembles a stippling artwork.}
+\nnewtext{
+A standard CVD assumes the area density is uniform everywhere.
+His method incorporates the pixel intensities of an input image as area densities, 
+which alter the centroid calculation so that point elements are attracted to low-intensity regions.}
+
 
 \begin{figure}
 \centering
@@ -91,17 +109,18 @@ Mosaics of square elements generated using Lloyd's method with Manhattan distanc
 
 \newtext
 {
-A standard CVD is generated using Euclidean distance metric, but it can be replaced
-to manipulate the shapes of Voronoi cells.
-Hausner~\cite{Hausner2001} used Manhattan distance metric so that Voronoi cells resemble squares instead of hexagons.
+A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
+Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
+\newtext{Manhattan distance, producing Voronoi cells that resemble squares instead of hexagons.
 Each Voronoi cell is then replaced with a square element and the resulting arrangement
 resembles the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
-However, Hausner's approach can only position the square elements, and it must
-incorporate a vector field to modify the orientation of the metric
+However, a standard CVD computes only the positions of the square elements, and Hausner must
+incorporated a vector field to modify the orientation of the metric
 and rotate the square elements. 
 Additionally, the approach is only suitable for square elements as
-more complicated shapes such as long rectangles would have severe overlaps.
-More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble-like mosaics 
+more complicated shapes, such as long rectangles, would have severe overlaps.}
+\nnewtext{
+More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble mosaics 
 using a superpixel image segmentation~\cite{Achanta2012}, which is a variant Lloyd's method that incorporates Euclidean metric and a CIELAB color metric.
 They later elongated the Voronoi cells to follow the gradient of the input image, 
 and smoothed out the cell boundaries. 
@@ -126,12 +145,13 @@ The resulting Voronoi cells resemble smooth elongated pebble shapes.
 %incorporates a spatial distance, a color distance, and an elongation factor. Their resulting
 %Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
+\nnewtext{The computation of Voronoi diagrams can be generalized to any shapes for which a distance measurement exists.} 
 \newtext
-{Hiller et al.~\cite{Hiller2003} improved upon the Lloyd's method to generate \textit{centroidal area Voronoi diagram} (CAVD),
-a variant of CVD that is a distribution of polygonal elements.
-This new extension computes the main inertia axis for each Voronoi cell so that 
-its element can be rotated to get better alignment with the Voronoi cell boundary.
-In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVD.
+{Hiller et al.~\cite{Hiller2003} extended Lloyd's method to construct \textit{centroidal area Voronoi diagrams} (CAVDs),
+a variant of CVDs that is a distribution of polygonal elements.
+This new extension computes the main inertial axis for each Voronoi cell so that 
+its element can be rotated to achieve better alignment with the Voronoi cell boundary.
+In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVDs.
 Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
 elements so that they achieve the best alignments with their Voronoi cell boundaries, 
 which could be seen as making more effective use of negative
@@ -139,23 +159,30 @@ space, and permitting non-convex elements to interlock more than they did in
 earlier methods. However, the FFT-based method cannot rotate the elements,
 so they resorted to a brute force approach to find the best orientation.}
 
-\newtext{\textbf{Data-Driven Methods:} 
-A different approach to generate packings is to use a shape matching algorithm (Figure~\ref{fig_related_jim_pad}).
-This is usually done by placing an element one by one until the container area is filled.
+\nnewtext
+{
+An alternative approach to generate packings is to use data-driven methods that
+requires an input element library (Figure~\ref{fig_related_jim_pad}).}
+\newtext{
+This is usually done by placing elements one by one until the container area is filled.
 For each step, a shape matching algorithm selects an 
-element that has the best compatibility with the previously placed elements or the container boundary.
+element from the library that has the best compatibility with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing to find
-a compatible element. JIM places elements using a greedy approach, but is able to backtrack 
+compatible elements. JIM method places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
-Pyramid of Arclength Descriptor~\cite{Kwan2016} is
-a partial shape matching algorithm that can match
-subsets of element boundaries.
+Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a shape descriptor that
+can find new elements that partially match
+existing element boundaries as a container was being filled.  Both
+methods permit some elements to overlap.  While they can
+both correct gaps and overlaps using deformation, the deformation
+is applied locally near edges in a post-processing step after
+elements were frozen in place. 
 }
 
-\newtext{It is also possible to initially partition the container into smaller segments
+\newtext{It is also possible to initially partition a container into smaller segments
 then independently replace each segment with a matching element.
 This is desirable if the container has colors or salient parts that need to be emphasized.
-Huang et al.~\cite{Huang2011} produced Arcimboldo-like collages
+Huang et al.~\cite{Huang2011} proposed a data-driven approach that generates Arcimboldo-like collages
 by arranging cutout images collected from the internet.
 Their container is a larger cutout image which is partitioned into parts
 using an image segmentation algorithm.
@@ -164,13 +191,15 @@ Each part is then replaced with a smaller cutout image that has a similar shape 
 
 \newtext
 {
-All these data-driven methods require an element library that is big enough,
-the more elements in the library will increase their chance to find a compatible element boundary.
-However, bigger database means increased computational time and
-collecting a large number of elements is also not always feasible.
-%for example, if an artist wants to create a packing of a hand-drawn cats,
-%they may not want to draw 1000 cats which is tedious and repetitive.
-}
+All these data-driven methods require a large element library.
+The more elements in the library, the better the chances of finding compatible element boundary.}
+\nnewtext
+{
+For example, JIM method required a library with 900 elements, PAD used a library with more than 100 elements, 
+and Huang et al. needed about 5000 elements.}
+\newtext
+{However, a bigger database means increased computational time and
+collecting a large number of elements is not always feasible.}
 
 \begin{figure}
 \centering
