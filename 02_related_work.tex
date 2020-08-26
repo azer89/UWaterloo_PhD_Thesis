@@ -7,11 +7,11 @@
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy.pdf} 
-\caption[A taxonomy of element arrangements]
+\caption[A classification of element arrangements]
 {\label{fig_taxonomy} 
 \nnewtext
 {
-An informal taxonomy of element arrangements with the focus on 2D mosaics/packings.
+An informal classification of element arrangements.
 }
 }
 \end{figure}
@@ -20,18 +20,19 @@ An informal taxonomy of element arrangements with the focus on 2D mosaics/packin
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy_method.pdf} 
-\caption[A taxonomy of packing methods]
+\caption[A classification of packing methods]
 {\label{fig_taxonomy_method} 
 \nnewtext
 {
-A categorization of packing methods. The illustrations are adapted from the spectral approach~\cite{Dalal2006}, 
-Pyramid of Arclength Descriptors~\cite{Kwan2016}, and
-RepulsionPak~\cite{Saputra2018, Saputra2019}
+Many mosaicing and packing methods can be grouped into three categories. 
 (a) Lloyd's method starts with an initial distribution of elements then iteratively distribute them
-to generate an even distribution. 
+to generate a more even distribution. 
 (b) A data-driven method places elements one by one until the container is filled.
 For each step, it select an element from an element library that is compatible with previously placed elements and the container.
 (c) A deformation-driven method attempts to create element compatibility through deformation.
+The illustrations are adapted from the spectral approach~\cite{Dalal2006}, 
+Pyramid of Arclength Descriptors~\cite{Kwan2016}, and
+Calligrams~\cite{Zou2016}
 }
 }
 \end{figure}
@@ -40,44 +41,41 @@ For each step, it select an element from an element library that is compatible w
 {
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
 Decades of research in NPR have produced copious amount of techniques for producing computer-generated element arrangements.
-Figure~\ref{fig_taxonomy} shows an informal taxonomy of elements arrangements 
-that is focused on packings, tilings, and discrete textures as they are more related to our proposed methods.
-We further break down the mosaics and packing category into subcategories, each discussed in a separate section.
-Many packing methods discussed in this chapter aim to minimize element overlaps. 
-Looking closely, a few computer-generated packings shown in this chapter 
+Based on their designs, Figure~\ref{fig_taxonomy} elements arrangements can be categorized into 
+packings, tilings, and discrete textures.
+The categorization can be further expanded but we only choose ones that are related to our proposed packing methods.
+We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
+packings on surfaces, and animated packings.
+This chapter covers all subcategories except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
+Although many packing methods discussed in this chapter aim to minimize element overlaps, 
+a few computer-generated packings shown in this chapter 
 contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
 }
 
+\nnewtext
+{
+In general, many mosaicing and packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
+The first category, Lloyd's method, iteratively refine an initial element arrangement to generate a more even distribution.
+Lloyd's method is popular in many mosaicing techniques that attempt to pack convex or near convex elements.
+The second category, data-driven methods, place elements one by one. For each step, a data-driven method select 
+an element from an element library that is compatible with previously placed elements and the container boundary.
+The last category, deformation-driven methods, attempt to create element compatibilities through shape deformation.
+Data-driven methods and deformation-driven methods are commonly used in packing methods with concave elements.
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{2D Mosaics and Packings}
+\section{Mosaics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Mosaics are 2D arrangements that are popular for decorating floors or walls.
+Traditionally, elements made of stone, ceramics, or glass.
+Early mosaicing techniques used Lloyd's method to pack simple convex elements
+inside containers. Later techniques generalized Lloyd's method to pack
+more complicated concave elements.
 
 \nnewtext
 {
-This section discusses related methods that generate 2D mosaics or packings,
-which are about arranging 2D elements tightly in a 2D container.
-Both mosaics and packings have a similar goal of creating a composition that have even distribution while minimizing overlaps.
-A packing with an even distribution has its positive and negative space approximately uniform.
-The gaps between elements should roughly have the same width.
-Visually, traditional mosaics often use near convex elements made of stone, ceramics, or glass,
-while 2D packings are composed of elements that have more general 
-shapes that are either convex or concave.
-}
-
-%\nnewtext
-%{
-%This section discusses previous methods to arrange 2D elements tightly in a 2D container.
-%Elements in traditional mosaics are made of stone, ceramics, or glass.
-%We can argue that traditional mosaics have a different visual style than 2D packings in graphic design,
-%but these two can be grouped into a single category of tight arrangements of 2D elements.
-%}
-
-\nnewtext{
-An approach to generate a packing is to start with an initial configuration and 
-iteratively refine it using \textit{Lloyd's method}~\cite{McCool1992}.}
-\newtext{
-Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
-Given $N$ point elements, 
+We first discuss the simplest variant of Lloyd's method that distributes point elements~\cite{McCool1992}, as shown in Figure~\ref{fig_lloyds_method}.}
+\newtext{Given $N$ point elements, 
 we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
 all points inside a Voronoi cell are closest to its associated point element.
 Lloyd's method moves every point element to the centroid of its Voronoi cell, 
@@ -87,15 +85,30 @@ that means all the point elements are located at the centroids of the Voronoi ce
 The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 }
 
-\newtext
-{
-Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
+
+\nnewtext{A standard CVD assumes the area density is uniform everywhere.}
+\newtext{Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
 resembles a stippling artwork.}
 \nnewtext{
-A standard CVD assumes the area density is uniform everywhere.
 His method incorporates the pixel intensities of an input image as area densities, 
 which alter the centroid calculation so that point elements are attracted to low-intensity regions.}
 
+\newtext{A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
+Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
+\newtext{Manhattan distance, producing Voronoi cells that resemble squares instead of hexagons.
+Each Voronoi cell is then replaced with a square element and the resulting arrangement
+resembles the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
+However, a standard CVD computes only the positions of the square elements, and Hausner must
+incorporated a vector field to modify the orientation of the metric
+and rotate the square elements. 
+Additionally, the approach is only suitable for square elements as
+more complicated shapes, such as long rectangles, would have severe overlaps.}
+\nnewtext{More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble mosaics 
+using a superpixel image segmentation~\cite{Achanta2012}, which is a variant Lloyd's method that incorporates Euclidean metric and a CIELAB color metric.
+They later elongated the Voronoi cells to follow the gradient of the input image, 
+and smoothed out the cell boundaries. 
+The resulting Voronoi cells resemble smooth elongated pebble shapes.
+}
 
 \begin{figure}
 \centering
@@ -116,36 +129,52 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/related/hausner.pdf} 
-\caption[Decorative mosaics using Lloyd's method]
+\includegraphics[width=1.0\textwidth]{figures/related/secord_hausner.pdf} 
+\caption[Stippling artwork and traditional mosaics]
 {\label{fig_related_hausner} 
-\newtext
+\nnewtext
 {
-Mosaics of square elements generated using Lloyd's method with Manhattan distance~\cite{Hausner2001}
+(a) Stippling artwork generated using Lloyd's method that incorporates pixel densities of the input image~\cite{Secord2002}.
+(b) Mosaics of square elements generated using Lloyd's method with Manhattan distance~\cite{Hausner2001}
 }
 }
 \end{figure}
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{2D Mosaics and Packings}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtext
-{
-A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
-Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
-\newtext{Manhattan distance, producing Voronoi cells that resemble squares instead of hexagons.
-Each Voronoi cell is then replaced with a square element and the resulting arrangement
-resembles the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
-However, a standard CVD computes only the positions of the square elements, and Hausner must
-incorporated a vector field to modify the orientation of the metric
-and rotate the square elements. 
-Additionally, the approach is only suitable for square elements as
-more complicated shapes, such as long rectangles, would have severe overlaps.}
-\nnewtext{
-More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble mosaics 
-using a superpixel image segmentation~\cite{Achanta2012}, which is a variant Lloyd's method that incorporates Euclidean metric and a CIELAB color metric.
-They later elongated the Voronoi cells to follow the gradient of the input image, 
-and smoothed out the cell boundaries. 
-The resulting Voronoi cells resemble smooth elongated pebble shapes.
-}
+%\nnewtext
+%{
+%This section discusses related methods that generate 2D mosaics or packings,
+%which are about arranging 2D elements tightly in a 2D container.
+%Both mosaics and packings have a similar goal of creating a composition that have even distribution while minimizing overlaps.
+%A packing with an even distribution has its positive and negative space approximately uniform.
+%The gaps between elements should roughly have the same width.
+%Visually, traditional mosaics often use near convex elements made of stone, ceramics, or glass,
+%while 2D packings are composed of elements that have more general 
+%shapes that are either convex or concave.
+%}
+
+%\nnewtext{
+%An approach to generate a packing is to start with an initial configuration and 
+%iteratively refine it using \textit{Lloyd's method}~\cite{McCool1992}.}
+%\newtext{
+%Figure~\ref{fig_lloyds_method} shows an illustration of point-based Lloyd's method.
+%Given $N$ point elements, 
+%we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
+%all points inside a Voronoi cell are closest to its associated point element.
+%Lloyd's method moves every point element to the centroid of its Voronoi cell, 
+%then the Voronoi diagram is recomputed.
+%The process is repeated until the distribution is even,
+%that means all the point elements are located at the centroids of the Voronoi cells.
+%The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
+%}
+
+
+
+
+
 
 
 
