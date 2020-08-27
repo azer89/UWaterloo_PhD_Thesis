@@ -66,11 +66,14 @@ Data-driven methods and deformation-driven methods are commonly used in packing 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mosaics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nnewtext
+{
 Mosaics are 2D arrangements that are popular for decorating floors or walls.
 Traditionally, elements made of stone, ceramics, or glass.
 Early mosaicing techniques used Lloyd's method to pack simple convex elements
 inside containers. Later techniques generalized Lloyd's method to pack
 more complicated concave elements.
+}
 
 \nnewtext
 {
@@ -140,6 +143,29 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 }
 \end{figure}
 
+\nnewtext{The computation of Voronoi diagrams can be generalized 
+to any shapes for which a distance measurement exists.} 
+\newtext
+{Hiller et al.~\cite{Hiller2003} extended Lloyd's method to construct \textit{centroidal area Voronoi diagrams} (CAVDs),
+a variant of CVDs that is a distribution of polygonal elements.
+This new extension computes the main inertial axis for each Voronoi cell so that 
+its element can be rotated to achieve better alignment with the Voronoi cell boundary.
+In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVDs.
+Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
+elements so that they achieve the best alignments with their Voronoi cell boundaries, 
+which could be seen as making more effective use of negative
+space, and permitting non-convex elements to interlock more than they did in
+earlier methods. However, the FFT-based method cannot rotate the elements,
+so they resorted to a brute force approach to find the best orientation.}
+
+\nnewtext{As an alternative to Lloyd's method, an interactive user interface can also be used to generate mosaics.
+Abdrashitov et al.~\cite{Abdrashitov2014} developed
+a sketch-based interface where an artist can draw curves where square-like elements are placed along it
+create a mosaic arrangement.
+After the square elements are frozen in place, 
+their boundaries are distorted to eliminate overlap, to create shape variations, 
+and to even out the negative space. }
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{2D Mosaics and Packings}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -171,13 +197,6 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 %The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 %}
 
-
-
-
-
-
-
-
 %\newtext
 %{
 %A standard CVD is generated using Euclidean distance metric, but it can be replaced
@@ -194,38 +213,29 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 %incorporates a spatial distance, a color distance, and an elongation factor. Their resulting
 %Voronoi cells have elongated shapes, resembling pebble-like mosaics.}
 
-\nnewtext{The computation of Voronoi diagrams can be generalized to any shapes for which a distance measurement exists.} 
-\newtext
-{Hiller et al.~\cite{Hiller2003} extended Lloyd's method to construct \textit{centroidal area Voronoi diagrams} (CAVDs),
-a variant of CVDs that is a distribution of polygonal elements.
-This new extension computes the main inertial axis for each Voronoi cell so that 
-its element can be rotated to achieve better alignment with the Voronoi cell boundary.
-In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVDs.
-Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
-elements so that they achieve the best alignments with their Voronoi cell boundaries, 
-which could be seen as making more effective use of negative
-space, and permitting non-convex elements to interlock more than they did in
-earlier methods. However, the FFT-based method cannot rotate the elements,
-so they resorted to a brute force approach to find the best orientation.}
+\section{2D Packings}
 
 \nnewtext
 {
-An alternative approach to generate packings is to use data-driven methods that
-requires an input element library (Figure~\ref{fig_related_jim_pad}).}
-\newtext{
-This is usually done by placing elements one by one until the container area is filled.
+This section discusses packing methods that fall into the category of data-driven and deformation-driven.
+Unlike mosaics, these packings have different visual styles as they are composed of elements with concave shapes,
+such as such as man-made objects, plants, or animals.
+Additionally, the visual styles of packings are inspired by Giuseppe Arcimboldo's paintings 
+(Figure ~\ref{fig_related_arcimboldo_optimus}a).
+}
+
+\nnewtext
+{
+A data-driven method require an input element library (Figure~\ref{fig_related_jim_pad}).}
+\newtext{and place elements one by one until the container area is filled.
 For each step, a shape matching algorithm selects an 
 element from the library that has the best compatibility with the previously placed elements or the container boundary.
-Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing to find
+Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing technique to find
 compatible elements. JIM method places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
-Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a shape descriptor that
+Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a curvature-based shape descriptor that
 can find new elements that partially match
-existing element boundaries as a container was being filled.  Both
-methods permit some elements to overlap.  While they can
-both correct gaps and overlaps using deformation, the deformation
-is applied locally near edges in a post-processing step after
-elements were frozen in place. 
+existing element boundaries as a container was being filled. 
 }
 
 \newtext{It is also possible to initially partition a container into smaller segments
@@ -272,30 +282,19 @@ Data-driven methods:
 \nnewtext
 {
 Examples of element collages.
-(Left) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden) that illustrates
+(a) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden) that illustrates
 a 3D packing of non-overlapping plants, vegetables, and fruits. 
-(Right) An Arcimboldo-inspired 2D packing~\cite{Huang2011} consisting of overlapping elements.
+(b) An Arcimboldo-inspired 2D packing~\cite{Huang2011} consisting of overlapping elements.
 }
 }
 \end{figure}
 
 
-
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/calligraphy.pdf} 
-\caption[A calligraphy packing of an ``elephant'']
-{\label{fig_calligraphy_packing} 
-\newtext
-{
-A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
-}
-}
-\end{figure}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\section{Non-rigid Packing Methods}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\nnewtext{ 
+Both methods permit some elements to overlap.  
+While they can both correct gaps and overlaps using deformation, the deformation
+is applied locally near edges in a post-processing step after
+elements were frozen in place. } 
 
 % need to consult to FLOWPAK for variety
 \newtext
@@ -319,6 +318,17 @@ they are deformed to eliminate overlap, to create shape variations,
 and to even out the negative space.  
 }
 
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/calligraphy.pdf} 
+\caption[A calligraphy packing of an ``elephant'']
+{\label{fig_calligraphy_packing} 
+\newtext
+{
+A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
+}
+}
+\end{figure}
 
 
 
