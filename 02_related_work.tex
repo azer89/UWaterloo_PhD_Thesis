@@ -11,7 +11,7 @@
 {\label{fig_taxonomy} 
 \nnewtext
 {
-An informal classification of element arrangements.
+A simplified classification of element arrangements.
 }
 }
 \end{figure}
@@ -25,14 +25,14 @@ An informal classification of element arrangements.
 \nnewtext
 {
 Many mosaicing and packing methods can be grouped into three categories. 
-(a) Lloyd's method starts with an initial distribution of elements then iteratively distribute them
+(a) Lloyd's method starts with an initial distribution of elements then iteratively spread them
 to generate a more even distribution. 
 (b) A data-driven method places elements one by one until the container is filled.
 For each step, it select an element from an element library that is compatible with previously placed elements and the container.
 (c) A deformation-driven method attempts to create element compatibility through deformation.
 The illustrations are adapted from the spectral approach~\cite{Dalal2006}, 
 Pyramid of Arclength Descriptors~\cite{Kwan2016}, and
-Calligrams~\cite{Zou2016}
+Calligram~\cite{Zou2016}
 }
 }
 \end{figure}
@@ -41,8 +41,8 @@ Calligrams~\cite{Zou2016}
 {
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
 Decades of research in NPR have produced copious amount of techniques for producing computer-generated element arrangements.
-Based on their designs, Figure~\ref{fig_taxonomy} elements arrangements can be categorized into 
-packings, tilings, and discrete textures.
+Based on their designs, elements arrangements can be categorized into 
+packings, tilings, and discrete textures (Figure~\ref{fig_taxonomy}).
 The categorization can be further expanded but we only choose ones that are related to our proposed packing methods.
 We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
 packings on surfaces, and animated packings.
@@ -54,13 +54,11 @@ contain overlaps to some degree due to the challenge of finding and aligning com
 
 \nnewtext
 {
-In general, many mosaicing and packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
+Based on their techniques, packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
 The first category, Lloyd's method, iteratively refine an initial element arrangement to generate a more even distribution.
-Lloyd's method is popular in many mosaicing techniques that attempt to pack convex or near convex elements.
 The second category, data-driven methods, place elements one by one. For each step, a data-driven method select 
 an element from an element library that is compatible with previously placed elements and the container boundary.
 The last category, deformation-driven methods, attempt to create element compatibilities through shape deformation.
-Data-driven methods and deformation-driven methods are commonly used in packing methods with concave elements.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -70,16 +68,17 @@ Data-driven methods and deformation-driven methods are commonly used in packing 
 {
 Mosaics are 2D arrangements that are popular for decorating floors or walls.
 Traditionally, elements made of stone, ceramics, or glass.
-Early mosaicing techniques used Lloyd's method to pack simple convex elements
-inside containers. Later techniques generalized Lloyd's method to pack
-more complicated concave elements.
+The majority of these mosaicing techniques use Llyod's method to distribute elements
+via rigid transformations (Figure~\ref{fig_taxonomy_method}a).
+Originally, Lloyd's method was proposed by McCool and Fiume to distribute point elements~\cite{McCool1992}.
+In later work, it is generalized to distribute convex and concave elements.
 }
 
 \nnewtext
 {
-We first discuss the simplest variant of Lloyd's method that distributes point elements~\cite{McCool1992}, as shown in Figure~\ref{fig_lloyds_method}.}
-\newtext{Given $N$ point elements, 
-we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
+We first discuss the simplest variant of Lloyd's method that distributes point elements, 
+as shown in Figure~\ref{fig_lloyds_method}.}
+\newtext{Given $N$ point elements, we first compute a \textit{Voronoi diagram} that partitions the plane into $N$ regions such that
 all points inside a Voronoi cell are closest to its associated point element.
 Lloyd's method moves every point element to the centroid of its Voronoi cell, 
 then the Voronoi diagram is recomputed.
@@ -88,19 +87,17 @@ that means all the point elements are located at the centroids of the Voronoi ce
 The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 }
 
-
-\nnewtext{A standard CVD assumes the area density is uniform everywhere.}
+\nnewtext{When computing centroids, a standard CVD assumes the area density is uniform everywhere.}
 \newtext{Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
-resembles a stippling artwork.}
-\nnewtext{
-His method incorporates the pixel intensities of an input image as area densities, 
+resembles a stippling artwork (Figure~\ref{fig_related_secord_hausner}a).}
+\nnewtext{His method incorporates the pixel intensities of an input image as area densities, 
 which alter the centroid calculation so that point elements are attracted to low-intensity regions.}
 
 \newtext{A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
 Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
 \newtext{Manhattan distance, producing Voronoi cells that resemble squares instead of hexagons.
 Each Voronoi cell is then replaced with a square element and the resulting arrangement
-resembles the appearance of traditional mosaics (Figure~\ref{fig_related_hausner}). 
+resembles the appearance of traditional mosaics (Figure~\ref{fig_related_secord_hausner}b). 
 However, a standard CVD computes only the positions of the square elements, and Hausner must
 incorporated a vector field to modify the orientation of the metric
 and rotate the square elements. 
@@ -134,16 +131,17 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/secord_hausner.pdf} 
 \caption[Stippling artwork and traditional mosaics]
-{\label{fig_related_hausner} 
+{\label{fig_related_secord_hausner} 
 \nnewtext
 {
-(a) Stippling artwork generated using Lloyd's method that incorporates pixel densities of the input image~\cite{Secord2002}.
+(a) Stippling artwork of point elements generated using Lloyd's method 
+that incorporates pixel densities of the input image~\cite{Secord2002}.
 (b) Mosaics of square elements generated using Lloyd's method with Manhattan distance~\cite{Hausner2001}
 }
 }
 \end{figure}
 
-\nnewtext{The computation of Voronoi diagrams can be generalized 
+\nnewtext{We now discuss the computation of Voronoi diagrams that is generalized 
 to any shapes for which a distance measurement exists.} 
 \newtext
 {Hiller et al.~\cite{Hiller2003} extended Lloyd's method to construct \textit{centroidal area Voronoi diagrams} (CAVDs),
@@ -155,16 +153,30 @@ Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
 elements so that they achieve the best alignments with their Voronoi cell boundaries, 
 which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
-earlier methods. However, the FFT-based method cannot rotate the elements,
+earlier methods.}
+\nnewtext{However, the FFT-based method cannot rotate the elements,
 so they resorted to a brute force approach to find the best orientation.}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/smith_dalal.pdf} 
+\caption[Mosaics generated using generalized Lloyd's methods]
+{\label{fig_related_secord_hausner} 
+\nnewtext
+{
+Mosaics generated using generalized Lloyd's methods.
+(a) Animatosaics~\cite{Smith2005}.
+(b) A Spectral Approach~\cite{Dalal2006}.
+}
+}
+\end{figure}
 
 \nnewtext{As an alternative to Lloyd's method, an interactive user interface can also be used to generate mosaics.
 Abdrashitov et al.~\cite{Abdrashitov2014} developed
 a sketch-based interface where an artist can draw curves where square-like elements are placed along it
 create a mosaic arrangement.
 After the square elements are frozen in place, 
-their boundaries are distorted to eliminate overlap, to create shape variations, 
-and to even out the negative space. }
+their boundaries are sliced to eliminate overlaps. }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\section{2D Mosaics and Packings}
@@ -217,12 +229,12 @@ and to even out the negative space. }
 
 \nnewtext
 {
-This section discusses packing methods that fall into the category of data-driven and deformation-driven.
-Unlike mosaics, these packings have different visual styles as they are composed of elements with concave shapes,
-such as such as man-made objects, plants, or animals.
+This section discusses packing methods that fall into the category of data-driven ((Figure~\ref{fig_taxonomy_method})b) and 
+deformation-driven (Figure~\ref{fig_taxonomy_method}c).
+Unlike mosaics, these packings have different visual styles as they are composed of 
+elements that resemble man-made objects, plants, or animals.
 Additionally, the visual styles of packings are inspired by Giuseppe Arcimboldo's paintings 
-(Figure ~\ref{fig_related_arcimboldo_optimus}a).
-}
+(Figure ~\ref{fig_related_arcimboldo}).}
 
 \nnewtext
 {
@@ -254,11 +266,35 @@ All these data-driven methods require a large element library.
 The more elements in the library, the better the chances of finding compatible element boundary.}
 \nnewtext
 {
-For example, JIM method required a library with 900 elements, PAD used a library with more than 100 elements, 
+For example, JIM method required a library with 900 elements, PAD used a library with more than 100 elements 
+(see Figure~\ref{fig_taxonomy_method}), 
 and Huang et al. needed about 5000 elements.}
 \newtext
 {However, a bigger database means increased computational time and
 collecting a large number of elements is not always feasible.}
+
+\nnewtext{ 
+After the container is filled, these data-driven methods permit some elements to overlaps,
+which are later corrected using deformation.
+This is a post-processing step where the elements are frozen in place and
+the deformation is applied locally near element boundaries.
+The use of deformation can be interpreted as improving the element compatibilities, 
+but only locally as these methods still need a large element library to generate satisfactory packings.} 
+%This deformation step later is further exploited by deformation-driven methods.
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/related/arcimboldo.pdf} 
+\caption[Vertumnus painting by Giuseppe Arcimboldo]
+{\label{fig_related_arcimboldo} 
+\nnewtext
+{
+Vertumnus painting by Giuseppe Arcimboldo that illustrates
+a packing of plants, vegetables, and fruits
+(Skokloster Castle, Skokloster, Sweden). 
+}
+}
+\end{figure}
 
 \begin{figure}
 \centering
@@ -274,48 +310,36 @@ Data-driven methods:
 }
 \end{figure}
 
+
+
+
 \begin{figure}
 \centering
-\includegraphics[width=1.0\textwidth]{figures/related/arcimboldo_optimus.pdf} 
-\caption[Examples of collages]
-{\label{fig_related_arcimboldo_optimus} 
+\includegraphics[width=1.0\textwidth]{figures/related/optimus.pdf} 
+\caption[An Arcimboldo-inspired 2D packing]
+{\label{fig_related_optimus} 
 \nnewtext
 {
-Examples of element collages.
-(a) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden) that illustrates
-a 3D packing of non-overlapping plants, vegetables, and fruits. 
-(b) An Arcimboldo-inspired 2D packing~\cite{Huang2011} consisting of overlapping elements.
+An Arcimboldo-inspired 2D packing consisting of overlapping elements~\cite{Huang2011} .
 }
 }
 \end{figure}
 
-
-\nnewtext{ 
-Both methods permit some elements to overlap.  
-While they can both correct gaps and overlaps using deformation, the deformation
-is applied locally near edges in a post-processing step after
-elements were frozen in place. } 
-
-% need to consult to FLOWPAK for variety
-\newtext
+\nnewtext
 {
-\textbf{Deformation-Driven Methods:}
-Instead of finding compatible elements,
-a deformation-driven method allows elements to create compatibilities.
-As an advantage, a deformation-driven method can rely on a small size element library.
-Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016}
-constructed \textit{calligrams} by filling a container with a small
-number of deformed letters composing one or two words (Figure~\ref{fig_calligraphy_packing}).  
-Their goal was to balance between filling the container and preserving readability.
-Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
-simple polygons and polyominoes, although their method cannot handle more
-complicated shapes.
-Abdrashitov et al.~\cite{Abdrashitov2014} developed
-a sketch-based interface where an artist can draw curves where square-like elements are placed along it
-create a mosaic arrangement.
-After the square elements are frozen in place, 
-they are deformed to eliminate overlap, to create shape variations, 
-and to even out the negative space.  
+Instead of allowing shape compatibilities to arise organically in a large collection of elements, 
+we can deform elements to manufacture those compatibilities.
+A deformation-driven method can create packings based on much smaller element libraries.
+Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016} constructed calligraphic packings by filling a container with a small
+number of letter elements composing one or two words (Figure~\ref{fig_taxonomy_method}c and ~\ref{fig_calligraphy_packing}). 
+Xu and Kaplan's method is able to fill the container but they shuffled the letter ordering that made it difficult to read.
+The improved method by Zou et al. can achieve a better the readability by computing
+the medial axis of the container where letter elements are anchored.
+However, these calligraphic packing methods require significant deformation 
+so they are not able to preserve the typeface of the letters.
+In other topic, Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
+simple polygon and polyomino elements to generate layouts for urban planning or indoor space, 
+although their method cannot handle more complicated shapes.  
 }
 
 \begin{figure}
@@ -509,36 +533,36 @@ star-shaped tiling patterns that are printed onto tracery sheets.
 Their method works by constructing a star-shaped metric to manipulate the Voronoi cell shapes. 
 }
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/arcimboldo_gal.pdf} 
-\caption[Examples of 3D packing arrangements]
-{\label{fig_related_arcimboldo_gal} 
-\newtext
-{
-3D packing arrangements:
-(Left) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden). 
-(Right) An Arcimboldo-like 3D packing~\cite{Gal2007B}.
-}
-}
-\end{figure}
+%\begin{figure}
+%\centering
+%\includegraphics[width=1.0\textwidth]{figures/related/arcimboldo_gal.pdf} 
+%\caption[Examples of 3D packing arrangements]
+%{\label{fig_related_arcimboldo_gal} 
+%\newtext
+%{
+%3D packing arrangements:
+%(Left) Vertumnus painting by Giuseppe Arcimboldo (Skokloster Castle, Skokloster, Sweden). 
+%(Right) An Arcimboldo-like 3D packing~\cite{Gal2007B}.
+%}
+%}
+%\end{figure}
 
-\makeatletter % brooo
-\setlength{\@fptop}{0pt} % brooo
-\makeatother % brooo
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/related/chen_zehnder.pdf} 
-\caption[Two example of packings on surfaces]
-{\label{fig_related_chen_zehnder} 
-\nnewtext
-{
-Two example of packings on surfaces:
-(a) Elements packed on a surface and connected by hinges~\cite{Chen2017}.
-(b) Curve elements arranged on a bunny surface~\cite{Zehnder2016}.
-}
-}
-\end{figure}
+%\makeatletter % brooo
+%\setlength{\@fptop}{0pt} % brooo
+%\makeatother % brooo
+%\begin{figure}
+%\centering
+%\includegraphics[width=1.0\textwidth]{figures/related/chen_zehnder.pdf} 
+%\caption[Two example of packings on surfaces]
+%{\label{fig_related_chen_zehnder} 
+%\nnewtext
+%{
+%Two example of packings on surfaces:
+%(a) Elements packed on a surface and connected by hinges~\cite{Chen2017}.
+%(b) Curve elements arranged on a bunny surface~\cite{Zehnder2016}.
+%}
+%}
+%\end{figure}
 
 %\makeatletter % brooo
 %\setlength{\@fptop}{0pt} % brooo
