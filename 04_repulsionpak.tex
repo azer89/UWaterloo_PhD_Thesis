@@ -1116,7 +1116,7 @@ Two \newtext{examples} of how extreme parameter values can lead to
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
+\section{Conclusions and Future Work}
 \label{repulsionpak_conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1139,3 +1139,22 @@ and fill the target container effectively.
 %spherical contact probability functions, and distance histograms.
 %}
 
+\nnewtext{
+As nothing is perfect, we see further improvements to RepulsionPak.
+We deliberately chose a simple simulation model based on springs and forward Euler integration,
+  because our main goal was to demonstrate the validity of a 
+  deformation-driven approach, and not to contribute a new
+  physical simulation method.
+  Contemporary research has yielded many more sophisticated 
+  physical simulation methods, such as Position Based Dynamics~\cite{Muller2007}, 
+  Projective Dynamics~\cite{Bouaziz2014}, and the Finite Element Method.
+  No one method is obviously best suited to this problem, and
+  we intend to experiment with several to investigate if any offers
+  a suitable trade-off between performance and quality.
+  Additionally, our barycentric warping method can
+  introduce undesirable artifacts in highly deformed elements, as
+  in the swallow tails in the left result of Figure~\ref{three_packings}.
+  We would like to explore other methods for warping an element's
+  geometry based on the correspondences between the triangles of its original
+  mesh and the deformed meshes in the final packing, \newtext{for example,
+  work of Jacobson et al.~\cite{Jacobson2011} and Liu et al.~\cite{Liu2014}}.}

@@ -1100,7 +1100,7 @@ high level.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions}
+\section{Conclusions and Future Work}
 \label{animationpak_conclusions}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1118,7 +1118,56 @@ We show a variety of results where
 2D elements move around inside the container.
 
 
+\nnewtext
+{
+We see a number of opportunities for improvements and extensions to AnimationPak:}
+\begin{itemize}
+\item \newtext{\textbf{2D Vector Graphics Interpolation:}}
+Because we use linear interpolation to \newtext{render} an element's shape
+  between slices, we require elements not to undergo changes in 
+  topology.  More sophisticated representations of vector shapes,
+  such as that of Dalstein et al.~\cite{Dalstein2015}, could support
+  interpolations between slices with complex topological changes.
+  We would also need to synthesize a watertight envelope around the
+  animating element in order to compute overlap and repulsion forces.
 
+\item \newtext{\textbf{Dynamic Mesh Resolution:}}
+We would like to improve the performance of the physical simulation.
+  One option may be to increase the resolution of element meshes 
+  progressively during simulation.  Early in the process, elements are
+  small and distant from each other, so lower-resolution
+  meshes may suffice for computing repulsion forces.
+
+\item \newtext{\textbf{Continuous Collision Detection:}}
+  Our discrete simulation can miss element overlaps that occur between
+  slices.  A more robust continuous collision detection (CCD) algorithm
+  such as that of Brochu et al.~\cite{Brochu2012}
+  could help us find all collisions between
+  the envelopes of spacetime elements.
+
+\item \newtext{\textbf{Secondary Elements:}}
+In RepulsionPak, an additional pass with
+  small secondary elements had a significant positive effect on the
+  distribution of negative space in the final packing.  It may be
+  possible to identify stretches of unused spacetime that can be filled
+  opportunistically with additional elements.  The challenge would be
+  to locate tubes of empty space that run the full duration of the animation
+  \newtext{and have sufficient diameters to accommodate added elements.}
+
+\item \newtext{\textbf{Animated Containers:}}
+Like the spectral method~\cite{Dalal2006}, and unlike
+  Animosaics~\cite{Smith2005}, AnimationPak can pack animated 
+  elements into a static container.  As seen in Figure~\ref{fig_animationpak_categorization}, 
+  no one has done a packing of animated elements inside an animated container. 
+  \nnewtext
+  { The packing with a loose bird in Figure~\ref{fig_bib_entering_star} has its
+  elements that can vary their slice sizes to adapt to changes in container area.
+  We are also interested in adding and removing elements,
+  as this would certainly affect the initial element placement, which 
+  would need to ensure that elements are placed fully inside the
+  spacetime volume of the container.
+  }
+\end{itemize}
 
 
 
