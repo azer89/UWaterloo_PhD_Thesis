@@ -39,23 +39,81 @@ spherical contact probabilities, histograms of distance transforms, and overlap 
 We see many possibilities for packing research.
 }
 
-\subsection{Smart Elements}
+\subsection{Element Manufacturing}
 
-\begin{figure}
+\nnewtext{If we cannot find a compatible element, maybe we just have to create it.
+The goal is to manufacture a new element on the fly that is compatible with the container and the neighboring elements.
+A simple example is demonstrated in a FLOWPAK result (Figure~\ref{result_bear_offset}), 
+where new elements are created from the unused negative space.
+A manufactured elements is also useful to create fixed elements (Chapter~\ref{chapter_flowpak}).}
+This can be done perhaps by discovering them as salient regions 
+in source photographs, and extracting and vectorizing them.  This 
+extraction must be carried out carefully, yielding enough fixed elements
+to communicate a container clearly without disrupting the uniformity of
+the design.
+
+\nnewtext{Another idea is to manufacture \textit{modular} elements assembled from smaller subparts.
+A modular element can increase its compatibility by swapping its subparts.
+Data-driven methods can benefit from this approach as we are able to 
+generate large amount of possible elements from a collection of subparts.
+We can also work toward uniformity amidst variety principle 
+as we can generate similar elements with varying subparts.}
+
+\nnewtext{We consider an idea of modular elements in ornamental packings with flow visual style.
+In Figure~\ref{thread_branch}a, we can
+combine multiple shorter elements with spines
+by threading them to create a longer modular element.
+In Figure~\ref{thread_branch}b, we can also
+try to generate branching structures to resemble floral ornaments.
+On both element threading and branching, there are several challenges we have to face.
+First, we need a way to connect the overlapping segments of the elements together
+to create smooth and plausible transitions.
+An ornament synthesis method such as DecoBrush~\cite{Lu2014} may be worth investigating.
+This possibly leads us to a deeper research topic:
+how to develop a content-aware blending method on vector graphics patterns.
+Second, we also should consider the semantics of the element shapes.
+Not every part of an element can be connected; for example, a twig
+cannot be attached onto the tip of a leaf.}
+
+\nnewtext{Another example of modular elements are shown in Figure~\ref{modular_element}.
+The goal is create unique elements that can maximize compatibility.
+We would like to investigate several shape synthesis methods by 
+Risser et al.~\cite{Risser2010}, Kalogerakis et al.~\cite{Kalogerakis2012}, and Hurtut and Landes~\cite{Hurtut2012}. 
+Modular elements provide us opportunities to perform a better element placement.
+The first idea is similar to JIM method,
+but we are able to backtrack to previous arrangements 
+that have not only different elements but also different parts.
+The second idea is to perform partial shape matching only between salient container features and
+element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
+element based on that subpart.}
+
+
+\begin{figure}[t]
 \centering
-\includegraphics[width=1.0\textwidth]{figures/conclusions/thread_branch.pdf}
+\includegraphics[width=1.0\textwidth]{figures/conclusions/thread_branch_3.pdf}
 \caption[Element threading and branching]
 { \label{thread_branch} 
-\newtext
+\nnewtext
 {
-(a) Thread multiple elements on a single streamline.
+Plant-style modular elements.
+(a) Thread multiple elements to create a longer element.
 (b) Combine multiple streamlines to create branching.
+}
+}
+\includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
+\caption[Modular elements]
+{ \label{modular_element} 
+\nnewtext
+{
+Examples modular elements assembled from smaller parts to create element compatibilities.
 }
 }
 \end{figure}
 
 
-\subsection{Collaborations with Artists}
+
+
+\subsection{Evaluations and Collaborations with Artists}
 
 \subsection{2.5D and 3D Packings}
 
