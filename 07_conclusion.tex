@@ -36,7 +36,8 @@ spherical contact probabilities, histograms of distance transforms, and overlap 
 
 \newtext
 {
-We see many possibilities for packing research.
+This thesis in only the tip of the iceberg of packing research as
+we see many possibilities for future work.
 }
 
 
@@ -115,70 +116,56 @@ Examples modular elements assembled from smaller parts to create element compati
 \end{figure}
 
 
-
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Collaborations with Artists}
 
-Collaborations with artists can benefit us for many ways,
-such as performing qualitative analysis or developing a new packing method.
+We would like develop an interactive user interfaces for our packing methods.
+Examples of recent work in this style include research
+by Zehnder et al.~\cite{Zehnder2016}, Gieseke et al.~\cite{Gieseke2017}, 
+and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
+elements while a composition is being created.
+It would also be interesting to display an interactive packing on a large touch screen,
+and let artist to manipulate elements around by touching and dragging gestures.
 
-\newtext{\textbf{Interactive Packings:}
-  We would like to develop human-in-the-loop interactions, in
-  which the user and the computer work together to create a desired
-  composition.  Examples of recent work in this style include research
-  by Zehnder et al.~\cite{Zehnder2016}, Gieseke et
-  al.~\cite{Gieseke2017}, and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
-  elements while a composition is being created.
-  It would also be interesting to display an interactive packing on a large touch screen,
-  and let people to move elements around by touching and dragging gestures.}
-
-\newtext{\textbf{User Study with Artists:}}
-There are many examples of static two-dimensional packings
-	created by artists, which can serve as inspiration for an algorithm like RepulsionPak.  
-	We were only able to find a single example of animated packing from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
-	We think its unpopularity is because it is difficult and time-consuming to create by hand.
-	\newtext{Therefore,} we would like to engage with artists to understand the aesthetic value and limitations
-	of AnimationPak.
-
-\newtext{\textbf{Evaluating 2D Animated Packings:}}
-All three metrics are only for evaluating 2D packings.
-  While they extend naturally to three purely spatial
-  dimensions, it is not clear whether they can be 
-  adapted to the spacetime context.  
-  We would like to investigate
-  spatial statistics for the quality of animated packings created by AnimationPak that correlate
-  with human perceptual judgments.
-
-\newtext{\textbf{Human Perception of the Evenness:}} We would like to conduct experiments that investigate the
-  extent to which quantitative measurements of the evenness of negative
-  space in a packing correlate with the human perception of a
-  packing's quality.  In informal evaluations, some viewers found that
-  the packing in Figure~\ref{balabolka_comparison}b, created with RepulsionPak,
-  was packed more tightly than the artist's packing in
-  Figure~\ref{balabolka_comparison}a, even though both have the same total
-  amount of negative space.
-
-\newtext{\textbf{Measuring Other Design Principles:}} We would like to develop additional metrics to evaluate
-  how well an ornamental design fulfills other design principles.
-  A measure of element deformation in a composition would permit 
-  a comparison against future deformation-driven techniques.
-  \newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
-  ``uniformity amidst variety'' are important to attractive packings.} 
-  In another study, Wong et al.~\cite{Wong1998} describe basic design
-  principles for decorative arts: repetition, balance, and conformation
-  to geometric constraints.  The rigorous expression of aesthetic principles
-  is a fascinating area for future research.
-
-
+In the context of animated packings, 
+We were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
+We think its unpopularity is because it is difficult and time-consuming to create by hand.
+Therefore, we would like to engage with artists to understand the aesthetic value and limitations
+of AnimationPak.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{2.5D and 3D Packings}
+\subsection{Beyond 2D Packings}
+
+We would like to explore the use of deformation-driven methods in a fabrication context.
+Specifically, we want to pack 2D elements on surfaces.
+For example, our boundary compatibilities might be used to create a connected object.
+Alternatively, it would be interesting to 3D print the 
+negative space, which is already connected due to the absence of overlap.
+The resulting packing is the shape of negative space with holes from element shapes.
+
+Many of the techniques in this thesis could be adapted
+to develop a deformation-driven method for packing purely spatial
+3D objects in a 3D container.  
+We would like to evaluate the
+expressivity and visual quality of deformation-driven 3D packings 
+in comparison to other 3D packing techniques.
+
+In a general 3D packing, elements in the middle may be fully occluded by their neighbors,
+which would render them useless as they cannot be viewed.
+This problem will arise especially in a dense 3D packing of small elements.
+An interesting idea would be generating bas-reliefs using packing methods.
+We can also call this as 2.5D packings.
+Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia.
+Each relief consists of tight arrangement of human shapes although it does not 
+have interlocking style of packings.
+We see this problem as arranging 3D elements on surfaces, 
+which include not only 2D panels but also any 3D surfaces.
+
 
 \begin{figure}
 \centering
@@ -196,43 +183,31 @@ The photographer of the left image was Michael Gunther, and the right image was 
 }
 \end{figure}
 
-
-
-\subsection{RepulsionPak}
-
-%We see many possibilities for further improvements to RepulsionPak
-%and future research on element packings.
-
-\begin{itemize}
-
-\item \newtext{\textbf{RepulsionPak for Fabrication:}} 
-We would like to explore the use of RepulsionPak in a fabrication context.
-      For example, our boundary compatibilities might be used to create a connected object.
-      Alternatively, it would be interesting to 3D print the 
-      negative space, which is already connected,
-	  leaving holes that surround the element shapes.
-
-\end{itemize}
-
-\subsection{AnimationPak}
-
-%We see an number of opportunities for improvements and extensions to
-%AnimationPak:
-
-\begin{itemize}
-
-\item \newtext{\textbf{Deformation-Driven 3D Packings:}}
-AnimationPak implements forces and constraints geared towards 
-	spacetime animation, but many of the same ideas could be adapted
-	to develop a deformation-driven method for packing purely spatial
-	3D objects into a 3D container.  We would like to evaluate the
-	expressivity and visual quality of deformation-driven 3D packings 
-	in comparison to other 3D packing techniques.
-
-
-
-\end{itemize}
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Packing Evaluation}
 
+We would like to develop additional metrics to evaluate
+how well an ornamental design fulfills other design principles.
+\newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
+``uniformity amidst variety'' are important to attractive packings.} 
+In another study, Wong et al.~\cite{Wong1998} describe basic design
+principles for decorative arts: repetition, balance, and conformation
+to geometric constraints. 
+
+A measure of element deformation in a composition would permit 
+a comparison against future deformation-driven techniques.
+In RepulsionPak, we can measure the potential energy at equilibrum.
+However, there are some questions to answer.
+Can we measure how easily deformations are perceived? How much they affect the aesthetics of packings?
+Such measurements could help us develop better deformation algorithms in generally, not just in the context of packings.
+%Can we measure how much deformation has happened (RepulsionPak: measure the potential energy left in the system at equilibrium?).  Can we measure how easily deformations are perceived, how much they affect the aesthetics of packings? In the long run, such measurements could help us develop better deformation algorithms more generally, not just in the context of packings.
+
+All three metrics described in Chapter~\ref{chapter_qualitative_metrics} are only for evaluating 2D packings.
+While they extend naturally to three purely spatial
+dimensions, it is not clear whether they can be 
+adapted to the spacetime context.  
+We would like to investigate spatial statistics for the quality of animated packings created by AnimationPak that correlate
+with human perceptual judgments.
 
