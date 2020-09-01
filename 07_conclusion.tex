@@ -128,19 +128,42 @@ Plant-style modular elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Collaborations with Artists}
 
-We would like develop an interactive user interfaces for our packing methods.
+\nnewtext{
+We believe that collaborations with artists can provide us invaluable criticisms for our deformation-driven methods.
+Two artists have used RepulsionPak to generate packing in Figure~\ref{paul_daichi_packings},
+although we did not have the chance to ask for their feedback.
+We also receive interests from online communities to use RepulsionPak for graphic design applications.}
+
+\nnewtext{In addition, we would like to develop} an interactive user interfaces for our packing methods.
 Examples of recent work in this style include research
 by Zehnder et al.~\cite{Zehnder2016}, Gieseke et al.~\cite{Gieseke2017}, 
 and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
 elements while a composition is being created.
-\nnewtext{It would also be interesting to display an interactive packing on a large touch screen,
-and let artist to move around gesturally.}
+\nnewtext{
+Inspired by doodle murals by Joe Whale (Figure~\ref{}), 
+it would be interesting to display an interactive packing on a large touch screen,
+and let artist to draw elements, which are then rearranged using RepulsionPak.
+}
 
-In the context of animated packings, 
-We were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
+\nnewtext{In the context of animated packings,} 
+we were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
 We think its unpopularity is because it is difficult and time-consuming to create by hand.
 Therefore, we would like to engage with artists to understand the aesthetic value and limitations
 of AnimationPak.
+
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/conclusions/doodle_boy.pdf}
+\caption[A doodle mural by Joe Whale]
+{ \label{doodle_boy} 
+\nnewtext
+{
+A young artist, Joe Whale, who is drawing a doodle mural. 
+The photograph is taken from instagram.com/thedoodleboy.co.uk.
+}
+}
+\end{figure}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -152,7 +175,7 @@ We would like to explore the use of deformation-driven methods in a fabrication 
 Specifically, we want to pack 2D elements on surfaces.
 For example, our boundary compatibilities might be used to create a connected object.
 Alternatively, it would be interesting to 3D print the 
-negative space, which is already connected due to the absence of overlap.
+negative space, which is already connected due to the absence of overlaps.
 The resulting packing is the shape of negative space with holes from element shapes.
 
 Many of the techniques in this thesis could be adapted
@@ -165,8 +188,8 @@ in comparison to other 3D packing techniques.
 In a general 3D packing, elements in the middle may be fully occluded by their neighbors,
 which would render them useless as they cannot be viewed.
 This problem will arise especially in a dense 3D packing of small elements.
-An interesting idea would be generating bas-reliefs using packing methods.
-We can also call this as 2.5D packings.
+An interesting idea would be generating a bas-reliefs using a packing method.
+We can also call this as a 2.5D packing.
 Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia.
 Each relief consists of tight arrangement of human shapes although it does not 
 have interlocking style of packings.
@@ -182,7 +205,7 @@ It would also be interesting to investigate the aesthetics of 2.5D packing of no
 \includegraphics[width=1.0\textwidth]{figures/conclusions/borobudur.pdf}
 \caption[Element Arrangements in Bas-Reliefs]
 { \label{borobudur} 
-\newtext
+\nnewtext
 {
 Bas-reliefs from Borobudur temple. These
 bas-reliefs give us an idea to generate a packing of 3D objects on a 2D panel,
@@ -208,16 +231,15 @@ to geometric constraints.
 
 A measure of element deformation in a composition would permit 
 a comparison against future deformation-driven techniques.
-In RepulsionPak, we can measure the potential energy at equilibrum.
+In RepulsionPak, we can measure the potential energy at equilibrium.
 However, there are some questions to answer.
-Can we measure how easily deformations are perceived? How much they affect the aesthetics of packings?
+Can we measure how deformations are perceived? How much they affect the aesthetics of packings?
 Such measurements could help us develop better deformation algorithms in generally, not just in the context of packings.
 %Can we measure how much deformation has happened (RepulsionPak: measure the potential energy left in the system at equilibrium?).  Can we measure how easily deformations are perceived, how much they affect the aesthetics of packings? In the long run, such measurements could help us develop better deformation algorithms more generally, not just in the context of packings.
 
 All three metrics described in Chapter~\ref{chapter_qualitative_metrics} are only for evaluating 2D packings.
-While they extend naturally to three purely spatial
-dimensions, it is not clear whether they can be 
-adapted to the spacetime context.  
+While they extend naturally to three purely spatial dimensions, 
+it is not clear whether they can be adapted to the spacetime context.  
 We would like to investigate spatial statistics for the quality of animated packings created by AnimationPak that correlate
 with human perceptual judgments.
 
