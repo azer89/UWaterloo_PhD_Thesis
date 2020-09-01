@@ -13,7 +13,7 @@ FLOWPAK is a method to deform and pack long thin elements to follow a vector fie
 RepulsionPak is a method that uses repulsion forces to pack and deform
 elements that are represented as mass-spring systems.
 AnimationPak is an extension of RepulsionPak that packs animated 2D elements,
-each is an extruded 3D shape in a spacetime domain.
+each an extruded 3D shape in a spacetime domain.
 }
 
 \newtext
@@ -46,11 +46,11 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Element Manufacturing}
 
-\nnewtext{If we cannot find a compatible element, maybe we just have to create it.
-The goal is to manufacture a new element on the fly that is compatible with the container and the neighboring elements.
+\nnewtext{If we cannot find a compatible element, we just have to create it.
+We would like to manufacture a new element on the fly that is compatible with the container and the neighboring elements.
 A simple example is demonstrated in a FLOWPAK result (Figure~\ref{result_bear_offset}), 
 where new elements are created from the unused negative space.
-A manufactured elements is also useful to create fixed elements (Chapter~\ref{chapter_flowpak}).}
+A manufactured element is also useful to create a fixed element (Chapter~\ref{chapter_flowpak}).}
 This can be done perhaps by discovering them as salient regions 
 in source photographs, and extracting and vectorizing them.  This 
 extraction must be carried out carefully, yielding enough fixed elements
@@ -60,31 +60,17 @@ the design.
 \nnewtext{Another idea is to manufacture \textit{modular} elements assembled from smaller subparts.
 A modular element can increase its compatibility by swapping its subparts.
 Data-driven methods can benefit from this approach as we are able to 
-generate large amount of possible elements from a collection of subparts.
+generate large combinations of elements from a collection of subparts.
 We can also work toward uniformity amidst variety principle 
 as we can generate similar elements with varying subparts.}
-
-\nnewtext{We consider an idea of modular elements in ornamental packings with flow visual style.
-In Figure~\ref{thread_branch}a, we can
-combine multiple shorter elements with spines
-by threading them to create a longer modular element.
-In Figure~\ref{thread_branch}b, we can also
-try to generate branching structures to resemble floral ornaments.
-On both element threading and branching, there are several challenges we have to face.
-First, we need a way to connect the overlapping segments of the elements together
-to create smooth and plausible transitions.
-An ornament synthesis method such as DecoBrush~\cite{Lu2014} may be worth investigating.
-This possibly leads us to a deeper research topic:
-how to develop a content-aware blending method on vector graphics patterns.
-Second, we also should consider the semantics of the element shapes.
-Not every part of an element can be connected; for example, a twig
-cannot be attached onto the tip of a leaf.}
 
 \nnewtext{Another example of modular elements are shown in Figure~\ref{modular_element}.
 The goal is create unique elements that can maximize compatibility.
 We would like to investigate several shape synthesis methods by 
-Risser et al.~\cite{Risser2010}, Kalogerakis et al.~\cite{Kalogerakis2012}, and Hurtut and Landes~\cite{Hurtut2012}. 
-Modular elements provide us opportunities to perform a better element placement.
+Baxter and Anjyo~\cite{Baxter2006},
+Risser et al.~\cite{Risser2010}, Kalogerakis et al.~\cite{Kalogerakis2012}, 
+and Hurtut and Landes~\cite{Hurtut2012}. 
+This style of modular element provides us opportunities to perform a better element placement.
 The first idea is similar to JIM method,
 but we are able to backtrack to previous arrangements 
 that have not only different elements but also different parts.
@@ -92,9 +78,35 @@ The second idea is to perform partial shape matching only between salient contai
 element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
 element based on that subpart.}
 
+\nnewtext{We consider an idea of plant-style modular elements.
+In Figure~\ref{thread_branch}a, we can
+combine multiple shorter elements with spines
+by threading them to create a longer modular element.
+In Figure~\ref{thread_branch}b, we can also
+try to generate branching structures to resemble floral ornaments.
+In both instances, there are several challenges we have to face.
+First, we need a way to connect the overlapping segments of the elements together
+to create smooth and plausible transitions.
+An ornament synthesis method such as DecoBrush~\cite{Lu2014} may be worth investigating
+although it uses pixel-based blending.
+This leads us to a deeper research topic:
+how to develop a content-aware blending method on vector graphics patterns.
+Second, we also should consider the semantics of the element shapes.
+Not every part of an element can be connected; for example, a twig
+cannot be attached onto the tip of a leaf.}
+
+
 
 \begin{figure}[t]
 \centering
+\includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
+\caption[Modular elements]
+{ \label{modular_element} 
+\nnewtext
+{
+Examples modular elements assembled from smaller parts to create element compatibilities.
+}
+}
 \includegraphics[width=1.0\textwidth]{figures/conclusions/thread_branch_3.pdf}
 \caption[Element threading and branching]
 { \label{thread_branch} 
@@ -103,14 +115,6 @@ element based on that subpart.}
 Plant-style modular elements.
 (a) Thread multiple elements to create a longer element.
 (b) Combine multiple streamlines to create branching.
-}
-}
-\includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
-\caption[Modular elements]
-{ \label{modular_element} 
-\nnewtext
-{
-Examples modular elements assembled from smaller parts to create element compatibilities.
 }
 }
 \end{figure}
@@ -126,8 +130,8 @@ Examples of recent work in this style include research
 by Zehnder et al.~\cite{Zehnder2016}, Gieseke et al.~\cite{Gieseke2017}, 
 and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
 elements while a composition is being created.
-It would also be interesting to display an interactive packing on a large touch screen,
-and let artist to manipulate elements around by touching and dragging gestures.
+\nnewtext{It would also be interesting to display an interactive packing on a large touch screen,
+and let artist to move around gesturally.}
 
 In the context of animated packings, 
 We were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
@@ -165,6 +169,9 @@ Each relief consists of tight arrangement of human shapes although it does not
 have interlocking style of packings.
 We see this problem as arranging 3D elements on surfaces, 
 which include not only 2D panels but also any 3D surfaces.
+Each 3D element can still rotate in all three axes but still attached to the surface.
+It would also be interesting to investigate the aesthetics of 2.5D packing of non-overlapping
+3D elements but contain occlusions as seen in Figure~\ref{borobudur}.
 
 
 \begin{figure}
@@ -191,7 +198,7 @@ The photographer of the left image was Michael Gunther, and the right image was 
 We would like to develop additional metrics to evaluate
 how well an ornamental design fulfills other design principles.
 \newtext{In Chapter~\ref{chapter_flowpak}, we argue that visual flow and
-``uniformity amidst variety'' are important to attractive packings.} 
+``uniformity amidst variety'' are important in attractive packings.} 
 In another study, Wong et al.~\cite{Wong1998} describe basic design
 principles for decorative arts: repetition, balance, and conformation
 to geometric constraints. 
