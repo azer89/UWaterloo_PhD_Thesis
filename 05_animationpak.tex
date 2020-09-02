@@ -554,10 +554,14 @@ allowing the element to deform and move away from a neighboring element.}
 {
 \textbf{Edge forces}
 allow elements to deform in response to repulsion forces.
+}
+\nnewtext
+{The edge forces are calculated using a quadratic version of Hooke's law, 
+since it gives us better results and we do not seek physical accuracy.}
 %The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
 %We have five types of springs, with stiffness constants that can be 
 %set independently.
-As discussed in Section~\ref{animationpak_spacetime_extrusion} and Section~\ref{animationpak_initial_configuration},
+\newtext{As discussed in Section~\ref{animationpak_spacetime_extrusion} and Section~\ref{animationpak_initial_configuration},
 we have five types of springs:
 edge springs,
 shear springs,
@@ -930,9 +934,10 @@ simultaneity constraints for each element in parallel.  We must
 process any loop constraints afterwards, as they can affect vertices in
 two separate elements.
 
-We created the results in this \newtext{chapter} using a Windows PC with a 
-3.60 GHz Intel i7-4790 processor and 16 GB of RAM.  We used a pool
-of eight threads, corresponding to the number of logical CPU cores.
+We created the results in this chapter using a Windows PC with a 
+3.60 GHz Intel i7-4790 processor and 16 GB of RAM. 
+\nnewtext{The processor is a quad core CPU with hyperthreading, 
+this enabled us to use a pool of eight threads, corresponding to the number of logical CPU cores.}
 Table~\ref{table_packing_statistics} shows statistics for our results.
 Each packing has tens of thousands of vertices and hundreds of thousands
 of springs, and requires about an hour to complete.
