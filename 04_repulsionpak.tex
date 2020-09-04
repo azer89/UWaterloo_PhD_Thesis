@@ -443,7 +443,12 @@ Section~\ref{repulsionpak_element_growth}, to completely fill the target contain
 %% CSK TODO: what counts as a "nearest neighbouring mesh" in this context?
 %% How do we know which neighbours to iterate over?
 
-\medskip
+\bigskip
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+\vspace{-15pt}
+    \includegraphics[width=0.35\textwidth]{figures/repulsionpak/repulsion_forces.pdf}
+\end{wrapfigure}
 \textbf{Repulsion Force:} 
 The repulsion force tries to push element meshes apart when they approach
 each other, with the goal of
@@ -485,17 +490,20 @@ correct it.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% EDGE FORCE %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\medskip
+\bigskip
+
+\begin{wrapfigure}{r}{0.35\textwidth}
+\vspace{-15pt}
+    \includegraphics[width=0.35\textwidth]{figures/repulsionpak/edge_forces.pdf}
+\end{wrapfigure}
 \textbf{Edge Force:} 
-\newtext{
 A mesh's edges are treated as longitudinal \textit{springs};
 displacements of these springs allow a mesh to deform in response to repulsion forces
 by neighboring meshes.
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
-attempt to restore these rest lengths.  Let $\bm{x_{a}}$ and $\bm{x_{b}}$ be
-mesh vertices connected by a spring.  We compute the spring force as follows:
-}
+attempt to restore these rest lengths.  Let $\bm{x'_{a}}$ and $\bm{x'_{b}}$ be
+\nnewtext{deformed mesh vertices} connected by a spring.  We compute the spring force as follows:
 \begin{equation}
 \label{eq_edge_force}
 \simforce{edg} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
@@ -503,8 +511,8 @@ mesh vertices connected by a spring.  We compute the spring force as follows:
 where
 \begin{packeddescriptions}
 	\item[$k_\mathrm{edg}$] is the strength of the edge force relative to other forces;
-	\item[$\bm{u}$] $= \bm{x_{b}} - \bm{x_{a}}$;
-	\item[$\ell$] is the rest length of the spring; and
+	\item[$\bm{u}$] $= \bm{x'_{b}} - \bm{x'_{a}}$;
+	\item[$\ell$] $= \|\bm{x_{b}} - \bm{x_{a}}\|$ \nnewtext{which is the rest length of the spring}; and
 	\item[$s$] is +1 or -1, according to whether $(\| \bm{u} \| - \ell)$ 
 		is positive or negative.
 \end{packeddescriptions}
@@ -525,7 +533,13 @@ when subjected to powerful forces.
 
 %% CSK TODO: verify that "centroid" is the right word here.
 
-\medskip
+\bigskip
+
+\begin{wrapfigure}{r}{0.2\textwidth}
+\vspace{-15pt}
+\centering
+    \includegraphics[width=0.2\textwidth]{figures/repulsionpak/overlap_forces.pdf}
+\end{wrapfigure}
 \textbf{Overlap Force:}
 Occasionally, a vertex $\bm{x}$ from one mesh can be pushed inside the skin of a
 neighboring mesh.  In such cases, we temporarily disable the repulsion force
@@ -550,7 +564,13 @@ The overlap force is zero for vertices that are not within another mesh.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% BOUNDARY FORCE %%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\medskip
+\bigskip
+
+\begin{wrapfigure}{r}{0.25\textwidth}
+\vspace{-15pt}
+\centering
+    \includegraphics[width=0.25\textwidth]{figures/repulsionpak/boundary_forces.pdf}
+\end{wrapfigure}
 \textbf{Boundary Force:}
 The boundary force causes element meshes to stay inside the target container
 and conform to its boundary. It applies to any vertex $\bm{x}$ that
@@ -569,7 +589,13 @@ where
 
 The boundary force is zero for any point inside the container.
 
-\medskip
+\bigskip
+
+\begin{wrapfigure}{r}{0.4\textwidth}
+\vspace{-15pt}
+\centering
+    \includegraphics[width=0.4\textwidth]{figures/repulsionpak/torsional_forces.pdf}
+\end{wrapfigure}
 \textbf{Torsional Force:} 
 As forces propagate through an element mesh, the aggregate velocity
 vectors of the vertices can induce a rotation of the entire element.
@@ -605,6 +631,7 @@ Using the equation above, $\simforce{tor}$ is always perpendicular to $\bm{u}$
 and the direction of $\simforce{tor}$ points to the left or to the right depending on $\theta$.
 Unlike the first four force types, the torsional force is optional.
 
+\begin{comment}
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/all_forces_new.pdf}
@@ -629,6 +656,7 @@ to restore its angular position relative to $\bm{c}$,
 the center of mass of the element.
 }
 \end{figure}
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%% THE SIMULATION %%%%%%%%%%%%%%%%%%%
