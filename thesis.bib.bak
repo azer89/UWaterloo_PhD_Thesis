@@ -2,66 +2,6 @@
 % Bibliography of key references for "LaTeX for Thesis and Large Documents"
 % For use with BibTeX
 
-@inproceedings{Kaplan2010,
-  author      = {Craig S. Kaplan},
-  title       = {{Curve Evolution Schemes for Parquet Deformations}},
-  pages       = {95--102},
-  booktitle   = {Proceedings of Bridges 2010: Mathematics, Music, Art,
-                 Architecture, Culture},
-  year        = {2010},
-  editor      = {George W. Hart and Reza Sarhangi},
-  isbn        = {978-0-98460-420-3},
-  issn        = {1099-6702},
-  publisher   = {Tessellations Publishing}
-}
-
-﻿@Article{Koizumi2011,
-author={Koizumi, Hiroshi
-and Sugihara, Kokichi},
-title={{Maximum Eigenvalue Problem for Escherization}},
-journal={Graphs and Combinatorics},
-year={2011},
-month={Mar},
-day={17},
-volume={27},
-number={3},
-pages={431},
-issn={1435-5914},
-doi={10.1007/s00373-011-1022-5},
-url={https://doi.org/10.1007/s00373-011-1022-5}
-}
-
-@article{Sugihara2009,
-author = {Sugihara, Kokichi},
-title = {Computer-Aided Generation of Escher-like Sky and Water Tiling Patterns},
-journal = {Journal of Mathematics and the Arts},
-volume = {3},
-number = {4},
-pages = {195-207},
-year  = {2009},
-publisher = {Taylor & Francis},
-doi = {10.1080/17513470903185626},
-URL = {https://doi.org/10.1080/17513470903185626},
-eprint = { https://doi.org/10.1080/17513470903185626}
-}
-
-
-﻿@Article{Nagata2020,
-author={Nagata, Yuichi
-and Imahori, Shinji},
-title={{An Efficient Exhaustive Search Algorithm for the Escherization Problem}},
-journal={Algorithmica},
-year={2020},
-month={Sep},
-day={01},
-volume={82},
-number={9},
-pages={2502-2534},
-issn={1432-0541},
-doi={10.1007/s00453-020-00695-6},
-url={https://doi.org/10.1007/s00453-020-00695-6}
-}
-
 @INCOLLECTION{Isenberg2013,
   author      = {Tobias Isenberg},
   title       = {{Evaluating and Validating Non-Photorealistic and Illustrative Rendering}},

@@ -43,11 +43,11 @@ An element arrangement is defined as a distribution of non-overlapping elements 
 Decades of research in NPR have produced copious amount of techniques for producing computer-generated element arrangements.
 Based on their designs, elements arrangements can be categorized into 
 packings, tilings, and discrete textures (Figure~\ref{fig_taxonomy}).
-The categorization can be further expanded but we only choose ones that are related to our proposed packing methods.
+The categorization can be further expanded but we only choose ones that are related to this thesis.
 We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
 packings on surfaces, and animated packings.
 This chapter covers all subcategories except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
-Although many packing methods discussed in this chapter aim to minimize element overlaps, 
+Many packing methods discussed in this chapter aim to minimize element overlaps, and
 a few computer-generated packings shown in this chapter 
 contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
 }
@@ -55,10 +55,10 @@ contain overlaps to some degree due to the challenge of finding and aligning com
 \nnewtext
 {
 Based on their techniques, packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
-The first category, Lloyd's method, iteratively refine an initial element arrangement to generate a more even distribution.
-The second category, data-driven methods, place elements one by one. For each step, a data-driven method select 
+The first category, Lloyd's method, iteratively refines an initial element arrangement to generate a more even distribution.
+The second category, data-driven methods, places elements one by one. For each step, a data-driven method select 
 an element from an element library that is compatible with previously placed elements and the container boundary.
-The last category, deformation-driven methods, attempt to create element compatibilities through shape deformation.
+The last category, deformation-driven methods, attempts to create element compatibilities through shape deformation.
 }
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -90,8 +90,8 @@ The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 \nnewtext{When computing centroids, a standard CVD assumes the area density is uniform everywhere.}
 \newtext{Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
 resembles a stippling artwork (Figure~\ref{fig_related_secord_hausner}a).}
-\nnewtext{His method incorporates the pixel intensities of an input image as area densities, 
-which alter the centroid calculation so that point elements are attracted to low-intensity regions.}
+\nnewtext{His method incorporates the pixel intensities of an input image as area densities. 
+This alters the centroid calculation so that point elements are attracted to low-intensity regions.}
 
 \newtext{A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
 Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
@@ -148,14 +148,16 @@ to any shapes for which a distance measurement exists.}
 a variant of CVDs that is a distribution of polygonal elements.
 This new extension computes the main inertial axis for each Voronoi cell so that 
 its element can be rotated to achieve better alignment with the Voronoi cell boundary.
-In follow up work, Smith et al.~\cite{Smith2005} generated temporally coherent animated mosaics by utilizing CAVDs.
-Dalal et al.~\cite{Dalal2006} used an FFT-based image correlation to reposition
+In follow up work, Smith et al.~\cite{Smith2005} developed Animosaics to generate temporally coherent animated mosaics by utilizing CAVDs.
+Dalal et al.~\cite{Dalal2006} proposed a spectral approach based on a fast Fourier transform to reposition
 elements so that they achieve the best alignments with their Voronoi cell boundaries, 
 which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.}
-\nnewtext{However, the FFT-based method cannot rotate the elements,
-so they resorted to a brute force approach to find the best orientation.}
+\nnewtext{However, the spectral approach cannot rotate the elements,
+so it resorts to a brute force approach to find the best orientation.
+Just like Animosaics, the spectral approach can generate animated mosaics,
+a topic that we will explore further in Chapter~\ref{chapter_animationpak}.}
 
 \begin{figure}
 \centering
@@ -164,8 +166,8 @@ so they resorted to a brute force approach to find the best orientation.}
 {\label{fig_related_secord_hausner} 
 \nnewtext
 {
-Mosaics generated using generalized Lloyd's methods.
-(a) Animatosaics~\cite{Smith2005}.
+Mosaics generated with generalized Voronoi diagrams.
+(a) Animosaics~\cite{Smith2005}.
 (b) A Spectral Approach~\cite{Dalal2006}.
 }
 }
@@ -229,11 +231,11 @@ their boundaries are sliced to eliminate overlaps. }
 
 \nnewtext
 {
-This section discusses packing methods that fall into the category of data-driven ((Figure~\ref{fig_taxonomy_method})b) and 
+This section discusses packing methods that fall into the categories of data-driven ((Figure~\ref{fig_taxonomy_method})b) and 
 deformation-driven (Figure~\ref{fig_taxonomy_method}c).
 Unlike mosaics, these packings have different visual styles as they are composed of 
 elements that resemble man-made objects, plants, or animals.
-Additionally, the visual styles of packings are inspired by Giuseppe Arcimboldo's paintings 
+Additionally, some packing styles are reminiscent to Giuseppe Arcimboldo's paintings 
 (Figure ~\ref{fig_related_arcimboldo}).}
 
 \nnewtext
@@ -266,7 +268,7 @@ All these data-driven methods require a large element library.
 The more elements in the library, the better the chances of finding compatible element boundary.}
 \nnewtext
 {
-For example, JIM method required a library with 900 elements, PAD used a library with more than 100 elements 
+For example, JIM method required about 900 elements, PAD used a library with more than 120 elements 
 (see Figure~\ref{fig_taxonomy_method}), 
 and Huang et al. needed about 5000 elements.}
 \newtext
@@ -336,7 +338,7 @@ Xu and Kaplan's method is able to fill the container but they shuffled the lette
 The improved method by Zou et al. can achieve a better the readability by computing
 the medial axis of the container where letter elements are anchored.
 However, these calligraphic packing methods require significant deformation 
-so they are not able to preserve the typeface of the letters.
+so they are not able to preserve the typefaces of the letters.
 In other topic, Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
 simple polygon and polyomino elements to generate layouts for urban planning or indoor space, 
 although their method cannot handle more complicated shapes.  
@@ -362,37 +364,60 @@ A deformation-driven packing of a calligraphic ``elephant''~\cite{Xu2007}.
 
 \newtext
 {
-As elements reach perfect compatibility, a packing turns to a tiling, see Figure~\ref{fig_related_escherization} for an example.
+As elements reach perfect compatibility, a packing turns to a tiling, as seen from an example in Figure~\ref{fig_related_escherization}.
 The element boundaries interlock, leaving no negative space.
 Kaplan and Salesin~\cite{Kaplan2000, Kaplan2004} deformed one or two 
-input elements into ones that can tile the plane.
-%Given an input element $E$ they look for a similar tileable element $T$
-%in a parameterized tiling space using simulated annealing.
+input elements into shapes that can tile the plane.
+The tiles always fill the entire plane, and are not intended for filling a bounded container.
+}
+\nnewtext{
 Given an input element $E$, they performed a search in a parameterized tiling space to find its
 deformed variant $T$.
-Due to high frequency deformation,
-$T$ is often perceptually unrecognizable from its silhouette unless an interior picture is added.
-Their method can fail to find $T$ if $E$ has deep concavity, for example, a ``G'' shape.
-The tile $T$ also cannot fill a container due to its highly structured boundary.
-}
+Due to deformation,}
+\newtext{$T$ is often perceptually unrecognizable from its silhouette unless an interior picture is added.}
+\nnewtext{
+Kaplan and Salesin's method has a better chance to find $T$ if $E$ has shallow concavities.
+More recent methods~\cite{Koizumi2011, Nagata2020} are able to solve the Escherization problem more efficiently and can deal with shapes that have deeper concavities.}
 
-\newtext
+
+%Given an input element $E$ they look for a similar tileable element $T$
+%in a parameterized tiling space using simulated annealing.
+%The original heuristic method has a better chance to find $T$ if $E$ has less concavity, but more recent methods
+%are able to tile shapes 
+%The original heuristic method can only deal withfail to find $T$ if $E$ has deep concavity, for example, a ``G'' shape.
+%However, more recent methods are able to deal with this issue.
+
+\nnewtext
 {
-Lin et al.~\cite{Lin2018} generated ground-reversal compositions that resemble Escher's Sky and Water I,
-where elements serve as both positive and negative space depending on the viewer's perception.
-%Given two elements $S_1$ and $S_2$, each is copied, deformed, and arranged to interlock each other.
+Past research has proposed methods~\cite{Kaplan2004, Sugihara2009, Lin2018} 
+to replicate the figure-ground reversal style of Escher's Sky and Water,
+in which elements serve as both positive and negative space depending on the viewer's perception.
 Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas.
 They are then copied, arranged, and deformed to interlock each other.
 The farther a copy from the original element, the more deformed it is, 
-creating a ``fading effect'', $S_1$ and $S_2$ spatially fade to nothingness.
-This work is data-driven, the user needs to provide $S_1$, 
-and the method tries to find a compatible element $S_2$ from a library.
-%Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas,
-%they are then copied, deformed, and arranged in rows.  
-%The farther a copy from the original element, the more deformed it is. 
-%creating a ``fading effect'', $S_1$ and $S_2$ spatially transition to ``nothingness''.
-%The gradual deformation also allows the copies perfectly interlock each other.
+creating a ``fading effect'', $S_1$ and $S_2$ disappear to become negative space.
+The idea of element evolutions also presents in metamorphosis tiling style,
+in which interlocking elements evolve from one shape to another,
+which can be interpreted as ``spatial animation''.
+One method to generate the metamorphosis tiling is proposed by Kaplan~\cite{Kaplan2010}.
 }
+
+%Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas.
+%They are then copied, arranged, and deformed to interlock each other.
+%The farther a copy from the original element, the more deformed it is and the
+
+
+%\newtext
+%{
+%Lin et al.~\cite{Lin2018} generated ground-reversal compositions that resemble Escher's Sky and Water I,
+%where elements serve as both positive and negative space depending on the viewer's perception.
+%Given two elements $S_1$ and $S_2$, each is placed on the opposite side of a rectangular canvas.
+%They are then copied, arranged, and deformed to interlock each other.
+%The farther a copy from the original element, the more deformed it is, 
+%creating a ``fading effect'', $S_1$ and $S_2$ spatially fade to nothingness.
+%This work is data-driven, the user needs to provide $S_1$, 
+%and the method tries to find a compatible element $S_2$ from a library.
+%}
 
 
 
