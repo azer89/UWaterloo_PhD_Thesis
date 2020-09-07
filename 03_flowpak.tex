@@ -31,18 +31,20 @@ FLOWPAK~\cite{Saputra2017} is a technique for filling a container
 region with elements that are deformed 
 to communicate a sense of directionality or flow.
 Elements have designs of simple geometric forms, often stylized flora, spirals, or other abstract geometry. 
-Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
+%Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
+We aim to create packings that obey design principles articulated in Chapter~\ref{chapter_introduction},
+with the focus on the flow principle.
 }
-
-In FLOWPAK, elements can be oriented in the local direction 
+Elements can be oriented in the local direction 
 of flow, but can also be deformed to capture changes in flow direction.
 We express the user's desired flow by placing evenly spaced streamlines
 inside the container region.  Each streamline is then replaced by an
 element chosen from a pre-drawn set.  The element is bent along the streamline
 to communicate flow, and also deformed to balance the usage of negative space
-with elements placed on adjacent streamlines.  The final designs, such
-as the lion and unicorn shown in Figure~\ref{fig_lion_unicorn}, aim to obey the
-design principles articulated above.
+with elements placed on adjacent streamlines.  
+%The final designs, such
+%as the lion and unicorn shown in Figure~\ref{fig_lion_unicorn}, aim to obey the
+%design principles articulated above.
 
 
 
@@ -54,17 +56,14 @@ design principles articulated above.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
-
 \newtext{
 \textbf{Packings:}
-Chapter~\ref{chapter_related_work} discusses
-methods on the generation of packings, or mosaics. 
+Chapter~\ref{chapter_related_work} discussed methods for the generation of packings and mosaics. 
 However, past work is not appropriate
-for creating designs like those of Figure~\ref{dog_flow}.
-Most techniques pack elements via rigid transformations, leading to
-high uniformity but insufficient variety.  We design FLOWPAK 
-to be a deformation-driven approach so that it can generate plausible families of related decorative elements
+for creating \nnewtext{packings with visual flow, like those of Figure~\ref{fig_dog_flow}}.
+\nnewtext{Llyod's method and data-driven methods} pack elements via rigid transformations, leading to
+high uniformity but insufficient variety.  
+We design FLOWPAK as a deformation-driven method so that it can generate plausible families of related decorative elements
 from a single input shape.  %They also focus on packing large numbers
 %of small elements.  We are interested in the compositional properties
 %of large, visually distinct elements.
@@ -95,15 +94,14 @@ FLOWPAK is related to decorative stroke methods since we aim to deform long thin
 The goal of these methods is to create stylized decorative strokes, and not to fill a container area. 
 Hsu et al. developed Skeletal Strokes~\cite{Hsu1993}, a method to warp decorative patterns along a stroke.
 Asente~\cite{Asente2010} improved upon Skeletal Strokes by correcting severe deformation on high-curvature strokes.
-Lu et al. developed DecoBrush~\cite{Lu2014} that can join multiple decorative patterns seamlessly.
+Lu et al. developed DecoBrush~\cite{Lu2014}, which can join multiple decorative patterns seamlessly.
 }
 
 \newtext
 {
 \textbf{Vector Field-Guided Compositions:} 
 FLOWPAK requires elements to be deformed and oriented according to a vector field.
-Xu and Mould~\cite{Xu2009} developed a tracing method of particles in a magnetic field to
-generate decorative curves.
+Xu and Mould~\cite{Xu2009} \nnewtext{generated decorative curves by simulating the trajectories of charged particles in a magnetic field.}
 Li et al.~\cite{Li2010} developed a method to decorate a surface using a shape grammar that is guided by a tensor field.
 Maharik et al. explored Digital Micrography~\cite{Maharik2011}, in which
 lines of small-scale text are deformed to fit along dense streamlines in a container.
