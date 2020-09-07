@@ -621,14 +621,14 @@ the arrangement is perfectly even.
 
 \item \nnewtext{We considered to compute the histogram of a distance transform only on
 a medial axis of the negative space.
-As seen from the white ridges in Figure X, a medial axis
-represents local maximums of the distance transforms.
+Medial axis branches can be used to identify local maximums of the distance transforms.
 However, creating good quality medial axis is difficult since 
 medial axis algorithms are prone to noise from element boundaries.
-A few branches touch the element boundaries, which cannot be local maximums.
-An alternative is a Voronoi diagram, which is a subset of the medial axis, 
-but it only useful for inter element gaps, and it 
-cannot identify local maximums created by an element concavities.}
+As seen in Figure~\ref{fig_skeleton}, 
+a few branches touch the element boundaries, which cannot be local maximums.
+An alternative is a Voronoi diagram, which is a subset of the medial axis. 
+However, a Voronoi diagram is only useful for inter-element gaps of negative space, 
+and it cannot identify local maximums created by an element concavities.}
 \end{itemize}
 
 
