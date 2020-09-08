@@ -49,8 +49,10 @@ A packing example with primary and secondary elements is shown in Figure~\ref{fi
 {
 Unlike FLOWPAK that is optimized to deform long thin elements, 
 we design RepulsionPak to support arbitrary shaped elements.
-RepulsionPak is also intended to fulfill three of five design principles:
-balance, uniformity amidst variety, and boundaries (Section~\ref{flowpak_introduction}). 
+\nnewtext{Elements in FLOWPAK could only bend along their spines. 
+In RepulsionPak, we allow elements to deform in a more open-ended way.}
+RepulsionPak is intended to fulfill three of five design principles:
+balance, uniformity amidst variety, and boundaries (Section~\ref{flowpak_introduction}), \nnewtext{but less about the flow principle.} 
 We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
 We are able to use repeated copies taken from a small library of elements 
 but their final shapes are varied thanks to element deformation.
