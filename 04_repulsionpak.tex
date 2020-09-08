@@ -25,13 +25,13 @@ RepulsionPak is a technique
 to pack elements using a physical simulation, 
 in which each element is represented
 by a mass-spring system called an \textit{element mesh}.  
-\textit{Repulsion forces} between neighboring meshes work to even out the negative
+\nnewtext{Repulsion forces} between neighboring meshes work to even out the negative
 space, inducing displacements in mesh springs.
 These displacements translate, rotate, and deform the elements as 
 they gradually adapt to the shapes of their neighbors
 and the container boundary.  
 To control the amount of deformation,
-we use \textit{spring forces} within a mesh to preserve element shapes.}
+we use \nnewtext{spring forces} within a mesh to preserve element shapes.}
 
 \newtext{Most of the elements in a packing are large shapes of real-world objects like animals,
 plants, or man-made objects.  We refer to these as \textit{primary elements}.
@@ -52,7 +52,7 @@ we design RepulsionPak to support arbitrary shaped elements.
 \nnewtext{Elements in FLOWPAK could only bend along their spines. 
 In RepulsionPak, we allow elements to deform in a more open-ended way.}
 RepulsionPak is intended to fulfill three of five design principles:
-balance, uniformity amidst variety, and boundaries (Section~\ref{flowpak_introduction}), \nnewtext{but less about the flow principle.} 
+balance, uniformity amidst variety, and boundaries \nnewtext{(Chapter~\ref{chapter_introduction}), but less about the flow principle.} 
 We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
 We are able to use repeated copies taken from a small library of elements 
 but their final shapes are varied thanks to element deformation.
@@ -90,14 +90,14 @@ the shape of the container boundary can be more emphasized.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\newtext
+\nnewtext
 {
 \textbf{Lloyd's Method:}
-Variants of Lloyd's method have been proposed by
+Generalizations of Lloyd's method have been proposed by
 Hausner~\cite{Hausner2001}, Hiller et al.~\cite{Hiller2003}, 
 Smith et al.~\cite{Smith2005}, and Dalal et al.~\cite{Dalal2006}.
-Although these approaches can generate appealing results, they can only accept
-convex or near convex elements. 
+%Although these approaches can generate appealing results, they can only accept
+%convex or near convex elements. 
 RepulsionPak can be categorized as a variant of point-based Lloyd's method without explicitly computing a Voronoi diagram.
 Forces do not act directly onto elements, but their mesh vertices.
 During the simulation, these mesh vertices are spread apart but still connected using elastic springs,
@@ -130,11 +130,11 @@ the Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016}.
 JIM is able to pack nearly-convex elements tightly by placing one element at a time and
 backtracking as needed.  As a shape descriptor, 
 PAD can find new elements that partially match
-existing element boundaries as a container was being filled.  Both
+existing element boundaries as a container \nnewtext{is} being filled.  Both
 methods permit some elements to overlap.  While they can
 both correct gaps and overlaps using deformation, the deformation
 is applied locally near edges in a post-processing step after
-elements were frozen in place. 
+elements \nnewtext{are} frozen in place. 
 2D {Arcimboldo} Collage~\cite{Huang2011} and 3D {Arcimboldo} Collage~\cite{Gal2007B}
 are also data-driven, but they permit large overlaps to 
 resemble the aesthetic style of Arcimboldo's artwork. 

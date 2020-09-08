@@ -27,7 +27,7 @@
 
 \nnewtext
 {
-FLOWPAK~\cite{Saputra2017} is a technique for filling a container 
+FLOWPAK is a technique for filling a container 
 region with elements that are deformed 
 to communicate a sense of directionality or flow.
 %Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
@@ -117,7 +117,7 @@ Lastly, Xu and Mould~\cite{Xu2015} proposed a graph-based tree synthesis method 
 Related methods in fabrication has sought to cover surfaces with
 arrangements of decorative elements that satisfy manufacturing
 constraints such as connectivity~\cite{Chen2016, Zehnder2016, Bian2018, Martinez2019}.
-Elements must be tightly connected to produce a connected result
+Elements must be \nnewtext{linked together} to produce a connected result
 that will hold together when 3D printed.
 In the case of FLOWPAK, we seek to distribute disconnected elements inside a container.
 }
@@ -242,15 +242,17 @@ using a simple skeletal stroke algorithm~\cite{Hsu1993},
 so each element must be annotated with a straight spine to guide the deformation.  The spine
 does not need to go through the center of the element---it can be anywhere.
 
-We define two classes of elements: a \textit{full element} extends across
+We define two classes of elements: a \nnewtext{\textit{two-sided element}} extends across
 both sides of its
-spine, and a \textit{half element} lies entirely on one side of its spine.
-Figure~\ref{ornamental_shapes_fig} shows examples of full and half elements.  If the input
-to our algorithm includes direction guides that coincide with target container boundaries,
-the placement method will align half elements along these boundaries.  
-If half elements 
-have edges that closely follow their spines, they will visually reinforce
-container boundaries, as shown in our examples.
+spine, and a \nnewtext{\textit{one-sided element}} lies entirely on one side of its spine.
+Figure~\ref{ornamental_shapes_fig} shows examples of \nnewtext{two-sided and one-sided elements}.  
+If the input to our algorithm includes direction guides that coincide with target container boundaries,
+the placement method will align \nnewtext{one-sided elements} along these boundaries.  
+\nnewtext{The alignment of one-sided elements will visually reinforce
+container boundaries, as shown in our results.}
+
+%If \nnewtext{one-sided elements} have edges that closely follow their spines, they will visually reinforce
+%container boundaries, as shown in our examples.
 
 We define a simple shape descriptor called an \textit{LR function}
 that will be used in
@@ -280,8 +282,8 @@ granularity for our algorithm.
 \includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
 \caption[Ornamental elements and their LR functions]
 {\label{ornamental_shapes_fig}
-Ornamental elements and their LR functions. Full elements have non-empty
-left and right sides, while half elements have only one non-empty side. 
+Ornamental elements and their LR functions. \nnewtext{Two-sided elements} have non-empty
+left and right sides, while \nnewtext{one-sided elements} have only one non-empty side. 
 We normalize the LR functions to a unit square.}
 \end{figure}
 
@@ -297,8 +299,8 @@ container with a vector field, constrained by the direction guides in that conta
 
 We sample the directional guides $D = \{ d_{1}, d_{2}, ... , d_{n_\mathrm{d}}\}$  
 and use the tangent at every sampled point as a directional constraint.
-We then construct a vector field using the $N$-RoSy algorithm
-of Palacios and Zhang\cite{Palacios2007}.  Note that, as shown in 
+We then construct a vector field using the \nnewtext{\mbox{$1$-RoSy} algorithm}
+of Palacios and Zhang~\cite{Palacios2007}.  Note that, as shown in 
 Step~3 of Figure~\ref{fig_flowpak_pipeline},
 fixed elements do not affect the vector field.  
 The artist can include directional guides to guide the vector field around fixed elements if desired.
@@ -436,7 +438,7 @@ correspond, respectively, to swapping the $L$ and $R$ functions and reversing
 them.  When comparing the LR functions for an element and a blob, we compute
 the least squares distances for all four orientations and choose the 
 orientation with the smallest distance.  Note that this matching method
-automatically places half elements along streamlines that follow container
+\nnewtext{will naturally place} \nnewtext{one-sided elements} along streamlines that follow container
 boundaries, visually reinforcing the overall shape.
 
 We investigated alternatives for shape matching, using an approach
@@ -468,9 +470,21 @@ scales it to fit inside the blob.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-We now refine the overall composition in an iterative process.  We perform
-this part of the algorithm globally, by merging all containers and allowing the
-elements within them to interact.
+%It's been a while since we've thought about multiple containers. This section could use another sentence or two as an opener. 
+%Remind us that we've created an initial layout of flow-guided elements in each distinct container. Now we merge all the containers and...
+
+\nnewtext
+{
+We have created an initial arrangement consists 
+of flow-guided elements in each distinct container.
+We now merge all the containers and all elements within them.
+We perform this part of the algorithm in an iterative manner,
+allowing elements to interact with each other.
+}
+
+%We now refine the overall composition in an iterative process.  We perform
+%this part of the algorithm globally, by merging all containers and allowing the
+%elements within them to interact.
 
 The refinement process aims to reduce the amount of negative space and make it
 more even by growing and shifting the placed ornamental elements. It would be 
@@ -610,17 +624,17 @@ The duplication is repeated until the graph extends to the left and right of the
 streamline by a distance equal to the maximum left and right widths of the blob (i.e.,
 the maximum values in an unnormalized version of the blob's LR function).
 
-For a node, we check its $N = 150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
+For a node, we check its $150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
 the streamline from backtracking.
-The cost of an edge from $\bm{n_a}$ to  $\bm{n_b}$ is 
+The cost of an edge from \nnewtext{$\bm{p_a}$} to  \nnewtext{$\bm{p_b}$} is 
 
 \begin{equation}
-w = w_f (1 - f^p) + w_d \: D(s_i, \bm{n_a})
+w = w_f (1 - f^p) + w_d \: D(s_i, \bm{p_a})
 \end{equation}
 where
 \begin{conditions}
-f                  & $(\bm{n_b} - \bm{n_a}) \cdot \bm{v}$; \\
-\bm{v} 		   & a sampled vector of the vector field; \\
+f                  & $(\bm{p_b} - \bm{p_a}) \cdot \bm{v}$; \\
+\bm{v} 		   & \nnewtext{a sampled vector of the vector field at $\bm{p_a}$}; \\
 s_i                & the original streamline; and \\   
 D()\enspace        & a distance function between a polyline and a point.
 \end{conditions}
@@ -637,7 +651,7 @@ the vector field until it intersects the edges of its blob.
 
 \textbf{Growing Blobs.} The growth process tries to enlarge each sub-region blob to
 claim empty space.
-Given a blob $b_{i}$, we calculate a larger blog $b'_{i}$ 
+Given a blob $b_{i}$, we calculate a larger blob $b'_{i}$ 
 by offsetting its boundaries until they intersect other placed elements (Figure~\ref{stretch_ornament}).
 To enforce gradual growth, the offset cannot be larger than $g_\mathrm{limit}$, where
 \nnewtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$.}
@@ -653,10 +667,10 @@ the elements can fill more of their blobs.  We allow the element
 to rotate by a small amount, up to ten degrees, before placing it, as shown in
 Figure~\ref{rotate_ornament}. 
 We generate rotated versions of $e_{i}$ 
-with varying angles $r_\mathrm{angle} = {1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}}$
+with varying angles \nnewtext{$r_\mathrm{angle} = \pm \{1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}\}$}
 and precompute LR functions for each. The shape matching algorithm
 (Section~\ref{flowpak_shape_matching_and_deformation}) automatically choses the best rotation. It
-can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape})
+can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape}).
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}
