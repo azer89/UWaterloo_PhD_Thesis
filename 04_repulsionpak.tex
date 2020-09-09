@@ -61,7 +61,18 @@ the shape of the container boundary can be more emphasized.
 %we can emphasize the shape of the container boundary better.
 }
 
-
+\nnewtext
+{
+Chapter~\ref{chapter_related_work} discussed the general categorization of mosaicing and packing techniques: 
+Llyod's method, data-driven methods, and deformation-driven methods.
+RepulsionPak can be categorized as a hybrid of point-based Lloyd's method and a deformation-driven method.
+RepulsionPak does not explicitly compute a Voronoi diagram.
+Forces do not act directly onto elements, but their mesh vertices.
+During the simulation, these mesh vertices are spread apart but still connected using elastic springs,
+effectively creating an element representation that can be packed and deformed.
+Additionally, unlike previous variants of Llyod's method, 
+repulsion forces can automatically rotate elements so that neighboring element alignments can be improved. 
+}
 
 %\newtext
 %{
@@ -90,6 +101,7 @@ the shape of the container boundary can be more emphasized.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\begin{comment}
 \nnewtext
 {
 \textbf{Lloyd's Method:}
@@ -105,7 +117,7 @@ effectively creating an element representation that can be packed and deformed.
 Additionally, unlike previous methods, 
 repulsion forces can automatically rotate elements so that neighboring element alignments can be improved. 
 }
-
+\end{comment}
 
 %\begin{figure}
 %\centering
@@ -122,6 +134,7 @@ repulsion forces can automatically rotate elements so that neighboring element a
 %\end{figure}
 
 
+\begin{comment}
 \newtext
 {
 \textbf{Data-driven Methods:}
@@ -139,8 +152,9 @@ elements \nnewtext{are} frozen in place.
 are also data-driven, but they permit large overlaps to 
 resemble the aesthetic style of Arcimboldo's artwork. 
 }
+\end{comment}
 
-
+\begin{comment}
 \textbf{Deformation-Driven Methods:}
 \newtext
 {
@@ -152,42 +166,28 @@ Peng et al.~\cite{Peng2014} computed layouts by packing and deforming
 simple polygons and polyominoes. Their method cannot handle more
 complicated shapes, making it unsuitable for our style of packings.
 }
+\end{comment}
 
-\newtext
+
+\nnewtext
 {
-Zehnder et al.~\cite{Zehnder2016} proposed a method to
+\textbf{Curve Simulations:}
+Pedersen and Singh~\cite{Pedersen2006} grew curves to create organic
+labyrinthine paths. Their algorithm is related to ours by the use
+of repulsion forces to maintain even spacing and parallel segments.
+Yu et al.~\cite{Yu2020} reformulated repulsion forces as tangent-point energy
+to pack curves inside a container while avoiding self-intersections and resolving tangling.
+In fabrication, Zehnder et al.~\cite{Zehnder2016} proposed a method to
 cover 3D surfaces with deformed ornamental elastic curves.
 Our method has some similarities to theirs in that both start with 
 scaled-down copies of elements and grow them, but the growth process is quite different.  
 Unlike their approach, our elements exert
 forces on each other throughout the growth process, allowing them a greater
 opportunity to translate, rotate, and deform in search of more even negative
-space.  Furthermore, the goal of their work (3D fabrication) is quite 
-different from ours (2D ornamentation) and our results appear qualitatively
+space.  
+However, the goal of their work (3D fabrication) is quite 
+different from RepulsionPak (2D graphic design) and our results appear qualitatively
 different.
-}
-
-
-
-%FLOWPAK (Chapter~\ref{flowpak_chapter}) placed ornamental
-%elements to create a visual sense of flow. They used
-%skeletal strokes to place elements along streamlines defined from a
-%vector field.  However, their elements could not undergo more general
-%deformations, and their method did not explicitly control for the evenness
-%of the negative space.
-
-
-
-\newtext
-{
-\textbf{Physically-Based Methods for Deformable Objects:}
-Contemporary research has yielded many more sophisticated physical simulation methods.
-the Finite Element Method (FEM) is accurate and realistic but notoriously slow.
-Position Based Dynamics (PBD)~\cite{Muller2007} is simple, robust, and efficient to be used in
-real-time applications, but suffers from inaccuracy.
-More recently, Projective Dynamics~\cite{Bouaziz2014} bridges a gap between FEM and PBD.
-Projective dynamics uses a variational implicit time integration and optimize by
-alternating a local constraint step and a global solve step.
 }
 
 \newtext
@@ -200,6 +200,29 @@ Our RepulsionPak has a similar approach, but we represent an element
 with denser vertices that are connected with elastic springs.
 }
 
+%FLOWPAK (Chapter~\ref{flowpak_chapter}) placed ornamental
+%elements to create a visual sense of flow. They used
+%skeletal strokes to place elements along streamlines defined from a
+%vector field.  However, their elements could not undergo more general
+%deformations, and their method did not explicitly control for the evenness
+%of the negative space.
+
+
+\begin{comment}
+\newtext
+{
+\textbf{Physically-Based Methods for Deformable Objects:}
+Contemporary research has yielded many more sophisticated physical simulation methods.
+the Finite Element Method (FEM) is accurate and realistic but notoriously slow.
+Position Based Dynamics (PBD)~\cite{Muller2007} is simple, robust, and efficient to be used in
+real-time applications, but suffers from inaccuracy.
+More recently, Projective Dynamics~\cite{Bouaziz2014} bridges a gap between FEM and PBD.
+Projective dynamics uses a variational implicit time integration and optimize by
+alternating a local constraint step and a global solve step.
+}
+\end{comment}
+
+\begin{comment}
 \newtext
 {
 \textbf{Curve Simulations:} Pedersen and
@@ -209,6 +232,7 @@ of repulsion forces to maintain even spacing and parallel segments.
 More recently, Yu et al.~\cite{Yu2020} used tangent-point energy
 to pack curves inside a container while avoiding self-intersections.
 }
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -875,6 +899,9 @@ Based on these descriptors, we now use a simple greedy heuristic to identify sal
 Here we restrict our attention to convex protrusions with high curvature, which benefit the most from careful element placement (See Figure~\ref{rhino_packing}a).  Given a shape descriptor, we define its total length to be $\sum_{i=1}^nl_i+r_i$.  We iterate over all sample points on the container boundary in increasing order by the total lengths of their descriptors.  For each sample point $P(t_0)$, we add it to a list of salient features under two conditions. First, we require that the angle formed by $P(t_0)$ with two samples to either side of it be sufficiently acute; we use a threshold of 0.3 radians to ensure convex-to-convex matching.
 Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
 
+
+
+
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap.pdf} 
@@ -887,6 +914,20 @@ assign an element to each.
 (b) A spring holds each element in place.
 (c) The final result.
 }
+}
+\end{figure}
+
+\begin{figure}[t] %%% ELEMENT IMAGE
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/shape_matching_score.pdf}
+\caption[Global and local shape matching]{
+  \label{fig_global_local}
+  \nnewtext
+  {
+  Two elements that locally match the container. 
+  The element in (a) is completely inside, but the element in (b) has its parts that
+  protrude outside the container.
+  }
 }
 \end{figure}
 
