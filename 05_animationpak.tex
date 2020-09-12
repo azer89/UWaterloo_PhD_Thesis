@@ -248,7 +248,7 @@ as-rigid-as-possible deformation, and then construct
 spacetime-extruded objects that form the basis of our packing
 algorithm.  These elements animate ``in place'': they change
 shape without translating. The next section describes how these
-elements can be given transformation trajectories within the
+elements can be given trajectories within the
 container. Size and orientation of an element can be animated
 either way; they can be specified as an animation of the element's
 shape, or they can be part of the transformation trajectory.
@@ -265,15 +265,16 @@ shape, or they can be part of the transformation trajectory.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Each element begins life as a static shape defined using
-vector paths.  \newtext{Similar to RepulsionPak}, we construct a discrete
+vector paths.  \newtext{As with RepulsionPak}, we construct a discrete
 geometric proxy of the element that will interact with other
 proxies in a physical simulation.  The construction of this proxy
 for a single shape is shown in Figure~\ref{fig_animationpak_discretization}, and
 the individual steps are explained in greater detail below.
 
 In order to produce a packing with an even distribution of negative
-space, we first offset the shape's paths by a distance $\Delta s$,
-leaving the shape surrounded by a channel of negative space
+space, we first offset the shape's paths by a distance \nnewtext{$d_\mathrm{gap}/2$,
+%leaving the shape surrounded by a channel of negative space 
+with the goal of having $d_\mathrm{gap}$ separations between elements in the resulting packing.}
 (Figure~\ref{fig_animationpak_discretization}a).  In our system
 we scale the shape to fit a unit square and set $\Delta s=0.04$.
 
@@ -384,15 +385,13 @@ the compatibility of nearby shapes in the final animation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-
+\nnewtext{
 We begin the packing process by constructing a 3D spacetime volume for
 the container by extruding its static shape in
 the time direction.  The container is 
 permitted to have internal holes, which are also extruded.  
-The resulting volume is scaled to fit a unit cube.
-We also shrink each of the spacetime elements, in the spatial dimensions
-only, to 5--10\% of its original size.  These shrunken elements are 
-thin enough that we can place them in the container without overlaps.
+The resulting volume is scaled to fit a unit cube.}
+
 
 
 The artist can optionally specify 
@@ -445,13 +444,19 @@ or give them preferred orientations.  We reject any candidate seed point
 that would cause an unguided element's volume to intersect a guided element's
 volume.
 
+%We also shrink each of the spacetime elements, in the spatial dimensions
+%only, to 5--10\% of its original size. 
+%\nnewtext{As seen in Figure~\ref{fig_animationpak_simulation_process}a,} these shrunken elements are 
+%thin enough that we can place them in the container without overlaps.
+
 Finally we shrink each element, guided and unguided, uniformly in the spatial dimension
-towards its centroid.  These shrunken elements are
+towards its centroid.  
+\nnewtext{As seen in Figure~\ref{fig_animationpak_simulation_process}a,} these shrunken elements are
 guaranteed not to intersect one another; as the simulation runs, they
-will grow and consume the container's negative space, while avoiding
-collisions.
-The blue extrusions in Figure~\ref{fig_animationpak_simulation_process}a show an
-initial placement of spacetime elements.
+will grow and consume the container's negative space, while avoiding collisions.
+\nnewtext{In practice,  we shrink these elements 5--10\% of their original size.}
+%The blue extrusions in Figure~\ref{fig_animationpak_simulation_process}a show an
+%initial placement of spacetime elements.
 
 \begin{figure}
 \centering
@@ -543,8 +548,7 @@ neighboring elements, inducing deformations and transformations that lead
 to an even distribution of elements within the container
 (Figure~\ref{fig_animationpak_repulsion_force}).
 Since the simulation operates in the spacetime domain,
-vertex $\bm{x}$ accumulates repulsion forces from points at
-various time positions.
+\nnewtext{a given vertex $\bm{x}$ accumulates repulsion forces from ppoints at different time positions on neighbouring elements.}
 To locate these points on neighboring elements that are considered 
 nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
@@ -612,7 +616,7 @@ preferred orientations, to which they attempt to return.
 \newtext
 {
 \textbf{Temporal forces} prevent slices from drifting too far
-from their original positions along the time axis positions
+from their original positions along the time axis
 (Figure~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
 and decelerations in the final animation.  For every vertex, we compute
 the temporal force $\simforce{tmp}$ as
@@ -627,6 +631,12 @@ where
   \item[$\bm{u}^t = (0,0,1)$.]
 \end{packeddescriptions}
 }
+\nnewtext{Additionally, we have to work toward monotonic deformation, as seen in Figure~\ref{fig_monotonicity}.
+If the deformation is monotonic, we can prevent rendering artifacts.
+This can be achieved using the combination of temporal forces and slice constraints that
+we will discuss in Section~\ref{animationpak_slice_constraints}.}
+%fig_monotonicity
+%animationpak_slice_constraints
 
 \begin{figure}
 \centering
@@ -730,6 +740,8 @@ using triangle midpoints only.}
 %% \craig{Do we really need this figure?}
 \end{figure}
 
+%fig_monotonicity
+%animationpak_slice_constraints
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -738,7 +750,19 @@ using triangle midpoints only.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{figure}[h!]
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/animationpak/monotonicity.pdf} 
+\caption[An illustration of desired and undesired deformation of a spacetime element]
+{\label{fig_monotonicity} 
+\nnewtext{The left element shows an example of desired deformation, 
+while the right one will cause rendering artifact.
+The left one has its slices monotonic and perpendicular to the time axis. 
+}
+}
+\end{figure}
+
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/constraints.pdf} 
 \caption[Constraints]
@@ -753,9 +777,13 @@ for one element matches the $x, y$ position for $s_n$ of the other.
 }
 \end{figure}
 
+\nnewtext{
+To render the spacetime elements properly without any rendering artifact we need to maintain two conditions.
+First, all spacetime elements must be present at any time position.
+Second, we need to maintain the deformation to be monotonic and the slices to be perpendicular to the time axis.
+In Figure~\ref{fig_monotonicity}, we show two examples of desired and undesired deformation of a spacetime element.}  
 
-
-There are three hard geometric constraints on the configuration of slices,
+There are two mandatory geometric constraints and an optional constraint on the configuration of slices,
 which must be enforced throughout the simulation.  Each of the following
 constraints is reapplied after each physical simulation step described above.
 
@@ -765,15 +793,20 @@ A spacetime element must be present for the full length of the animation
 from $t=0$ to $t=1$.  After every simulation step, every vertex belonging
 to an element's first slice has its $t$ value set to $0$, and every vertex
 of the last slice has its $t$ value set to $1$
-(Figure~\ref{fig_animationpak_constraints}a).
+\nnewtext{Figure~\ref{fig_animationpak_constraints}a shows an illustration of the end-to-end constraint.
+This constraint only performs localized adjustments on the first and the last slices.
+Over time, these adjustments will spread throughout the elements as 
+edge forces strive for equilibrium.}
 
 \item \textbf{Simultaneity Constraint:}
 During simulation, the vertices of a slice can drift away from each
 other in time, which could lead to rendering artifacts in the animation.
+\nnewtext{This constraint combined with temporal forces ensure monotonic deformation.}
 After every simulation step, we compute the average $t$ value of all
 vertices belonging to each slice other than the first and last slices, and 
 snap all the slice's vertices to that $t$ value 
-(Figure~\ref{fig_animationpak_constraints}b).
+\nnewtext{Figure~\ref{fig_animationpak_constraints}b shows an illustration of the simultaneity constraint.}
+
 
 \item \textbf{Loop Constraint:}
 AnimationPak optionally supports looping animations.

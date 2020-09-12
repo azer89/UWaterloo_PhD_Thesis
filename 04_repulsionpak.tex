@@ -741,13 +741,25 @@ This approach produces slight variations in skin offsets in the output packing
 but the effect is negligible.
 
 We implement growth in the context of the physics simulation by scaling
-the rest lengths of a mesh's springs, allowing it to expand as the simulation
-progresses.  Every mesh $M$ has a counter $n_M$ that records the number of
-times it has grown.  When a mesh is permitted
-to grow, we add 1 to the counter.  Then, if $L_i$ is the rest length
-of the $i$th spring in the original undeformed mesh, we increase its rest
-length to \newtext{$(1+n_Mk_g\Delta t_\mathrm{sim})L_i$}.  The constant $k_g$,
-usually 0.01 in our system, controls the growth rate.
+the rest lengths of an element mesh's springs, allowing it to expand as the simulation
+progresses.  
+\nnewtext{
+Every element mesh $M$ maintains a current scaling factor $g$.
+When a mesh is permitted to grow, we increase its $g$ value by $k_g \Delta t_\mathrm{sim}$,
+where $k_g$ is the growth rate and $\Delta t_\mathrm{sim}$ is the simulation time step.
+We then compute the new rest lengths of all springs by scaling the current rest lengths by a factor of $g$.
+These new rest lengths are then used as the $\ell$ values in Equation~\ref{eq_edge_force}
+to calculate edge forces.
+In our implementation, The constant $k_g$ is usually set to 0.01.
+}
+
+
+%Every element mesh $M$ has a counter $n_M$ that records the number of
+%times it has grown.  When a mesh is permitted
+%to grow, we add 1 to the counter.  Then, if $\ell_i$ is the rest length
+%of the $i$th spring in the original undeformed mesh, we increase its rest
+%length to \newtext{$(1+ n_M k_g \Delta t_\mathrm{sim})\ell_i$}.  The constant $k_g$,
+%usually 0.01 in our system, controls the growth rate.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
