@@ -753,7 +753,7 @@ using triangle midpoints only.}
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/monotonicity.pdf} 
-\caption[An illustration of desired and undesired deformation of a spacetime element]
+\caption[An illustration of desired and undesired deformation of an element]
 {\label{fig_monotonicity} 
 \nnewtext{The left element shows an example of desired deformation, 
 while the right one will cause rendering artifact.
@@ -1049,7 +1049,8 @@ A snake chases a bird around an annular container in
 Figure~\ref{fig_animationpak_chasing_bird}, demonstrating a container with a hole
 and giving a simple example of the narrative potential of animated
 packings.  Figure~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to-penguin
-illusion shown as a static packing in RepulsionPak.  This example
+illusion shown as a \nnewtext{RepulsionPak static packing shown in Figure~\ref{giraffe_penguin_packing}}.  
+This example
 uses torsional forces to control slice orientations.
 
 \begin{figure*}[h!]
@@ -1088,12 +1089,12 @@ Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$.
 
 \newtext{
 Figure~\ref{fig_bib_entering_star} shows 
-a guided element as a traveling bird which is not constricted inside a container.
+\nnewtext{an example where a guided element is not constrained to the inside of a container}.
 The traveling bird moves from left to right, passing through a packing of birds.
 As some slices of the traveling bird taking up container space,
 the other birds have to stop some of their slice growths prematurely.
-This is a demonstration of the benefit of the non-uniform slice growths so that
-elements can adapt to changes in container area.
+\nnewtext{This is a demonstration of the benefit of the non-uniform growth in element slices, 
+allowing elements to adapt to changes in container area.}
 In the rendered 2D animation, the elements have a subtle shrinking-and-expanding effect.
 The composition can also tile horizontally, which can be seen in the supplemental video.
 }
@@ -1106,6 +1107,9 @@ the container, and are maintained during the animation by
 torsional forces.
 We simulate only half of the packing and reflect it to create the other half.
 The facial features were added manually in a post-processing step.
+\nnewtext{The lion's mane packing exhibits ambient animations, 
+which are slower than other results.}
+
 
 Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak} compares
 a static 2D packing created by RepulsionPak with a frame
@@ -1142,6 +1146,8 @@ are 100 times stronger than in (b).  The resulting packing has larger
 pockets of negative space, but the accompanying video shows that the
 animation is smoother.  The packing in (b) is tighter, but the elements
 must move frantically to maintain that tightness.
+\nnewtext{The visualization in (c) shows the trajectories of two identical elements in both cases, 
+which makes it clear that weak time springs cause more frantic movements.}
 
 
 Figure~\ref{fig_animationpak_blender} is a failed attempt to animate a ``blender''.
@@ -1231,6 +1237,15 @@ Like the spectral method~\cite{Dalal2006}, and unlike
   would need to ensure that elements are placed fully inside the
   spacetime volume of the container.
   }
+
+\item \newtext{\textbf{Cinemagraph}:}
+\nnewtext{The lion's mane packing shows the potential of AnimationPak to generate
+a cinemagraph, a composition with repeating ambient animations combined with static elements.
+There are many image processing techniques to generate cinemagraphs, for example, 
+Video Textures method by Sch\"{o}dl et al.~\cite{Schodl2000} and Cliplets method by Joshi et al.~\cite{Joshi2012}.
+In the future, we would like to bring the idea of cinemagraph into graphic design, vector graphics, and ornamentation.}
+
+
 \end{itemize}
 
 
@@ -1282,7 +1297,7 @@ The other birds adapt to the reduced space by prematurely stopping some of their
 \begin{figure*}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/star_comparison.pdf} 
-\caption[A comparison between CAVD, The spectral approach, and AnimationPak]
+\caption[A comparison between CAVD, The spectral approach, \newline and AnimationPak]
 {\label{fig_animationpak_star_comparison} 
 A comparison of (a) Centroidal Area Voronoi Diagrams (CAVDs)~\cite{Smith2005}, 
 (b) spectral packing~\cite{Dalal2006}, and (c) AnimationPak. 

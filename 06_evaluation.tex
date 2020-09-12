@@ -100,7 +100,7 @@ so their work is not suitable for our packing evaluation.}
 Kwan et al. performed a simple user study of 13 participant to compare 
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} with previous packing methods.
 A participant was randomly shown a computer-generated packing and they had to give ratings from 1 (worst) to 6 (best)
-to each in three categories: their preference, stylishness, interlocking.
+in each of three categories: their preference, stylishness, interlocking.
 The study revealed that PAD received the highest scores on all three categories.
 \nnewtext{We only agree that element interlocking is important but
 they did not discuss element element overlaps that present in their results.}
@@ -307,9 +307,10 @@ the area of the container.
 \nnewtext
 {
     The spherical contact probability $Q_s(r)$ is defined as the probability of a 
-	disc of radius $r$, chosen uniformly at random within the container region (drawn as the gray region), lies entirely within the 
-	packing's negative space (drawn as red region).
-	Geometrically, we compute the value of SCP as the ratio between the inward-offset negative space area with the container area.
+	disc of radius $r$, chosen uniformly at random within the container region, lies entirely within the 
+	packing's negative space.
+	Geometrically, we compute the value of SCP as the ratio between the inward-offset negative space area (drawn as red region)
+	with the container area (drawn as the gray region).
 	We show several inward-offset negative space with discs of radius $r = 0$, $r = 3$, and $r = 5$.
 	On the right, we show the $Q_s(r)$ drawn as a red function.
 	Note that the largest disc that can be inserted into the negative space has radius $r = 11.85$.
@@ -341,7 +342,8 @@ in~(e) and~(f).}
 
 
 
-
+\nnewtext
+{
 In the context of 2D packings, a distance transform is a scalar field located in the negative space where each point
 contains the distance $r$ value to the nearest element.
 Computationally, to generate a discrete version of a distance transform, 
@@ -350,7 +352,7 @@ The computation can be accelerated by storing the element boundaries inside a qu
 An alternative method is a level-set method that propagates the fronts of the element boundaries~\cite{Osher1988}.
 Figure~\ref{fig_distance_transform} shows an example of a discrete distance transform,
 where lighter pixel colors represent higher $r$ values.
-
+}
 
 \begin{comment}
 \newtext{
@@ -541,9 +543,9 @@ and RepulsionPak also has a lower overlap function.
 
 \textbf{Comparison to Rigid Packings}: 
 To evaluate the effect of deformation on negative space, we compute all three metrics under
-increasing values of \newtext{$k_\mathrm{edg}$, the edge force relative strength}.  
+increasing values of \newtext{$k_\mathrm{edg}$, the edge force relative strength} \nnewtext{(Section~\ref{repulsionpak_simulation})}.  
 \newtext{Note that we only modify the strengths of edge springs and shear springs, 
-and the strengths of negative space springs are unchanged.}
+leaving the strengths of negative space springs unchanged.}
 Increasing $k_\mathrm{edg}$
 allows the element meshes to resist deformation, ultimately
 approximating a rigid packing algorithm.  We created 15 packings,
@@ -558,6 +560,8 @@ $k_\mathrm{edg}$ leads to greater deformation and steeper SCPs.
 The more pronounced histogram bump at $r=d_\mathrm{gap}/2$ suggests
 more even negative space.
 The lower overlap functions indicate fewer narrow gaps between elements.
+\nnewtext{This comparison corresponds to our intuition that edge forces allow us to trade off between element deformation
+and evenness of negative space.}
 
 \begin{figure}
 \centering
