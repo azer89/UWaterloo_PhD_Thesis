@@ -276,7 +276,7 @@ space, we first offset the shape's paths by a distance \nnewtext{$d_\mathrm{gap}
 %leaving the shape surrounded by a channel of negative space 
 with the goal of having $d_\mathrm{gap}$ separations between elements in the resulting packing.}
 (Figure~\ref{fig_animationpak_discretization}a).  In our system
-we scale the shape to fit a unit square and set $\Delta s=0.04$.
+we scale the shape to fit a unit square and set \nnewtext{$d_\mathrm{gap}/2=0.04$}.
 
 \newtext
 {
@@ -390,7 +390,8 @@ We begin the packing process by constructing a 3D spacetime volume for
 the container by extruding its static shape in
 the time direction.  The container is 
 permitted to have internal holes, which are also extruded.  
-The resulting volume is scaled to fit a unit cube.}
+The resulting volume is scaled to fit a unit cube.
+}
 
 
 
@@ -534,8 +535,8 @@ where
 %where $\simforce{rpl}$, $\simforce{edg}$, $\simforce{bdr}$, $\simforce{ovr}$,  $\simforce{tor}$ and $\simforce{tmp}$ are 
 %the repulsion force, the edge force, the boundary force, the overlap force, the torsional force, and the temporal force.
 These forces are the spacetime analogues of the ones used in RepulsionPak, except the new temporal force.
-In this section, we explain the first five forces briefly 
-and readers can refer back to Section~\ref{repulsionpak_simulation}
+In this section, we explain the first five forces briefly;
+readers can refer back to Section~\ref{repulsionpak_simulation}
 for equations used to generate them.
 }
 
@@ -548,7 +549,7 @@ neighboring elements, inducing deformations and transformations that lead
 to an even distribution of elements within the container
 (Figure~\ref{fig_animationpak_repulsion_force}).
 Since the simulation operates in the spacetime domain,
-\nnewtext{a given vertex $\bm{x}$ accumulates repulsion forces from ppoints at different time positions on neighbouring elements.}
+\nnewtext{a given vertex $\bm{x}$ accumulates repulsion forces from points at different time positions on neighbouring elements.}
 To locate these points on neighboring elements that are considered 
 nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
@@ -1134,7 +1135,7 @@ than CAVD, but their animated elements still have fixed spacetime shapes
 and can only translate and rotate to improve their fit. 
 Repulsion forces and deformation allow AnimationPak to achieve a tighter packing
 that persists across the animation, including gear-like meshing of
-oppositely-rotating stars.
+\nnewtext{counter-rotating} stars.
 
 
 

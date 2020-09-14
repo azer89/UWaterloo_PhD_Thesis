@@ -234,27 +234,28 @@ their boundaries are sliced to eliminate overlaps. }
 {
 This section discusses packing methods that fall into the categories of data-driven ((Figure~\ref{fig_taxonomy_method})b) and 
 deformation-driven (Figure~\ref{fig_taxonomy_method}c).
-Unlike mosaics, these packings have different visual styles as they are composed of 
-more complex elements that resemble man-made objects, plants, or animals.
+Unlike mosaics, these packings are composed of 
+more intricate elements that resemble man-made objects, plants, or animals.
 Additionally, some packing styles are reminiscent to Giuseppe Arcimboldo's paintings 
 (Figure ~\ref{fig_related_arcimboldo}).}
 
+
 \nnewtext
 {
-A data-driven method require an input element library (Figure~\ref{fig_related_jim_pad}).}
-\newtext{and place elements one by one until the container area is filled.
-For each step, a shape matching algorithm selects an 
+A data-driven method requires an input element library to find compatible elements (Figure~\ref{fig_related_jim_pad}).}
+\newtext{This is usually done by placing elements one by one until the container area is filled.
+A shape matching algorithm selects an 
 element from the library that has the best compatibility with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing technique to find
 compatible elements. JIM method places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a curvature-based shape descriptor that
 can find new elements that partially match
-existing element boundaries as a container was being filled. 
-}
+existing element boundaries as a container was being filled. }
 
-\newtext{It is also possible to initially partition a container into smaller segments
-then independently replace each segment with a matching element.
+
+\newtext{\nnewtext{An alternative approach to data-driven methods} is to initially partition a container into smaller segments
+then independently replace each segment with a matching element \nnewtext{taken from the library}.
 This is desirable if the container has colors or salient parts that need to be emphasized.
 Huang et al.~\cite{Huang2011} proposed a data-driven approach that generates Arcimboldo-like collages
 by arranging cutout images collected from the internet.
@@ -266,7 +267,7 @@ Each part is then replaced with a smaller cutout image that has a similar shape 
 \newtext
 {
 All these data-driven methods require a large element library.
-The more elements in the library, the better the chances of finding compatible element boundary.}
+The more elements in the library, the better the chances of finding compatible elements.}
 \nnewtext
 {
 For example, JIM method required about 900 elements, PAD used a library with more than 120 elements 
@@ -340,14 +341,13 @@ The improved method by Zou et al. can achieve a better the readability by comput
 the medial axis of the container where letter elements are anchored.
 However, these calligraphic packing methods require significant deformation 
 so they are not able to preserve the typefaces of the letters.
-In other topic, Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
+In another topic, Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
 simple polygon and polyomino elements to generate layouts for urban planning or indoor space, 
 although their method cannot handle more complicated shapes. 
-An example of their resulting layout is seen in Figure~\ref{fig_office}.
-An example of an indoor layout is shown in Figure~\ref{fig_calligraphy_packing}b.
-All these data-driven methods were developed for specific designs: calligraphies of letterforms and urban layouts of rectangular shapes.
+An example of their generated indoor layout is seen in Figure~\ref{fig_office}.
+These data-driven methods were developed for specific designs: calligraphies of letterforms and urban layouts of rectangular shapes.
 We see an opportunity to use deformation-driven approach to generate packings with more general styles composed
-of nature or everyday objects as seen in Figure~\ref{fig_related_jim_pad} and \ref{fig_related_optimus}.
+of nature or everyday objects similar to JIMs or PAD packings.
 }
 
 

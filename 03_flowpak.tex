@@ -31,7 +31,7 @@ FLOWPAK is a technique for filling a container
 region with elements that are deformed 
 to communicate a sense of directionality or flow.
 %Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
-We aim to create packings that obey design principles articulated in Chapter~\ref{chapter_introduction},
+We aim to create packings that obey all design principles articulated in Chapter~\ref{chapter_introduction},
 with a special focus on the flow principle.
 Elements have designs of simple geometric forms, often stylized flora, spirals, or other abstract geometry. 
 }
@@ -477,9 +477,9 @@ scales it to fit inside the blob.}
 {
 We have created an initial arrangement consists 
 of flow-guided elements in each distinct container.
-We now merge all the containers and all elements within them.
-We perform this part of the algorithm in an iterative manner,
-allowing elements to interact with each other.
+We now merge all the containers and all elements within them,
+allowing elements from different containers to interact with each other 
+in an iterative manner.
 }
 
 %We now refine the overall composition in an iterative process.  We perform
@@ -510,8 +510,8 @@ area is no smaller than $\alpha$ times its old area, where $\alpha$ is a growth 
 that we set to $0.9$. Elements therefore have some freedom to grow or
 shrink, in the search for more globally even spacing.
 
-Algorithm~\ref{iterative_refinement_algorithm}
-gives the overall method, and the following sections give details. We have found that
+\nnewtext{Algorithm~\ref{iterative_refinement_algorithm}
+gives the overall method.} We have found that
 15 iterations suffice for most designs.
 Note that in Algorithm~\ref{iterative_refinement_algorithm}, the variable
 $E$ is the list of placed, distorted ornamental elements, and
@@ -596,7 +596,7 @@ a line segment joining the points where the vectors intersect other placed eleme
 We then move the endpoint of the streamline towards the midpoint of this
 segment. To enforce the principle of gradual refinement, we do not allow the
 endpoint to move more than $g_\mathrm{limit}$ units, where 
-\nnewtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$ (Recall that $l_\mathrm{canvas}$} is the bounding box
+\nnewtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$ (Recall that $l_\mathrm{canvas}$} is the \nnewtext{canvas size}
 of the design as described in Section~\ref{flowpak_target_containers}).
 
 We replace the streamline with a path joining

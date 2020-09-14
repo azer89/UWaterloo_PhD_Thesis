@@ -287,9 +287,13 @@ Our system requires three main pieces of input:
 
 RepulsionPak starts by preprocessing the elements, creating additional space around
 each to enforce the spacing distance, and fitting a triangle mesh over each element.
-The containers are then seeded with randomly placed
-copies of scaled-down elements 
-(Section~\ref{repulsionpak_preprocessing}).
+\nnewtext{The containers are then seeded with copies of scaled-down elements.
+This initial element placement can be done in two ways: random seeding (Section~\ref{repulsionpak_preprocessing}) 
+or a careful placement using a shape matching algorithm (Section~\ref{repulsionpak_shape_matching}).}
+
+%\nnewtext{The containers are then seeded with randomly placed
+%copies of scaled-down elements 
+%(Section~\ref{repulsionpak_preprocessing}).}
 
 RepulsionPak then performs a physics simulation on the meshes, 
 making them simultaneously grow and repel each other. As a
@@ -318,7 +322,7 @@ first, except that vertices of primary element meshes are not allowed to move
 
 Final SVG output is created by using barycentric coordinates to map each element's
 paths from the element's initial mesh into the deformed mesh produced through
-simulation.
+simulation. \nnewtext{The computation of barycentric coordinates is discussed in the next section.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -381,8 +385,8 @@ neighbors.
 The construction of negative space edges is a simpler variant of
 Air Meshes~\cite{Muller2015}, a technique to detect and resolve collisions.}
 
-Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
-Increasing the mesh resolution produces a more precise result at the expense of greater running time.
+%Due to discretization, a low mesh resolution does not guarantee a separation of $d_\mathrm{gap}$. 
+%Increasing the mesh resolution produces a more precise result at the expense of greater running time.
 
 \textbf{Barycentric Coordinates:}
 The simulation operates on meshes, not element geometry.  In the final
@@ -393,7 +397,8 @@ triangle or just beyond a border edge.  We encode each vertex in barycentric
 coordinates relative to its enclosing or nearest triangle.
 
 \textbf{Initial Element Placement:}
-We prepare our simulation by randomly placing non-overlapping elements.
+We prepare our simulation by randomly placing non-overlapping elements 
+\nnewtext{as illustrated in Figure~\ref{fig_repulsionpak_pipeline}}.
 \begin{enumerate}
 	\item Generate random points \newtext{$P = \{ \bm{p}_1, \bm{p}_2,..., \bm{p}_n \}$ }
 		  inside the target container 
@@ -462,7 +467,7 @@ Section~\ref{repulsionpak_element_growth}, to completely fill the target contain
 \textbf{Repulsion Force:} 
 The repulsion force tries to push element meshes apart when they approach
 each other, with the goal of
-making them transform to align their boundaries (Figure~\ref{fig_forces}a).
+making them transform to align their boundaries.
  
 The vertex $\bm{x}$ will
 experience an inverse square repulsive force, inspired by Coulomb's law,
@@ -507,7 +512,7 @@ correct it.
     \includegraphics[width=0.35\textwidth]{figures/repulsionpak/edge_forces.pdf}
 \end{wrapfigure}
 \textbf{Edge Force:} 
-A mesh's edges are treated as longitudinal \textit{springs};
+A mesh's edges are treated as longitudinal springs;
 displacements of these springs allow a mesh to deform in response to repulsion forces
 by neighboring meshes.
 An undeformed element mesh provides the rest lengths for all of
@@ -529,10 +534,9 @@ where
 
 We apply $\simforce{edg}$ to $\bm{x_{a}}$ and $-\simforce{edg}$ to $\bm{x_{b}}$.
 The equation is a modification of Hooke's law
-in which the strength of the force increases quadratically
-with displacement.
-This change allows the meshes to resist severe deformations
-when subjected to powerful forces.
+in which the strength of the force increases quadratically with displacement.
+This change allows the meshes \nnewtext{to be more tolerant of small displacements} and 
+to resist severe deformations when subjected to powerful forces.
 
 % \paul{Also needed: Why two kinds of springs?  Why are edge springs not enough?
 % Why do you call it a bending spring?}
@@ -773,9 +777,10 @@ In our implementation, The constant $k_g$ is usually set to 0.01.
 We choose one of two criteria to stop the simulation. First, the artist specifies 
 the desired positive space ratio at which the simulation immediately terminates.
 The ratio should not be set too high, and
-we find that most packings have positive space ratios between $45\%$ and $65\%$ depending on the element shapes.
+\nnewtext{we find that most of our results have positive space ratios between $35\%$ and $60\%$ depending on the element shapes.
 For example, concave elements with long extensions are more difficult to pack, 
-so a lower positive space ratio is recommended to generate a satisfactory packing.
+so a lower positive space ratio is recommended to generate a satisfactory packing.}
+%For example, the Unilever packing in Figure~\ref{fig_logo_packing} has positive space ratio of $45.025\%$.}
 Second, we stop the simulation when the element meshes are no longer
 able to maneuver enough to consume the remaining negative space. 
 After each iteration, we compute an \textit{area fraction} $A$, defined to be the fraction of
