@@ -492,8 +492,7 @@ possible to use a greedy approach, improving the placement of each element as mu
 as possible before moving on to the next, However, we have found that gradually
 improving the placement of all elements leads to a more even result.
 
-Each refinement
-iteration has two phases.
+Each refinement iteration has two phases.
 First, we shift the streamlines to more accurately follow the space that is available,
 as shown in Figure~\ref{shift_streamline}. After shifting, we recalculate the LR function
 for the blob to reflect the new position, and repeat a variant of the
@@ -510,9 +509,10 @@ area is no smaller than $\alpha$ times its old area, where $\alpha$ is a growth 
 that we set to $0.9$. Elements therefore have some freedom to grow or
 shrink, in the search for more globally even spacing.
 
-\nnewtext{Algorithm~\ref{iterative_refinement_algorithm}
-gives the overall method.} We have found that
-15 iterations suffice for most designs.
+\nnewtext{
+The rest of this section gives the implementation details of the refinement process
+and Algorithm~\ref{iterative_refinement_algorithm} summarizes the overall method.}
+We have found that 15 iterations suffice for most designs.
 Note that in Algorithm~\ref{iterative_refinement_algorithm}, the variable
 $E$ is the list of placed, distorted ornamental elements, and
 not the set of prototype elements discussed earlier.
@@ -634,7 +634,7 @@ w = w_f (1 - f^p) + w_d \: D(s_i, \bm{p_a})
 where
 \begin{conditions}
 f                  & $(\bm{p_b} - \bm{p_a}) \cdot \bm{v}$; \\
-\bm{v} 		   & \nnewtext{a sampled vector of the vector field at $\bm{p_a}$}; \\
+\bm{v} 		   & \nnewtext{a sampled unit vector of the vector field at $\bm{p_a}$}; \\
 s_i                & the original streamline; and \\   
 D()\enspace        & a distance function between a polyline and a point.
 \end{conditions}
@@ -769,6 +769,35 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Conclusions and Future Work}
+\label{flowpak_conclusions}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtext
+{
+We presented FLOWPAK, a method to create ornamental packings
+in which the elements were oriented and deformed to give a sense of visual flow to the final composition.
+Our implementation computed a vector field based on user strokes,
+constructed streamlines that conform to the vector field, and placed an
+element over each streamline. An iterative refinement process then
+shifted and stretched the elements to improve the composition.
+}
+
+\nnewtext
+{
+We have a couple ideas to improve FLOWPAK.
+First, FLOWPAK results do not have significant high-curvature streamlines like u-turns, 
+since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
+Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
+as demonstrated by Jigsaw Image Mosaic method~\cite{Kim2002}. 
+This way, we can achieve a better configuration that requires less iterative refinement process.
+}
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
@@ -845,31 +874,3 @@ elements lead to variety in size and curvature.}
   an artist.}
 \label{bird_square}
 \end{figure}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Conclusions and Future Work}
-\label{flowpak_conclusions}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newtext
-{
-We presented FLOWPAK, a method to create ornamental packings
-in which the elements were oriented and deformed to give a sense of visual flow to the final composition.
-Our implementation computed a vector field based on user strokes,
-constructed streamlines that conform to the vector field, and placed an
-element over each streamline. An iterative refinement process then
-shifted and stretched the elements to improve the composition.
-}
-
-\nnewtext
-{
-We have a couple ideas to improve FLOWPAK.
-First, FLOWPAK results do not have significant high-curvature streamlines like u-turns, 
-since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
-Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
-as demonstrated by Jigsaw Image Mosaic method~\cite{Kim2002}. 
-This way, we can achieve a better configuration that requires less iterative refinement process.
-}

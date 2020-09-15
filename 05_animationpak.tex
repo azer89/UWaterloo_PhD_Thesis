@@ -14,9 +14,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \nnewtext{
-The animation of RepulsionPak simulation process is enjoyable to watch, in which
-elements move around to create a more even distribution and deform to create interlocking with their neighbors.
-The animation inspires us to develop a method that generates dynamic arrangements in which elements are imbued with scripted animations.}
+The animation of RepulsionPak simulation process is enjoyable to watch, 
+showing the movements and deformation of elements.
+The animation inspires us to develop a method that generates dynamic element arrangements, in which elements are imbued with scripted animations.}
 
 AnimationPak is a method to pack elements with scripted animations.
 An element can have an animated deformation, \newtext{such as a slithering snake or a dancing bear}.
@@ -58,13 +58,13 @@ on animated packings.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \nnewtext{
-We provide a general classification of dynamic element packings in Figure~\ref{fig_animationpak_categorization}.
-Excluding animated textures and animated tilings, many animated packings can be classified into one of $2\times2$ category blocks:
+We show a general classification of dynamic element packings in Figure~\ref{fig_animationpak_categorization}.
+Many mosaicing and packings can be classified into one of $2\times2$ category blocks:
 \begin{itemize}
 \item \textbf{Static elements in a static container.} This is considered as a standard 2D packing, 
-in which elements do not have animations and the container is also static.
+in which elements and the container are static.
 \item \textbf{Static elements in an animated container.} A packing in 
-this category has its container shape changes over time.
+this category has its container shape animated filled with static elements.
 The term of ``static elements'' in this category may be a misnomer, 
 as they still can have motions of rigid transformations as 
 the consequences of changes of the container shape.
@@ -164,14 +164,15 @@ They \newtext{partitioned} the input animated container by identifying
 rigid parts, each is replaced by a matching element taken from a library.
 The result is a 3D collage with overlapping elements, 
 and the animation is created from rigid transformations of the elements
-\nnewtext{with some degree of deformation to improve the alignments with the container.}
+\nnewtext{with some degree of deformation to improve the fit with the container.}
 \nnewtext{This work fall into the category of static elements inside an animated container.}
 }
 
 \textbf{Animated tilings:}
 \nnewtext{We discussed metamorphosis tilings in Section~\ref{related_wrok_tiling},
-consisting of an element that evolves into another,
-which can be interpreted as a spatial animation.}
+consisting of an element that evolves into another.
+Although the entire composition of a metamorphosis tiling is static,
+the element evolution be interpreted as a spatial animation.}
 More recently, Kaplan~\cite{Kaplan2019} explored animations of simple tilings of
 the plane from copies of a single shape.  Elements in a tiling
 fit together by construction, and therefore always consume all 
@@ -614,13 +615,23 @@ the boundary.
 preferred orientations, to which they attempt to return.
 }
 
-\newtext
-{
+
+\nnewtext{
 \textbf{Temporal forces} prevent slices from drifting too far
-from their original positions along the time axis
-(Figure~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
-and decelerations in the final animation.  For every vertex, we compute
-the temporal force $\simforce{tmp}$ as
+from their original positions along the time axis (Figure~\ref{fig_animationpak_t_force}).
+Drifting slices can cause two problems.
+First, they could cause unexpected accelerations and decelerations in the final animation. 
+Second, the deformation of the spacetime element would not be monotonic,
+and this would cause rendering artifacts
+as illustrated in Figure~\ref{fig_monotonicity}.}
+For every vertex, we compute the temporal force $\simforce{tmp}$ as
+%\newtext
+%{
+%\textbf{Temporal forces} prevent slices from drifting too far
+%from their original positions along the time axis
+%(Figure~\ref{fig_animationpak_t_force}), which could cause unexpected accelerations
+%and decelerations in the final animation.  For every vertex, we compute
+%the temporal force $\simforce{tmp}$ as
 \begin{equation}
 \simforce{tmp} = k_\mathrm{tmp} \bm{u}^t(t - t')
 \end{equation}
@@ -631,13 +642,11 @@ where
   \item[$t'$] is the current time value of the vertex; and
   \item[$\bm{u}^t = (0,0,1)$.]
 \end{packeddescriptions}
-}
-\nnewtext{Additionally, we have to work toward monotonic deformation, as seen in Figure~\ref{fig_monotonicity}.
-If the deformation is monotonic, we can prevent rendering artifacts.
-This can be achieved using the combination of temporal forces and slice constraints that
-we will discuss in Section~\ref{animationpak_slice_constraints}.}
-%fig_monotonicity
-%animationpak_slice_constraints
+%\nnewtext{Additionally, temporal forces can
+%help us to work toward monotonic deformation, as illustrated in Figure~\ref{fig_monotonicity}.
+%If the deformation is monotonic, we can prevent rendering artifacts.
+%This can be achieved using the combination of temporal forces and slice constraints that
+%we will discuss in Section~\ref{animationpak_slice_constraints}.}
 
 \begin{figure}
 \centering
@@ -754,11 +763,13 @@ using triangle midpoints only.}
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/monotonicity.pdf} 
-\caption[An illustration of desired and undesired deformation of an element]
+\caption[An illustration of a desired and an undesired configurations of an element]
 {\label{fig_monotonicity} 
-\nnewtext{The left element shows an example of desired deformation, 
-while the right one will cause rendering artifact.
-The left one has its slices monotonic and perpendicular to the time axis. 
+\nnewtext{
+The left element shows an example of a desired configuration of an element,
+while the right one will cause rendering artifact
+since it does not have any of three required conditions: monotonic deformation, 
+its presence from $t=0$ to $t=1$, and perpendicular slices to the time axis.
 }
 }
 \end{figure}
@@ -779,14 +790,20 @@ for one element matches the $x, y$ position for $s_n$ of the other.
 \end{figure}
 
 \nnewtext{
-To render the spacetime elements properly without any rendering artifact we need to maintain two conditions.
+Our system can provide robust simulations that arrange and deform spacetime extrusion.
+However, to eliminate potential problems during the rendering,
+we have to enforce two additional conditions.
 First, all spacetime elements must be present at any time position.
-Second, we need to maintain the deformation to be monotonic and the slices to be perpendicular to the time axis.
-In Figure~\ref{fig_monotonicity}, we show two examples of desired and undesired deformation of a spacetime element.}  
+Second, element slices have to be perpendicular to the time axis.
+In Figure~\ref{fig_monotonicity}, 
+we show two examples of a desired and an undesired configurations of a spacetime element.
+}
 
-There are two mandatory geometric constraints and an optional constraint on the configuration of slices,
-which must be enforced throughout the simulation.  Each of the following
+\nnewtext{
+We enforce two mandatory geometric constraints and 
+an optional constraint applied on element slices.  Each of the following
 constraints is reapplied after each physical simulation step described above.
+}
 
 \begin{enumerate}
 \item \textbf{End-To-End Constraint:}
@@ -802,7 +819,6 @@ edge forces strive for equilibrium.}
 \item \textbf{Simultaneity Constraint:}
 During simulation, the vertices of a slice can drift away from each
 other in time, which could lead to rendering artifacts in the animation.
-\nnewtext{This constraint combined with temporal forces ensure monotonic deformation.}
 After every simulation step, we compute the average $t$ value of all
 vertices belonging to each slice other than the first and last slices, and 
 snap all the slice's vertices to that $t$ value 
