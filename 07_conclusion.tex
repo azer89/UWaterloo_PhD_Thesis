@@ -46,8 +46,8 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Element Manufacturing}
 
-\nnewtext{If we cannot find a compatible element, we just have to create it.
-We would like to manufacture a new element on the fly that is compatible with the container and the neighboring elements.
+\nnewtext{Opposed to data-driven methods and deformation-driven methods,
+we would like to manufacture a new element on the fly during the packing process.
 A simple example is demonstrated in a FLOWPAK result (Figure~\ref{result_bear_offset}), 
 where new elements are created from the unused negative space.
 A manufactured element is also useful to create a fixed element (Chapter~\ref{chapter_flowpak}).}
@@ -67,13 +67,6 @@ Data-driven methods can benefit from this approach as we are able to
 generate large combinations of elements from a collection of subparts.
 We can also work toward uniformity amidst variety principle 
 as we can generate similar elements with varying subparts.
-Modular element provides us opportunities to perform a better element placement.
-The first idea is similar to JIM method,
-but we are able to backtrack to previous arrangements 
-that have not only different elements but also different parts.
-The second idea is to perform partial shape matching only between salient container features and
-element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
-element based on that subpart.
 }
 
 %\nnewtext{Another example of modular elements are shown in Figure~\ref{modular_element}.
@@ -97,6 +90,15 @@ how to develop a content-aware blending method on vector graphics patterns.
 Second, we also should consider the semantics of the element shapes.
 Not every part of an element can be connected; for example, a twig
 cannot be attached onto the tip of a leaf.}
+
+\nnewtext{
+Modular elements give us opportunities to perform a smarter element placement.
+The first idea is similar to JIM method,
+but we are able to backtrack to previous arrangements 
+that have not only different elements but also different parts.
+The second idea is to perform partial shape matching only between salient container features and
+element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
+element based on that subpart.}
 
 
 
@@ -129,12 +131,12 @@ Plant-style modular elements.
 \subsection{Collaborations with Artists}
 
 \nnewtext{
-We believe that collaborations with artists can provide us invaluable criticisms for our deformation-driven methods.
+We believe that collaborations with artists can provide us invaluable feedback for our deformation-driven methods.
 Two artists have used RepulsionPak to generate packing in Figure~\ref{paul_daichi_packings},
 although we did not have the chance to ask for their feedback.
 We also receive interests from online communities to use RepulsionPak for graphic design applications.}
 
-\nnewtext{In addition, we would like to develop} an interactive user interfaces for our packing methods.
+\nnewtext{We would like to develop} an interactive user interfaces for our packing methods.
 Examples of recent work in this style include research
 by Zehnder et al.~\cite{Zehnder2016}, Gieseke et al.~\cite{Gieseke2017}, 
 and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
@@ -159,7 +161,7 @@ of AnimationPak.
 { \label{doodle_boy} 
 \nnewtext
 {
-A young artist, Joe Whale, who is drawing a doodle mural. 
+A young artist, Joe Whale, is drawing a doodle mural. 
 The photograph is taken from instagram.com/thedoodleboy.co.uk.
 }
 }
@@ -169,7 +171,7 @@ The photograph is taken from instagram.com/thedoodleboy.co.uk.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Beyond 2D Packings}
+\subsection{Beyond 2D}
 
 We would like to explore the use of deformation-driven methods in a fabrication context.
 Specifically, we want to pack 2D elements on surfaces.
@@ -184,20 +186,20 @@ to develop a deformation-driven method for packing purely spatial
 We would like to evaluate the
 expressivity and visual quality of deformation-driven 3D packings 
 in comparison to other 3D packing techniques.
-
-In a general 3D packing, elements in the middle may be fully occluded by their neighbors,
+One potential issue is that elements in the middle may be fully occluded by their neighbors,
 which would render them useless as they cannot be viewed.
 This problem will arise especially in a dense 3D packing of small elements.
-An interesting idea would be generating a bas-reliefs using a packing method.
-We can also call this as a 2.5D packing.
+
+Another interesting idea would be generating a bas-reliefs using a packing method,
+which can be called as a 2.5D packing.
 Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia.
 Each relief consists of tight arrangement of human shapes although it does not 
 have interlocking style of packings.
-We see this problem as arranging 3D elements on surfaces, 
+Unlike a standard 3D packing, elements may still contain occlusions, but can still be viewed.
+We see this problem as arranging non-overlapping 3D elements on surfaces, 
 which include not only 2D panels but also any 3D surfaces.
 Each 3D element can still rotate in all three axes but still attached to the surface.
-It would also be interesting to investigate the aesthetics of 2.5D packing of non-overlapping
-3D elements but contain occlusions as seen in Figure~\ref{borobudur}.
+
 
 
 \begin{figure}
