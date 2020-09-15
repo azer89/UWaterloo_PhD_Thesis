@@ -46,7 +46,7 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Element Manufacturing}
 
-\nnewtext{Opposed to data-driven methods and deformation-driven methods,
+\nnewtext{Unlike data-driven methods and deformation-driven methods,
 we would like to manufacture a new element on the fly during the packing process.
 A simple example is demonstrated in a FLOWPAK result (Figure~\ref{result_bear_offset}), 
 where new elements are created from the unused negative space.
@@ -69,10 +69,17 @@ We can also work toward uniformity amidst variety principle
 as we can generate similar elements with varying subparts.
 }
 
-%\nnewtext{Another example of modular elements are shown in Figure~\ref{modular_element}.
-%The goal is create unique elements that can maximize compatibility.
-
-%}
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
+\caption[Modular elements]
+{ \label{modular_element} 
+\nnewtext
+{
+Examples modular elements assembled from smaller parts to create element compatibilities.
+}
+}
+\end{figure}
 
 \nnewtext{We also consider an idea of plant-style modular elements.
 In Figure~\ref{thread_branch}a, we can
@@ -102,16 +109,9 @@ element based on that subpart.}
 
 
 
-\begin{figure}[t]
-\centering
-\includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
-\caption[Modular elements]
-{ \label{modular_element} 
-\nnewtext
-{
-Examples modular elements assembled from smaller parts to create element compatibilities.
-}
-}
+
+
+\begin{figure}
 \includegraphics[width=1.0\textwidth]{figures/conclusions/thread_branch_3.pdf}
 \caption[Element threading and branching]
 { \label{thread_branch} 
@@ -173,14 +173,14 @@ The photograph is taken from instagram.com/thedoodleboy.co.uk.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beyond 2D}
 
-We would like to explore the use of deformation-driven methods in a fabrication context.
+\nnewtext{We would like to explore the use of deformation-driven methods in a fabrication context.
 Specifically, we want to pack 2D elements on surfaces.
 For example, our boundary compatibilities might be used to create a connected object.
 Alternatively, it would be interesting to 3D print the 
 negative space, which is already connected due to the absence of overlaps.
-The resulting packing is the shape of negative space with holes from element shapes.
+The resulting packing is the shape of negative space with holes from element shapes.}
 
-Many of the techniques in this thesis could be adapted
+\nnewtext{Many of the techniques in this thesis could be adapted
 to develop a deformation-driven method for packing purely spatial
 3D objects in a 3D container.  
 We would like to evaluate the
@@ -188,17 +188,23 @@ expressivity and visual quality of deformation-driven 3D packings
 in comparison to other 3D packing techniques.
 One potential issue is that elements in the middle may be fully occluded by their neighbors,
 which would render them useless as they cannot be viewed.
-This problem will arise especially in a dense 3D packing of small elements.
+This problem will arise especially in a dense 3D packing of small elements.}
 
-Another interesting idea would be generating a bas-reliefs using a packing method,
+\nnewtext{Another interesting idea would be generating a bas-reliefs using a packing method,
 which can be called as a 2.5D packing.
-Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia.
-Each relief consists of tight arrangement of human shapes although it does not 
+Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia,
+each relief consists of tight arrangement of human shapes although it does not 
 have interlocking style of packings.
-Unlike a standard 3D packing, elements may still contain occlusions, but can still be viewed.
 We see this problem as arranging non-overlapping 3D elements on surfaces, 
 which include not only 2D panels but also any 3D surfaces.
 Each 3D element can still rotate in all three axes but still attached to the surface.
+As seen in the Borobudur reliefs, elements may occlude but they do not actually overlap,
+it would be interesting to investigate aesthetics value of 2.5D packings that allow some amount of occlusions
+as the consequence of 3D rotations but are still overlaps free.
+%This rotation freedom leads to another interesting question: can we allow slight occlusions
+%but the the elements are still overlap-free as seen in the Borobudur reliefs?
+}
+%Unlike a standard 3D packing, we can avoid fully occluded elements.
 
 
 
