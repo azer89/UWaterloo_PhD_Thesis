@@ -852,7 +852,8 @@ it cannot deform enough to extend into the corner, but cannot yield its
 position to a pointy element that offers a better fit.  In the final
 packing, the sharp corners of the containers will appear ``rounded off'', \nnewtext {as seen in an example in Figure~\ref{fig_round}}.
 Another problem occurs when a long narrow element is initially placed diagonally across a corner, 
-in which case the simulation pushes the element's middle into the corner, causing extreme deformation.
+in which case the simulation pushes the element's middle into the corner, causing extreme deformation
+\nnewtext{as seen in the rhinoceros's front horn in Figure~\ref{rhino_packing}.}
 
 \begin{figure}  %%% ELEMENT IMAGE
 \centering
@@ -940,7 +941,7 @@ assign an element to each.
 (b) A spring holds each element in place.
 (c) The final result.
 \nnewtext{(d) Another result without the use of shape matching, 
-a few elements are not aligned properly with convex corners, especially in the legs.}
+a few elements are not aligned properly with convex corners, especially in the front horn and the legs.}
 }
 }
 \end{figure}
@@ -959,10 +960,10 @@ a few elements are not aligned properly with convex corners, especially in the l
 }
 \end{figure}
 
-Even when an element's descriptor is a close match to a segment of 
-target container, 
+Even when an element's descriptor is a close match to a segment of target container, 
 it may still not be safe to place that element at a given location.
-For example, one part of an element may extend into a corner of the container,
+\nnewtext{An example of this problem is illustrated in Figure~\ref{fig_global_local}.}
+One part of an element may extend into a corner of the container,
 while a different part, outside the purview of the local shape descriptor,
 could protrude outside the container entirely.  We augment our 
 descriptor-based fit calculation with an additional score adapted from
@@ -992,8 +993,7 @@ will have a score of 1, the maximum for $q(\bm{x})$.
 Scores decay exponentially towards 0
 for points farther inside the container.  Sample points outside the container
 are penalized by assigning a negative score proportional to distance.
-In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.
-For every salient container feature, we obtain the $10$ closest descriptors from the k-D tree, and choose one that has the highest $Q$.
+
 
 We then define a quality measurement for an entire element by summing over
 all of its sample points:
@@ -1001,6 +1001,9 @@ all of its sample points:
 Q = \sum_{i = 1}^{n_p} q(\bm{x}_i)
 \end{equation}
 
+In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.
+For every salient container feature, we obtain the $10$ closest descriptors from the k-D tree, 
+and choose one that has the highest $Q$.
 Finally, we place the selected element in the container by 
 aligning the endpoints of the element's and container's matching shape 
 descriptors.
