@@ -372,7 +372,7 @@ their neighbors.
 \newtext{
 We also add extra edges to prevent
 folding and self-intersections during simulation
-(Figure~\ref{fig_forces}b).  First, if two triangles 
+(Figure~\ref{fig_elements_image}b).  First, if two triangles 
 $ABC$ and $BCD$ share an edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$. 
 Second, we triangulate the negative space
@@ -850,7 +850,7 @@ process will still leave undesirable artifacts.  In particular, when
 a round element is placed near a sharp convex corner of the container,
 it cannot deform enough to extend into the corner, but cannot yield its
 position to a pointy element that offers a better fit.  In the final
-packing, the sharp corners of the containers will appear ``rounded off''.
+packing, the sharp corners of the containers will appear ``rounded off'', \nnewtext {as seen in an example in Figure~\ref{fig_round}}.
 Another problem occurs when a long narrow element is initially placed diagonally across a corner, 
 in which case the simulation pushes the element's middle into the corner, causing extreme deformation.
 

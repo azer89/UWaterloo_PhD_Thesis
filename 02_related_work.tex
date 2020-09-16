@@ -230,15 +230,25 @@ their boundaries are sliced to eliminate overlaps. }
 
 \section{2D Packings}
 
-\nnewtext
-{
-This section discusses packing methods that fall into the categories of data-driven ((Figure~\ref{fig_taxonomy_method})b) and 
-deformation-driven (Figure~\ref{fig_taxonomy_method}c).
-Unlike mosaics, these packings are composed of 
-more intricate elements that resemble man-made objects, plants, or animals.
-Additionally, some packing styles are reminiscent to Giuseppe Arcimboldo's paintings 
-(Figure ~\ref{fig_related_arcimboldo}).}
+\nnewtext{
+This section discusses packings composed of elements that resemble 
+man-made objects, geometry, letterforms, plants, or animals.
+Unlike decorative mosaics, packings are mostly found in logo design and graphic design.
+Some packing styles are reminiscent to one of Giuseppe Arcimboldo's paintings 
+shown in Figure ~\ref{fig_related_arcimboldo}.
+Most packing methods drift away from Lloyd's method in favor of data-driven methods (Figure~\ref{fig_taxonomy_method}b) and 
+deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).
+}
 
+%\nnewtext
+%{
+%This section discusses packing methods that fall into the categories of data-driven (Figure~\ref{fig_taxonomy_method}b) and 
+%deformation-driven (Figure~\ref{fig_taxonomy_method}c).
+%Unlike mosaics, these packings are composed of 
+%more intricate elements that resemble man-made objects, letterforms, plants, or animals.
+%Additionally, some packing styles are reminiscent to one of Giuseppe Arcimboldo's paintings 
+%shown in Figure ~\ref{fig_related_arcimboldo}).
+%}
 
 \nnewtext
 {
@@ -345,11 +355,31 @@ In another topic, Peng et al.~\cite{Peng2014} proposed a method that packs and d
 simple polygon and polyomino elements to generate layouts for urban planning or indoor space, 
 although their method cannot handle more complicated shapes. 
 An example of their generated indoor layout is seen in Figure~\ref{fig_office}.
-These data-driven methods were developed for specific designs: calligraphies of letterforms and urban layouts of rectangular shapes.
-We see an opportunity to use deformation-driven approach to generate packings with more general styles composed
-of nature or everyday objects similar to JIMs or PAD packings.
 }
 
+
+\nnewtext
+{
+We see an opportunity to develop better packing methods that combine 
+the best of both worlds of data-driven methods  and deformation driven methods.
+In JIMs and PAD packings, deformation is local a post-processing operation which we think is under utilized.
+In calligraphy packings and polyomino layouts, the methods are limited to specific element shapes.
+We would like use deformation as the core of the packing process and generate more general packings
+with more general styles similar to JIMs and PAD packings.
+}
+
+%\nnewtext
+%{
+%Unfortunately,
+%these data-driven methods are limited to specific designs: calligraphies of letterforms and urban layouts of rectangular shapes.
+%We see an opportunity to use deformation-driven approach to generate packings with more general styles composed
+%of nature or everyday objects similar to JIMs and PAD packings.
+%}
+
+
+%\nnewtext
+%{
+%}
 
 \begin{figure}
 \centering
@@ -407,7 +437,7 @@ More recent methods~\cite{Koizumi2011, Nagata2020} are able to solve the Escheri
 Past research has proposed methods
 to replicate the figure-ground reversal style of Escher's Sky and Water,
 in which elements serve as both positive and negative space depending 
-on the viewer's perception~\cite{Kaplan2004, Sugihara2009, Lin2018} .
+on the viewer's perception~\cite{Kaplan2004, Sugihara2009, Lin2018}.
 Given two elements $S_1$ and $S_2$, each is placed on opposite sides of a rectangular canvas.
 They are then copied, arranged, and deformed to interlock each other.
 The farther a copy from the original element, the more deformed it is, 
@@ -424,7 +454,7 @@ a grid-based curve evolution, iterated function systems, and organic labyrinthin
 \includegraphics[width=1.0\textwidth]{figures/related/tilings.pdf} 
 \caption[Tilings]
 {\label{fig_related_escherization} 
-\newtext
+\nnewtext
 {
 (a) A tiling of tux penguins~\cite{Kaplan2000}.
 (b) Sky and water tiling style~\cite{Kaplan2004}.

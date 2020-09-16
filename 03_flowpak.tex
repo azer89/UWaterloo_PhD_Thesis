@@ -56,18 +56,16 @@ with elements placed on adjacent streamlines.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtext{
-\textbf{Packings:}
-Chapter~\ref{chapter_related_work} discussed methods for the generation of packings and mosaics. 
-However, past work is not appropriate
-for creating \nnewtext{packings with visual flow, like those of Figure~\ref{fig_dog_flow}}.
-\nnewtext{Llyod's method and data-driven methods} pack elements via rigid transformations, leading to
-high uniformity but insufficient variety.  
-We design FLOWPAK as a deformation-driven method so that it can generate plausible families of related decorative elements
-from a single input shape.  %They also focus on packing large numbers
-%of small elements.  We are interested in the compositional properties
-%of large, visually distinct elements.
-}
+%\newtext{
+%\textbf{Packings:}
+%Chapter~\ref{chapter_related_work} discussed methods for the generation of packings and mosaics. 
+%However, past work is not appropriate
+%for creating \nnewtext{packings with visual flow, like those of Figure~\ref{fig_dog_flow}}.
+%\nnewtext{Llyod's method and data-driven methods} pack elements via rigid transformations, leading to
+%high uniformity but insufficient variety.  
+%We design FLOWPAK as a deformation-driven method so that it can generate plausible families of related decorative elements
+%from a single input shape. 
+%}
 
 \newtext
 {
@@ -792,7 +790,7 @@ shifted and stretched the elements to improve the composition.
 \nnewtext
 {
 We have a couple ideas to improve FLOWPAK.
-First, FLOWPAK results do not have significant high-curvature streamlines like u-turns, 
+First, resulting packings do not have significant high-curvature streamlines like u-turns, 
 since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
 Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
 as demonstrated by Jigsaw Image Mosaic method~\cite{Kim2002}. 
