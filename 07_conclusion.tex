@@ -76,7 +76,7 @@ as we can generate similar elements with varying subparts.
 { \label{modular_element} 
 \nnewtext
 {
-Examples modular elements assembled from smaller parts to create element compatibilities.
+Examples modular elements assembled from smaller parts.
 }
 }
 \end{figure}
@@ -101,7 +101,8 @@ cannot be attached onto the tip of a leaf.}
 Modular elements give us opportunities to perform a smarter element placement.
 The first idea is similar to JIM method,
 but we are able to backtrack to previous arrangements 
-that have different part configurations.
+that not only have different element configurations but also
+different part configurations.
 The second idea is to perform partial shape matching only between salient container features and
 element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
 element based on that subpart.}
@@ -133,7 +134,7 @@ Plant-style modular elements.
 \subsection{Beyond 2D}
 
 \nnewtext{We would like to explore the use of deformation-driven methods in a fabrication context.
-Specifically, we want to pack 2D elements on surfaces.
+One idea is to pack 2D elements on surfaces.
 For example, our boundary compatibilities might be used to create a connected object.
 Alternatively, it would be interesting to 3D print the 
 negative space, which is already connected due to the absence of overlaps.
@@ -151,14 +152,14 @@ This problem will arise especially in a dense 3D packing of small elements.}
 
 \nnewtext{Another interesting idea would be generating a bas-reliefs using a packing method,
 which can be called as a 2.5D packing.
-Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple, Indonesia,
+Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple in Indonesia,
 each relief consists of tight arrangement of human shapes although it does not 
 have interlocking style of packings.
 We see this problem as arranging non-overlapping 3D elements on surfaces, 
 which include not only 2D panels but also any 3D surfaces.
 Each 3D element can still rotate in all three axes but still attached to the surface.
-As seen in the Borobudur reliefs, elements may occlude but they do not actually overlap,
-it would be interesting to investigate aesthetics value of 2.5D packings that allow some amount of occlusions
+As seen in the Borobudur reliefs, elements may occlude but they do not actually overlap.
+It would be interesting to investigate aesthetics value of 2.5D packings that allow some amount of occlusions
 as the consequence of 3D rotations but are still overlaps free.
 %This rotation freedom leads to another interesting question: can we allow slight occlusions
 %but the the elements are still overlap-free as seen in the Borobudur reliefs?
@@ -189,9 +190,9 @@ The photographer of the left image was Michael Gunther, and the right image was 
 \subsection{Collaborations with Artists}
 
 \nnewtext{
-We believe that collaborations with artists can provide us invaluable feedback for our deformation-driven methods.
-Two artists have used RepulsionPak to generate packing in Figure~\ref{paul_daichi_packings},
-although we did not have the chance to ask for their feedback.
+Collaborations with artists can provide us invaluable feedback for our deformation-driven methods.
+Two artists have used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings},
+although we did not have the chance to ask for their comments.
 We also receive interests from online communities to use RepulsionPak for graphic design applications.}
 
 \nnewtext{We would like to develop} an interactive user interfaces for our packing methods.
@@ -210,7 +211,6 @@ we were only able to find a single example from The Simpsons (Figure~\ref{fig_an
 We think its unpopularity is because it is difficult and time-consuming to create by hand.
 Therefore, we would like to engage with artists to understand the aesthetic value and limitations
 of AnimationPak.
-
 
 \begin{figure}
 \centering
@@ -238,13 +238,12 @@ In another study, Wong et al.~\cite{Wong1998} describe basic design
 principles for decorative arts: repetition, balance, and conformation
 to geometric constraints. 
 
-A measure of element deformation in a composition would permit 
+\nnewtext{A measure of element deformation in a composition would permit 
 a comparison against future deformation-driven techniques.
 In RepulsionPak, we can measure the potential energy at equilibrium.
 However, there are some questions to answer.
 Can we measure how deformations are perceived? How much they affect the aesthetics of packings?
-Such measurements could help us develop better deformation algorithms in generally, not just in the context of packings.
-%Can we measure how much deformation has happened (RepulsionPak: measure the potential energy left in the system at equilibrium?).  Can we measure how easily deformations are perceived, how much they affect the aesthetics of packings? In the long run, such measurements could help us develop better deformation algorithms more generally, not just in the context of packings.
+Such measurements could help us develop better deformation algorithms in general, not just in the context of packings.}
 
 All three metrics described in Chapter~\ref{chapter_qualitative_metrics} are only for evaluating 2D packings.
 While they extend naturally to three purely spatial dimensions, 
