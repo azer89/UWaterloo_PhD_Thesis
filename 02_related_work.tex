@@ -24,12 +24,12 @@ A simplified classification of element arrangements.
 {\label{fig_taxonomy_method} 
 \nnewtext
 {
-Popular methods in mosaicing and packings can be grouped into three categories.
+Three popular methods in mosaicing and packings.
 %Many mosaicing and packing methods can be grouped into three categories. 
 (a) Lloyd's method starts with an initial distribution of elements then iteratively distribute them
 to generate a more even packing. 
 (b) A data-driven method places elements one by one until the container is filled.
-For each step, it select an element from an element library that is compatible with previously placed elements and the container.
+For each step, it select an element from an element library that is compatible with already placed elements and the container.
 (c) A deformation-driven method attempts to create element compatibility through deformation.
 The illustrations are adapted from the spectral approach~\cite{Dalal2006}, 
 pyramid of arclength descriptors~\cite{Kwan2016}, and
@@ -365,7 +365,7 @@ These data-driven methods and deformation driven methods inspire use to develop 
 %the best of both worlds of data-driven methods and deformation driven methods.
 In JIMs and PAD packings, deformation is a local post-processing operation which we think is under utilized.
 In calligraphy packings and polyomino layouts, the deformation methods are limited to specific element shapes.
-We would like use deformation as the core of the packing process and generate more general packings
+We would like to use deformation as the core of the packing process and generate more general packings
 with more general styles similar to JIMs and PAD packings.
 }
 
@@ -423,7 +423,8 @@ Due to deformation,}
 \newtext{$T$ is often perceptually unrecognizable from its silhouette unless an interior picture is added.}
 \nnewtext{
 Kaplan and Salesin's method has a better chance to find $T$ if $E$ has shallow concavities.
-More recent methods~\cite{Koizumi2011, Nagata2020} are able to solve the Escherization problem more efficiently and can deal with shapes that have deeper concavities.}
+More recent methods~\cite{Koizumi2011, Nagata2020} are able to solve the Escherization problem more efficiently and can deal with shapes 
+that have deeper concavities.}
 
 
 %Given an input element $E$ they look for a similar tileable element $T$
