@@ -7,11 +7,11 @@
 \begin{figure}[t]
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy.pdf} 
-\caption[A classification of element arrangements]
+\caption[A categorization of element arrangements]
 {\label{fig_taxonomy} 
 \nnewtext
 {
-A simplified classification of element arrangements.
+A simplified categorization of element arrangements.
 }
 }
 \end{figure}
@@ -20,7 +20,7 @@ A simplified classification of element arrangements.
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy_method.pdf} 
-\caption[A classification of packing methods]
+\caption[Three popular methods in mosaicing and packings]
 {\label{fig_taxonomy_method} 
 \nnewtext
 {
@@ -47,7 +47,7 @@ packings, tilings, and discrete textures (Figure~\ref{fig_taxonomy}).
 The categorization can be further expanded but we only choose ones that are related to this thesis.
 We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
 packings on surfaces, and animated packings.
-This chapter covers all subcategories except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
+This chapter covers the entire categorization except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
 Many packing methods discussed in this chapter aim to minimize element overlaps, and
 a few computer-generated packings shown in this chapter 
 contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
@@ -57,8 +57,8 @@ contain overlaps to some degree due to the challenge of finding and aligning com
 {
 Based on their techniques, many packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
 The first category, Lloyd's method, iteratively refines an initial element arrangement to generate a more even distribution.
-The second category, data-driven methods, places elements one by one. For each step, a data-driven method select 
-an element from an element library that is compatible with previously placed elements and the container boundary.
+The second category, data-driven methods, places elements one by one. For each step,
+an element is taken from an element library that is compatible with previously placed elements and the container boundary.
 The last category, deformation-driven methods, attempts to create element compatibilities through shape deformation.
 }
 
@@ -68,7 +68,7 @@ The last category, deformation-driven methods, attempts to create element compat
 \nnewtext
 {
 Mosaics are 2D arrangements that are popular for decorating floors or walls.
-Traditionally, elements made of stone, ceramics, or glass.
+In traditional mosaics, elements are made of stone, ceramics, or glass.
 The majority of these mosaicing techniques use Llyod's method to distribute elements
 via rigid transformations (Figure~\ref{fig_taxonomy_method}a).
 Originally, Lloyd's method was proposed by McCool and Fiume to distribute point elements~\cite{McCool1992}.
@@ -233,12 +233,11 @@ their boundaries are sliced to eliminate overlaps. }
 \nnewtext{
 This section discusses packings composed of elements that resemble 
 man-made objects, geometry, letterforms, plants, or animals.
-Unlike decorative mosaics, packings are mostly found in logo design and graphic design.
+Packings are mostly found in logo design and graphic design.
 Some packing styles are reminiscent to one of Giuseppe Arcimboldo's paintings 
 shown in Figure ~\ref{fig_related_arcimboldo}.
 Most packing methods drift away from Lloyd's method in favor of data-driven methods (Figure~\ref{fig_taxonomy_method}b) and 
-deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).
-}
+deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).}
 
 %\nnewtext
 %{
@@ -250,9 +249,7 @@ deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).
 %shown in Figure ~\ref{fig_related_arcimboldo}).
 %}
 
-\nnewtext
-{
-A data-driven method requires an input element library to find compatible elements (Figure~\ref{fig_related_jim_pad}).}
+\nnewtext{A data-driven method requires an input element library to find compatible elements (Figure~\ref{fig_related_jim_pad}).}
 \newtext{This is usually done by placing elements one by one until the container area is filled.
 A shape matching algorithm selects an 
 element from the library that has the best compatibility with the previously placed elements or the container boundary.
@@ -292,7 +289,7 @@ After the container is filled, these data-driven methods permit some elements to
 which are later corrected using deformation.
 This is a post-processing step where the elements are frozen in place and
 the deformation is applied locally near element boundaries.
-The use of deformation can be interpreted as improving the element compatibilities, 
+The deformation improves element compatibilities, 
 but only locally as these methods still need a large element library to generate satisfactory packings.} 
 %This deformation step later is further exploited by deformation-driven methods.
 
@@ -444,7 +441,7 @@ Given two elements $S_1$ and $S_2$, each is placed on opposite sides of a rectan
 They are then copied, arranged, and deformed to interlock each other.
 The farther a copy from the original element, the more deformed it is, 
 creating a ``fading effect'', $S_1$ and $S_2$ spatially evolve to become negative space.
-The idea of element evolutions also presents in metamorphosis tiling style,
+The idea of element evolutions is also explored in metamorphosis tiling style,
 in which interlocking elements evolve from one shape to another,
 which can be interpreted as ``spatial animation''.
 Kaplan~\cite{Kaplan2010} proposed several element evolution schemes to generate metamorphosis tilings:
@@ -660,8 +657,8 @@ Their method works by constructing a star-shaped metric to manipulate the Vorono
 Examples of 3D packings and packings on surfaces.
 (a) An Arcimboldo-like packing of overlapping 3D elements~\cite{Gal2007B}. 
 (c) A packing of non-overlapping 3D elements~\cite{Ma2018}.
-(c) Deformed curve selements that fill a surface~\cite{Zehnder2016}.
-(d) Elements that fill a surface which are connected by hinges~\cite{Chen2017}.
+(c) Deformed curve elements that fill a surface~\cite{Zehnder2016}.
+(d) Hinge-connected elements on a surface~\cite{Chen2017}.
 }
 }
 \end{figure}

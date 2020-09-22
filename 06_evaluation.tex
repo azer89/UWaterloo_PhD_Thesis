@@ -121,8 +121,12 @@ packings based on their Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} wi
 A participant was randomly shown a computer-generated packing and they had to give ratings from 1 (worst) to 6 (best)
 in each of three categories: their preference, stylishness, interlocking.
 The study revealed that PAD received the highest scores on all three categories.
-\nnewtext{We agree that element interlocking is important but
-they did not discuss element element overlaps that present in their results.}
+\nnewtext{We see the user study could be expanded to discuss more categories, 
+such as the presence of overlaps, 
+the amount of negative space,
+and the conformation to the container boundaries.}
+%\nnewtext{We agree that element interlocking is important but
+%they did not discuss element element overlaps that present in their results.}
 %However, we argue that the first two categories are ambiguous and do not give better understanding to the quality of a packing.
 
 \newtext
@@ -332,7 +336,7 @@ the area of the container.
 	with the container area (drawn as the gray region).
 	We show several inward-offset negative space with discs of radius $r = 0$, $r = 3$, and $r = 5$.
 	On the right, we show the $Q_s(r)$ drawn as a red function.
-	There are two interesting observations: the positive space ratio is $45\%$ and 
+	Using the SCP function, we can observe that the positive space ratio is $45\%$ and 
 	the largest disc that can be inserted into the negative space has radius $r = 11.85$.
 }
 }
@@ -657,7 +661,7 @@ As seen in Figure~\ref{fig_skeleton},
 a few branches touch or nearly touch the element boundaries, which cannot be local maximums.
 An alternative is a Voronoi diagram, which is a subset of the medial axis. 
 However, a Voronoi diagram is only useful for inter-element gaps, 
-and it cannot identify local maximums created by an element concavities.}
+and it cannot identify local maximums created by an element's concavities.}
 \end{itemize}
 
 
@@ -669,7 +673,7 @@ and it cannot identify local maximums created by an element concavities.}
 \nnewtext{
     A medial axis generated from the negative space of the Unilever packing using
     \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
-    The medial axis branches can be used to identify local maximums of the distance transfrom.
+    The medial axis structure can be used to identify local maximums of the distance transfrom.
     However, a few branches touch or nearly touch the element boundaries, which cannot be local maximums.
   }
 }
