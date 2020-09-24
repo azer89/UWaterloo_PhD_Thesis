@@ -66,7 +66,7 @@ the shape of the container boundary can be more emphasized.
 Chapter~\ref{chapter_related_work} discussed the general categorization of mosaicing and packing techniques: 
 Llyod's method, data-driven methods, and deformation-driven methods.
 RepulsionPak can be categorized as a hybrid of point-based Lloyd's method and a deformation-driven method.
-RepulsionPak does not explicitly compute a Voronoi diagram.
+Similar to Lloyd's method, RepulsionPak iteratively refines the element distribution although it does not explicitly compute a Voronoi diagram.
 Forces do not act directly onto elements, but their mesh vertices.
 During the simulation, these mesh vertices are spread apart but still connected using elastic springs,
 effectively creating an element representation that can be packed and deformed.
@@ -1034,8 +1034,8 @@ shows statistics for the results \newtext{in this chapter}.  All results in this
 \newtext{chapter} use \newtext{$\Delta t_\mathrm{sim} = 0.1$}.
 Torsional forces are used only in Figure~\ref{giraffe_penguin_packing},
 and shape matching is used only in Figure~\ref{rhino_packing}.
-\nnewtext{Two artist used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings}.
-However, due to lack of coordination, we were unable to collect the statistics of those packings.}
+\nnewtext{Two artist used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings},
+although we were unable to collect the statistics of those packings.}
 %We also use our improved method for resolving self intersection in
 %Figs.~\ref{rhino_packing},~\ref{giraffe_penguin_packing},
 %~\ref{paisley_packing},
@@ -1059,7 +1059,7 @@ simulation.
    In these results, torsional forces are used only in 
    Figure~\ref{giraffe_penguin_packing} and shape matching is used only 
    in Figure~\ref{rhino_packing}.
-   We were not able to collect statistics from artist-made RepulsionPak packing in Figure~\ref{paul_daichi_packings}}
+   We were not able to collect statistics from artist-made RepulsionPak packings in Figure~\ref{paul_daichi_packings}}
    }
 \label{packing_statistics}
 \definecolor{lg}{rgb}{0.73,0.867,0.98}
@@ -1216,7 +1216,7 @@ The smoothies packing is made of fruit elements arranged inside a smoothie cup.}
 {\label{paul_daichi_packings}
 \nnewtext{
 Artist-made packings using RepulsionPak. 
-The top arrangement was made by Paul Trani, where elements are packed inside several containers.
+The top packing was made by Paul Trani, where elements are packed inside several containers.
 For the skull's teeth, the leaves are placed manually. 
 The background was made by superimposing several packings.
 The bottom packing was made by Daichi Ito, 

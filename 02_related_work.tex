@@ -48,8 +48,11 @@ The categorization can be further expanded but we only choose ones that are rela
 We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
 packings on surfaces, and animated packings.
 This chapter covers the entire categorization except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
-Many packing methods discussed in this chapter aim to minimize element overlaps, and
-a few computer-generated packings shown in this chapter 
+%Many packing methods discussed in this chapter aim to minimize element overlaps, and
+%a few computer-generated packings shown in this chapter 
+%contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
+Most packing techniques have the goal to generate overlap-free packings, but in reality, it is a difficult task.
+A few computer-generated packings shown in this chapter 
 contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
 }
 
@@ -91,8 +94,9 @@ The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 \nnewtext{When computing centroids, a standard CVD assumes the area density is uniform everywhere.}
 \newtext{Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
 resembles a stippling artwork (Figure~\ref{fig_related_secord_hausner}a).}
-\nnewtext{His method incorporates the pixel intensities of an input image as area densities. 
-This alters the centroid calculation so that point elements are attracted to low-intensity regions.}
+\nnewtext{His method incorporates the pixel intensities of an input image to construct a density function, 
+where a region with low intensity indicates a denser area. 
+This alters the centroid calculation so that point elements are attracted to darker regions.}
 
 \newtext{A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
 Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
