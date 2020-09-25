@@ -25,7 +25,7 @@
 
 
 
-\nnewtext
+\newtext
 {
 FLOWPAK is a technique for filling a container 
 region with elements that are deformed 
@@ -33,7 +33,7 @@ to communicate a sense of directionality or flow.
 %Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
 We aim to create packings that obey all design principles articulated in Chapter~\ref{chapter_introduction},
 with a special focus on the flow principle.
-Elements have designs of simple geometric forms, often stylized flora, spirals, or other abstract geometry. 
+Elements have simple geometric forms, often stylized flora, spirals, or other abstract geometry. 
 }
 Elements can be oriented in the local direction 
 of flow, but can also be deformed to capture changes in flow direction.
@@ -99,7 +99,7 @@ Lu et al. developed DecoBrush~\cite{Lu2014}, which can join multiple decorative 
 {
 \textbf{Vector Field-Guided Compositions:} 
 FLOWPAK requires elements to be deformed and oriented according to a vector field.
-Xu and Mould~\cite{Xu2009} \nnewtext{generated decorative curves by simulating the trajectories of charged particles in a magnetic field.}
+Xu and Mould~\cite{Xu2009} \newtext{generated decorative curves by simulating the trajectories of charged particles in a magnetic field.}
 Li et al.~\cite{Li2010} developed a method to decorate a surface using a shape grammar that is guided by a tensor field.
 Maharik et al. explored Digital Micrography~\cite{Maharik2011}, in which
 lines of small-scale text are deformed to fit along dense streamlines in a container.
@@ -115,7 +115,7 @@ Lastly, Xu and Mould~\cite{Xu2015} proposed a graph-based tree synthesis method 
 Related methods in fabrication has sought to cover surfaces with
 arrangements of decorative elements that satisfy manufacturing
 constraints such as connectivity~\cite{Chen2016, Zehnder2016, Bian2018, Martinez2019}.
-Elements must be \nnewtext{linked together} to produce a connected result
+Elements must be \newtext{linked together} to produce a connected result
 that will hold together when 3D printed.
 In the case of FLOWPAK, we seek to distribute disconnected elements inside a container.
 }
@@ -222,7 +222,7 @@ include descriptions of how the fixed elements affect the filling
 algorithm.
 
 %input\_size
-We define \nnewtext{$l_\mathrm{canvas}$ to be the canvas size, which is the maximum of the combined width or height of all the
+We define \newtext{$l_\mathrm{canvas}$ to be the canvas size, which is the maximum of the combined width or height of all the
 target containers and fixed elements as laid out by the artist.}
 This value will be used to set various parameters in the synthesis process.
 
@@ -239,13 +239,13 @@ using a simple skeletal stroke algorithm~\cite{Hsu1993},
 so each element must be annotated with a straight spine to guide the deformation.  The spine
 does not need to go through the center of the element---it can be anywhere.
 
-We define two classes of elements: a \nnewtext{\textit{two-sided element}} extends across
+We define two classes of elements: a \newtext{\textit{two-sided element}} extends across
 both sides of its
-spine, and a \nnewtext{\textit{one-sided element}} lies entirely on one side of its spine.
-Figure~\ref{ornamental_shapes_fig} shows examples of \nnewtext{two-sided and one-sided elements}.  
+spine, and a \newtext{\textit{one-sided element}} lies entirely on one side of its spine.
+Figure~\ref{ornamental_shapes_fig} shows examples of \newtext{two-sided and one-sided elements}.  
 If the input to our algorithm includes direction guides that coincide with target container boundaries,
-the placement method will align \nnewtext{one-sided elements} along these boundaries.  
-\nnewtext{The alignment of one-sided elements will visually reinforce
+the placement method will align \newtext{one-sided elements} along these boundaries.  
+\newtext{The alignment of one-sided elements will visually reinforce
 container boundaries, as shown in our results.}
 
 %If \nnewtext{one-sided elements} have edges that closely follow their spines, they will visually reinforce
@@ -256,7 +256,7 @@ that will be used in
 Section~\ref{flowpak_shape_matching_and_deformation} to choose which element to place in a particular location. 
 Inspired by the work of Gal et al.~\cite{Gal2007A}, we sample the element's
 spine at $n$ locations and at each location determine how far the ornament extends to the
-left and right of the spine. \nnewtext{The LR function is the set $\{L, R\}$ where $L=\{\ell_1,\ldots,\ell_{n_\mathrm{f}}\}$
+left and right of the spine. \newtext{The LR function is the set $\{L, R\}$ where $L=\{\ell_1,\ldots,\ell_{n_\mathrm{f}}\}$
 is the left function and $R=\{r_1,\ldots,r_{n_\mathrm{f}}\}$ is the right function. The number of samples is denoted by $n_\mathrm{f}$.}
 
 The LR function is made scale-invariant by normalizing its
@@ -270,7 +270,7 @@ in order to achieve the best possible fit.
 Intuitively, LR functions give an approximate area an ornamental element can claim.
 Figure~\ref{ornamental_shapes_fig} 
 shows elements with their left values
-in blue and their right values in red. We have found that \nnewtext{$n_\mathrm{f} = 100$} gives sufficient
+in blue and their right values in red. We have found that \newtext{$n_\mathrm{f} = 100$} gives sufficient
 granularity for our algorithm.
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -279,8 +279,8 @@ granularity for our algorithm.
 \includegraphics[width=1.0\textwidth]{figures/flowpak/ornaments.pdf}
 \caption[Ornamental elements and their LR functions]
 {\label{ornamental_shapes_fig}
-Ornamental elements and their LR functions. \nnewtext{Two-sided elements} have non-empty
-left and right sides, while \nnewtext{one-sided elements} have only one non-empty side. 
+Ornamental elements and their LR functions. \newtext{Two-sided elements} have non-empty
+left and right sides, while \newtext{one-sided elements} have only one non-empty side. 
 We normalize the LR functions to a unit square.}
 \end{figure}
 
@@ -296,7 +296,7 @@ container with a vector field, constrained by the direction guides in that conta
 
 We sample the directional guides $D = \{ d_{1}, d_{2}, ... , d_{n_\mathrm{d}}\}$  
 and use the tangent at every sampled point as a directional constraint.
-We then construct a vector field using the \nnewtext{\mbox{$1$-RoSy} algorithm}
+We then construct a vector field using the \newtext{\mbox{$1$-RoSy} algorithm}
 of Palacios and Zhang~\cite{Palacios2007}.  Note that, as shown in 
 Step~3 of Figure~\ref{fig_flowpak_pipeline},
 fixed elements do not affect the vector field.  
@@ -306,20 +306,20 @@ The artist can include directional guides to guide the vector field around fixed
 {
 The next step is to trace streamlines in the vector field, guided by three input parameters:
 \begin{packeddescriptions}
-\item[\nnewtext{$s_\mathrm{gap}$}] is the desired space between streamlines;
-\item[\nnewtext{$s_\mathrm{max}$}] is the maximum desired streamline length; and
-\item[\nnewtext{$s_\mathrm{min}$}] is the minimum desired streamline length.   
+\item[\newtext{$s_\mathrm{gap}$}] is the desired space between streamlines;
+\item[\newtext{$s_\mathrm{max}$}] is the maximum desired streamline length; and
+\item[\newtext{$s_\mathrm{min}$}] is the minimum desired streamline length.   
 \end{packeddescriptions}
 Because we will ultimately place elements along streamlines without overlap, \newtext{$s_\mathrm{gap}$} determines
 the approximate width of the placed elements, and \newtext{$s_\mathrm{max}$} the maximum length.  We also derive
 a value \newtext{$s_\mathrm{stop}$} that prevents streamlines from coming too close to each other; in our implementation we
-compute \newtext{$s_\mathrm{stop} = 0.8\,s_\mathrm{stop}$}.
+compute \nnewtext{$s_\mathrm{stop} = 0.8\,s_\mathrm{gap}$}.
 }
 
 We adapt the streamline tracing algorithm of Jobard and Lefer~\cite{Jobard1997}.
 First we generate a set of potential seed points $P = \{ \bm{p_{1}}, \bm{p_{2}}, ... , \bm{p_{n_\mathrm{p}}}\}$  by
 densely resampling the target container boundary $T$ and the directional guides in $D$.
-We use a sampling distance of \nnewtext{$0.005\,l_\mathrm{canvas}$}.
+We use a sampling distance of \newtext{$0.005\,l_\mathrm{canvas}$}.
 The first streamline $s$ is generated by randomly removing a seed point from $P$ and following
 the vector field until one of the following conditions holds:
 
@@ -332,7 +332,7 @@ the vector field until one of the following conditions holds:
 
 
 If the length of $s$ is less than \newtext{$s_\mathrm{min}$}, we discard it. Otherwise we sample 
-$s$, again using \nnewtext{$0.005\,l_\mathrm{canvas}$}, and at each point generate two more
+$s$, again using \newtext{$0.005\,l_\mathrm{canvas}$}, and at each point generate two more
 potential seeds that are \newtext{$s_\mathrm{gap}$} away from $s$ on either side. If a seed is
 inside the container, we add it to $P$.  The process is repeated until $P$ is empty.
 Note that the \newtext{$s_\mathrm{stop}$} distance test combined with the \newtext{$s_\mathrm{min}$} length
@@ -422,10 +422,10 @@ to place in the blob by finding the element that minimizes a sum of least square
 where
 %\vspace*{-4pt}
 \begin{conditions}
-\alpha_{l}\enspace & the element \nnewtext{$L$ function};\\
-\alpha_{r} &  the element \nnewtext{$R$ function}; \\   
-\beta_{l}  &  the blob \nnewtext{$L$ function}; and \\
-\beta_{r}  &  the blob \nnewtext{$R$ function}.
+\alpha_{l}\enspace & the element \newtext{$L$ function};\\
+\alpha_{r} &  the element \newtext{$R$ function}; \\   
+\beta_{l}  &  the blob \newtext{$L$ function}; and \\
+\beta_{r}  &  the blob \newtext{$R$ function}.
 \end{conditions}
 %\vspace{-4pt}
 
@@ -435,7 +435,7 @@ correspond, respectively, to swapping the $L$ and $R$ functions and reversing
 them.  When comparing the LR functions for an element and a blob, we compute
 the least squares distances for all four orientations and choose the 
 orientation with the smallest distance.  Note that this matching method
-\nnewtext{will naturally place} \nnewtext{one-sided elements} along streamlines that follow container
+\newtext{will naturally place} \newtext{one-sided elements} along streamlines that follow container
 boundaries, visually reinforcing the overall shape.
 
 We investigated alternatives for shape matching, using an approach
@@ -470,10 +470,10 @@ scales it to fit inside the blob.}
 %It's been a while since we've thought about multiple containers. This section could use another sentence or two as an opener. 
 %Remind us that we've created an initial layout of flow-guided elements in each distinct container. Now we merge all the containers and...
 
-\nnewtext
+\newtext
 {
-We have created an initial arrangement consists 
-of flow-guided elements in each distinct container.
+\nnewtext{The previous steps} produce an initial arrangement \nnewtext{consisting of a packing of} 
+flow-guided elements in each distinct container.
 We now merge all the containers and all elements within them,
 allowing elements from different containers to interact with each other 
 in an iterative manner.
@@ -506,7 +506,7 @@ area is no smaller than $\alpha$ times its old area, where $\alpha$ is a growth 
 that we set to $0.9$. Elements therefore have some freedom to grow or
 shrink, in the search for more globally even spacing.
 
-\nnewtext{
+\newtext{
 The rest of this section gives the implementation details of the refinement process
 and Algorithm~\ref{iterative_refinement_algorithm} summarizes the overall method.}
 We have found that 15 iterations suffice for most designs.
@@ -593,7 +593,7 @@ a line segment joining the points where the vectors intersect other placed eleme
 We then move the endpoint of the streamline towards the midpoint of this
 segment. To enforce the principle of gradual refinement, we do not allow the
 endpoint to move more than $g_\mathrm{limit}$ units, where 
-\nnewtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$ (Recall that $l_\mathrm{canvas}$} is the \nnewtext{canvas size}
+\newtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$ (Recall that $l_\mathrm{canvas}$} is the \newtext{canvas size}
 of the design as described in Section~\ref{flowpak_target_containers}).
 
 We replace the streamline with a path joining
@@ -623,7 +623,7 @@ the maximum values in an unnormalized version of the blob's LR function).
 
 For a node, we check its $150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
 the streamline from backtracking.
-The cost of an edge from \nnewtext{$\bm{p_a}$} to  \nnewtext{$\bm{p_b}$} is 
+The cost of an edge from \newtext{$\bm{p_a}$} to  \nnewtext{$\bm{p_b}$} is 
 
 \begin{equation}
 w = w_f (1 - f^p) + w_d \: D(s_i, \bm{p_a})
@@ -631,7 +631,7 @@ w = w_f (1 - f^p) + w_d \: D(s_i, \bm{p_a})
 where
 \begin{conditions}
 f                  & $(\bm{p_b} - \bm{p_a}) \cdot \bm{v}$; \\
-\bm{v} 		   & \nnewtext{a sampled unit vector of the vector field at $\bm{p_a}$}; \\
+\bm{v} 		   & \newtext{a sampled unit vector of the vector field at $\bm{p_a}$}; \\
 s_i                & the original streamline; and \\   
 D()\enspace        & a distance function between a polyline and a point.
 \end{conditions}
@@ -651,7 +651,7 @@ claim empty space.
 Given a blob $b_{i}$, we calculate a larger blob $b'_{i}$ 
 by offsetting its boundaries until they intersect other placed elements (Figure~\ref{stretch_ornament}).
 To enforce gradual growth, the offset cannot be larger than $g_\mathrm{limit}$, where
-\nnewtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$.}
+\newtext{$g_\mathrm{limit}=0.005\,l_\mathrm{canvas}$.}
 
 The value $g_\mathrm{limit}$ used in growing blobs and shifting streamlines limits the speed of
 the refinement.  Making it larger would require fewer iterations to fill the available space,
@@ -664,7 +664,7 @@ the elements can fill more of their blobs.  We allow the element
 to rotate by a small amount, up to ten degrees, before placing it, as shown in
 Figure~\ref{rotate_ornament}. 
 We generate rotated versions of $e_{i}$ 
-with varying angles \nnewtext{$r_\mathrm{angle} = \pm \{1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}\}$}
+with varying angles \newtext{$r_\mathrm{angle} = \pm \{1^{\circ}, 2^{\circ}, 3^{\circ}, ..., 10^{\circ}\}$}
 and precompute LR functions for each. The shape matching algorithm
 (Section~\ref{flowpak_shape_matching_and_deformation}) automatically choses the best rotation. It
 can also choose to reflect the element across its spine, along its spine, or both (Figure~\ref{flip_shape}).
@@ -740,7 +740,7 @@ We also process the placed elements to create a distressed look.
 
 The packing of a cat in Figure~\ref{result_cat} demonstrates 
 a symmetric packing with a fur contour. 
-We \nnewtext{compute only} the left part and reflect the result.
+We \newtext{compute only} the left part and reflect the result.
 The elements around the cheeks and the chin extend outward, not following the boundary, and creating the appearance of fur.
 
 We experimented with two extensions to our pipeline, 
@@ -779,16 +779,16 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 \newtext
 {
 We presented FLOWPAK, a method to create ornamental packings
-in which the elements were oriented and deformed to give a sense of visual flow to the final composition.
+in which the elements \nnewtext{are} oriented and deformed to give a sense of visual flow to the final composition.
 Our implementation computed a vector field based on user strokes,
 constructed streamlines that conform to the vector field, and placed an
 element over each streamline. An iterative refinement process then
 shifted and stretched the elements to improve the composition.
 }
 
-\nnewtext
+\newtext
 {
-We have a couple ideas to improve FLOWPAK.
+\nnewtext{We see two natural opportunities for} improving FLOWPAK.
 First, resulting packings do not have significant high-curvature streamlines like u-turns, 
 since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
 Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
