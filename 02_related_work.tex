@@ -9,7 +9,7 @@
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy.pdf} 
 \caption[A categorization of element arrangements]
 {\label{fig_taxonomy} 
-\nnewtext
+\newtext
 {
 A simplified categorization of element arrangements.
 }
@@ -22,23 +22,23 @@ A simplified categorization of element arrangements.
 \includegraphics[width=1.0\textwidth]{figures/related/taxonomy_method.pdf} 
 \caption[Three popular methods in mosaicing and packings]
 {\label{fig_taxonomy_method} 
-\nnewtext
+\newtext
 {
 Three popular methods in mosaicing and packings.
 %Many mosaicing and packing methods can be grouped into three categories. 
-(a) Lloyd's method starts with an initial distribution of elements then iteratively distribute them
+(a) Lloyd's method starts with an initial distribution of elements then iteratively \nnewtext{displaces} them
 to generate a more even packing. 
 (b) A data-driven method places elements one by one until the container is filled.
-For each step, it select an element from an element library that is compatible with already placed elements and the container.
+For each step, it \nnewtext{selects} an element from an element library that is compatible with already placed elements and the container.
 (c) A deformation-driven method attempts to create element compatibility through deformation.
-The illustrations are adapted from the spectral approach~\cite{Dalal2006}, 
-pyramid of arclength descriptors~\cite{Kwan2016}, and
-legible compact calligrams~\cite{Zou2016}
+The illustrations are adapted from \nnewtext{The Spectral Approach~\cite{Dalal2006}, 
+Pyramid of Arclength Descriptors~\cite{Kwan2016}, and
+Legible Compact Calligrams~\cite{Zou2016}}.
 }
 }
 \end{figure}
 
-\nnewtext
+\newtext
 {
 An element arrangement is defined as a distribution of non-overlapping elements in the plane.
 Decades of research in NPR have produced many techniques for producing computer-generated element arrangements.
@@ -47,7 +47,7 @@ packings, tilings, and discrete textures (Figure~\ref{fig_taxonomy}).
 The categorization can be further expanded but we only choose ones that are related to this thesis.
 We further break down the packing category into several subcategories: mosaics, 2D packings, 3D packings, 
 packings on surfaces, and animated packings.
-This chapter covers the entire categorization except animated packings that are discussed in Chapter~\ref{chapter_animationpak}. 
+\nnewtext{This chapter covers the entire categorization except animated packings, which} are discussed in Chapter~\ref{chapter_animationpak}. 
 %Many packing methods discussed in this chapter aim to minimize element overlaps, and
 %a few computer-generated packings shown in this chapter 
 %contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
@@ -56,9 +56,10 @@ A few computer-generated packings shown in this chapter
 contain overlaps to some degree due to the challenge of finding and aligning compatible elements.
 }
 
-\nnewtext
+\newtext
 {
-Based on their techniques, many packing methods can be grouped into three categories (Figure~\ref{fig_taxonomy_method}).
+\nnewtext
+{Many packing algorithms can also be grouped according to their main algorithmic technique} (Figure~\ref{fig_taxonomy_method}).
 The first category, Lloyd's method, iteratively refines an initial element arrangement to generate a more even distribution.
 The second category, data-driven methods, places elements one by one. For each step,
 an element is taken from an element library that is compatible with previously placed elements and the container boundary.
@@ -68,17 +69,17 @@ The last category, deformation-driven methods, attempts to create element compat
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Mosaics}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\nnewtext
+\newtext
 {
 Mosaics are 2D arrangements that are popular for decorating floors or walls.
 In traditional mosaics, elements are made of stone, ceramics, or glass.
-The majority of these mosaicing techniques use Llyod's method to distribute elements
+The majority of these mosaicing techniques use \nnewtext{Lloyd's} method to distribute elements
 via rigid transformations (Figure~\ref{fig_taxonomy_method}a).
-Originally, Lloyd's method was proposed by McCool and Fiume to distribute point elements~\cite{McCool1992}.
-Subsequently, it is generalized to distribute convex and concave elements.
+Originally, Lloyd's method \nnewtext{was introduced in computer graphics} by McCool and Fiume to distribute point elements~\cite{McCool1992}.
+It was is generalized to distribute convex and concave elements.
 }
 
-\nnewtext
+\newtext
 {
 We first discuss the simplest variant of Lloyd's method that distributes point elements, 
 as shown in Figure~\ref{fig_lloyds_method}.}
@@ -87,19 +88,18 @@ all points inside a Voronoi cell are closest to its associated point element.
 Lloyd's method moves every point element to the centroid of its Voronoi cell, 
 then the Voronoi diagram is recomputed.
 The process is repeated until the distribution is even,
-that means all the point elements are located at the centroids of the Voronoi cells.
+\nnewtext{meaning that} the point elements are located at the centroids of the Voronoi cells.
 The final structure is called a \textit{centroidal Voronoi diagram} (CVD).
 }
 
-\nnewtext{When computing centroids, a standard CVD assumes the area density is uniform everywhere.}
+\newtext{When computing centroids, a standard CVD assumes the area density is uniform everywhere.}
 \newtext{Secord~\cite{Secord2002} computed a weighted CVD so that the resulting point element distribution
 resembles a stippling artwork (Figure~\ref{fig_related_secord_hausner}a).}
-\nnewtext{His method incorporates the pixel intensities of an input image to construct a density function, 
-where a region with low intensity indicates a denser area. 
+\nnewtext{His method incorporates the pixel intensities of an input image to construct a density function. 
 This alters the centroid calculation so that point elements are attracted to darker regions.}
 
 \newtext{A standard CVD is generated using Euclidean distance, but other metrics lead to different shapes of Voronoi cells.
-Hausner~\cite{Hausner2001}} \nnewtext{simulated the appearance of traditional mosaics by using} 
+Hausner~\cite{Hausner2001}} \newtext{simulated the appearance of traditional mosaics by using} 
 \newtext{Manhattan distance, producing Voronoi cells that resemble squares instead of hexagons.
 Each Voronoi cell is then replaced with a square element and the resulting arrangement
 resembles the appearance of traditional mosaics (Figure~\ref{fig_related_secord_hausner}b). 
@@ -108,8 +108,8 @@ incorporated a vector field to modify the orientation of the metric
 and rotate the square elements. 
 Additionally, the approach is only suitable for square elements as
 more complicated shapes, such as long rectangles, would have severe overlaps.}
-\nnewtext{More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble mosaics 
-using a superpixel image segmentation~\cite{Achanta2012}, which is a variant Lloyd's method that incorporates Euclidean metric and a CIELAB color metric.
+\newtext{More recently, Doyle et al.~\cite{Doyle2019} and Javid et al.~\cite{Javid2019} generated pebble mosaics 
+using a superpixel image segmentation~\cite{Achanta2012}, which is a variant \nnewtext{of} Lloyd's method that \nnewtext{blends an} Euclidean metric \nnewtext{with} a CIELAB colour metric.
 They later elongated the Voronoi cells to follow the gradient of the input image, 
 and smoothed out the cell boundaries. 
 The resulting Voronoi cells resemble smooth elongated pebble shapes.
@@ -137,7 +137,7 @@ Figure source is Wikipedia, drawn by Dominik Moritz under CC0 1.0.
 \includegraphics[width=1.0\textwidth]{figures/related/secord_hausner.pdf} 
 \caption[Stippling artwork and traditional mosaics]
 {\label{fig_related_secord_hausner} 
-\nnewtext
+\newtext
 {
 (a) Stippling artwork of point elements generated using Lloyd's method 
 that incorporates pixel densities of the input image~\cite{Secord2002}.
@@ -146,11 +146,11 @@ that incorporates pixel densities of the input image~\cite{Secord2002}.
 }
 \end{figure}
 
-\nnewtext{We now discuss the computation of Voronoi diagrams that is generalized 
+\newtext{We now discuss the computation of Voronoi diagrams that is generalized 
 to any shapes for which a distance measurement exists.} 
 \newtext
 {Hiller et al.~\cite{Hiller2003} extended Lloyd's method to construct \textit{centroidal area Voronoi diagrams} (CAVDs),
-a variant of CVDs that is a distribution of polygonal elements.
+a variant of CVDs that \nnewtext{yields} a distribution of polygonal elements.
 This new extension computes the main inertial axis for each Voronoi cell so that 
 its element can be rotated to achieve better alignment with the Voronoi cell boundary.
 In follow up work, Smith et al.~\cite{Smith2005} developed Animosaics to generate temporally coherent animated mosaics by utilizing CAVDs.
@@ -159,7 +159,7 @@ elements so that they achieve the best alignments with their Voronoi cell bounda
 which could be seen as making more effective use of negative
 space, and permitting non-convex elements to interlock more than they did in
 earlier methods.}
-\nnewtext{However, the spectral approach cannot rotate the elements,
+\newtext{\nnewtext{Similar previous variants,} the spectral approach cannot rotate the elements,
 so it resorts to a brute force approach to find the best orientation.
 Just like Animosaics, the spectral approach can generate animated mosaics,
 a topic that we will explore further in Chapter~\ref{chapter_animationpak}.}
@@ -169,7 +169,7 @@ a topic that we will explore further in Chapter~\ref{chapter_animationpak}.}
 \includegraphics[width=1.0\textwidth]{figures/related/smith_dalal.pdf} 
 \caption[Mosaics generated using generalized Lloyd's methods]
 {\label{fig_related_secord_hausner} 
-\nnewtext
+\newtext
 {
 Mosaics generated with generalized Voronoi diagrams.
 (a) Animosaics~\cite{Smith2005}.
@@ -178,10 +178,9 @@ Mosaics generated with generalized Voronoi diagrams.
 }
 \end{figure}
 
-\nnewtext{As an alternative to Lloyd's method, an interactive user interface can also be used to generate mosaics.
+\newtext{As an alternative to Lloyd's method, an interactive user interface can also be used to generate mosaics.
 Abdrashitov et al.~\cite{Abdrashitov2014} developed
-a sketch-based interface where an artist can draw curves where square-like elements are placed along it
-create a mosaic arrangement.
+a sketch-based interface where an artist can draw curves \nnewtext{to guide the placement of square-like elements.}
 After the square elements are frozen in place, 
 their boundaries are sliced to eliminate overlaps. }
 
@@ -234,12 +233,13 @@ their boundaries are sliced to eliminate overlaps. }
 
 \section{2D Packings}
 
-\nnewtext{
+\newtext{
 This section discusses packings composed of elements that resemble 
 man-made objects, geometry, letterforms, plants, or animals.
-Packings are mostly found in logo design and graphic design.
-Some packing styles are reminiscent to one of Giuseppe Arcimboldo's paintings 
-shown in Figure ~\ref{fig_related_arcimboldo}.
+Unlike decorative mosaics, 
+packings are mostly found in logo design and graphic design.
+Some packing styles are reminiscent \nnewtext{to paintings by Giuseppe Arcimboldo, 
+like the one} shown in Figure ~\ref{fig_related_arcimboldo}.
 Most packing methods drift away from Lloyd's method in favor of data-driven methods (Figure~\ref{fig_taxonomy_method}b) and 
 deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).}
 
@@ -253,8 +253,8 @@ deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).}
 %shown in Figure ~\ref{fig_related_arcimboldo}).
 %}
 
-\nnewtext{A data-driven method requires an input element library to find compatible elements (Figure~\ref{fig_related_jim_pad}).}
-\newtext{This is usually done by placing elements one by one until the container area is filled.
+\newtext{A data-driven method requires an input element library to find compatible elements (Figure~\ref{fig_related_jim_pad}).}
+\newtext{\nnewtext{Typically, elements are placed} one by one until the container area is filled.
 A shape matching algorithm selects an 
 element from the library that has the best compatibility with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing technique to find
@@ -262,11 +262,11 @@ compatible elements. JIM method places elements using a greedy approach, but is 
 if a previous configuration is more optimal.
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a curvature-based shape descriptor that
 can find new elements that partially match
-existing element boundaries as a container was being filled. }
+existing element boundaries as a container \nnewtext{is} being filled. }
 
 
-\newtext{\nnewtext{An alternative approach to data-driven methods} is to initially partition a container into smaller segments
-then independently replace each segment with a matching element \nnewtext{taken from the library}.
+\newtext{\newtext{An alternative approach to data-driven methods} is to initially partition a container into smaller segments
+\nnewtext{and} independently replace each segment with a matching element \nnewtext{taken from the library}.
 This is desirable if the container has colors or salient parts that need to be emphasized.
 Huang et al.~\cite{Huang2011} proposed a data-driven approach that generates Arcimboldo-like collages
 by arranging cutout images collected from the internet.
@@ -302,9 +302,9 @@ but only locally as these methods still need a large element library to generate
 \includegraphics[width=1.0\textwidth]{figures/related/arcimboldo.pdf} 
 \caption[Vertumnus painting by Giuseppe Arcimboldo]
 {\label{fig_related_arcimboldo} 
-\nnewtext
+\newtext
 {
-Vertumnus painting by Giuseppe Arcimboldo that illustrates
+\nnewtext{\textit{Vertumnus} (ca. 1590), by Giuseppe Arcimbolo, which illustrates}
 a packing of plants, vegetables, and fruits
 (Skokloster Castle, Skokloster, Sweden). 
 }

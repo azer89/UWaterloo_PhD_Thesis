@@ -52,7 +52,7 @@ we design RepulsionPak to support arbitrary shaped elements.
 \nnewtext{Elements in FLOWPAK could only bend along their spines. 
 In RepulsionPak, we allow elements to deform in a more open-ended way.}
 RepulsionPak is intended to fulfill three of five design principles:
-balance, uniformity amidst variety, and boundaries \nnewtext{(Chapter~\ref{chapter_introduction}), but less about the flow principle.} 
+balance, uniformity amidst variety, and boundaries \nnewtext{(Chapter~\ref{chapter_introduction}).} 
 We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
 We are able to use repeated copies taken from a small library of elements 
 but their final shapes are varied thanks to element deformation.
@@ -1034,8 +1034,12 @@ shows statistics for the results \newtext{in this chapter}.  All results in this
 \newtext{chapter} use \newtext{$\Delta t_\mathrm{sim} = 0.1$}.
 Torsional forces are used only in Figure~\ref{giraffe_penguin_packing},
 and shape matching is used only in Figure~\ref{rhino_packing}.
-\nnewtext{Two artist used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings},
-although we were unable to collect the statistics of those packings.}
+\nnewtext{We let real-world artists and users to use RepulsionPak
+for generating packings in Figure~\ref{paul_daichi_packings} and~\ref{adobe_packing},
+but we unfortunately were unable to collect their statistics.}
+%We were unable to collect statistics for packings in }
+%\nnewtext{Two artists used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings},
+%although we were unable to collect the statistics of those packings.}
 %We also use our improved method for resolving self intersection in
 %Figs.~\ref{rhino_packing},~\ref{giraffe_penguin_packing},
 %~\ref{paisley_packing},
@@ -1202,11 +1206,13 @@ A paisley-inspired toroidal packing that can tile the plane.
 \end{figure}
 
 
-\nnewtext{Real-world artist have used RepulsionPak to create packings shown in Figure~\ref{paul_daichi_packings}.
+\nnewtext{Real-world artists have used RepulsionPak to create packings shown in Figure~\ref{paul_daichi_packings}.
 The skull packing is made of butterfly and plant elements arranged inside multiple containers.
 The skull's teeth is made of manually placed leaf elements. 
 The background is created by superimposing several packings.
-The smoothies packing is made of fruit elements arranged inside a smoothie cup.}
+The smoothies packing is made of fruit elements arranged inside a smoothie cup.
+Additionally, RepulsionPak was also used to create a packing printed on
+a t-shirt, as shown in Figure~\ref{adobe_packing}.}
 
 \begin{figure}
 \centering
@@ -1216,14 +1222,32 @@ The smoothies packing is made of fruit elements arranged inside a smoothie cup.}
 {\label{paul_daichi_packings}
 \nnewtext{
 Artist-made packings using RepulsionPak. 
-The top packing was made by Paul Trani, where elements are packed inside several containers.
-For the skull's teeth, the leaves are placed manually. 
+The top arrangement was made by Paul Trani, consisting of multiple containers filled with butterfly and plant elements.
+The manually-placed leaves are fixed elements that represent the skull's teeth.
 The background was made by superimposing several packings.
 The bottom packing was made by Daichi Ito, 
 where fruit elements are arranged inside a smoothie cup.
 }
 }
 \end{figure}
+
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/adobe_packing.pdf} 
+\caption[A RepulsionPak packing printed on a t-shirt]
+{\label{adobe_packing}
+\nnewtext{
+A RepulsionPak packing printed on a t-shirt (Created by Paul Asente).
+}
+}
+\end{figure}
+
+
+%The top arrangement was made by Paul Trani, where elements are packed inside several containers.
+%The top arrangement was made by Paul Trani, consisting of multiple containers filled with butterlfy and plant elements.
+
+%The manually-placed leaves serve as fixed elements that represent the skull's teeth.
+%For the skull's teeth, the leaves are placed manually. 
 
 We have found that RepulsionPak is robust to parameter variation, and 
 produces predictable, high quality results without the need for fine-grained
