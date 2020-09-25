@@ -258,7 +258,7 @@ deformation-driven methods (Figure~\ref{fig_taxonomy_method}c).}
 A shape matching algorithm selects an 
 element from the library that has the best compatibility with the previously placed elements or the container boundary.
 Jigsaw Image Mosaics~\cite{Kim2002} uses a geometric hashing technique to find
-compatible elements. JIM method places elements using a greedy approach, but is able to backtrack 
+compatible elements. \nnewtext{JIM} places elements using a greedy approach, but is able to backtrack 
 if a previous configuration is more optimal.
 Pyramid of Arclength Descriptor (PAD)~\cite{Kwan2016} is a curvature-based shape descriptor that
 can find new elements that partially match
@@ -279,23 +279,41 @@ Each part is then replaced with a smaller cutout image that has a similar shape 
 {
 All these data-driven methods require a large element library.
 The more elements in the library, the better the chances of finding compatible elements.}
-\nnewtext
-{
-For example, JIM method required about 900 elements, PAD used a library with more than 120 elements 
-(see Figure~\ref{fig_taxonomy_method}), 
-and Huang et al. needed about 5000 elements.}
 \newtext
-{However, a bigger database means increased computational time and
+{
+For example, \nnewtext{JIM} required about 900 elements, PAD used a library with more than 120 elements 
+(see Figure~\ref{fig_taxonomy_method}), 
+and Huang et al.\ needed about 5000 elements.}
+\newtext
+{However, a bigger database means increased \nnewtext{computation time} and
 collecting a large number of elements is not always feasible.}
 
+
+%Techniques like JIM and PAD pack elements without deforming them. 
+%But element shapes never have perfectly compatible boundaries, and the packing process allows some overlaps to arise between neighbouring elements. 
+%These techniques optionally post-process elements by locally deforming their boundaries to suppress overlaps.  
+%While these local adjustments improve compatibility, 
+%they cannot interact with the placement process, and 
+%a large element library is still required to generate satisfactory 
+
 \nnewtext{ 
-After the container is filled, these data-driven methods permit some elements to overlaps,
-which are later corrected using deformation.
-This is a post-processing step where the elements are frozen in place and
-the deformation is applied locally near element boundaries.
-The deformation improves element compatibilities, 
-but only locally as these methods still need a large element library to generate satisfactory packings.} 
-%This deformation step later is further exploited by deformation-driven methods.
+The placement process in JIM and PAD is being done without shape deformation.
+As shown in their results in Figure~\ref{fig_related_jim_pad}, 
+element shapes never have perfectly compatible boundaries, and 
+the packing process allows some overlaps to arise between neighbouring elements. 
+These techniques optionally post-process elements by locally deforming their boundaries to suppress overlaps.  
+While these local adjustments improve compatibility, 
+they cannot influence the placement process, and 
+a large element library is still required to generate satisfactory packings.
+}
+
+%\nnewtext{ 
+%After the container is filled, these data-driven methods permit some elements to overlaps,
+%which are later corrected using deformation.
+%This is a post-processing step where the elements are frozen in place and
+%the deformation is applied locally near element boundaries.
+%The deformation improves element compatibilities, 
+%but only locally as these methods still need a large element library to generate satisfactory packings.} 
 
 \begin{figure}
 \centering
@@ -340,32 +358,34 @@ An Arcimboldo-inspired 2D packing of overlapping elements~\cite{Huang2011} .
 }
 \end{figure}
 
-\nnewtext
+\newtext
 {
 Instead of allowing shape compatibilities to arise organically in a large collection of elements, 
 we can deform elements to manufacture those compatibilities.
 A deformation-driven method can create packings based on much smaller element libraries.
 Xu and Kaplan~\cite{Xu2007} and Zou et al.~\cite{Zou2016} constructed calligraphic packings by filling a container with a small
 number of letter elements composing one or two words (Figure~\ref{fig_taxonomy_method}c and ~\ref{fig_calligraphy_packing}a). 
-Xu and Kaplan's method is able to fill the container but they shuffled the letter ordering that made it difficult to read.
-The improved method by Zou et al. can achieve a better the readability by computing
+Xu and Kaplan's method is able to fill the container but 
+\nnewtext{the arrangement and deformation of the letters can make the calligram difficult to read}.
+The improved method by Zou et al. can achieve better readability by computing
 the medial axis of the container where letter elements are anchored.
 However, these calligraphic packing methods require significant deformation 
-so they are not able to preserve the typefaces of the letters.
-In another topic, Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
+so they are not able to preserve the \nnewtext{characters of the original letterforms}.
+\nnewtext{In other work}, 
+Peng et al.~\cite{Peng2014} proposed a method that packs and deforms
 simple polygon and polyomino elements to generate layouts for urban planning or indoor space, 
-although their method cannot handle more complicated shapes. 
-An example of their generated indoor layout is seen in Figure~\ref{fig_office}.
+although their method cannot handle more complicated element shapes. 
+An example of a generated indoor layout is \nnewtext{shown} in Figure~\ref{fig_office}.
 }
 
 
-\nnewtext
+\newtext
 {
-These data-driven methods and deformation driven methods inspire use to develop new packing methods.
+These data-driven methods and deformation driven methods inspire \nnewtext{us} to develop new packing methods.
 %We see an opportunity to develop better packing methods that combine 
 %the best of both worlds of data-driven methods and deformation driven methods.
-In JIMs and PAD packings, deformation is a local post-processing operation which we think is under utilized.
-In calligraphy packings and polyomino layouts, the deformation methods are limited to specific element shapes.
+In JIMs and PAD packings, deformation is a \nnewtext{post-processing operation used for local touch-ups}.
+In \nnewtext{calligraphic} packings and polyomino layouts, the deformation methods are limited to specific element shapes.
 We would like to use deformation as the core of the packing process and generate more general packings
 with more general styles similar to JIMs and PAD packings.
 }
@@ -413,12 +433,13 @@ An office layout generated by packing deformable rectangle and polyomino element
 
 \newtext
 {
-As elements reach perfect compatibility, a packing turns to a tiling, as seen from an example in Figure~\ref{fig_related_escherization}.
+As elements reach perfect compatibility, a packing turns to a tiling, as seen from an example in Figure~\ref{fig_related_escherization}a.
 The element boundaries interlock, leaving no negative space.
-Kaplan and Salesin~\cite{Kaplan2000, Kaplan2004} deformed one or two 
+\nnewtext{Kaplan and Salesin introduced Escherization~\cite{Kaplan2000, Kaplan2004},
+a technique that deforms} one or two 
 input elements into shapes that can tile the plane.
 The tiles always fill the entire plane, and are not intended for filling a bounded container.}
-\nnewtext{Given an input element $E$, they performed a search in a parameterized tiling space to find its
+\nnewtext{Given an input element $S$, they performed a search in a parameterized tiling space to find its
 deformed variant $T$.
 Due to deformation,}
 \newtext{$T$ is often perceptually unrecognizable from its silhouette unless an interior picture is added.}
@@ -435,21 +456,20 @@ that have deeper concavities.}
 %The original heuristic method can only deal withfail to find $T$ if $E$ has deep concavity, for example, a ``G'' shape.
 %However, more recent methods are able to deal with this issue.
 
-\nnewtext
+\newtext
 {
 Past research has proposed methods
-to replicate the figure-ground reversal style of Escher's Sky and Water,
+to replicate the figure-ground reversal style of Escher's 
+\nnewtext{\textit{Sky and Water}},
 in which elements serve as both positive and negative space depending 
 on the viewer's perception~\cite{Kaplan2004, Sugihara2009, Lin2018}.
-Given two elements $S_1$ and $S_2$, each is placed on opposite sides of a rectangular canvas.
-They are then copied, arranged, and deformed to interlock each other.
-The farther a copy from the original element, the more deformed it is, 
-creating a ``fading effect'', $S_1$ and $S_2$ spatially evolve to become negative space.
-The idea of element evolutions is also explored in metamorphosis tiling style,
-in which interlocking elements evolve from one shape to another,
-which can be interpreted as ``spatial animation''.
-Kaplan~\cite{Kaplan2010} proposed several element evolution schemes to generate metamorphosis tilings:
-a grid-based curve evolution, iterated function systems, and organic labyrinthine simulations.
+\nnewtext{Two elements $S_1$ and $S_2$ are placed at opposite ends of a canvas.
+They are then copied, arranged, and deformed until they meet in a tiling in the middle, with copies of each shape acting as the other's negative space
+(Figure~\ref{fig_related_escherization}b).
+The gradual evolution of tile shapes can also be found in Escher-like metamorphoses and Parquet Deformations. 
+As shown in Figure~\ref{fig_related_escherization}c, tilings that can be interpreted as a kind of spatial animation.}
+Kaplan~\cite{Kaplan2010} proposed several element evolution schemes to generate \nnewtext{metamorphoses}:
+a grid-based curve evolution, iterated function systems, and organic labyrinth simulations.
 }
 
 \begin{figure}
@@ -549,13 +569,14 @@ An example of discrete texture synthesis~\cite{AlMeraj2013}.
 \newtext{Collages are arrangements of overlapping elements, similar to
 portrait paintings by Giuseppe Arcimboldo.
 Gal et al.~\cite{Gal2007B} presented a method for constructing 3D
-collages \nnewtext{(Figure~\ref{fig_related_gal_ma_chen}a)}.  
+collages \newtext{(Figure~\ref{fig_related_gal_ma_chen}a)}.  
 They filled a 3D container with overlapping 3D elements using a greedy
 approach and a partial shape matching algorithm.}
-\nnewtext{
+\nnewtext{This work can be seen as a JIM-like technique in 3D, except that there is more tolerance for overlaps.}
+\newtext{
 Similar to the work of Gal et al., Theobalt et al.~\cite{Theobalt2007}
 developed a method to generate animated 3D collages, which we will discuss more in Chapter~\ref{chapter_animationpak}.}
-\newtext{Huang et al.~\cite{Huang2014} designed a method
+\newtext{\nnewtext{In other work}, Huang et al.~\cite{Huang2014} designed a method
 to generate mechanical collages, such as giant robots.
 All these collage methods require a 3D shape database.} %so they are considered as data-driven. 
 %Both these collage methods require a 3D shape database so they can be considered as data-driven. 
