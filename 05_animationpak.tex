@@ -14,9 +14,16 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \nnewtext{
-The animation of RepulsionPak simulation process is enjoyable to watch, 
-showing the movements and deformation of elements.
-The animation inspires us to develop a method that generates dynamic element arrangements, in which elements are imbued with scripted animations.}
+During the development of RepulsionPak, we observed that the simulation process, 
+while intended only as a means to an end, was itself enjoyable to watch. 
+Elements would move and deform in an active, almost organic way as they responded to physical forces. 
+These animations inspired us to explore a method for generating packings in which elements are augmented with scripted animations.
+}
+
+%\nnewtext{
+%The animation of RepulsionPak simulation process is enjoyable to watch, 
+%showing the movements and deformation of elements.
+%The animation inspires us to develop a method that generates dynamic element arrangements, in which elements are imbued with scripted animations.}
 
 AnimationPak is a method to pack elements with scripted animations.
 An element can have an animated deformation, \newtext{such as a slithering snake or a dancing bear}.
@@ -41,9 +48,9 @@ cross sections perpendicular to the time axis.
 Animated packings are a largely unexplored style
 of motion graphics, presumably because of the difficulty of creating 
 an animated packing by hand.  
-Finding motivating examples created by artists is difficult, and
-we only found a single animated packing shown in Figure~\ref{fig_animationpak_lisa_packing},
-which is animated gear-like meshing of copies of Lisa Simpson's spiky head.
+Finding motivating examples created by artists is difficult.
+\nnewtext{We found only} a single animated packing, shown in Figure~\ref{fig_animationpak_lisa_packing},
+\nnewtext{which is an} animated gear-like meshing of copies of Lisa Simpson's spiky head.
 The discussion in Section~\ref{animationpak_previous_work} shows there is also limited past research
 on animated packings.
 }
@@ -57,6 +64,27 @@ on animated packings.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\nnewtext{When we consider adding scripted animations to a packing, 
+we must decide separately whether to support animated elements and an animated container shape. 
+Work in this area can then be categorized naturally into a $2\times2$ grid, 
+as shown in Figure~\ref{fig_animationpak_categorization}.  
+We discuss these categories and techniques in greater detail below.}
+\begin{itemize}
+\item \textbf{Static elements in a static container.} 
+\nnewtext{These are standard 2D packing algorithms that produce a single drawing of a static container packed by static elements.}
+\item \textbf{Static elements in an animated container.} 
+\nnewtext{These algorithms allow the container to move and deform. 
+The elements do not have scripted animations, 
+but they might still animate passively in response to changes in the container.}
+\item \textbf{Animated elements in a static container.} 
+\nnewtext{The container is fixed, but the elements are endowed with scripted animations. 
+Elements must negotiate for space within the container as they attempt to express their animations.}
+\item \textbf{Animated elements in an animated container.}
+In this category, both elements and the container have scripted animations.
+We are not aware previous work that falls into this category.
+\end{itemize}
+
+\begin{comment}
 \nnewtext{
 We show a general classification of dynamic element packings in Figure~\ref{fig_animationpak_categorization}.
 Many mosaicing and packings can be classified into one of $2\times2$ category blocks:
@@ -75,6 +103,7 @@ In this category, both elements and the container have scripted animations.
 We are not aware previous work that fall into this category.
 \end{itemize} 
 }
+\end{comment}
 %We provide a general classification of dynamic element packings in Figure~\ref{fig_animationpak_categorization}.
 %The classification consists of four blocks, depending on two factors: 
 %(1) whether elements are static or animated, and 
@@ -100,7 +129,7 @@ We are not aware previous work that fall into this category.
 \includegraphics[width=1.0\textwidth]{figures/animationpak/lisa_packing.pdf} 
 \caption[An animated packing of copies of Lisa Simpson]
 {\label{fig_animationpak_lisa_packing} 
-\newtext{Three frames of an animated packing from The Simpsons Season 31, Episode 19 ($\copyright$ FOX), showing
+\newtext{Three frames of an animated packing from The Simpsons, Season 31, Episode 19 ($\copyright$ FOX), showing
 gear-like meshing of oppositely-rotating copies of Lisa Simpson.}}
 \end{figure}
 
@@ -116,11 +145,13 @@ gear-like meshing of oppositely-rotating copies of Lisa Simpson.}}
 Animosaics by Smith et al.~\cite{Smith2005} \newtext{constructs} animations 
 in which static elements without scripted
 animations follow the motion of an animated container.  Elements are
-placed using CAVDs, and advected frame-to-frame using a choice of methods
+placed using \nnewtext{centroidal Area voronoi diagrams (CAVDs)}, 
+and advected frame-to-frame using a choice of methods
 motivated by Gestalt grouping principles.
 As the container's area changes, elements are added and removed as needed,
 while attempting to maximize overall temporal coherence.
 \nnewtext{Packings generated by Animosaics fall into the category of static elements in an animated container.}
+
 Dalal et al.~\cite{Dalal2006} showed how the spectral approach they
 introduced for 2D packings could be extended 
 to pack animated elements in a static container.  Like us, they recast
@@ -157,21 +188,21 @@ then oriented rectangular tesserae relative to edge directions.
 \newtext
 {
 \textbf{Animated 3D Packings:} Theobalt et al.~\cite{Theobalt2007}
-developed a data-driven method to generate animated 3D collages that resemble an Arcimboldo's paintings by arranging 
+developed a data-driven method to generate animated 3D collages that resemble an \nnewtext{Arcimboldo} paintings by arranging 
 static 3D elements into an animated 3D container.
 They \newtext{partitioned} the input animated container by identifying
-rigid parts, each is replaced by a matching element taken from a library.
+rigid parts, each \nnewtext{of which} replaced by a matching element taken from a library.
 The result is a 3D collage with overlapping elements, 
 and the animation is created from rigid transformations of the elements
-\nnewtext{with some degree of deformation to improve the fit with the container.}
-\nnewtext{This work falls into the category of static elements inside an animated container.}
+\newtext{with some degree of deformation to improve the fit with the container.}
+\newtext{This work \nnewtext{falls} into the category of static elements inside an animated container.}
 }
 
 \textbf{Animated tilings:}
-\nnewtext{We discussed metamorphosis tilings in Section~\ref{related_wrok_tiling},
-consisting of an element that evolves into another.
+\newtext{We discussed metamorphosis tilings in Section~\ref{related_wrok_tiling},
+consisting of \nnewtext{slowly evolving interlocked elements}.
 Although the entire composition of a metamorphosis tiling is static,
-the element evolution be interpreted as a spatial animation.}
+\nnewtext{the evolving elements} can be interpreted as a spatial animation.}
 More recently, Kaplan~\cite{Kaplan2019} explored animations of simple tilings of
 the plane from copies of a single shape.  Elements in a tiling
 fit together by construction, and therefore always consume all 
@@ -181,16 +212,22 @@ the negative space in the animation.
 \textbf{Animated Textures:}
 Ma et al.~\cite{Ma2013} developed Dynamic Element Textures (DET), a method
 to synthesize an animated texture of a group of identical elements,} 
-\nnewtext{such as a school of fish} 
+\newtext{such as a school of fish} 
 \newtext{or particles.
 For each animated element in an exemplar, DET generates sample points
 both in spatial and temporal domains.
 DET synthesizes a larger texture by copying and distributing the sample points,
 which are then repositioned to resemble the original distribution in the exemplar.
+\nnewtext{Inspired by DET, Kazi et al.~\cite{Kazi2014} developed an interactive user interface where
+an artist can draw curves to guide the motions of animated elements.}
+\nnewtext{Both techniques by Ma et al.\ and Kazi et al.\ do not belong to any category in the  
+$2\times2$ grid above, as their arrangements do not have containers and elements can move freely without the need of being inside.}
 Similar to DET, AnimationPak represents an animated element as a collection of discrete vertices that
 reside in a spacetime domain. However, as a texture synthesis method,
 the goal of DET is to create an element arrangement that resembles an exemplar, and not fill a container tightly.
 }
+
+
 
 \textbf{Derived Animations:} 
 AnimationPak falls into the category of systems that create a derived

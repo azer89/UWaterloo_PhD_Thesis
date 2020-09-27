@@ -623,7 +623,7 @@ the maximum values in an unnormalized version of the blob's LR function).
 
 For a node, we check its $150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
 the streamline from backtracking.
-The cost of an edge from \newtext{$\bm{p_a}$} to  \nnewtext{$\bm{p_b}$} is 
+The cost of an edge from \newtext{$\bm{p_a}$} to  \newtext{$\bm{p_b}$} is 
 
 \begin{equation}
 w = w_f (1 - f^p) + w_d \: D(s_i, \bm{p_a})
@@ -788,12 +788,13 @@ shifted and stretched the elements to improve the composition.
 
 \newtext
 {
-\nnewtext{We see two natural opportunities for} improving FLOWPAK.
-First, resulting packings do not have significant high-curvature streamlines like u-turns, 
-since they could unpleasantly fold the decorative elements. This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
+\newtext{We see two natural opportunities for} improving FLOWPAK.
+\nnewtext{First, we would like to generate higher curvature streamlines, like u-turns.
+However, these streamlines} could unpleasantly fold the decorative elements. 
+This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
 Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
-as demonstrated by Jigsaw Image Mosaic method~\cite{Kim2002}. 
-This way, we can achieve a better configuration that requires less iterative refinement process.
+as demonstrated by \nnewtext{Jigsaw Image Mosaics}~\cite{Kim2002}. 
+This way, we can achieve a better configuration \nnewtext{with less iterative refinement}.
 }
 \begin{figure}
 \centering

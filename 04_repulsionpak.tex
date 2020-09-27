@@ -25,13 +25,13 @@ RepulsionPak is a technique
 to pack elements using a physical simulation, 
 in which each element is represented
 by a mass-spring system called an \textit{element mesh}.  
-\nnewtext{Repulsion forces} between neighboring meshes work to even out the negative
+\newtext{Repulsion forces} between neighboring meshes work to even out the negative
 space, inducing displacements in mesh springs.
 These displacements translate, rotate, and deform the elements as 
 they gradually adapt to the shapes of their neighbors
 and the container boundary.  
 To control the amount of deformation,
-we use \nnewtext{spring forces} within a mesh to preserve element shapes.}
+we use \newtext{spring forces} within a mesh to preserve element shapes.}
 
 \newtext{Most of the elements in a packing are large shapes of real-world objects like animals,
 plants, or man-made objects.  We refer to these as \textit{primary elements}.
@@ -42,7 +42,7 @@ When the primary elements leave behind large
 pockets of negative space, the artist typically fills those pockets with
 small \textit{secondary elements}, often simple abstract shapes like 
 circles or triangles.
-A packing example with primary and secondary elements is shown in Figure~\ref{fig_primary_secondary}.
+A packing example with primary and secondary elements \nnewtext{was} shown in Figure~\ref{fig_primary_secondary}.
 }
 
 \newtext
@@ -52,7 +52,7 @@ we design RepulsionPak to support arbitrary shaped elements.
 \nnewtext{Elements in FLOWPAK could only bend along their spines. 
 In RepulsionPak, we allow elements to deform in a more open-ended way.}
 RepulsionPak is intended to fulfill three of five design principles:
-balance, uniformity amidst variety, and boundaries \nnewtext{(Chapter~\ref{chapter_introduction}).} 
+balance, uniformity amidst variety, and boundaries \newtext{(Chapter~\ref{chapter_introduction}).} 
 We achieve a more even distribution of negative space by building an algorithm with a controllable deformation model at its core. 
 We are able to use repeated copies taken from a small library of elements 
 but their final shapes are varied thanks to element deformation.
@@ -61,17 +61,17 @@ the shape of the container boundary can be more emphasized.
 %we can emphasize the shape of the container boundary better.
 }
 
-\nnewtext
+\newtext
 {
 Chapter~\ref{chapter_related_work} discussed the general categorization of mosaicing and packing techniques: 
-Llyod's method, data-driven methods, and deformation-driven methods.
+\nnewtext{Lloyd's} method, data-driven methods, and deformation-driven methods.
 RepulsionPak can be categorized as a hybrid of point-based Lloyd's method and a deformation-driven method.
 Similar to Lloyd's method, RepulsionPak iteratively refines the element distribution although it does not explicitly compute a Voronoi diagram.
-Forces do not act directly onto elements, but their mesh vertices.
-During the simulation, these mesh vertices are spread apart but still connected using elastic springs,
+Forces do not act directly \nnewtext{on} elements, but their mesh vertices.
+During the simulation, these mesh vertices are spread apart but \nnewtext{remain} connected using elastic springs,
 effectively creating an element representation that can be packed and deformed.
-Additionally, unlike previous variants of Llyod's method, 
-repulsion forces can automatically rotate elements so that neighboring element alignments can be improved. 
+Additionally, unlike previous variants of \nnewtext{Lloyd's} method, 
+repulsion forces \nnewtext{naturally induce rotations in elements, helping them discover greater compatibilities with their neighbours.}. 
 }
 
 %\newtext
@@ -169,11 +169,12 @@ complicated shapes, making it unsuitable for our style of packings.
 \end{comment}
 
 
-\nnewtext
+\newtext
 {
 \textbf{Curve Simulations:}
 Pedersen and Singh~\cite{Pedersen2006} grew curves to create organic
-labyrinthine paths. Their algorithm is related to ours by the use
+labyrinthine paths \nnewtext{using a geometric analogue of reaction-diffusion}. 
+Their algorithm is related to ours by the use
 of repulsion forces to maintain even spacing and parallel segments.
 Yu et al.~\cite{Yu2020} reformulated repulsion forces as tangent-point energy
 to pack curves inside a container while avoiding self-intersections and resolving tangling.
@@ -185,17 +186,17 @@ Unlike their approach, our elements exert
 forces on each other throughout the growth process, allowing them a greater
 opportunity to translate, rotate, and deform in search of more even negative space.  
 Additionally, the goal of their work (3D fabrication) is quite 
-different from RepulsionPak (2D graphic design) and our results appear qualitatively
+different \nnewtext{from that} of RepulsionPak (2D graphic design) and our results appear qualitatively
 different.
 }
 
 \newtext
 {
 \textbf{Sample-Based Representation:}
-A few of texture synthesis methods represent an element as a collection of sparse points~\cite{Ma2011, Ma2013, Hsu2020}.
+A few texture synthesis methods represent an element as a collection of sparse points~\cite{Ma2011, Ma2013, Hsu2020}.
 This representation allows them to synthesize textures with elements
 that have large concave shapes.
-Our RepulsionPak has a similar approach, but we represent an element
+RepulsionPak \nnewtext{uses} a similar approach, but we represent an element
 with denser vertices that are connected with elastic springs.
 }
 
@@ -286,7 +287,7 @@ Our system requires three main pieces of input:
 
 RepulsionPak starts by preprocessing the elements, creating additional space around
 each to enforce the spacing distance, and fitting a triangle mesh over each element.
-\nnewtext{The containers are then seeded with copies of scaled-down elements.
+\newtext{The containers are \nnewtext{seeded} with copies of scaled-down elements.
 This initial element placement can be done in two ways: random seeding (Section~\ref{repulsionpak_preprocessing}) 
 or a careful placement using a shape matching algorithm (Section~\ref{repulsionpak_shape_matching}).}
 
@@ -321,7 +322,7 @@ first, except that vertices of primary element meshes are not allowed to move
 
 Final SVG output is created by using barycentric coordinates to map each element's
 paths from the element's initial mesh into the deformed mesh produced through
-simulation. \nnewtext{The computation of barycentric coordinates is discussed in the next section.}
+simulation. \newtext{The computation of barycentric coordinates is discussed in the next section.}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -333,23 +334,20 @@ simulation. \nnewtext{The computation of barycentric coordinates is discussed in
 
 \begin{figure} %%% ELEMENT IMAGE
 \centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/element_skin_triangles_3.pdf}
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/element_skin_triangles_4.pdf}
 \caption[Element discretization]{
 	\label{fig_elements_image}
-	An illustration of element discretization for preprocessing.
-	(a) An element with its boundary displaced to create a skin, drawn in red.
-	\nnewtext{(b) A triangle mesh (black) with additional shear edges (red) and negative-space edges (dashed blue).}
+	\nnewtext{An illustration of element discretization for preprocessing.}
 }
 \end{figure}
 
 
 
 
-The \textit{skin} of an element is a simple closed polygon 
-that fully encloses it, 
-as in the red shape in Figure~\ref{fig_elements_image}(a).
-We generate the skin 
-by offsetting 
+
+\nnewtext{Given an input element (Figure~\ref{fig_elements_image}a)}, we generate a skin, 
+which is a simple closed polygon that fully encloses it \nnewtext{(Figure~\ref{fig_elements_image}b)}.
+We generate the skin by offsetting 
 an element's boundary outward by $d_\mathrm{gap}/2$. 
 The simulation aims to produce an approximate tessellation of the target
 container by \newtext{deformed} skins, thereby achieving the desired element spacing and
@@ -358,8 +356,8 @@ suppressing overlaps.
 We triangulate the element skin to obtain a triangle mesh.
 To create the mesh we uniformly sample the skin polygon $s$, with samples
 spaced apart by distance $d_\mathrm{gap}$,
-to obtain a simpler polygon $s'$ (the outer boundary of the mesh).
-We then construct a Delaunay triangulation of $s'$.
+to obtain a simpler polygon $s'$, \nnewtext{which is the outer boundary of the mesh (Figure~\ref{fig_elements_image}c)}.
+We then construct a Delaunay triangulation of $s'$ \nnewtext{(Figure~\ref{fig_elements_image}d)}.
 The vertices and edges of this mesh become unit 
 masses and longitudinal
 springs in a physical simulation, allowing elements to deform in response to
@@ -370,17 +368,15 @@ their neighbors.
 %\mynote{this is perfect place to describe negative space springs}
 \newtext{
 We also add extra edges to prevent
-folding and self-intersections during simulation
-(Figure~\ref{fig_elements_image}b).  First, if two triangles 
+folding and self-intersections during simulation.  First, if two triangles 
 $ABC$ and $BCD$ share an edge $BC$, then we add a \textit{shear edge}
-connecting $A$ and $D$. 
+connecting $A$ and $D$ (Figure~\ref{fig_elements_image}e). 
 Second, we triangulate the negative space
 inside the convex hull of the original Delaunay triangulation, and
 create new \textit{negative space edges} corresponding to the newly 
-created triangulation edges. 
+created triangulation edges \nnewtext{(Figure~\ref{fig_elements_image}f)}. 
 These negative space edges are used exclusively for internal
-bracing.  The element's concavities can still be occupied by its
-neighbors.
+bracing.  The element's concavities can still be occupied by its neighbors.
 The construction of negative space edges is a simpler variant of
 Air Meshes~\cite{Muller2015}, a technique to detect and resolve collisions.}
 
@@ -397,7 +393,7 @@ coordinates relative to its enclosing or nearest triangle.
 
 \textbf{Initial Element Placement:}
 We prepare our simulation by randomly placing non-overlapping elements 
-\nnewtext{as illustrated in Figure~\ref{fig_repulsionpak_pipeline}}.
+\newtext{as illustrated in Figure~\ref{fig_repulsionpak_pipeline}}.
 \begin{enumerate}
 	\item Generate random points \newtext{$P = \{ \bm{p}_1, \bm{p}_2,..., \bm{p}_n \}$ }
 		  inside the target container 
@@ -517,7 +513,7 @@ by neighboring meshes.
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
 attempt to restore these rest lengths.  Let $\bm{x'_{a}}$ and $\bm{x'_{b}}$ be
-\nnewtext{deformed mesh vertices} connected by a spring.  We compute the spring force as follows:
+\newtext{deformed mesh vertices} connected by a spring.  We compute the spring force as follows:
 \begin{equation}
 \label{eq_edge_force}
 \simforce{edg} =  k_\mathrm{edg} \frac{\bm{u}}{\| \bm{u} \|} s \; ( \| \bm{u} \| - \ell)^2
@@ -526,7 +522,7 @@ where
 \begin{packeddescriptions}
 	\item[$k_\mathrm{edg}$] is the strength of the edge force relative to other forces;
 	\item[$\bm{u}$] $= \bm{x'_{b}} - \bm{x'_{a}}$;
-	\item[$\ell$] $= \|\bm{x_{b}} - \bm{x_{a}}\|$ \nnewtext{which is the rest length of the spring}; and
+	\item[$\ell$] $= \|\bm{x_{b}} - \bm{x_{a}}\|$ \newtext{which is the rest length of the spring}; and
 	\item[$s$] is +1 or -1, according to whether $(\| \bm{u} \| - \ell)$ 
 		is positive or negative.
 \end{packeddescriptions}
@@ -747,7 +743,7 @@ but the effect is negligible.
 We implement growth in the context of the physics simulation by scaling
 the rest lengths of an element mesh's springs, allowing it to expand as the simulation
 progresses.  
-\nnewtext{
+\newtext{
 Every element mesh $M$ maintains a current scaling factor $g$.
 When a mesh is permitted to grow, we increase its $g$ value by $k_g \Delta t_\mathrm{sim}$,
 where $k_g$ is the growth rate and $\Delta t_\mathrm{sim}$ is the simulation time step.
@@ -777,9 +773,10 @@ In our implementation, The constant $k_g$ is set to 0.01.
 We choose one of two criteria to stop the simulation. First, the artist specifies 
 the desired positive space ratio at which the simulation immediately terminates.
 The ratio should not be set too high, and
-\nnewtext{we find that most of our results have positive space ratios between $35\%$ and $60\%$ depending on the element shapes.
-For example, concave elements with long extensions are more difficult to pack, 
-so a lower positive space ratio is recommended to generate a satisfactory packing.}
+we find that most of our results have positive space ratios between $35\%$ and $60\%$ depending on the element shapes.
+\nnewtext{For example, the Unilever logo in Figure~\ref{fig_logo_packing} has a positive space ratio of $45\%$.
+Additionally, }concave elements with long extensions are more difficult to pack, 
+so a lower positive space ratio is recommended to generate a satisfactory packing.
 %For example, the Unilever packing in Figure~\ref{fig_logo_packing} has positive space ratio of $45.025\%$.}
 Second, we stop the simulation when the element meshes are no longer
 able to maneuver enough to consume the remaining negative space. 
@@ -850,17 +847,17 @@ process will still leave undesirable artifacts.  In particular, when
 a round element is placed near a sharp convex corner of the container,
 it cannot deform enough to extend into the corner, but cannot yield its
 position to a pointy element that offers a better fit.  In the final
-packing, the sharp corners of the containers will appear ``rounded off'', \nnewtext {as seen in Figure~\ref{fig_round}}.
+packing, the sharp corners of the containers will appear ``rounded off'', \newtext {as seen in Figure~\ref{fig_round}}.
 Another problem occurs when a long narrow element is initially placed diagonally across a corner, 
 in which case the simulation pushes the element's middle into the corner, causing extreme deformation
-\nnewtext{as seen in the rhinoceros's front horn in Figure~\ref{rhino_packing}.}
+\nnewtext{as seen in the rhinoceros's front horn in Figure~\ref{rhino_bad}.}
 
 \begin{figure}  %%% ELEMENT IMAGE
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rounded.pdf}
 \caption[A round element is placed near a sharp convex corner of the container]{
   \label{fig_round}
-  \nnewtext
+  \newtext
   {
   A packing generated by RepulsionPak that has a rounded corner.
   A round element is placed on a sharp convex corner on the bottom of the heart-shaped container.
@@ -928,8 +925,17 @@ Here we restrict our attention to convex protrusions with high curvature, which 
 Second, we ensure that salient features are not too close to each other by requiring that every new sample point be separated by a distance of at least $0.2L_s$ from all previously identified salient features.
 
 
-
-\begin{figure}[t]
+\begin{figure}%%% ELEMENT IMAGE
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_bad.pdf}
+\caption[A packing without the use of shape matching]{
+  \label{rhino_bad}
+  \nnewtext
+  {
+  A packing without the use of shape matching. 
+A few elements are not aligned properly with convex corners: a long thin element is severely deformed in the front horn, 
+and an element cannot emphasize the shape of the back leg properly.}
+}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap_2.pdf} 
 \caption[A demonstration of shape matching to place elements]
@@ -940,9 +946,6 @@ A demonstration of shape matching of leaf shapes inside a rhinoceros.
 assign an element to each.
 (b) A spring holds each element in place.
 (c) The final result.
-\nnewtext{(d) Another result without the use of shape matching, 
-a few elements are not aligned properly with convex corners: a long thin element is severely deformed in the front horn, 
-and two elements cannot emphasize the shape of the back leg properly.}
 }
 }
 \end{figure}
@@ -952,10 +955,10 @@ and two elements cannot emphasize the shape of the back leg properly.}
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/shape_matching_score.pdf}
 \caption[Global and local shape matching]{
   \label{fig_global_local}
-  \nnewtext
+  \newtext
   {
   Two elements that locally match the container's corner. 
-  The element in (a) is completely inside, but the element in (b) has its parts that
+  The element in (a) is completely inside, but the element in (b) has \nnewtext{non-local regions} that
   protrude outside the container.
   }
 }
@@ -963,7 +966,7 @@ and two elements cannot emphasize the shape of the back leg properly.}
 
 Even when an element's descriptor is a close match to a segment of target container, 
 it may still not be safe to place that element at a given location.
-\nnewtext{An example of this problem is illustrated in Figure~\ref{fig_global_local}.}
+\newtext{An example of this problem is illustrated in Figure~\ref{fig_global_local}.}
 One part of an element may extend into a corner of the container,
 while a different part, outside the purview of the local shape descriptor,
 could protrude outside the container entirely.  We augment our 
@@ -1046,24 +1049,20 @@ but we unfortunately were unable to collect their statistics.}
 %~\ref{pad_comparison}, and
 %~\ref{balabolka_comparison}.
 
-\nnewtext{The supplemental materials include movies that visualize the simulation
-process}.  
+\newtext{The supplemental materials include movies that visualize the simulation process}.  
 These movies make it clear that elements can jostle each other
 around, inducing translation, rotation, and deformation throughout the 
 simulation.
-
-
 
 \begin{table}[t]
 \centering 
 \caption[Data and statistics for the RepulsionPak results]
 {
-\nnewtext{
-   Data and statistics for the RepulsionPak results.  
+\newtext{
+   Data and statistics for RepulsionPak results.  
    In these results, torsional forces are used only in 
    Figure~\ref{giraffe_penguin_packing} and shape matching is used only 
-   in Figure~\ref{rhino_packing}.
-   We were not able to collect statistics from artist-made RepulsionPak packings in Figure~\ref{paul_daichi_packings}}
+   in Figure~\ref{rhino_packing}.}
    }
 \label{packing_statistics}
 \definecolor{lg}{rgb}{0.73,0.867,0.98}
@@ -1206,13 +1205,51 @@ A paisley-inspired toroidal packing that can tile the plane.
 \end{figure}
 
 
-\nnewtext{Real-world artists have used RepulsionPak to create packings shown in Figure~\ref{paul_daichi_packings}.
+
+
+
+
+We have found that RepulsionPak is robust to parameter variation, and 
+produces predictable, high quality results without the need for fine-grained
+adjustments.  However, as shown in Figure~\ref{bad_results}, extreme parameter 
+settings can still produce degenerate results.
+In Figure~\ref{bad_results}a, the repulsion force is made much stronger than 
+the edge force, leading to excessive element deformation and
+self-intersections in the pursuit of even negative space.  In 
+Figure~\ref{bad_results}b, edge and torsional forces dominate repulsion,
+producing a packing with stiff, upright elements that do not fill their
+container effectively.
+
+
+%\makeatletter % bruh
+%\setlength{\@fptop}{0pt} % bruh
+%\makeatother % bruh
+\begin{figure}
+\centering
+\includegraphics[width=1.0\textwidth]{figures/repulsionpak/bad_results.pdf} 
+\vspace{-12pt}
+\caption[Two examples of how extreme parameter values can lead to \newline 
+  low-quality results]
+  {\label{bad_results}
+Two \newtext{examples} of how extreme parameter values can lead to
+  low-quality results.  In~(a), we allow repulsion to overwhelm element
+  shape by setting $k_\mathrm{rpl}$ to 200 and $k_\mathrm{edg}$ to 20; the resulting packing 
+  has even negative space, but elements suffer from high deformation
+  and \newtext{self-intersections}.  In~(b), we minimize repulsion and prioritize
+  orientation by setting $k_\mathrm{edg}$, $k_\mathrm{tor}$, and $k_\mathrm{rpl}$ to 200, 100, and 50,
+  respectively.  The elements deviate minimally from their original shapes 
+  and orientations, but cannot fill the container effectively.
+}
+\end{figure}
+
+\newtext{\nnewtext{Two professional artists} have used RepulsionPak to create packings shown in Figure~\ref{paul_daichi_packings}.
 The skull packing is made of butterfly and plant elements arranged inside multiple containers.
-The skull's teeth is made of manually placed leaf elements. 
+The skull's teeth \nnewtext{are} made of manually placed leaf elements. 
 The background is created by superimposing several packings.
 The smoothies packing is made of fruit elements arranged inside a smoothie cup.
-Additionally, RepulsionPak was also used to create a packing printed on
-a t-shirt, as shown in Figure~\ref{adobe_packing}.}
+\nnewtext{Additionally, a casual user made a packing using RepulsionPak, which was then printed on
+a t-shirt, as shown in Figure~\ref{adobe_packing}.}}
+
 
 \begin{figure}
 \centering
@@ -1220,7 +1257,7 @@ a t-shirt, as shown in Figure~\ref{adobe_packing}.}
 \vspace{-10pt}
 \caption[Artist-made Packings using RepulsionPak]
 {\label{paul_daichi_packings}
-\nnewtext{
+\newtext{
 Artist-made packings using RepulsionPak. 
 The top arrangement was made by Paul Trani, consisting of multiple containers filled with butterfly and plant elements.
 The manually-placed leaves are fixed elements that represent the skull's teeth.
@@ -1249,38 +1286,6 @@ A RepulsionPak packing printed on a t-shirt (Created by Paul Asente).
 %The manually-placed leaves serve as fixed elements that represent the skull's teeth.
 %For the skull's teeth, the leaves are placed manually. 
 
-We have found that RepulsionPak is robust to parameter variation, and 
-produces predictable, high quality results without the need for fine-grained
-adjustments.  However, as shown in Figure~\ref{bad_results}, extreme parameter 
-settings can still produce degenerate results.
-In Figure~\ref{bad_results}a, the repulsion force is made much stronger than 
-the edge force, leading to excessive element deformation and
-self-intersections in the pursuit of even negative space.  In 
-Figure~\ref{bad_results}b, edge and torsional forces dominate repulsion,
-producing a packing with stiff, upright elements that do not fill their
-container effectively.
-
-
-\makeatletter % bruh
-\setlength{\@fptop}{0pt} % bruh
-\makeatother % bruh
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{figures/repulsionpak/bad_results.pdf} 
-\vspace{-12pt}
-\caption[Two examples of how extreme parameter values can lead to \newline 
-	low-quality results]
-	{\label{bad_results}
-Two \newtext{examples} of how extreme parameter values can lead to
-	low-quality results.  In~(a), we allow repulsion to overwhelm element
-	shape by setting $k_\mathrm{rpl}$ to 200 and $k_\mathrm{edg}$ to 20; the resulting packing 
-	has even negative space, but elements suffer from high deformation
-	and \newtext{self-intersections}.  In~(b), we minimize repulsion and prioritize
-	orientation by setting $k_\mathrm{edg}$, $k_\mathrm{tor}$, and $k_\mathrm{rpl}$ to 200, 100, and 50,
-	respectively.  The elements deviate minimally from their original shapes 
-	and orientations, but cannot fill the container effectively.
-}
-\end{figure}
 
 
 
@@ -1309,8 +1314,8 @@ and fill the target container effectively.
 %spherical contact probability functions, and distance histograms.
 %}
 
-\nnewtext{
-As nothing is perfect, we see further improvements to RepulsionPak.
+\newtext{
+\nnewtext{We see several opportunities for} further improvements to RepulsionPak.
 We deliberately chose a simple simulation model based on springs and forward Euler integration,
   because our main goal was to demonstrate the validity of a 
   deformation-driven approach, and not to contribute a new
@@ -1319,7 +1324,7 @@ We deliberately chose a simple simulation model based on springs and forward Eul
   physical simulation methods, such as Position Based Dynamics~\cite{Muller2007}, 
   Projective Dynamics~\cite{Bouaziz2014}, and the Finite Element Method.
   No one method is obviously best suited to this problem, and
-  we intend to experiment with several to investigate if any offers
+  \nnewtext{future work should} experiment with several to investigate if any offers
   a suitable trade-off between performance and quality.
   Additionally, our barycentric warping method can
   introduce undesirable artifacts in highly deformed elements, as
