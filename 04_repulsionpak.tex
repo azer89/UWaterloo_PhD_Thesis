@@ -613,13 +613,13 @@ However, some elements may have a preferred orientation,
 either for aesthetic reasons or because the shape is comprehensible only at certain orientations.
 We introduce a torsional force that
 penalizes individual vertices for which the orientation, relative to their
-element's center of mass, drifts too far from its initial orientation.
+element's centre of mass, drifts too far from its initial orientation.
 
 Consider a vertex $\bm{x}$ belonging
-to an element, and let $\bm{c}_r$ be the element's center of mass in
+to an element, and let $\bm{c}_r$ be the element's centre of mass in
 its undeformed state.  We may define the ``rest orientation'' of
 $\bm{x}$ as the orientation of the vector $\bm{u}_r = \bm{x}-\bm{c}_r$.
-During simulation we compute the current center of mass $\bm{c}$ of 
+During simulation we compute the current centre of mass $\bm{c}$ of 
 the element and let $\bm{u}=\bm{x}-\bm{c}$.  Then the torsional force
 is
 
@@ -691,7 +691,7 @@ implementation, cell width and height are $6-10$\% of the larger dimension
 of the grid.  
 %\deadtext{We identify the neighbours of a vertex $\bm{x}$ by considering}
 We define the neighbors of a vertex $\bm{x}$ as
-all vertices in a $3\times 3$ window of cells \newtext{centered} on the cell
+all vertices in a $3\times 3$ window of cells \newtext{centred} on the cell
 containing $\bm{x}$. 
 %\deadtext{Although this is an approximation, since it can miss 
 %distant vertices in the composition, the effect is insignificant because of the
@@ -1186,7 +1186,7 @@ from upright to upside-down, recreating an illusion in which giraffe heads becom
 We have also experimented with creating tileable packings, as shown
 in Figure~\ref{paisley_packing}.  We seed a central square with elements,
 but also place clones of those elements in all the squares of the
-8-neighborhood around the center.  These clones track the transformations
+8-neighborhood around the centre.  These clones track the transformations
 and deformations of their originals, but also exert forces on them during
 simulation, leading to an even, seamless packing in a toroidal domain.
 

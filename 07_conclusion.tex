@@ -168,12 +168,14 @@ Plant-style modular elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beyond 2D}
 
-\nnewtext{We would like to explore the use of deformation-driven methods in a fabrication context.
-One idea is to pack 2D elements on surfaces.
-For example, our boundary compatibilities might be used to create a connected object.
+\newtext{We would like to explore the use of deformation-driven methods in a fabrication context.
+\nnewtext{It should be possible to adapt FLOWPAK and RepulsionPak to produce packings on the surfaces of 3D objects, 
+in the style of previous work like that of Chen et al.~\cite{Chen2017}}.  
+We could exploit boundary compatibilities to discover ideal locations to connect neighbouring elements.
 Alternatively, it would be interesting to 3D print the 
 negative space, which is already connected due to the absence of overlaps.
-The resulting packing is the shape of negative space with holes from element shapes.}
+The resulting packing \nnewtext{would be more like a filigree~\cite{Chen2016}, 
+with thin wires bounding holes in the shapes of the elements.}}
 
 \nnewtext{Many of the techniques in this thesis could be adapted
 to develop a deformation-driven method for packing purely spatial
@@ -181,10 +183,11 @@ to develop a deformation-driven method for packing purely spatial
 We would like to evaluate the
 expressivity and visual quality of deformation-driven 3D packings 
 in comparison to other 3D packing techniques.
-One potential issue is that elements in the middle may be fully occluded by their neighbors,
+One potential issue is that elements in the middle \nnewtext{of the container} may be fully occluded by their neighbors,
 which would render them useless as they cannot be viewed.
 This problem will arise especially in a dense 3D packing of small elements.}
 
+\begin{comment}
 \nnewtext{Another interesting idea would be generating a bas-reliefs using a packing method,
 which can be called as a 2.5D packing.
 Figure~\ref{borobudur} shows a two bas-reliefs from Borobudur temple in Indonesia,
@@ -196,11 +199,19 @@ Each 3D element can still rotate in all three axes but still attached to the sur
 As seen in the Borobudur reliefs, elements may occlude but they do not actually overlap.
 It would be interesting to investigate aesthetics value of 2.5D packings that allow some amount of occlusions
 as the consequence of 3D rotations but are still overlaps free.
-%This rotation freedom leads to another interesting question: can we allow slight occlusions
-%but the the elements are still overlap-free as seen in the Borobudur reliefs?
 }
-%Unlike a standard 3D packing, we can avoid fully occluded elements.
+\end{comment}
 
+\nnewtext{
+It may also be possible to construct interesting packings of 3D objects constrained to lie near a surface.
+Figure~\ref{borobudur} shows two stone bas-reliefs from the Borobudur temple on the island of Java. 
+Each relief consists of a tight, albeit non-interlocking, arrangement of human shapes. 
+We are interested in constructing similar arrangements using deformation-driven packing, 
+with elements that are required to lie on a shared surface. 
+The interactions between elements during the packing process 
+may cause them to occlude each other but without interpenetration. 
+We are curious to know how occlusions affect aesthetics in the context of bas-reliefs like these.
+}
 
 
 \begin{figure}
@@ -208,11 +219,10 @@ as the consequence of 3D rotations but are still overlaps free.
 \includegraphics[width=1.0\textwidth]{figures/conclusions/borobudur.pdf}
 \caption[Element arrangements in bas-reliefs]
 { \label{borobudur} 
-\nnewtext
+\newtext
 {
 Bas-reliefs from Borobudur temple. These
-bas-reliefs give us an idea to generate a packing of 3D objects on a 2D panel,
-or we call it as a 2.5D packing.
+bas-reliefs give us an idea to generate a packing of 3D objects on \nnewtext{a surface}.
 Individual element can still rotate in 3D to align itself with its neighbors.
 The photographer of the left image was Michael Gunther, and the right image was taken by Michel Estermann.
 }
@@ -227,32 +237,30 @@ The photographer of the left image was Michael Gunther, and the right image was 
 
 %We are confident that our methods can 
 
-\nnewtext{
+\newtext{
 Collaborations with artists can provide us invaluable feedback for our deformation-driven methods.
 Two artists have used RepulsionPak to generate packings in Figure~\ref{paul_daichi_packings},
-although we did not have the chance to ask for their comments.
-We also demoed RepulsionPak at a conference and we received interests from 
-online communities to release RepulsionPak as a software product.}
+although we did not \nnewtext{collect formal feedback or data on their experiences}.
+\nnewtext{After RepulsionPak was demonstrated at a large public event, we also received expressions of interest and enthusiasm from online graphic design communities.}.}
 
 %We also receive interests from online communities to use RepulsionPak for graphic design applications.
 %We also demoed RepulsionPak at a conference and we received interests from online communities to release RepulsionPak as a software product.
 %We also demoed RepulsionPak at a conference and we received interests from online communities to make RepulsionPak be available as
 
-\nnewtext{We would like to develop} an interactive user interfaces for our packing methods.
+\newtext{We would like to develop} an interactive user \nnewtext{interface} for our packing methods.
 Examples of recent work in this style include research
 by Zehnder et al.~\cite{Zehnder2016}, Gieseke et al.~\cite{Gieseke2017}, 
 and Hsu et al.~\cite{Hsu2020}, which let the user directly place and manipulate
 elements while a composition is being created.
-\nnewtext{
+\newtext{
 Inspired by doodle murals by Joe Whale (Figure~\ref{doodle_boy}), 
-it would be interesting to display an interactive packing on a large touch screen,
-and let artist to draw elements, which are then rearranged using RepulsionPak.
+it would be interesting \nnewtext{to develop an interactive installation in which users could interact with a live packing on a large touch-screen display}.
 }
 
-\nnewtext{In the context of animated packings,} 
+\newtext{In the context of animated packings,} 
 we were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 
-We think its unpopularity is because it is difficult and time-consuming to create by hand.
-Therefore, we would like to engage with artists to understand the aesthetic value and limitations
+\nnewtext{We believe these designs are rare because they have been so difficult to create using conventional software.}
+\nnewtext{We} would like to engage with artists to understand the aesthetic value and limitations
 of AnimationPak.
 
 \begin{figure}
@@ -281,9 +289,10 @@ In another study, Wong et al.~\cite{Wong1998} describe basic design
 principles for decorative arts: repetition, balance, and conformation
 to geometric constraints. 
 
-\nnewtext{A measure of element deformation in a composition would permit 
+\newtext{\nnewtext{Currently, we measure only the evenness of negative space.}
+A measure of element deformation in a composition would permit 
 a comparison against future deformation-driven techniques.
-In RepulsionPak, we can measure the potential energy at equilibrium.
+In RepulsionPak, we can measure \nnewtext{a packing's} potential energy at equilibrium.
 However, there are some questions to answer.
 Can we measure how deformations are perceived? How much they affect the aesthetics of packings?
 Such measurements could help us develop better deformation algorithms in general, not just in the context of packings.}
@@ -291,6 +300,10 @@ Such measurements could help us develop better deformation algorithms in general
 All three metrics described in Chapter~\ref{chapter_qualitative_metrics} are only for evaluating 2D packings.
 While they extend naturally to three purely spatial dimensions, 
 it is not clear whether they can be adapted to the spacetime context.  
-We would like to investigate spatial statistics for the quality of animated packings created by AnimationPak that correlate
-with human perceptual judgments.
+We would like to investigate spatial statistics for the quality of animated packings created by AnimationPak.
+%that correlate
+%with human perceptual judgments.
+
+\nnewtext{
+More broadly, although our algorithms and measurements are derived from careful study of packings created by artists, there is no guarantee that a statistic like the evenness of negative space is a suitable proxy for human aesthetic judgment. Future work should seek to articulate mathematical criteria that correlate with qualitative packing quality, using perceptual studies on human subjects.}
 
