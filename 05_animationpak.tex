@@ -309,11 +309,10 @@ for a single shape is shown in Figure~\ref{fig_animationpak_discretization}, and
 the individual steps are explained in greater detail below.
 
 In order to produce a packing with an even distribution of negative
-space, we first offset the shape's paths by a distance \nnewtext{$d_\mathrm{gap}/2$,
-%leaving the shape surrounded by a channel of negative space 
-with the goal of having $d_\mathrm{gap}$ separations between elements in the resulting packing.}
+space, we first offset the shape's paths by a distance \nnewtext{of} \newtext{$d_\mathrm{gap}/2$,
+with the goal of \nnewtext{maintaining a separation of $d_\mathrm{gap}$} between elements in the resulting packing.}
 (Figure~\ref{fig_animationpak_discretization}a).  In our system
-we scale the shape to fit a unit square and set \nnewtext{$d_\mathrm{gap}/2=0.04$}.
+we scale the shape to fit a unit square and set \nnewtext{$d_\mathrm{gap}=0.08$}.
 
 \newtext
 {
@@ -422,7 +421,7 @@ the compatibility of nearby shapes in the final animation.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\nnewtext{
+\newtext{
 We begin the packing process by constructing a 3D spacetime volume for
 the container by extruding its static shape in
 the time direction.  The container is 
@@ -489,10 +488,10 @@ volume.
 
 Finally we shrink each element, guided and unguided, uniformly in the spatial dimension
 towards its centroid.  
-\nnewtext{As seen in Figure~\ref{fig_animationpak_simulation_process}a,} these shrunken elements are
+\newtext{As seen in Figure~\ref{fig_animationpak_simulation_process}a,} these shrunken elements are
 guaranteed not to intersect one another; as the simulation runs, they
 will grow and consume the container's negative space, while avoiding collisions.
-\nnewtext{In practice,  we shrink these elements 5--10\% of their original size.}
+\newtext{In practice,  we shrink these elements \nnewtext{to} 5--10\% of their original size.}
 %The blue extrusions in Figure~\ref{fig_animationpak_simulation_process}a show an
 %initial placement of spacetime elements.
 
@@ -609,7 +608,7 @@ allowing the element to deform and move away from a neighboring element.}
 \textbf{Edge forces}
 allow elements to deform in response to repulsion forces.
 }
-\nnewtext
+\newtext
 {The edge forces are calculated using a quadratic version of Hooke's law, 
 since it gives us better results and we do not seek physical accuracy.}
 %The edges defined in Section~\ref{animationpak_spacetime_extrusion} are used here as springs.
@@ -652,7 +651,7 @@ preferred orientations, to which they attempt to return.
 }
 
 
-\nnewtext{
+\newtext{
 \textbf{Temporal forces} prevent slices from drifting too far
 from their original positions along the time axis (Figure~\ref{fig_animationpak_t_force}).
 Drifting slices can cause two problems.
@@ -799,13 +798,13 @@ using triangle midpoints only.}
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/monotonicity.pdf} 
-\caption[An illustration of a desired and \newline an undesired configurations of an element]
+\caption[An illustration of an acceptable and \newline an unacceptable configurations of an element]
 {\label{fig_monotonicity} 
-\nnewtext{
+\newtext{
 The left element shows an example of a desired configuration,
-while the right one will cause rendering artifact
+while the right one will cause rendering \nnewtext{artifacts}
 since it does not have any of three required conditions: monotonic deformation, 
-its presence from $t=0$ to $t=1$, and perpendicular slices to the time axis.
+\nnewtext{full extent} from $t=0$ to $t=1$, and \nnewtext{slices perpendicular} to the time axis.
 }
 }
 \end{figure}
@@ -825,20 +824,20 @@ for one element matches the $x, y$ position for $s_n$ of the other.
 }
 \end{figure}
 
-\nnewtext{
-Our system can provide robust simulations that arrange and deform spacetime extrusion.
+\newtext{
+Our system can provide robust simulations that arrange and deform \nnewtext{spacetime extrusions}.
 However, to eliminate potential problems during the rendering,
 we have to enforce two additional conditions.
 First, all spacetime elements must be present at any time position.
 Second, element slices have to be perpendicular to the time axis.
 In Figure~\ref{fig_monotonicity}, 
-we show two examples of a desired and an undesired configurations of a spacetime element.
+we show two examples of a \nnewtext{acceptable and unacceptable} configurations of a spacetime element.
 }
 
-\nnewtext{
+\newtext{
 We enforce two mandatory geometric constraints and 
 an optional constraint applied on element slices.  Each of the following
-constraints is reapplied after each physical simulation step described above.
+constraints is reapplied after \nnewtext{every} physical simulation step described above.
 }
 
 \begin{enumerate}
@@ -847,8 +846,8 @@ A spacetime element must be present for the full length of the animation
 from $t=0$ to $t=1$.  After every simulation step, every vertex belonging
 to an element's first slice has its $t$ value set to $0$, and every vertex
 of the last slice has its $t$ value set to $1$
-\nnewtext{Figure~\ref{fig_animationpak_constraints}a shows an illustration of the end-to-end constraint.
-This constraint only performs localized adjustments on the first and the last slices.
+\newtext{Figure~\ref{fig_animationpak_constraints}a shows an illustration of the end-to-end constraint.
+This constraint only performs localized adjustments on the first and last slices.
 Over time, these adjustments will spread throughout the elements as 
 edge forces strive for equilibrium.}
 
@@ -858,7 +857,7 @@ other in time, which could lead to rendering artifacts in the animation.
 After every simulation step, we compute the average $t$ value of all
 vertices belonging to each slice other than the first and last slices, and 
 snap all the slice's vertices to that $t$ value 
-\nnewtext{Figure~\ref{fig_animationpak_constraints}b shows an illustration of the simultaneity constraint.}
+\newtext{Figure~\ref{fig_animationpak_constraints}b shows an illustration of the simultaneity constraint.}
 
 
 \item \textbf{Loop Constraint:}
@@ -1034,12 +1033,12 @@ two separate elements.
 
 We created the results in this chapter using a Windows PC with a 
 3.60 GHz Intel i7-4790 processor and 16 GB of RAM. 
-\nnewtext{The processor is a quad core CPU with hyperthreading, 
-this enabled us to use a pool of eight threads, corresponding to the number of logical CPU cores.}
+\newtext{The processor is a quad core CPU with hyperthreading; 
+\nnewtext{we used} a pool of eight threads, corresponding to the number of logical CPU cores.}
 Table~\ref{table_packing_statistics} shows statistics for our results.
 Each packing has tens of thousands of vertices and hundreds of thousands
 of springs, and requires about an hour to complete.
-We enable the loop constraint in all results.  \nnewtext{This chapter shows selected frames from the
+We enable the loop constraint in all results.  \newtext{This chapter shows selected frames from the
 results; see supplemental videos for full animations.}
 
 %\begin{comment}
@@ -1102,9 +1101,8 @@ A snake chases a bird around an annular container in
 Figure~\ref{fig_animationpak_chasing_bird}, demonstrating a container with a hole
 and giving a simple example of the narrative potential of animated
 packings.  Figure~\ref{fig_animationpak_penguin_giraffe} animates the giraffe-to-penguin
-illusion shown as a \nnewtext{RepulsionPak static packing shown in Figure~\ref{giraffe_penguin_packing}}.  
-This example
-uses torsional forces to control slice orientations.
+illusion shown as a \newtext{RepulsionPak static packing shown in Figure~\ref{giraffe_penguin_packing}}.  
+This example uses torsional forces to control slice orientations.
 
 \begin{figure*}[h!]
   \centering
@@ -1142,17 +1140,17 @@ Frames are taken at $t=0$, $t=0.125$, $t=0.25$, $t=0.375$, and $t=0.5$.
 
 \newtext{
 Figure~\ref{fig_bib_entering_star} shows 
-\nnewtext{an example where a guided element is not constrained to the inside of a container}.
+\newtext{an example where a guided element is not constrained to the inside of a container}.
 The traveling bird moves from left to right, passing through a packing of birds.
-As some slices of the traveling bird taking up container space,
-the other birds have to stop some of their slice growths prematurely.
-\nnewtext{This is a demonstration of the benefit of the non-uniform growth in element slices, 
-allowing elements to adapt to changes in container area.}
+As some slices of the traveling bird \nnewtext{take} up container space,
+the other birds have to stop some of their slice \nnewtext{growth} prematurely.
+\newtext{This is a demonstration of the benefit of the non-uniform growth in element slices, 
+allowing elements to adapt to changes in \nnewtext{available} container area.}
 In the rendered 2D animation, the elements have a subtle shrinking-and-expanding effect.
 The composition can also tile horizontally, which can be seen in the supplemental video.
 }
 
-Figure~\ref{fig_animationpak_lion}a is a static packing of \newtext{lion's mane} created by an artist and
+Figure~\ref{fig_animationpak_lion}a is a static packing of a \newtext{lion's mane} created by an artist and
 used as an example in FLOWPAK (Chapter~\ref{chapter_flowpak}).  In Figure~\ref{fig_animationpak_lion}b,
 we reproduce it with animated elements for the mane.
 The orientations of elements follow a vector field inside
@@ -1199,14 +1197,14 @@ than CAVD, but their animated elements still have fixed spacetime shapes
 and can only translate and rotate to improve their fit. 
 Repulsion forces and deformation allow AnimationPak to achieve a tighter packing
 that persists across the animation, including gear-like meshing of
-\nnewtext{counter-rotating} stars.
+\newtext{counter-rotating} stars.
 
 
 
 
 Figure~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
 temporal coherence and evenness of negative space by creating two animations
-with different time springs stiffness.  In (a), the time springs
+with different time spring stiffness.  In (a), the time springs
 are 100 times stronger than in (b).  The resulting packing has larger
 pockets of negative space, but the accompanying video shows that the
 animation is smoother.  The packing in (b) is tighter, but the elements
@@ -1253,7 +1251,7 @@ We show a variety of results where
 2D elements move around inside the container.
 
 
-\nnewtext
+\newtext
 {
 We see a number of opportunities for improvements and extensions to AnimationPak:}
 \begin{itemize}
@@ -1293,22 +1291,22 @@ In RepulsionPak, an additional pass with
 Like the spectral method~\cite{Dalal2006}, and unlike
   Animosaics~\cite{Smith2005}, AnimationPak can pack animated 
   elements into a static container. 
-  \nnewtext{As shown in the $2\times2$ blocks (Figure~\ref{fig_animationpak_categorization}),
+  \newtext{As shown in the $2\times2$ \nnewtext{classification of algorithms} 
+  (Figure~\ref{fig_animationpak_categorization}),
   we are not aware any previous method that can pack animated elements inside an animated container.  
   AnimationPak has the potential to support animated containers, as demonstrated by 
   the packing with a loose bird in Figure~\ref{fig_bib_entering_star},
   in which elements can vary their slice sizes to adapt to changes in container area.
-  We also consider a more difficult case of adding and removing elements,
-  as this would certainly affect the initial element placement, which 
-  would need to ensure that elements are placed fully inside the
-  spacetime volume of the container.}
+  \nnewtext{As a further extension we could consider} dynamically adding and removing \nnewtext{elements during the animation. 
+    This would certainly complicate the process of giving every element an initial placement that is fully 
+    inside the container and disjoint from other elements.}}
 
-\item \newtext{\textbf{Cinemagraph}:}
-\nnewtext{The lion's mane packing shows the potential of AnimationPak to generate
+\item \nnewtext{\textbf{Cinemagraphs}:}
+\newtext{The lion's mane packing shows the potential of AnimationPak to generate
 a cinemagraph, a composition with repeating slow ambient animations combined with static elements.
 There are many image processing techniques to generate cinemagraphs, for example, 
-Video Textures method by Sch\"{o}dl et al.~\cite{Schodl2000} and Cliplets method by Joshi et al.~\cite{Joshi2012}.
-It would be interesting to use the idea of cinemagraph into element arrangements and ornamentation.}
+Video Textures~\cite{Schodl2000} and Cliplets~\cite{Joshi2012}.
+It would be interesting to \nnewtext{the construction of illustrated cinemagraphs using animated element arrangements.}.}
 
 
 \end{itemize}
