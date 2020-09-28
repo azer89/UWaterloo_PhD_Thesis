@@ -650,26 +650,15 @@ Yet, when visually evaluating the evenness of negative space,
 we might implicitly visualize mitered corners as being even, as in the square grid of Figure~\ref{hsr_viz}b. 
 It would be worthwhile to investigate statistical measures based on pseudodistance metrics that treat mitering as perceptually even.}
 
-\item \nnewtext{We considered to compute the histogram of a distance transform only on
-a medial axis of the negative space.
-These branches can be used to identify local maximums of the distance transforms.
-However, creating good quality medial axis is difficult since 
-medial axis algorithms are prone to noise from element boundaries.
-As seen in Figure~\ref{fig_skeleton}, 
-a few branches touch or nearly touch the element boundaries, which cannot be local maximums.
-An alternative is a Voronoi diagram, which is a subset of the medial axis. 
-However, a Voronoi diagram is only useful for inter-element gaps, 
-and it cannot identify local maximums created by an element's concavities.}
-
 \item
-In a sense, the local maxima of the distance transform are 
+\nnewtext{In a sense, the local maxima of the distance transform are 
 the points that yield the most information about the distribution of negative space: 
 any non-maximal point is subordinate to some nearby maximum. 
 During this work, we investigated whether we could limit the computation of the distance transform to its local maxima. 
 The obvious choice of the medial axis is error-prone, and produces branches in corners that can misrepresent 
-the perception of negative space (Figure 6.8). 
+the perception of negative space (Figure~\ref{fig_skeleton}). 
 The area Voronoi diagram of the elements is promising, but ignores channels bounded by distant parts of the same element. 
-More work is needed to identify a geometric skeleton that can serve as a scaffolding for evaluating the distance transform. 
+More work is needed to identify a geometric skeleton that can serve as a scaffolding for evaluating the distance transform.} 
 
 
 \end{itemize}
@@ -680,11 +669,12 @@ More work is needed to identify a geometric skeleton that can serve as a scaffol
 \includegraphics[width=1.0\textwidth]{figures/metrics/unilever_with_skeleton_small.pdf}
 \caption[An example of a medial axis of negative space]
 {\label{fig_skeleton}
-\nnewtext{
+\newtext{
     A medial axis generated from the negative space of the Unilever packing using
-    \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
-    The medial axis structure can be used to identify local maximums of the distance transfrom.
-    However, a few branches touch or nearly touch the element boundaries, which cannot be local maximums.
+    \nnewtext{the} \mbox{Zhang-Suen} thinning algorithm~\cite{Zhang1984}.
+    The medial axis structure can be used to identify local \nnewtext{maxima} of the distance \nnewtext{transform}.
+    However, a few branches touch or nearly touch \nnewtext{sharp concave corners}, 
+    \nnewtext{and do not correspond to human judgment of negative space}.
   }
 }
 \end{figure}

@@ -36,7 +36,7 @@ spherical contact probabilities, histograms of distance transforms, and overlap 
 
 \newtext
 {
-This thesis in only the tip of the iceberg of packing research as
+This thesis in only the tip of the iceberg of packing research \nnewtext{and}
 we see many possibilities for future work.
 }
 
@@ -44,8 +44,41 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Element Manufacturing}
+\subsection{Element Construction}
 
+\nnewtext{Good element shapes are difficult to design. 
+We would like to explore techniques to assist users 
+in creating families of interrelated shapes that can be used as element libraries. 
+A simple example can be seen in a FLOWPAK packing, 
+where we allow the user to construct additional motifs automatically 
+by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
+Another approach may be to identify salient shapes in a source photograph and
+vectorize them to produce collections of elements.}
+
+\nnewtext{Earlier data-driven packing techniques achieve variety 
+by assembling a large library of element shapes. 
+In FLOWPAK and RepulsionPak, we used deformation to amplify the variety of a much smaller element library. 
+Other approaches may allow us to generate variety in different ways. 
+For example, we could construct \textit{modular} elements by assembling them from smaller subparts (Figure~\ref{modular_element}). 
+Past research has explored example-based and part-based assembly of modular objects~\cite{Baxter2006, Risser2010, Kalogerakis2012, Hurtut2012},
+but more work is needed to make these tools practical and useful in the context of packings. 
+Modularity is itself a kind of discrete mode of deformation, 
+and we could mix-and-match parts during packing to improve packing quality. 
+When fitting elements to the container boundary (Section~\ref{repulsionpak_shape_matching}) 
+we could begin by choosing subparts that optimize the fit, and then build elements that contain those subparts.
+Of course, compatibility could be further improved by deforming modular elements using the techniques in this thesis.}
+
+\nnewtext{In the context of FLOWPAK, we are interested in exploring a simpler form of modularity, 
+in which short subparts are assembled into larger shapes by threading them along curves, as illustrated in Figure~\ref{thread_branch}a.  
+This approach to modularity might adapt itself particularly well to floral ornamentation.  
+In that case, it would be natural to explore extensions to FLOWPAK that support branching structures instead of isolated curves, 
+as in Figure~\ref{thread_branch}b.  
+A challenge here is to identify pairs of subparts, and points on them, that support high-quality attachments. 
+This quality can be measured geometrically, possibly aided by new algorithms for content-aware blending of vector shapes.  
+It also has a semantic component; for example, a leaf shape can be attached to a stem, but not directly to a twig. 
+Past research on ornament synthesis, such as DecoBrush~\cite{Lu2014} may be relevant here.}
+
+\begin{comment}
 \nnewtext{Unlike data-driven methods and deformation-driven methods,
 we would like to manufacture a new element on the fly during the packing process.
 A simple example is demonstrated in a FLOWPAK result (Figure~\ref{result_bear_offset}), 
@@ -68,19 +101,21 @@ generate large combinations of elements from a collection of subparts.
 We can also work toward uniformity amidst variety principle 
 as we can generate similar elements with varying subparts.
 }
+\end{comment}
 
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/conclusions/modular.pdf}
 \caption[Modular elements]
 { \label{modular_element} 
-\nnewtext
+\newtext
 {
-Examples modular elements assembled from smaller parts.
+Examples \nnewtext{of} modular elements assembled from smaller parts.
 }
 }
 \end{figure}
 
+\begin{comment}
 \nnewtext{We also consider an idea of plant-style modular elements.
 In Figure~\ref{thread_branch}a, we can
 combine multiple shorter elements
@@ -106,7 +141,7 @@ different part configurations.
 The second idea is to perform partial shape matching only between salient container features and
 element subparts. Once a matching subpart is attached to a salient feature, we can then manufacture an entire
 element based on that subpart.}
-
+\end{comment}
 
 
 
@@ -115,11 +150,11 @@ element based on that subpart.}
 \includegraphics[width=1.0\textwidth]{figures/conclusions/thread_branch_3.pdf}
 \caption[Element threading and branching]
 { \label{thread_branch} 
-\nnewtext
+\newtext
 {
 Plant-style modular elements.
-(a) Thread multiple elements to create a longer element.
-(b) Combine multiple streamlines to create branching.
+(a) \nnewtext{A larger element is constructed by threading multiple subparts along a curve.}
+(b) \nnewtext{Multiple streamlines are joined in a branching structure.}
 }
 }
 \end{figure}
