@@ -33,11 +33,11 @@ We see these metrics as a preliminary attempt to quantify packing aesthetics,
 and we hope that our work will inspire new research in packing evaluation.
 }
 
-The visual appeal of packings follows in part from aligning neighboring elements along compatible 
+The visual appeal of packings follows in part from aligning neighbouring elements along compatible 
 segments of their boundaries, suggesting that they interlock by design. 
 We believe that the evenness of negative space is an indicator 
 of the quality of a packing.
-The separation between neighboring elements should be roughly the same everywhere.
+The separation between neighbouring elements should be roughly the same everywhere.
 In this chapter, we have developed several measurements of evenness,
 %which allow us to examine the behavior of manually constructed reference
 %packings and to compare RepulsionPak with other packing algorithms.
@@ -376,7 +376,7 @@ by computing this distance for the centre of every grid cell.}
 The computation can be accelerated by storing the element boundaries inside a quadtree.
 An alternative approach is a level-set method that propagates the fronts of the element boundaries~\cite{Osher1988}.
 Figure~\ref{fig_distance_transform} shows an example of a discrete distance transform,
-where lighter pixel colors represent higher $r$ values.
+where lighter pixel colours represent higher $r$ values.
 }
 
 \begin{comment}
@@ -441,11 +441,11 @@ packing.
 \includegraphics[width=1.0\textwidth]{figures/metrics/rabbit.pdf}
 \caption[An example of distance transform of negative space]
 {\label{fig_distance_transform}
-\nnewtext{
+\newtext{
 (a) An arrangement of rabbits.
 (b) The distance transform of the negative space, 
-where lighter pixel colors represent higher $r$ values.
-(c) Two histogram versions of the distance transform; the continuous histogram $H(r)$ drawn as a red curve 
+where lighter pixel colours represent higher $r$ values.
+(c) Two \nnewtext{visualizations} of the distance transform; the continuous histogram $H(r)$ drawn as a red curve 
 and the discrete histogram with 50 bins drawn as blue rectangles.}
 }
 \end{figure}

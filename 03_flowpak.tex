@@ -147,7 +147,7 @@ to our system:
 %distinguished by their colors; see
 %the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
 The first three inputs are combined into a single diagram, where they are
-distinguished by their colors; see
+distinguished by their colours; see
 the left and right drawings in Figure~\ref{fig_lion_unicorn}.
 The goal of our algorithm is to fill each target container with elements,
 trying to satisfy several guiding principles:
@@ -237,7 +237,7 @@ An ornamental element is defined as one or more closed curves.  Our placement me
 eventually deform copies of the element (Section~\ref{flowpak_shape_matching_and_deformation}) 
 using a simple skeletal stroke algorithm~\cite{Hsu1993},
 so each element must be annotated with a straight spine to guide the deformation.  The spine
-does not need to go through the center of the element---it can be anywhere.
+does not need to go through the centre of the element---it can be anywhere.
 
 We define two classes of elements: a \newtext{\textit{two-sided element}} extends across
 both sides of its
@@ -581,7 +581,7 @@ elements.
  {\label{shift_streamline}
  Streamline shifting.
   We move the streamline's start and end points along 
-  perpendiculars, stopping before intersecting neighboring elements.}
+  perpendiculars, stopping before intersecting neighbouring elements.}
 \end{figure}
 
 
@@ -621,7 +621,8 @@ The duplication is repeated until the graph extends to the left and right of the
 streamline by a distance equal to the maximum left and right widths of the blob (i.e.,
 the maximum values in an unnormalized version of the blob's LR function).
 
-For a node, we check its $150$ nearest neighbors, considering only neighbors where the angle between the line into the current node and the line to the neighbor form an angle greater than $90^\circ$, thereby preventing
+For a node, we check its $150$ nearest neighbours, 
+considering only neighbours where the angle between the line into the current node and the line to the neighbour form an angle greater than $90^\circ$, thereby preventing
 the streamline from backtracking.
 The cost of an edge from \newtext{$\bm{p_a}$} to  \newtext{$\bm{p_b}$} is 
 
@@ -675,7 +676,7 @@ can also choose to reflect the element across its spine, along its spine, or bot
 \includegraphics[width=1.0\textwidth]{figures/flowpak/stretch.pdf}
 \caption[Stretching an element]
 {\label{stretch_ornament}
-(a) An element with its sub-region blob shown in dashed blue line. Note that any blob is constrained by the neighboring elements. 
+(a) An element with its sub-region blob shown in dashed blue line. Note that any blob is constrained by the neighbouring elements. 
 (b) The dashed red line is the grown blob, which accommodates an enlarged element.}
 
 \bigskip
@@ -712,7 +713,7 @@ for calculation of LR functions and for testing polygon intersections
 during deformation and growth.
 As a postprocess, we optionally smooth outlines and replace polygonal
 paths with B\'{e}zier curves.
-Finally, we apply colors and other treatments in an editor.
+Finally, we apply colours and other treatments in an editor.
 
 Our technique is fast except for the iterative refinement process,
 which considers a large number of variations to the composition via
@@ -788,8 +789,8 @@ shifted and stretched the elements to improve the composition.
 
 \newtext
 {
-\newtext{We see two natural opportunities for} improving FLOWPAK.
-\nnewtext{First, we would like to generate higher curvature streamlines, like u-turns.
+\nnewtext{We see two natural opportunities for} improving FLOWPAK.
+\nnewtext{First, we would like to generate streamlines with higher curvatures, like u-turns.
 However, these streamlines} could unpleasantly fold the decorative elements. 
 This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
 Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
@@ -809,7 +810,7 @@ red spine that is used to deform it along a streamline.  In
 the containers, black curves represent boundaries, red
 curves with arrows represent directional guides, and green
 curves are fixed elements copied into the final design.
-The colors in the final rendering were added manually. }
+The colours in the final rendering were added manually. }
 \end{figure}
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -857,7 +858,7 @@ elements lead to variety in size and curvature.}
 {A packing of the same container as in Figure~\ref{result_bear_leaves}.
   We place longer and sparser elements and synthesize additional elements 
   from the remaining negative space.
-  \nnewtext{The bottom row is the visualization of primary elements in black and
+  \newtext{The bottom row is the visualization of primary elements in black and
   negative space elements in brown.}
   }
 \label{result_bear_offset}

@@ -25,10 +25,10 @@ RepulsionPak is a technique
 to pack elements using a physical simulation, 
 in which each element is represented
 by a mass-spring system called an \textit{element mesh}.  
-\newtext{Repulsion forces} between neighboring meshes work to even out the negative
+\newtext{Repulsion forces} between neighbouring meshes work to even out the negative
 space, inducing displacements in mesh springs.
 These displacements translate, rotate, and deform the elements as 
-they gradually adapt to the shapes of their neighbors
+they gradually adapt to the shapes of their neighbours
 and the container boundary.  
 To control the amount of deformation,
 we use \newtext{spring forces} within a mesh to preserve element shapes.}
@@ -361,7 +361,7 @@ We then construct a Delaunay triangulation of $s'$ \nnewtext{(Figure~\ref{fig_el
 The vertices and edges of this mesh become unit 
 masses and longitudinal
 springs in a physical simulation, allowing elements to deform in response to
-their neighbors.  
+their neighbours.  
 %We further brace the mesh against
 %deformation by augmenting it with ``auxiliary springs'' (see
 %Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
@@ -376,7 +376,7 @@ inside the convex hull of the original Delaunay triangulation, and
 create new \textit{negative space edges} corresponding to the newly 
 created triangulation edges \nnewtext{(Figure~\ref{fig_elements_image}f)}. 
 These negative space edges are used exclusively for internal
-bracing.  The element's concavities can still be occupied by its neighbors.
+bracing.  The element's concavities can still be occupied by its neighbours.
 The construction of negative space edges is a simpler variant of
 Air Meshes~\cite{Muller2015}, a technique to detect and resolve collisions.}
 
@@ -475,8 +475,8 @@ where
 \begin{packeddescriptions}
 	\item[$k_\mathrm{rpl}$]        is the strength of the repulsion force relative to
 						other forces in the simulation;
-	\item[$n$]        is the number of nearest neighboring meshes to $\bm{x}$; 
-	\item[$\bm{x_{i}}$] is the closest point on the skin of the $i$th neighbor;
+	\item[$n$]        is the number of nearest neighbouring meshes to $\bm{x}$; 
+	\item[$\bm{x_{i}}$] is the closest point on the skin of the $i$th neighbour;
 	\item[$\bm{u}$]  $= \bm{x} - \bm{x_{i}}$; and
 	
 						% mesh from $\bm{x}$.		
@@ -492,7 +492,7 @@ boundaries discover compatible segments and consuming more of the
 remaining negative space.
 
 If $\bm{x}$ lies inside of another element's mesh, then the aggregate repulsion
-force from other neighbors can push $\bm{x}$ further inside and
+force from other neighbours can push $\bm{x}$ further inside and
 worsen the overlap.  If we discover such an overlap, we set
 $\simforce{rpl}$ to $0$ and use the overlap force $\simforce{ovr}$, discussed below, to
 correct it.
@@ -509,7 +509,7 @@ correct it.
 \textbf{Edge Force:} 
 A mesh's edges are treated as longitudinal springs;
 displacements of these springs allow a mesh to deform in response to repulsion forces
-by neighboring meshes.
+by neighbouring meshes.
 An undeformed element mesh provides the rest lengths for all of
 its springs; as mesh vertices move relative to each other, the springs
 attempt to restore these rest lengths.  Let $\bm{x'_{a}}$ and $\bm{x'_{b}}$ be
@@ -552,7 +552,7 @@ to resist severe deformations when subjected to powerful forces.
 \end{wrapfigure}
 \textbf{Overlap Force:}
 Occasionally, a vertex $\bm{x}$ from one mesh can be pushed inside the skin of a
-neighboring mesh.  In such cases, we temporarily disable the repulsion force
+neighbouring mesh.  In such cases, we temporarily disable the repulsion force
 on this vertex
 by setting it to 0, and instead apply an overlap force that attempts to
 eject the intruding vertex.  In particular, every mesh triangle having $\bm{x}$
@@ -684,13 +684,13 @@ at \newtext{$5\Delta t_\mathrm{sim}$} to dissipate extra energy from the system.
 
 %% CSK TODO: verify these measurements.
 
-The repulsion and overlap forces rely on nearest-neighbor queries on the
+The repulsion and overlap forces rely on nearest-neighbour queries on the
 set of all vertices.  We accelerate these queries by storing vertices in a
 uniform spatial subdivision grid that covers the container.  In our
 implementation, cell width and height are $6-10$\% of the larger dimension
 of the grid.  
 %\deadtext{We identify the neighbours of a vertex $\bm{x}$ by considering}
-We define the neighbors of a vertex $\bm{x}$ as
+We define the neighbours of a vertex $\bm{x}$ as
 all vertices in a $3\times 3$ window of cells \newtext{centred} on the cell
 containing $\bm{x}$. 
 %\deadtext{Although this is an approximation, since it can miss 
@@ -734,7 +734,7 @@ same rate, their relative sizes tend to be maintained.
 
 After each iteration of the physics simulation, the element meshes undergo
 a growth step.  If an element mesh has no vertices that lie inside of
-neighboring meshes, it is permitted to grow in this iteration.  A mesh with
+neighbouring meshes, it is permitted to grow in this iteration.  A mesh with
 overlaps may still grow in subsequent iterations, if local changes to the 
 packing open up more negative space.
 This approach produces slight variations in skin offsets in the output packing
@@ -933,8 +933,8 @@ Second, we ensure that salient features are not too close to each other by requi
   \nnewtext
   {
   A packing without the use of shape matching. 
-A few elements are not aligned properly with convex corners: a long thin element is severely deformed in the front horn, 
-and an element cannot emphasize the shape of the back leg properly.}
+Three elements are not aligned properly with convex corners: a long thin element is severely deformed in the front horn, 
+an element cannot emphasize the shape of the back leg properly, and an element cannot extend inside the narrow tail.}
 }
 \centering
 \includegraphics[width=1.0\textwidth]{figures/repulsionpak/rhino_shape_matching_bitmap_2.pdf} 
@@ -1032,7 +1032,7 @@ Adobe Illustrator.  We ran
 our software on a computer with a 2.4 GHz Intel i7-4700HQ processor
 and 16 GB of RAM.  As a post-process, we optionally read packings
 back into Illustrator, fit smooth curves to polygonal paths, and
-apply colors and other visual effects.  Table~\ref{packing_statistics}
+apply colours and other visual effects.  Table~\ref{packing_statistics}
 shows statistics for the results \newtext{in this chapter}.  All results in this
 \newtext{chapter} use \newtext{$\Delta t_\mathrm{sim} = 0.1$}.
 Torsional forces are used only in Figure~\ref{giraffe_penguin_packing},
@@ -1186,7 +1186,7 @@ from upright to upside-down, recreating an illusion in which giraffe heads becom
 We have also experimented with creating tileable packings, as shown
 in Figure~\ref{paisley_packing}.  We seed a central square with elements,
 but also place clones of those elements in all the squares of the
-8-neighborhood around the centre.  These clones track the transformations
+8-neighbourhood around the centre.  These clones track the transformations
 and deformations of their originals, but also exert forces on them during
 simulation, leading to an even, seamless packing in a toroidal domain.
 
@@ -1248,7 +1248,7 @@ The skull's teeth \nnewtext{are} made of manually placed leaf elements.
 The background is created by superimposing several packings.
 The smoothies packing is made of fruit elements arranged inside a smoothie cup.
 \nnewtext{Additionally, a casual user made a packing using RepulsionPak, which was then printed on
-a t-shirt, as shown in Figure~\ref{adobe_packing}.}}
+t-shirts for a fitness club at a tech company, as shown in Figure~\ref{adobe_packing}.}}
 
 
 \begin{figure}
@@ -1274,7 +1274,7 @@ where fruit elements are arranged inside a smoothie cup.
 \caption[A RepulsionPak packing printed on a t-shirt]
 {\label{adobe_packing}
 \nnewtext{
-A RepulsionPak packing printed on a t-shirt (Created by Paul Asente).
+A RepulsionPak packing printed on a t-shirt, created by Paul Asente.
 }
 }
 \end{figure}
@@ -1302,7 +1302,7 @@ A RepulsionPak packing printed on a t-shirt (Created by Paul Asente).
 We presented RepulsionPak, a method to create packings with deformable elements.
 Each element is represented as a
 mass-spring system, allowing it to deform to achieve a better fit with
-its neighbors and the container.
+its neighbours and the container.
 The combination of repulsion forces and controlled deformation
 allows RepulsionPak to create shape compatibilities that
 eliminate the need for a large element library

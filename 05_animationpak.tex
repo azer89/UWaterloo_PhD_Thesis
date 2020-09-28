@@ -124,7 +124,7 @@ We are not aware previous work that fall into this category.
 %minimization~\cite{Kim2002}, and shape descriptors~\cite{Kwan2016}.
 
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/animationpak/lisa_packing.pdf} 
 \caption[An animated packing of copies of Lisa Simpson]
@@ -501,7 +501,7 @@ will grow and consume the container's negative space, while avoiding collisions.
 \caption[A 2D illustration of a guided element]{
 \label{fig_animationpak_guided_element} A 2D illustration of a guided element.
 Slices are depicted as black lines and slice vertices as black dots.
-A spring connects the centermost vertex $\bm{x}$ of a slice $s$ to a target
+A spring connects the \nnewtext{centremost} vertex $\bm{x}$ of a slice $s$ to a target
 point $p$.
 (a) The initial shape of a guided element is a polygonal extrusion.
 (b) The spacetime element deforms but the springs pull it back towards
@@ -581,12 +581,12 @@ for equations used to generate them.
 \newtext
 {
 \textbf{Repulsion forces} allow elements to push away vertices of 
-neighboring elements, inducing deformations and transformations that lead 
+neighbouring elements, inducing deformations and transformations that lead 
 to an even distribution of elements within the container
 (Figure~\ref{fig_animationpak_repulsion_force}).
 Since the simulation operates in the spacetime domain,
 \nnewtext{a given vertex $\bm{x}$ accumulates repulsion forces from points at different time positions on neighbouring elements.}
-To locate these points on neighboring elements that are considered 
+To locate these points on neighbouring elements that are considered 
 nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
 }
@@ -598,7 +598,7 @@ detail in Section~\ref{animationpak_spatial_queries}.
 \caption[An illustration of the repulsion forces]
 {\label{fig_animationpak_repulsion_force} 
 Repulsion forces applied to a vertex $\bm{x}$, 
-allowing the element to deform and move away from a neighboring element.}
+allowing the element to deform and move away from a neighbouring element.}
 \end{figure}
 
 
@@ -627,7 +627,7 @@ Each of the spring type has a different relative strength.
 \newtext
 {
 \textbf{Overlap forces} resolve a vertex penetrating a
-neighboring spacetime element.
+neighbouring spacetime element.
 Overlaps can occur later in the simulation when negative space is 
 limited.  Once we detect a penetration,  
 we temporarily disable the repulsion force on vertex $\bm{x}$, and apply
@@ -733,7 +733,7 @@ and target-point springs.
 
 
 Repulsion and overlap forces rely on being able to find points on
-neighboring elements that are close to a given query vertex.
+neighbouring elements that are close to a given query vertex.
 To find these points, we use each element's
 \textit{envelope}, a triangle mesh implied by the construction in
 Section~\ref{animationpak_spacetime_extrusion}.  Each triangle of the envelope 
@@ -779,7 +779,7 @@ grid cells around a query point
 $\bm{x}$ 
 in which repulsion and overlap forces will be computed.  In the central blue
 region, we check overlaps and compute exact repulsion forces relative to
-closest points on triangles of neighboring elements; in the peripheral
+closest points on triangles of neighbouring elements; in the peripheral
 red region we do not compute overlaps, and repulsion forces are approximated
 using triangle midpoints only.}
 %% \craig{Do we really need this figure?}
@@ -933,11 +933,11 @@ of an animation, as slices compete for shifting negative space
 (Figure~\ref{fig_animationpak_growth}).
 
 \textbf{Stopping Criteria:} We halt the simulation when the space between
-neighboring elements drops below a threshold.  When calculating 
+neighbouring elements drops below a threshold.  When calculating 
 repulsion forces, we find the distance from every slice vertex
-to the closest point in a neighboring element.  The minimum of these
+to the closest point in a neighbouring element.  The minimum of these
 distances over all vertices in an element slice determines that slice's
-closest distance to neighboring elements.  We halt the simulation
+closest distance to neighbouring elements.  We halt the simulation
 when the maximum per-slice distance falls below 0.006 (relative to a normalized
 container size of 1).  That is, we stop when every slice is touching
 (or nearly touching) at least one other element.
@@ -994,7 +994,7 @@ This interpolation process can occasionally lead to small artifacts in
 the animation.  A rendered frame can fall between
 the discretely sampled slices for two elements at an intermediate time
 where physical forces were not computed explicitly.  It is therefore
-possible for neighboring elements to overlap briefly during such intervals.
+possible for neighbouring elements to overlap briefly during such intervals.
 
 \begin{figure*}
 \centering
