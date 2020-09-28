@@ -145,7 +145,7 @@ gear-like meshing of oppositely-rotating copies of Lisa Simpson.}}
 Animosaics by Smith et al.~\cite{Smith2005} \newtext{constructs} animations 
 in which static elements without scripted
 animations follow the motion of an animated container.  Elements are
-placed using \nnewtext{centroidal Area voronoi diagrams (CAVDs)}, 
+placed using \nnewtext{centroidal area Voronoi diagrams (CAVDs)}, 
 and advected frame-to-frame using a choice of methods
 motivated by Gestalt grouping principles.
 As the container's area changes, elements are added and removed as needed,
@@ -585,7 +585,7 @@ neighbouring elements, inducing deformations and transformations that lead
 to an even distribution of elements within the container
 (Figure~\ref{fig_animationpak_repulsion_force}).
 Since the simulation operates in the spacetime domain,
-\nnewtext{a given vertex $\bm{x}$ accumulates repulsion forces from points at different time positions on neighbouring elements.}
+\newtext{a given vertex $\bm{x}$ accumulates repulsion forces from points at different time positions on neighbouring elements.}
 To locate these points on neighbouring elements that are considered 
 nearest, we use a collision grid data structure, described in greater
 detail in Section~\ref{animationpak_spatial_queries}.
@@ -831,12 +831,12 @@ we have to enforce two additional conditions.
 First, all spacetime elements must be present at any time position.
 Second, element slices have to be perpendicular to the time axis.
 In Figure~\ref{fig_monotonicity}, 
-we show two examples of a \nnewtext{acceptable and unacceptable} configurations of a spacetime element.
+we show \nnewtext{examples} of a \nnewtext{acceptable and unacceptable} configurations of a spacetime element.
 }
 
 \newtext{
 We enforce two mandatory geometric constraints and 
-an optional constraint applied on element slices.  Each of the following
+an optional constraint on element slices.  Each of the following
 constraints is reapplied after \nnewtext{every} physical simulation step described above.
 }
 
@@ -1150,8 +1150,8 @@ In the rendered 2D animation, the elements have a subtle shrinking-and-expanding
 The composition can also tile horizontally, which can be seen in the supplemental video.
 }
 
-Figure~\ref{fig_animationpak_lion}a is a static packing of a \newtext{lion's mane} created by an artist and
-used as an example in FLOWPAK (Chapter~\ref{chapter_flowpak}).  In Figure~\ref{fig_animationpak_lion}b,
+Figure~\ref{fig_animationpak_lion}a is a static packing of a \newtext{lion's mane} created by an artist \nnewtext{and
+used as an example of flow-based packings (Chapter~\ref{chapter_introduction}) Figure~\ref{fig_dog_flow}}.  In Figure~\ref{fig_animationpak_lion}b,
 we reproduce it with animated elements for the mane.
 The orientations of elements follow a vector field inside
 the container, and are maintained during the animation by 
@@ -1209,7 +1209,7 @@ are 100 times stronger than in (b).  The resulting packing has larger
 pockets of negative space, but the accompanying video shows that the
 animation is smoother.  The packing in (b) is tighter, but the elements
 must move frantically to maintain that tightness.
-\nnewtext{The visualization in (c) shows the trajectories of two identical elements in both cases, 
+\newtext{The visualization in (c) shows the trajectories of two identical elements in both cases, 
 which makes it clear that weak time springs cause more frantic movements.}
 
 
