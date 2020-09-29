@@ -148,7 +148,7 @@ to our system:
 %the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
 The first three inputs are combined into a single diagram, where they are
 distinguished by their colours; see
-the left and right drawings in Figure~\ref{fig_lion_unicorn}.
+\nnewtext{the drawing in Figure~\ref{fig_flowpak_pipeline}(1)}.
 The goal of our algorithm is to fill each target container with elements,
 trying to satisfy several guiding principles:
 
@@ -339,13 +339,6 @@ Note that the \newtext{$s_\mathrm{stop}$} distance test combined with the \newte
 test imply that many attempts to form streamlines will stop immediately,
 especially as the container fills with streamlines.
 
-Figure~\ref{streamline_tracing} shows the creation process, and 
-Algorithm~\ref{tracing_streamlines} shows the pseudocode.
-The sort function \textsc{Sort}$(P)$ orders the points in $P$ according to their distance from the
-boundary $T$ and the directional guides in $D$, with closer points first and equally distant
-points ordered randomly. Because the initial points are all on $T$ or on a path in $D$, their
-sort value is zero, and they will be processed before any derived points. 
-
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/streamline_tracing.pdf}
@@ -356,6 +349,15 @@ on a directional guide or the container boundary.  Subsequent streamlines begin
 on the container boundary, a directional guide, or at a point that is 
 \newtext{$s_\mathrm{gap}$} away from a previous streamline.}
 \end{figure}
+
+Figure~\ref{streamline_tracing} shows the creation process, and 
+Algorithm~\ref{tracing_streamlines} shows the pseudocode.
+The sort function \textsc{Sort}$(P)$ orders the points in $P$ according to their distance from the
+boundary $T$ and the directional guides in $D$, with closer points first and equally distant
+points ordered randomly. Because the initial points are all on $T$ or on a path in $D$, their
+sort value is zero, and they will be processed before any derived points. 
+
+
 
 \begin{algorithm}
 \caption{Tracing Streamlines} 
@@ -680,6 +682,7 @@ can also choose to reflect the element across its spine, along its spine, or bot
 (b) The dashed red line is the grown blob, which accommodates an enlarged element.}
 
 \bigskip
+\bigskip
 % ROTATING OR FLIPPING
 \includegraphics[width=1.0\textwidth]{figures/flowpak/rotate_ornament.pdf}
 \caption[Rotating an element]
@@ -687,6 +690,7 @@ can also choose to reflect the element across its spine, along its spine, or bot
 \newtext{Left}: rotated versions of the original element. 
          The best rotation angle is chosen via least squares matching.
          \newtext{Right}: original, rotated, and enlarged versions of an element.}
+\bigskip
 \bigskip
 
 \includegraphics[width=1.0\textwidth]{figures/flowpak/flip.pdf}
@@ -802,15 +806,17 @@ This way, we can achieve a better configuration \nnewtext{with less iterative re
 \includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
 \caption[Packings of lion and unicorn]
 {\label{fig_lion_unicorn} 
-Ornamental packings of a lion and a unicorn.
+\nnewtext{Ornamental packings of a lion and a unicorn.
 The diagram next to each animal shows a set of four ornamental
 elements used in the packing (top) and the annotated
-container regions (bottom).  Each ornamental element has a
-red spine that is used to deform it along a streamline.  In
-the containers, black curves represent boundaries, red
-curves with arrows represent directional guides, and green
-curves are fixed elements copied into the final design.
-The colours in the final rendering were added manually. }
+container regions (bottom).  
+%Each ornamental element has a
+%red spine that is used to deform it along a streamline.  In
+%the containers, black curves represent boundaries, red
+%curves with arrows represent directional guides, and green
+%curves are fixed elements copied into the final design.
+The colours in the final rendering were added manually.}
+}
 \end{figure}
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
@@ -821,7 +827,8 @@ The colours in the final rendering were added manually. }
 {\label{result_rhino}
 A packing of a rhinoceros.  Simple teardrop-shaped 
 elements lead to variety in size and curvature.}
-\bigskip
+\end{figure}
+\begin{figure}
 \includegraphics[width=1.0\textwidth]{figures/flowpak/bear_leaves.pdf} %BEAR LEAVES
 \caption[A packing of a bear with leaf elements]
 {\label{result_bear_leaves}
@@ -841,6 +848,7 @@ elements lead to variety in size and curvature.}
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
 \begin{figure}
 \centering
+\vspace{-20pt}
 \includegraphics[width=1.0\textwidth]{figures/flowpak/dog_flower.pdf}
 \caption[A packing of a dog]
 {A packing of a dog. The fixed elements, shown as green
@@ -865,6 +873,9 @@ elements lead to variety in size and curvature.}
 \end{figure}
 
 %FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+\makeatletter % bruh
+\setlength{\@fptop}{0pt} % bruh
+\makeatother % bruh
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/bird_square.pdf}
