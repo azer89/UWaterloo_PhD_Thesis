@@ -2,12 +2,123 @@
 % Bibliography of key references for "LaTeX for Thesis and Large Documents"
 % For use with BibTeX
 
+@inproceedings{Kaplan2010,
+  author      = {Craig S. Kaplan},
+  title       = {{Curve Evolution Schemes for Parquet Deformations}},
+  pages       = {95--102},
+  booktitle   = {Proceedings of Bridges 2010: Mathematics, Music, Art,
+                 Architecture, Culture},
+  year        = {2010},
+  isbn        = {978-0-98460-420-3},
+  issn        = {1099-6702},
+  publisher   = {Tessellations Publishing}
+}
+
+@article{Schiftner2009,
+author = {Schiftner, Alexander and H\"{o}binger, Mathias and Wallner, Johannes and Pottmann, Helmut},
+title = {{Packing Circles and Spheres on Surfaces}},
+year = {2009},
+issue_date = {December 2009},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+volume = {28},
+number = {5},
+issn = {0730-0301},
+url = {https://doi.org/10.1145/1618452.1618485},
+doi = {10.1145/1618452.1618485},
+journal = {ACM Transactions on Graphics},
+month = dec,
+pages = {1–8},
+numpages = {8},
+keywords = {freeform surface, computational differential geometry, supporting structures, circle packing, sphere packing, computational conformal geometry, architectural geometry}
+}
+
+@inproceedings{Kazi2014,
+author = {Kazi, Rubaiat Habib and Chevalier, Fanny and Grossman, Tovi and Zhao, Shengdong and Fitzmaurice, George},
+title = {{Draco: Bringing Life to Illustrations with Kinetic Textures}},
+year = {2014},
+isbn = {9781450324731},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/2556288.2556987},
+doi = {10.1145/2556288.2556987},
+pages = {351–360},
+numpages = {10},
+keywords = {sketching, animation, direct manipulation, kinetic textures},
+location = {Toronto, Ontario, Canada},
+series = {CHI '14}
+}
+
+
+
+﻿@Article{Koizumi2011,
+author={Koizumi, Hiroshi
+and Sugihara, Kokichi},
+title={{Maximum Eigenvalue Problem for Escherization}},
+journal={Graphs and Combinatorics},
+year={2011},
+month={Mar},
+day={17},
+volume={27},
+number={3},
+pages={431},
+issn={1435-5914},
+doi={10.1007/s00373-011-1022-5},
+url={https://doi.org/10.1007/s00373-011-1022-5}
+}
+
+@inproceedings{Wei2009,
+  TITLE = {{State of the Art in Example-based Texture Synthesis}},
+  AUTHOR = {Wei, Li-Yi and Lefebvre, Sylvain and Kwatra, Vivek and Turk, Greg},
+  URL = {https://hal.inria.fr/inria-00606853},
+  BOOKTITLE = {{Eurographics 2009, State of the Art Report, EG-STAR}},
+  ADDRESS = {Munich, Germany},
+  PUBLISHER = {{Eurographics Association}},
+  PAGES = {93-117},
+  YEAR = {2009},
+  MONTH = Mar,
+  KEYWORDS = {texture synthesis ; texture mapping ; pixel ; patch ; optimization ; surface ; video ; flow ; fluids ; parallel computing ; real-time rendering ; solid ; globally varying ; inverse synthesis ; super-resolution ; geometry},
+  PDF = {https://hal.inria.fr/inria-00606853/file/texture_synthesis_eg09star.pdf},
+  HAL_ID = {inria-00606853},
+  HAL_VERSION = {v1},
+}
+
+@Article{Sugihara2009,
+  author    = {Sugihara, Kokichi},
+  journal   = {Journal of Mathematics and the Arts},
+  title     = {{Computer-Aided Generation of Escher-like Sky and Water Tiling Patterns}},
+  year      = {2009},
+  number    = {4},
+  pages     = {195-207},
+  volume    = {3},
+  doi       = {10.1080/17513470903185626},
+  eprint    = {https://doi.org/10.1080/17513470903185626},
+  publisher = {Taylor & Francis},
+  url       = {https://doi.org/10.1080/17513470903185626},
+}
+
+
+﻿@Article{Nagata2020,
+author={Nagata, Yuichi
+and Imahori, Shinji},
+title={{An Efficient Exhaustive Search Algorithm for the Escherization Problem}},
+journal={Algorithmica},
+year={2020},
+month={Sep},
+day={01},
+volume={82},
+number={9},
+pages={2502-2534},
+issn={1432-0541},
+doi={10.1007/s00453-020-00695-6},
+url={https://doi.org/10.1007/s00453-020-00695-6}
+}
+
 @INCOLLECTION{Isenberg2013,
   author      = {Tobias Isenberg},
   title       = {{Evaluating and Validating Non-Photorealistic and Illustrative Rendering}},
   booktitle   = {Image and Video based Artistic Stylisation},
   series      = {Computational Imaging and Vision},
-  editor      = {Paul Rosin and John Collomosse},
   year        = {2013},
   chapter     = {15},
   volume      = {42},
@@ -101,14 +212,16 @@
   url       = {https://books.google.ca/books?id=GCRI8Q-RUEkC},
 }
 
-@ARTICLE{Lin2018,
-  author={Shih-Syun {Lin} and Charles C. {Morace} and Chao-Hung {Lin} and Li-Fong {Hsu} and Tong-Yee {Lee}},
-  journal={IEEE Transactions on Visualization and Computer Graphics}, 
-  title={{Generation of Escher Arts with Dual Perception}}, 
-  year={2018},
-  volume={24},
-  number={2},
-  pages={1103-1113},}
+@Article{Lin2018,
+  author  = {Shih-Syun {Lin} and Charles C. {Morace} and Chao-Hung {Lin} and Li-Fong {Hsu} and Tong-Yee {Lee}},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  title   = {{Generation of Escher Arts with Dual Perception}},
+  year    = {2018},
+  number  = {2},
+  pages   = {1103-1113},
+  volume  = {24},
+  doi     = {10.1109/tvcg.2017.2660488},
+}
 
 @inproceedings{Abdrashitov2014,
  author = {Abdrashitov, Rinat and Guy, Emilie and Yao, JiaXian and Singh, Karan},
@@ -191,7 +304,7 @@
 @article{Loi2017,
  author = {Loi, Hugo and Hurtut, Thomas and Vergne, Romain and Thollot, Joelle},
  title = {{Programmable 2D Arrangements for Element Texture Design}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {July 2017},
  volume = {36},
  number = {4},
@@ -344,7 +457,7 @@ number = {4},
 issn = {0730-0301},
 url = {https://doi.org/10.1145/3306346.3322989},
 doi = {10.1145/3306346.3322989},
-journal = {ACM Trans. Graph.},
+journal = {ACM Transactions on Graphics},
 month = jul,
 articleno = {82},
 numpages = {13},
@@ -371,14 +484,14 @@ numpages = {15},
 keywords = {synthesis, pattern, tile, analysis, appearance, rapid manufacturing, topology, user interface, structure, design}
 }
 
-@INPROCEEDINGS{Aliy2013,
-  author={Maya Alsheh {Aliy} and Johanne {Seguin} and Aur\'{e}lie {Fischer} and Nathalie {Mignet} and Laurent {Wendling} and Thomas {Hurtut}},
-  booktitle={2013 8th International Symposium on Image and Signal Processing and Analysis (ISPA)}, 
-  title={{Comparison of the Spatial Organization in Colorectal Tumors using Second-Order Statistics and Functional ANOVA}}, 
-  year={2013},
-  volume={},
-  number={},
-  pages={257-261},}
+@InProceedings{Aliy2013,
+  author    = {Maya Alsheh {Aliy} and Johanne {Seguin} and Aur\'{e}lie {Fischer} and Nathalie {Mignet} and Laurent {Wendling} and Thomas {Hurtut}},
+  booktitle = {2013 8th International Symposium on Image and Signal Processing and Analysis (ISPA)},
+  title     = {{Comparison of the Spatial Organization in Colorectal Tumors using Second-Order Statistics and Functional ANOVA}},
+  year      = {2013},
+  pages     = {257-261},
+  doi       = {10.1109/ispa.2013.6703749},
+}
 
 @inproceedings{Secord2002,
 author = {Secord, Adrian},
@@ -400,7 +513,7 @@ series = {NPAR ’02}
 @Article{Chen2016,
   author     = {Chen, Weikai and Zhang, Xiaolong and Xin, Shiqing and Xia, Yang and Lefebvre, Sylvain and Wang, Wenping},
   title      = {{Synthesis of Filigrees for Digital Fabrication}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2016},
   volume     = {35},
   number     = {4},
@@ -421,7 +534,7 @@ series = {NPAR ’02}
 @Article{Zehnder2016,
   author     = {Zehnder, Jonas and Coros, Stelian and Thomaszewski, Bernhard},
   title      = {{Designing Structurally-Sound Ornamental Curve Networks}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2016},
   volume     = {35},
   number     = {4},
@@ -442,7 +555,7 @@ series = {NPAR ’02}
 @Article{Zou2016,
   author     = {Zou, Changqing and Cao, Junjie and Ranaweera, Warunika and Alhashim, Ibraheem and Tan, Ping and Sheffer, Alla and Zhang, Hao},
   title      = {{Legible Compact Calligrams}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2016},
   volume     = {35},
   number     = {4},
@@ -474,15 +587,16 @@ location = {San Diego, California},
 series = {SCA ’07}
 }
 
-
-@ARTICLE{Huang2014,
-  author={Zhe {Huang} and Jiang {Wang} and Hongbo {Fu} and Rynson W.H. {Lau}},
-  journal={IEEE Transactions on Visualization and Computer Graphics}, 
-  title={{Structured Mechanical Collage}}, 
-  year={2014},
-  volume={20},
-  number={7},
-  pages={1076-1082},}
+@Article{Huang2014,
+  author  = {Zhe {Huang} and Jiang {Wang} and Hongbo {Fu} and Rynson W.H. {Lau}},
+  journal = {IEEE Transactions on Visualization and Computer Graphics},
+  title   = {{Structured Mechanical Collage}},
+  year    = {2014},
+  number  = {7},
+  pages   = {1076-1082},
+  volume  = {20},
+  doi     = {10.1109/tvcg.2014.2303087},
+}
 
 @InProceedings{Gal2007B,
   author    = {Gal, Ran and Sorkine, Olga and Popa, Tiberiu and Sheffer, Alla and Cohen-Or, Daniel},
@@ -547,21 +661,23 @@ series = {SCA ’07}
 }
 
 @InProceedings{Barla2006,
-  author       = "Barla, Pascal and Breslav, Simon and Thollot, Jo{\"e}lle and Sillion, Fran\c{c}ois and Markosian, Lee",
-  title        = {{Stroke Pattern Analysis and Synthesis}},
-  booktitle    = "Computer Graphics Forum (Proc. of Eurographics 2006)",
-  volume       = "25",
-  year         = "2006",
-  url          = "http://maverick.inria.fr/Publications/2006/BBTSM06"
+  author    = {Barla, Pascal and Breslav, Simon and Thollot, Jo{\"e}lle and Sillion, Fran\c{c}ois and Markosian, Lee},
+  booktitle = {Computer Graphics Forum (Proc. of Eurographics 2006)},
+  title     = {{Stroke Pattern Analysis and Synthesis}},
+  year      = {2006},
+  volume    = {25},
+  doi       = {10.1111/j.1467-8659.2006.00986.x},
+  url       = {http://maverick.inria.fr/Publications/2006/BBTSM06},
 }
 
-@article{Kalogerakis2012,
-  Author    = {Evangelos Kalogerakis and Siddhartha Chaudhuri and Daphne Koller and Vladlen Koltun},
-  Title     = {A {P}robabilistic {M}odel of {C}omponent-{B}ased {S}hape {S}ynthesis},
-  Journal   = {ACM Transactions on Graphics},
-  Volume    = {31},
-  Number    = {4},
-  Year = {2012},
+@Article{Kalogerakis2012,
+  author  = {Evangelos Kalogerakis and Siddhartha Chaudhuri and Daphne Koller and Vladlen Koltun},
+  journal = {ACM Transactions on Graphics},
+  title   = {A {P}robabilistic {M}odel of {C}omponent-{B}ased {S}hape {S}ynthesis},
+  year    = {2012},
+  number  = {4},
+  volume  = {31},
+  doi     = {10.1145/2185520.2185551},
 }
 
 @article {Baxter2006,
@@ -574,14 +690,15 @@ ISSN = {1467-8659},
 DOI = {10.1111/j.1467-8659.2006.00967.x}
 }
 
-@article{Risser2010,
-    author = {Eric Risser and Charles Han and Rozenn Dahyot and Eitan Grinspun},
-    title = {{Synthesizing Structured Image Hybrids}},
-    journal = {ACM Transactions on Graphics (Proceedings of SIGGRAPH 2010)},
-    year = {2010},
-    volume = {29},
-    number = {4},
-    pages = {85:1--85:6}
+@Article{Risser2010,
+  author  = {Eric Risser and Charles Han and Rozenn Dahyot and Eitan Grinspun},
+  journal = {ACM Transactions on Graphics (Proceedings of SIGGRAPH 2010)},
+  title   = {{Synthesizing Structured Image Hybrids}},
+  year    = {2010},
+  number  = {4},
+  pages   = {85:1--85:6},
+  volume  = {29},
+  doi     = {10.1145/1833349.1778822},
 }
 
 @inproceedings{Hurtut2012,
@@ -605,7 +722,7 @@ series = {SA '12}
 @Article{Lu2014,
   author     = {Lu, Jingwan and Barnes, Connelly and Wan, Connie and Asente, Paul and Me\v{c}h, Radom\'{\i}r and Finkelstein, Adam},
   title      = {{{DecoBrush}: Drawing Structured Decorative Patterns by Example}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2014},
   volume     = {33},
   number     = {4},
@@ -626,7 +743,7 @@ series = {SA '12}
 @Article{Guerrero2016,
  author = {Guerrero, Paul and Bernstein, Gilbert and Li, Wilmot and Mitra, Niloy J.},
  title = {{{PATEX}: Exploring Pattern Variations}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {July 2016},
  volume = {35},
  number = {4},
@@ -702,15 +819,14 @@ DOI = {10.1111/1467-8659.00699}
  keywords = {NPR, by-example synthesis, vector texture synthesis},
 } 
 
-
-
-@article{Ijiri2008,
-  title={{An Example-Based Procedural System for Element Arrangement}},
-  author={Takashi Ijiri and Radom{\'i}r Me\v{c}h and Takeo Igarashi and Gavin S. P. Miller},
-  journal={Computer Graphics Forum},
-  year={2008},
-  volume={27},
-  pages={429-436}
+@Article{Ijiri2008,
+  author  = {Takashi Ijiri and Radom{\'i}r Me\v{c}h and Takeo Igarashi and Gavin S. P. Miller},
+  journal = {Computer Graphics Forum},
+  title   = {{An Example-Based Procedural System for Element Arrangement}},
+  year    = {2008},
+  pages   = {429-436},
+  volume  = {27},
+  doi     = {10.1111/j.1467-8659.2008.01140.x},
 }
 
 @book{Gombrich,
@@ -724,7 +840,7 @@ DOI = {10.1111/1467-8659.00699}
 @Article{Kwan2016,
   author     = {Kwan, Kin Chung and Sinn, Lok Tsun and Han, Chu and Wong, Tien-Tsin and Fu, Chi-Wing},
   title      = {{Pyramid of Arclength Descriptor for Generating Collage of Shapes}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2016},
   volume     = {35},
   number     = {6},
@@ -745,7 +861,7 @@ DOI = {10.1111/1467-8659.00699}
 @article{Bouaziz2014,
  author = {Bouaziz, Sofien and Martin, Sebastian and Liu, Tiantian and Kavan, Ladislav and Pauly, Mark},
  title = {{Projective Dynamics: Fusing Constraint Projections for Fast Simulation}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {July 2014},
  volume = {33},
  number = {4},
@@ -786,7 +902,7 @@ DOI = {10.1111/1467-8659.00699}
 @article{Chen2017,
    author = {Chen, Weikai and Ma, Yuexin and Lefebvre, Sylvain and Xin, Shiqing and Mart\'{\i}nez, Jon\`{a}s and Wang, Wenping},
    title = {{Fabricable Tile Decors}},
-   journal = {ACM Trans. Graph.},
+   journal = {ACM Transactions on Graphics},
    issue_date = {November 2017},
    volume = {36},
    number = {6},
@@ -915,14 +1031,16 @@ month={},}
  keywords = {panoramas, video textures, video-based rendering},
 } 
 
-@ARTICLE{Achanta2012,
-  author={Radhakrishna {Achanta} and Appu {Shaji} and Kevin {Smith} and Aurelien {Lucchi} and Pascal {Fua} and Sabine {S\"{u}sstrunk}},
-  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence}, 
-  title={{SLIC Superpixels Compared to State-of-the-Art Superpixel Methods}}, 
-  year={2012},
-  volume={34},
-  number={11},
-  pages={2274-2282},}
+@Article{Achanta2012,
+  author  = {Radhakrishna {Achanta} and Appu {Shaji} and Kevin {Smith} and Aurelien {Lucchi} and Pascal {Fua} and Sabine {S\"{u}sstrunk}},
+  journal = {IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  title   = {{SLIC Superpixels Compared to State-of-the-Art Superpixel Methods}},
+  year    = {2012},
+  number  = {11},
+  pages   = {2274-2282},
+  volume  = {34},
+  doi     = {10.1109/tpami.2012.120},
+}
 
 @Article{Doyle2019,
  title                = {{Automated Pebble Mosaic Stylization of Images}},
@@ -968,7 +1086,7 @@ DOI = {10.2312/exp.20191084}
 @article{Muller2015,
  author = {M\"{u}ller, Matthias and Chentanez, Nuttapong and Kim, Tae-Yong and Macklin, Miles},
  title = {{Air Meshes for Robust Collision Handling}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {August 2015},
  volume = {34},
  number = {4},
@@ -1039,7 +1157,6 @@ DOI = {10.2312/exp.20191084}
   publisher = {Springer Vienna},
   year      = {1997},
   author    = {Jobard, Bruno and Lefer, Wilfrid},
-  editor    = {Lefer, Wilfrid and Grave, Michel},
   address   = {Vienna},
   booktitle = {Visualization in Scientific Computing '97: Proceedings of the Eurographics Workshop in Boulogne-sur-Mer France, April 28--30, 1997},
   doi       = {10.1007/978-3-7091-6876-9_5},
@@ -1073,7 +1190,6 @@ DOI = {10.2312/exp.20191084}
   booktitle = {Graphics Gems},
   publisher = {Academic Press Professional, Inc.},
   year      = {1990},
-  editor    = {Glassner, Andrew S.},
   pages     = {612--626},
   address   = {San Diego, CA, USA},
   acmid     = {90941},
@@ -1109,20 +1225,19 @@ DOI = {10.2312/exp.20191084}
   year         = {2014},
 }
 
-
-@article{Dalstein2015,
- author = {Dalstein, Boris and Ronfard, R\'emi and van de Panne, Michiel},
- title = {{Vector Graphics Animation with Time-Varying Topology}},
- journal = {ACM Trans. Graph.},
- volume = {34},
- number = {4},
- month = jul,
- year = {2015},
+@Article{Dalstein2015,
+  author  = {Dalstein, Boris and Ronfard, R\'emi and van de Panne, Michiel},
+  journal = {ACM Transactions on Graphics},
+  title   = {{Vector Graphics Animation with Time-Varying Topology}},
+  year    = {2015},
+  month   = jul,
+  number  = {4},
+  volume  = {34},
+  doi     = {10.1145/2766913},
 }
 
 @incollection{Ericson2005,
 title = "{{Chapter 5: {B}asic Primitive Tests}}",
-editor = "Christer Ericson",
 booktitle = "{{Real-Time Collision Detection}}",
 publisher = "Morgan Kaufmann",
 address = "San Francisco",
@@ -1168,11 +1283,11 @@ author = "Christer Ericson"
 }
 
 @Book{Rosin2012,
-  title     = {{Image and Video-Based Artistic Stylization}},
   publisher = {Springer Publishing Company, Incorporated},
+  title     = {{Image and Video-Based Artistic Stylization}},
   year      = {2012},
-  editor    = {Rosin, Paul and Collomosse, John},
   isbn      = {1447145186, 9781447145189},
+  doi       = {10.1007/978-1-4471-4519-6},
 }
 
 @Misc{Adobe2016,
@@ -1192,7 +1307,7 @@ author = "Christer Ericson"
 @Article{Reinert2013,
   author     = {Reinert, Bernhard and Ritschel, Tobias and Seidel, Hans-Peter},
   title      = {{Interactive By-Example Design of Artistic Packing Layouts}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2013},
   volume     = {32},
   number     = {6},
@@ -1213,7 +1328,7 @@ author = "Christer Ericson"
 @Article{Peng2014,
   author     = {Peng, Chi-Han and Yang, Yong-Liang and Wonka, Peter},
   title      = {{Computing Layouts with Deformable Templates}},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   year       = {2014},
   volume     = {33},
   number     = {4},
@@ -1286,13 +1401,12 @@ author = "Christer Ericson"
 
 @InProceedings{Ma2011,
   author    = {Ma, Chongyang and Wei, Li-Yi and Tong, Xin},
-  booktitle = {SIGGRAPH '11},
   title     = {{Discrete Element Textures}},
   year      = {2011},
   address   = {New York, NY, USA},
   pages     = {62:1--62:10},
   publisher = {ACM},
-  series    = {SIGGRAPH '11},
+  series    = {{SIGGRAPH} '11},
   acmid     = {1964957},
   articleno = {62},
   doi       = {10.1145/1964921.1964957},
@@ -1315,7 +1429,7 @@ number = {4},
 issn = {0730-0301},
 url = {https://doi.org/10.1145/2461912.2461921},
 doi = {10.1145/2461912.2461921},
-journal = {ACM Trans. Graph.},
+journal = {ACM Transactions on Graphics},
 month = jul,
 articleno = {90},
 numpages = {10},
@@ -1353,7 +1467,7 @@ number = {6},
 issn = {0730-0301},
 url = {https://doi.org/10.1145/2816795.2818087},
 doi = {10.1145/2816795.2818087},
-journal = {ACM Trans. Graph.},
+journal = {ACM Transactions on Graphics},
 month = oct,
 articleno = {213},
 numpages = {12},
@@ -1464,7 +1578,7 @@ keywords = "Mathematical modeling, Cutting and packing, Optimization, Phi-functi
 @Article{Jacobson2011,
  author = {Jacobson, Alec and Baran, Ilya and Popovi\'{c}, Jovan and Sorkine, Olga},
  title = {{Bounded Biharmonic Weights for Real-Time Deformation}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {July 2011},
  volume = {30},
  number = {4},
@@ -1486,7 +1600,6 @@ keywords = "Mathematical modeling, Cutting and packing, Optimization, Phi-functi
 @InProceedings{Igarashi2005,
   author    = {Igarashi, Takeo and Moscovich, Tomer and Hughes, John F.},
   title     = {{As-Rigid-As-Possible Shape Manipulation}},
-  booktitle = {SIGGRAPH '05},
   year      = {2005},
   series    = {SIGGRAPH '05},
   pages     = {1134--1141},
@@ -1529,7 +1642,7 @@ keywords = "Mathematical modeling, Cutting and packing, Optimization, Phi-functi
 author = {Liu, Songrun and Jacobson, Alec and Gingold, Yotam},
  title = {{Skinning Cubic {B}\'{e}zier Splines and {C}atmull-{C}lark
     Subdivision Surfaces}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {November 2014},
  volume = {33},
  number = {6},
@@ -1551,7 +1664,7 @@ BibTeX | EndNote | ACM Ref
 @article{Jiang2017,
  author = {Jiang, Zhongshi and Schaefer, Scott and Panozzo, Daniele},
  title = {{Simplicial Complex Augmentation Framework for Bijective Maps}},
- journal = {ACM Trans. Graph.},
+ journal = {ACM Transactions on Graphics},
  issue_date = {November 2017},
  volume = {36},
  number = {6},
@@ -1600,6 +1713,7 @@ BibTeX | EndNote | ACM Ref
   number    = {8},
   pages     = {789--805},
   volume    = {14},
+  doi       = {10.1109/34.149591},
   publisher = {IEEE},
 }
 
@@ -1609,6 +1723,7 @@ BibTeX | EndNote | ACM Ref
   title     = {{Differential Geometry of Curves and Surfaces}},
   year      = {2015},
   isbn      = {9781482247343},
+  doi       = {10.1201/b18913},
 }
 
 @inproceedings{Joshi2012,
@@ -1645,26 +1760,28 @@ series = {UIST ’12}
  publisher = {Canadian Human-Computer Communications Society / Soci{\'e}t{\'e} canadienne du dialogue humain-machine},
 }
 
-@article{Cagan2002,
-  title={{A Survey of Computational Approaches to Three-Dimensional Layout Problems}},
-  author={Cagan, Jonathan and Shimada, Kenji and Yin, Sun},
-  journal={Computer-Aided Design},
-  volume={34},
-  number={8},
-  pages={597--611},
-  year={2002},
-  publisher={Elsevier}
+@Article{Cagan2002,
+  author    = {Cagan, Jonathan and Shimada, Kenji and Yin, Sun},
+  journal   = {Computer-Aided Design},
+  title     = {{A Survey of Computational Approaches to Three-Dimensional Layout Problems}},
+  year      = {2002},
+  number    = {8},
+  pages     = {597--611},
+  volume    = {34},
+  doi       = {10.1016/s0010-4485(01)00109-9},
+  publisher = {Elsevier},
 }
 
-@article{Byholm2009,
-  title={{Effective Packing of 3-Dimensional Voxel-Based Arbitrarily Shaped Particles}},
-  author={Byholm, Thomas and Toivakka, Martti and Westerholm, Jan},
-  journal={Powder Technology},
-  volume={196},
-  number={2},
-  pages={139--146},
-  year={2009},
-  publisher={Elsevier}
+@Article{Byholm2009,
+  author    = {Byholm, Thomas and Toivakka, Martti and Westerholm, Jan},
+  journal   = {Powder Technology},
+  title     = {{Effective Packing of 3-Dimensional Voxel-Based Arbitrarily Shaped Particles}},
+  year      = {2009},
+  number    = {2},
+  pages     = {139--146},
+  volume    = {196},
+  doi       = {10.1016/j.powtec.2009.07.013},
+  publisher = {Elsevier},
 }
 
 @article{Ma2018,
@@ -1763,7 +1880,7 @@ series = {SCA ’03}
 
 @Article{Ho2010,
   author     = {Ho, Edmond S. L. and Komura, Taku and Tai, Chiew-Lan},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   title      = {{Spatial Relationship Preserving Character Motion Adaptation}},
   year       = {2010},
   issn       = {0730--0301},
@@ -1872,18 +1989,19 @@ month={June},}
  address = {Berlin, Heidelberg},
 } 
 
-@inproceedings{Kim2012,
-author = {Kim, Manmyung and Hwang, Youngseok and Hyun, Kyunglyul and Lee, Jehee},
-title = {{Tiling Motion Patches}},
-year = {2012},
-isbn = {9783905674378},
-publisher = {Eurographics Association},
-address = {Goslar, DEU},
-booktitle = {Proceedings of the ACM SIGGRAPH/Eurographics Symposium on Computer Animation},
-pages = {117--126},
-numpages = {10},
-location = {Lausanne, Switzerland},
-series = {SCA ’12}
+@InProceedings{Kim2012,
+  author    = {Kim, Manmyung and Hwang, Youngseok and Hyun, Kyunglyul and Lee, Jehee},
+  booktitle = {Proceedings of the ACM SIGGRAPH/Eurographics Symposium on Computer Animation},
+  title     = {{Tiling Motion Patches}},
+  year      = {2012},
+  address   = {Goslar, DEU},
+  pages     = {117--126},
+  publisher = {Eurographics Association},
+  series    = {SCA ’12},
+  doi       = {10.1109/tvcg.2013.80},
+  isbn      = {9783905674378},
+  location  = {Lausanne, Switzerland},
+  numpages  = {10},
 }
   
 @ARTICLE{Hu2016,
@@ -1937,7 +2055,7 @@ year = {2011}
 
 @Article{Igarashi2005a,
   author     = {Igarashi, Takeo and Moscovich, Tomer and Hughes, John F.},
-  journal    = {ACM Trans. Graph.},
+  journal    = {ACM Transactions on Graphics},
   title      = {{As-Rigid-As-Possible Shape Manipulation}},
   year       = {2005},
   issn       = {0730-0301},
@@ -1966,26 +2084,24 @@ year = {2011}
 	issn = {0730-0301},
 	url = {https://doi.org/10.1145/2185520.2185592},
 	doi = {10.1145/2185520.2185592},
-	journal = {ACM Trans. Graph.},
+	journal = {ACM Transactions on Graphics},
 	month = jul,
 	articleno = {Article 96},
 	numpages = {7},
 	keywords = {physically based animation, cloth simulation, collision detection, computational geometry}
 }
 
-
-
-@inproceedings{Hsu2020,
-	author = {Hsu, Chen-Yuan and Wei, Li-Yi and You, Lihua and Zhang, Jian Jun},
-	title = {{Autocomplete Element Fields}},
-	year = {2020},
-	publisher = {Association for Computing Machinery},
-	address = {New York, NY, USA},
-	booktitle = {Proceedings of the 2020 CHI 
-		Conference on Human Factors in Computing Systems},
-	articleno = {Paper 121},
-	numpages = {13},
-	series = {CHI ’20}
+@InProceedings{Hsu2020,
+  author    = {Hsu, Chen-Yuan and Wei, Li-Yi and You, Lihua and Zhang, Jian Jun},
+  booktitle = {Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems},
+  title     = {{Autocomplete Element Fields}},
+  year      = {2020},
+  address   = {New York, NY, USA},
+  publisher = {Association for Computing Machinery},
+  series    = {CHI ’20},
+  articleno = {Paper 121},
+  doi       = {10.1145/3313831.3376248},
+  numpages  = {13},
 }
 
 @Article{Maciejewski2008,

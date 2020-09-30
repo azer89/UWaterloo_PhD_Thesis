@@ -104,6 +104,8 @@
 % and author as they appear in the properties of the PDF document.
 % Use the "hyperref" package 
 % N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+%\RequirePackage{doi}
+%\usepackage{hyperref}
 \usepackage[pdftex,pagebackref=false]{hyperref} % with basic options
         % N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
 
@@ -461,6 +463,7 @@ description={Random vector: a location in n-dimensional Cartesian space, where e
 
 % The following statement selects the style to use for references.  It controls the sort order of the entries in the bibliography and also the formatting for the in-text labels.
 %\bibliographystyle{plain}
+%alphaurl
 \bibliographystyle{alpha}
 % This specifies the location of the file containing the bibliographic information.  
 % It assumes you're using BibTeX to manage your references (if not, why not?).

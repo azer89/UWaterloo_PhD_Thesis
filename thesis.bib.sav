@@ -1183,17 +1183,17 @@ DOI = {10.2312/exp.20191084}
   url        = {http://dx.doi.org/10.1016/0021-9991(88)90002-2},
 }
 
-
 @InCollection{Schneider1990,
   author    = {Schneider, Philip J.},
-  title   = {{An Algorithm for Automatically Fitting Digitized Curves}},
   booktitle = {Graphics Gems},
   publisher = {Academic Press Professional, Inc.},
+  title     = {{An Algorithm for Automatically Fitting Digitized Curves}},
   year      = {1990},
-  pages     = {612--626},
   address   = {San Diego, CA, USA},
-  acmid     = {90941},
   isbn      = {0-12-286169-5},
+  pages     = {612--626},
+  acmid     = {90941},
+  doi       = {10.1016/b978-0-08-050753-8.50132-7},
   numpages  = {15},
   url       = {http://dl.acm.org/citation.cfm?id=90767.90941},
 }
