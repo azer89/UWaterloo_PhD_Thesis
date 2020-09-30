@@ -47,7 +47,7 @@ ENTRY
     eprint % urlbst
     doi % urlbst
     pubmed % urlbst
-    %url % urlbst
+    url % urlbst
     lastchecked % urlbst
   }
   {}
