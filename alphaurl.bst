@@ -22,7 +22,7 @@
    % The file btxbst.doc has the documentation for this style.
 
 ENTRY
-  { address
+  { %address
     author
     booktitle
     chapter
