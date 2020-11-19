@@ -148,7 +148,7 @@ to our system:
 %the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
 The first three inputs are combined into a single diagram, where they are
 distinguished by their colours; see
-\nnewtext{the drawing in Figure~\ref{fig_flowpak_pipeline}(1)}.
+\newtext{the drawing in Figure~\ref{fig_flowpak_pipeline}(1)}.
 The goal of our algorithm is to fill each target container with elements,
 trying to satisfy several guiding principles:
 
@@ -313,7 +313,7 @@ The next step is to trace streamlines in the vector field, guided by three input
 Because we will ultimately place elements along streamlines without overlap, \newtext{$s_\mathrm{gap}$} determines
 the approximate width of the placed elements, and \newtext{$s_\mathrm{max}$} the maximum length.  We also derive
 a value \newtext{$s_\mathrm{stop}$} that prevents streamlines from coming too close to each other; in our implementation we
-compute \nnewtext{$s_\mathrm{stop} = 0.8\,s_\mathrm{gap}$}.
+compute \newtext{$s_\mathrm{stop} = 0.8\,s_\mathrm{gap}$}.
 }
 
 We adapt the streamline tracing algorithm of Jobard and Lefer~\cite{Jobard1997}.
@@ -474,7 +474,7 @@ scales it to fit inside the blob.}
 
 \newtext
 {
-\nnewtext{The previous steps} produce an initial arrangement \nnewtext{consisting of a packing of} 
+\newtext{The previous steps} produce an initial arrangement \newtext{consisting of a packing of} 
 flow-guided elements in each distinct container.
 We now merge all the containers and all elements within them,
 allowing elements from different containers to interact with each other 
@@ -784,7 +784,7 @@ the breast and head, and denser ``O'' elements in the wings. The artist was plea
 \newtext
 {
 We presented FLOWPAK, a method to create ornamental packings
-in which the elements \nnewtext{are} oriented and deformed to give a sense of visual flow to the final composition.
+in which the elements \newtext{are} oriented and deformed to give a sense of visual flow to the final composition.
 Our implementation computed a vector field based on user strokes,
 constructed streamlines that conform to the vector field, and placed an
 element over each streamline. An iterative refinement process then
@@ -793,20 +793,20 @@ shifted and stretched the elements to improve the composition.
 
 \newtext
 {
-\nnewtext{We see two natural opportunities for} improving FLOWPAK.
-\nnewtext{First, we would like to generate streamlines with higher curvatures, like u-turns.
+\newtext{We see two natural opportunities for} improving FLOWPAK.
+\newtext{First, we would like to generate streamlines with higher curvatures, like u-turns.
 However, these streamlines} could unpleasantly fold the decorative elements. 
 This could be solved with a folding avoidance algorithm~\cite{Asente2010}.
 Second, we would like to experiment with a procedure for element placements that can backtrack to previous configurations, 
-as demonstrated by \nnewtext{Jigsaw Image Mosaics}~\cite{Kim2002}. 
-This way, we can achieve a better configuration \nnewtext{with less iterative refinement}.
+as demonstrated by \newtext{Jigsaw Image Mosaics}~\cite{Kim2002}. 
+This way, we can achieve a better configuration \newtext{with less iterative refinement}.
 }
 \begin{figure}
 \centering
 \includegraphics[width=1.0\textwidth]{figures/flowpak/lion_unicorn.pdf} 
 \caption[Packings of lion and unicorn]
 {\label{fig_lion_unicorn} 
-\nnewtext{Ornamental packings of a lion and a unicorn.
+\newtext{Ornamental packings of a lion and a unicorn.
 The diagram next to each animal shows a set of four ornamental
 elements used in the packing (top) and the annotated
 container regions (bottom).  
