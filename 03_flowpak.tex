@@ -112,7 +112,7 @@ Lastly, Xu and Mould~\cite{Xu2015} proposed a graph-based tree synthesis method 
 \newtext
 {
 \textbf{Decorative Ornaments on Surfaces:} 
-Related methods in fabrication has sought to cover surfaces with
+Related methods in fabrication \nnewtext{have} sought to cover surfaces with
 arrangements of decorative elements that satisfy manufacturing
 constraints such as connectivity~\cite{Chen2016, Zehnder2016, Bian2018, Martinez2019}.
 Elements must be \newtext{linked together} to produce a connected result
@@ -133,7 +133,7 @@ to our system:
 \begin{enumerate}
       \item A set of target containers.
             Each container 
-			is a closed curve to be filled with ornamental elements.
+			is a \nnewtext{non-self-intersecting} to be filled with ornamental elements.
       \item A set of direction guides
       		that guide the placement algorithm, defining the flow of the results. 
       		Every target container must have at least one guide, and some or
@@ -485,12 +485,12 @@ in an iterative manner.
 %this part of the algorithm globally, by merging all containers and allowing the
 %elements within them to interact.
 
-The refinement process aims to reduce the amount of negative space and make it
-more even by growing and shifting the placed ornamental elements. It would be 
-possible to use a greedy approach, improving the placement of each element as much
+\nnewtext{The refinement process aims to reduce the amount of negative space and make it
+more even by growing and shifting the placed ornamental elements. 
+We improve the placement of each element as much as possible before moving on to the next.}
+\deadtext{It would be possible to use a greedy approach, improving the placement of each element as much
 as possible before moving on to the next, However, we have found that gradually
-improving the placement of all elements leads to a more even result.
-
+improving the placement of all elements leads to a more even result.}
 Each refinement iteration has two phases.
 First, we shift the streamlines to more accurately follow the space that is available,
 as shown in Figure~\ref{shift_streamline}. After shifting, we recalculate the LR function
