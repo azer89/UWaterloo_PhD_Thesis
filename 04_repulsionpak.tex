@@ -367,7 +367,7 @@ their neighbours.
 %Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
 %\mynote{this is perfect place to describe negative space springs}
 \newtext{
-We also add extra edges to prevent
+We also add extra edges \nnewtext{to reduce}
 folding and self-intersections during simulation.  First, if two triangles 
 $ABC$ and $BCD$ share an edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$ (Figure~\ref{fig_elements_image}e). 
@@ -469,7 +469,7 @@ experience an inverse square repulsive force, inspired by Coulomb's law,
 from all nearby meshes.  We use the following formula:
 
 \begin{equation}
-\simforce{rpl} = k_\mathrm{rpl} \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{\varsigma  +\| \bm{u} \|^2 }
+\simforce{rpl} = k_\mathrm{rpl} \sum_{i = 1}^{n} \frac{\bm{u}}{\| \bm{u} \| }\frac{1}{(\varsigma  +\| \bm{u} \|^2 )}
 \end{equation}
 where 
 \begin{packeddescriptions}
@@ -529,8 +529,13 @@ where
 
 
 We apply $\simforce{edg}$ to $\bm{x_{a}}$ and $-\simforce{edg}$ to $\bm{x_{b}}$.
-The equation is a modification of Hooke's law
-in which the strength of the force increases quadratically with displacement.
+\nnewtext
+{
+The strengths of the edge forces increase quadratically with displacement.
+The equation is a modification of Hooke's law, which is defined as $-k_\mathrm{edg}( \| \bm{u} \| - \ell)$.
+}
+%The equation is a modification of Hooke's law
+%in which the strength of the force increases quadratically with displacement.
 This change allows the meshes \newtext{to be more tolerant of small displacements} and 
 to resist severe deformations when subjected to powerful forces.
 
@@ -803,7 +808,7 @@ in our system.
 
 The iteration process described above can leave behind isolated pockets of 
 empty space, which will be visible in the final composition.  We imitate the
-approach taken by human artists by filling these pockets will small, usually
+approach taken by human artists by filling these pockets \nnewtext{with} small, usually
 simple secondary elements.  
 
 We seed the container with secondary elements by finding points
@@ -1333,5 +1338,5 @@ We deliberately chose a simple simulation model based on springs and forward Eul
   in the swallow tails in the left result of Figure~\ref{three_packings}.
   We would like to explore other methods for warping an element's
   geometry based on the correspondences between the triangles of its original
-  mesh and the deformed meshes in the final packing, \newtext{for example,
-  work of Jacobson et al.~\cite{Jacobson2011} and Liu et al.~\cite{Liu2014}}.}
+  mesh and the deformed meshes in the final packing, \nnewtext{for example,
+  work of Jacobson et al.~\cite{Jacobson2011}, Liu et al.~\cite{Liu2014}, and James~\cite{James2020}}.}
