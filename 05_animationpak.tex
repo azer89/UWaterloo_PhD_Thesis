@@ -205,7 +205,7 @@ then oriented rectangular tesserae relative to edge directions.
 developed a data-driven method to generate animated 3D collages that resemble \nnewtext{Arcimboldo paintings} by arranging 
 static 3D elements into an animated 3D container.
 They \newtext{partitioned} the input animated container by identifying
-rigid parts. \nnewtext{Each \newtext{of rigid parts} is then} replaced by a matching element taken from a library.
+rigid parts, \nnewtext{each of which is replaced} by a matching element taken from a library.
 The result is a 3D collage with overlapping elements, 
 and the animation is created from rigid transformations of the elements
 \newtext{with some degree of deformation to improve the fit with the container.}
@@ -383,11 +383,11 @@ The creation of a discretized spacetime element.
 (a) A 2D element shape offset by \newtext{$d_\mathrm{gap} / 2$}.
 (b) A single triangle mesh slice.
 (c) Shear edges (red) and negative space edges (blue).
-(d) \nnewtext{A set of slices} placed along the time axis.
+(d) A set of five slices placed along the time axis.
 (e) The vertices on the boundaries of the slices are joined by 
   time edges.  The black edges in~(e) define a triangle mesh
   called the envelope of the element.
-  \nnewtext{We only show five slices in in~(d) and~(e) for the purpose of visualization. In practice we use a larger number of slices. }
+  In practice we use a larger number of slices \nnewtext{than} in (d) and (e).
   %In practice we use a larger number of slices in~(d) and~(e).
 }
 \end{figure*}
@@ -621,11 +621,7 @@ allowing the element to deform and move away from a neighbouring element.}
 \newtext
 {
 \textbf{Edge forces}
-allow elements to deform in response to repulsion forces.
-}
-%\nnewtext
-%{The edge forces are calculated using a quadratic version of Hooke's law, 
-%since it gives us better results and we do not seek physical accuracy.}
+allow elements to deform in response to repulsion forces.}
 \nnewtext
 {The edge forces are calculated using a quadratic version of Hooke's law, 
 allowing more tolerance to small displacements while avoiding severe deformation.}
@@ -638,6 +634,9 @@ time springs, and
 target-point springs.
 \nnewtext{Each spring type} has a different relative strength.
 }
+%\nnewtext
+%{The edge forces are calculated using a quadratic version of Hooke's law, 
+%since it gives us better results and we do not seek physical accuracy.}
 
 \newtext
 {
