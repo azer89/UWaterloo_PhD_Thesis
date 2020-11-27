@@ -893,9 +893,10 @@ Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent
 \newtext{\begin{equation}
 \tau(s,t) = \int_{s}^{t} | \kappa(x) | dx.
 \end{equation}}
-In practice, we estimate curvature from the discrete sample points
-using second-order forward finite differences~\cite{Banchoff2015} 
-and compute $\tau$ by summing curvature estimates using the trapezoid rule.
+\nnewtext{In our implementation, we estimated curvature from the discrete sample points
+using second-order forward finite differences~\cite{Banchoff2015}, although
+we recently found that second-order central finite differences can give more accurate approximations.
+Lastly, we} compute $\tau$ by summing curvature estimates using the trapezoid rule.
 
 Let an objective $\tau_\mathrm{obj}$ be a positive real number and $P(t_0)$ be a given point on a curve.  If $\tau_\mathrm{obj}$ is sufficiently small, then as we traverse the curve on either side of $P(t_0)$ we will eventually reach points $P(t_{-1})$ and $P(t_1)$ such that $\tau(t_{-1},t_0)=\tau(t_0,t_1)=\tau_\mathrm{obj}$.  We let $l_1=t_0-t_{-1}$ and $r_1=t_1-t_0$ be the arclengths that produce these integrals.  We can continue this process for any number of steps, walking in both directions along the curve away from previous sample points until we reach $\tau_\mathrm{obj}$, yielding new arclengths $l_k$ and $r_k$ (see Figure~\ref{fig_shape_matching}).  Finally, for a given number of steps $n$ \newtext{we define the shape descriptor at $P(t_0)$ as}
 \newtext{\begin{equation}

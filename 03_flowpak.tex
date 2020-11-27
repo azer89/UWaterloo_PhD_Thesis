@@ -33,8 +33,7 @@ to communicate a sense of directionality or flow.
 %Figure~\ref{dog_flow} shows four examples of these sorts of compositions, which we refer to as ornamental packings.
 We aim to create packings that obey all design principles articulated in Chapter~\ref{chapter_introduction},
 with a special focus on the flow principle.
-Elements have simple geometric forms, often stylized flora, spirals, or other abstract geometry. 
-}
+Elements have simple geometric forms, often stylized flora, spirals, or other abstract geometry.}
 Elements can be oriented in the local direction 
 of flow, but can also be deformed to capture changes in flow direction.
 We express the user's desired flow by placing evenly spaced streamlines
@@ -120,7 +119,7 @@ that will hold together when 3D printed.
 In the case of FLOWPAK, we seek to distribute disconnected elements inside a container.
 }
 
-
+\begin{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Problem Formulation}
@@ -132,8 +131,7 @@ We formally define the problem to be solved as follows.  The user provides sever
 to our system:
 \begin{enumerate}
       \item A set of target containers.
-            Each container 
-			is a \nnewtext{non-self-intersecting} to be filled with ornamental elements.
+            Each container is a \nnewtext{non-self-intersecting} to be filled with ornamental elements.
       \item A set of direction guides
       		that guide the placement algorithm, defining the flow of the results. 
       		Every target container must have at least one guide, and some or
@@ -143,9 +141,6 @@ to our system:
             its deformation.
 \end{enumerate}
 
-%\newtext{The first three inputs are combined into a single diagram, where they are
-%distinguished by their colors; see
-%the drawing in Figure~\ref{fig_flowpak_pipeline}a.}
 The first three inputs are combined into a single diagram, where they are
 distinguished by their colours; see
 \newtext{the drawing in Figure~\ref{fig_flowpak_pipeline}(1)}.
@@ -160,6 +155,7 @@ trying to satisfy several guiding principles:
 	\item Vary element width and length to avoid an excessively uniform arrangement.
 \end{enumerate}
 The next section describes how we achieve these results.
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -169,10 +165,19 @@ The next section describes how we achieve these results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
+\nnewtext{The user provides several pieces of input, similar to ones described in Section~\ref{problem_formulation} with a few additional details:}
+\begin{enumerate}
+\item \nnewtext{An input element has a spine that will control its deformation.}
+\item \nnewtext{A container should contain a set of direction guides that influence the placement algorithm, defining the flow of the results.
+Every target container must have at least one guide, and some or all of the guides typically follow the container boundaries.}
+\item \nnewtext{Fixed elements are also included.}
+\end{enumerate}
 
+\nnewtext{The drawing in Figure~\ref{fig_flowpak_pipeline}(1) shows the illustration of the containers, directional guides, and a fixed element.}
+\nnewtext{The drawing in Figure~\ref{fig_flowpak_pipeline}(2) shows the illustration of elements and their spines.}
+\nnewtext{The goal of FLOWPAK is to fill each target container with elements.}
 Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. The numbers in the following
 steps correspond to parts of the figure.
-
 
 \begin{enumerate}
   \item Read the input target containers and

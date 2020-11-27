@@ -1269,6 +1269,15 @@ We show a variety of results where
 {
 We see a number of opportunities for improvements and extensions to AnimationPak:}
 \begin{itemize}
+
+\item \nnewtext{\textbf{Motion Paths:}
+Element motions in resulting packings can look chaotic due to the interaction between time springs and repulsion forces.
+We would like to replace time springs with motion paths, each is a curve that connects slices together.
+The challenge is to generate plausible motion paths that can be deformed by other forces.
+We also need to detect features of an animation, which is then used as constraints for generating a motion path.
+We would like to investigate motion path editing techniques such as work by Gleicher~\cite{Gleicher2001} and Lockwood and Singh~\cite{Lockwood2011}. 
+}
+
 \item \newtext{\textbf{2D Vector Graphics Interpolation:}}
 Because we use linear interpolation to \newtext{render} an element's shape
   between slices, we require elements not to undergo changes in 

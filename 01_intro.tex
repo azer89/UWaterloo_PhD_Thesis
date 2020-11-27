@@ -281,7 +281,34 @@ In this thesis we discuss several possible measurements of
 evenness based on methods from spatial statistics.
 }
 
-\textbf{Contributions:} \newtext
+\section{Problem Formulation} 
+\label{problem_formulation}
+
+\nnewtext{We define the general packing problem to be solved as follows.  The user provides several pieces of input to the system:}
+\begin{enumerate}
+      \item \nnewtext{A library of elements, each is a collection of open, closed, or intersecting polygonal paths.
+            An element can contain additional information, such as colors, a preferred orientation, or a scripted animation.}
+      \item \nnewtext{One or more target containers. Each container is a closed non-self-intersecting curve to be filled with elements.
+            A container can optionally have internal holes.}
+      \item \nnewtext{An optional set of fixed elements that we transfer directly to the result.}
+\end{enumerate}
+
+\nnewtext{The goal of our algorithm is to fill each container with elements,
+trying to satisfy several considerations:}
+
+\begin{enumerate}
+  \item \nnewtext{Balance out the element distribution and make the channels of negative space be as even as possible.}
+  \item \nnewtext{Deform elements in a controllable way, trading off the preservation of element shapes and the creation of shape compatibilities.}
+  %to create shape compatibilities and to avoid an excessively uniform arrangement.
+  %The deformation should be controllable, balancing the preservation of element shapes and the creation of shape compatibilities.
+  \item \nnewtext{Use the container space efficiently by having as little negative space as possible.}
+  \item \nnewtext{Conform to container boundaries.}
+  \item \nnewtext{Optionally orient elements to follow certain directions.} 
+\end{enumerate}
+
+\section{Thesis Contributions} 
+
+\newtext
 {
 In this thesis, we develop three specific deformation-driven packing methods, 
 and then \nnewtext{a study to investigate} the quantitative evaluation of packing quality in greater detail:

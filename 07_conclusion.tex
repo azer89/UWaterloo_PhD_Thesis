@@ -46,14 +46,14 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Element Construction}
 
-\newtext{Good element shapes are difficult to design. 
+\deadtext{Good element shapes are difficult to design.} 
 We would like to explore techniques to assist users 
 in creating families of interrelated shapes that can be used as element libraries. 
 A simple example can be seen in a FLOWPAK packing, 
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
 Another approach may be to identify salient shapes in a source photograph and
-vectorize them to produce collections of elements.}
+vectorize them to produce collections of elements.
 
 \newtext{Earlier data-driven packing techniques achieve variety 
 by assembling a large library of element shapes. 
@@ -168,14 +168,19 @@ Plant-style modular elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beyond 2D}
 
-\newtext{We would like to explore the use of deformation-driven methods in a fabrication context.
-\newtext{It should be possible to adapt FLOWPAK and RepulsionPak to produce packings on the surfaces of 3D objects, 
-in the style of previous work like that of Chen et al.~\cite{Chen2017}}.  
+\newtext{We would like to explore the use of deformation-driven methods} \nnewtext{to create packings on surfaces.} \deadtext{in a fabrication context.}
+The skull packing in Figure~\ref{paul_daichi_packings} has a 3D shaded appearance.
+\nnewtext{It should be possible to adapt FLOWPAK and RepulsionPak to produce packings on the surfaces of 3D objects.
+Unlike 2D packings, We need to use geodesic distances to compute physical forces.}
+
+
+\nnewtext{Packings on surfaces are also useful in a fabrication context, for example, 
+creating 3D objects in the style of previous work like that of Chen et al.~\cite{Chen2017}.}
 We could exploit boundary compatibilities to discover ideal locations to connect neighbouring elements.
 Alternatively, it would be interesting to 3D print the 
 negative space, which is already connected due to the absence of overlaps.
 The resulting packing \newtext{would be more like a filigree~\cite{Chen2016}, 
-with thin wires bounding holes in the shapes of the elements.}}
+with thin wires bounding holes in the shapes of the elements.}
 
 \newtext{Many of the techniques in this thesis could be adapted
 to develop a deformation-driven method for packing purely spatial
