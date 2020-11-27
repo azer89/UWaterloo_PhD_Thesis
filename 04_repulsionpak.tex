@@ -272,6 +272,13 @@ The creation of a packing using RepulsionPak.
 }
 \end{figure}
 
+\nnewtext{
+RepulsionPak requires several pieces of input, which are described in Section~\ref{problem_formulation}.
+Elements are then categorized as primary and optional secondary elements, such as those shown in Figure~\ref{fig_repulsionpak_pipeline}a.
+Additionally, an artist needs to specify the desired element spacing distance $d_\mathrm{gap}>0$.
+}
+
+\begin{comment}
 Our system requires three main pieces of input:
 \begin{itemize}
 	\item A library of primary and optional secondary elements, such
@@ -284,6 +291,7 @@ Our system requires three main pieces of input:
 		have internal holes.
 	\item The desired element spacing distance $d_\mathrm{gap}>0$.
 \end{itemize}
+\end{comment}
 
 RepulsionPak starts by preprocessing the elements, creating additional space around
 each to enforce the spacing distance, and fitting a triangle mesh over each element.
