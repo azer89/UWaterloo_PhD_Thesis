@@ -42,14 +42,16 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{Loose Element Arrangements}
-\nnewtext{We would like to create element packings with varying widths of negative space channels.
-Even negative space is one of many design considerations to create aesthetically pleasing element packings.
+\subsection{Spacious Element Arrangements}
+
+\nnewtext{We would like to create element arrangements that have varying negative space widths.
+Evenness of negative space is only one of many design considerations to create aesthetically pleasing element packings.
 As discussed in Chapter~\ref{chapter_introduction}, variations in the balance of positive and negative space can be used to emphasize focal points.
 It would be interesting to incorporate a density field, similar to stippling artwork by Secord~\cite{Secord2002}.
-In a low density area, elements are smaller and negative space is wider. On the other hand, high density area can be simulate with bigger elements and narrower negative space. 
-It would also be great to use a bitmap image as a container, we then perform image segmentation algorithm to produce subregions, each has a different element density.
-Additionally, generating a pleasing result from a fully automated method is difficult, so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013}.
+In a low density area, elements are smaller and negative space is wider. 
+Conversely, high density area can be represented by bigger elements and narrower negative space. 
+It would also be great to use a bitmap image as a container, 
+we then perform image segmentation algorithm to produce subregions, each has a different element density.
 }
 
 
@@ -57,10 +59,13 @@ Additionally, generating a pleasing result from a fully automated method is diff
 
 % texture synthesis
 \nnewtext{
-Another potential extension to our deformation-driven methods is discrete texture synthesis.
-In discrete textures, the element distribution is more important than element interlocking.
-As the arrangement is not tight, we can run RepulsionPak simulation without the growth process.
+Another potential extension to our deformation-driven methods is synthesizing discrete texture,
+where element distributions are more important than element interlocking.
+As the arrangement is spacious, we can run RepulsionPak simulation without the growth process.
 However, the main challenge is to incorporate inter-element spatial relationships from an exemplar to the RepulsionPak simulation.
+Additionally, generating a pleasing arrangement from a fully automated method is difficult, 
+so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013} 
+that can infer an artist's intention to create an artistic layout.
 }
 %However, the main challenge is to mimic the element distribution in an exemplar.
 %We would like to investigate whether the technique developed by Ijiri et al.~\cite{Ijiri2008a} can be incorporated to RepulsionPak.
