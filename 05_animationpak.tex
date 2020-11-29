@@ -354,13 +354,13 @@ barycentric coordinates within one triangle.
 To extend the element into the time dimension, 
 we now position evenly-spaced copies of the slice along the time axis.
 Assuming that the animation will run over the time interval $[0,1]$, 
-we choose a number of slices $n_s$ and place slices $\{s_1,\ldots,s_{n_s}\}$,
-with slice $s_i$ being placed at time $(i-1)/(n_s-1)$.
+we choose a number of slices \nnewtext{$n_\mathrm{s}$} and place slices \nnewtext{$\{s_1,\ldots,s_{n_\mathrm{s}}\}$},
+with slice $s_i$ being placed at time \nnewtext{$(i-1)/(n_\mathrm{s}-1)$}.
 Higher temporal resolution will
 produce a smoother final animation at the expense of more computation.
-In our examples, we set $n_s=100$. 
+In our examples, we set $n_\mathrm{s}=100$. 
 Figure~\ref{fig_animationpak_discretization}d shows a set of time slices, with
-$n_s=5$ for visualization purposes.
+$n_\mathrm{s}=5$ for visualization purposes.
 
 To complete the construction of a spacetime element without animation,
 we stitch the slices together into a single 3D object.  Let $s_j$ and
@@ -373,7 +373,7 @@ we add time edges $AC$, $AD$, and $BC$.
 During simulation, time edges will transmit forces backwards and forwards in
 time, maintaining temporal coherence by smoothing out deformation and 
 transformations.
-Figure~\ref{fig_animationpak_discretization}e shows time edges for $n_s=5$.
+Figure~\ref{fig_animationpak_discretization}e shows time edges for $n_\mathrm{s}=5$.
 
 \begin{figure*}
 \centering

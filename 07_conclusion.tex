@@ -86,14 +86,13 @@ A simple example can be seen in a FLOWPAK packing,
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
 
-\nnewtext{We can also create elements from salient regions in a source photograph which
-can be detected using an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and a salient map.
-Once these regions are obtained, each can be vectorized to create a new fixed element.
-Another idea is to use a data-driven method to find a compatible element, 
-which later can be significantly deformed to fit a salient region.
+
+\nnewtext{
+Another idea is to identify salient shapes in a source photograph.
+We first perform an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and the artist can select regions they think are important.
+Each region is then vectorized to create a new fixed element.
+Another idea is to replace these salient regions with highly deformed elements, similar to the calligraphy packing approaches~\cite{Xu2007, Zou2016}.
 }
-%Another idea is to identify salient shapes in a source photograph and
-%vectorize them to produce collections of elements.
 
 \newtext{Earlier data-driven packing techniques achieve variety 
 by assembling a large library of element shapes. 
@@ -306,7 +305,7 @@ it would be interesting \newtext{to develop an interactive installation in which
 {
 It would also be interesting to create a system to assist an artist for creating arrangements from physical elements.
 It would be interesting to use a camera-equipped virtual reality headset. The camera is used to scan these elements which are then processed by the system.
-The virtual reality headset later displays an suggestion of an element arrangement in an augmented reality style.
+The virtual reality headset later displays a suggestion of an element arrangement in an augmented reality style.
 }
 
 \newtext{In the context of animated packings,} 

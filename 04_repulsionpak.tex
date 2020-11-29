@@ -888,7 +888,7 @@ improve the quality later.
 
 We begin by building shape descriptors for the elements.  
 Each element is first scaled to have area
-$0.6A_c/n_e$, where $A_c$ is the container area and $n_e$ is the 
+\nnewtext{$0.6A_c/n_\mathrm{e}$}, where $A_c$ is the container area and \nnewtext{$n_\mathrm{e}$} is the 
 number of elements.  This step resizes the element to a rough estimate
 of its final size in the packing, an approximation that is adequate
 for our fit-based placement.  We then sample the target container and
@@ -1003,8 +1003,7 @@ where
   \item[$\alpha$] is a parameter that penalizes elements with parts that protrude outside the container;
   \item[$\beta$] is a parameter that favors elements with parts close to the target container;
   \item[$\mu$] $= 0.5 \sqrt{2}L_{s}$ which is half of the diagonal of the container's bounding square.
-  \item[$n_p$] is the number of sample points on the element.
-\end{packeddescriptions}
+\end{packeddescriptions}  
 
 With this scoring function, a sample point that lies on the container boundary
 will have a score of 1, the maximum for $q(\bm{x})$.
@@ -1016,8 +1015,12 @@ are penalized by assigning a negative score proportional to distance.
 We then define a quality measurement for an entire element by summing over
 all of its sample points:
 \begin{equation}
-Q = \sum_{i = 1}^{n_p} q(\bm{x}_i)
+Q = \sum_{i = 1}^{n_\mathrm{p}} q(\bm{x}_i)
 \end{equation}
+\nnewtext{where} 
+\begin{packeddescriptions}
+\item[$n_\mathrm{p}$] \nnewtext{is the number of sample points on the element.}
+\end{packeddescriptions}
 
 In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.
 For every salient container feature, we obtain the $10$ closest descriptors from the k-D tree, 
