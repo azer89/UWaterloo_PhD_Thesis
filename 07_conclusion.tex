@@ -26,8 +26,7 @@ Repeated elements give a sense of uniformity but deformation creates a sense of 
 }
 
 \newtext
-{
-We discussed the evenness of negative space as an indicator of the quality of a packing.
+{We discussed the evenness of negative space as an indicator of the quality of a packing.
 We measured the evenness using three statistical metrics:
 spherical contact probabilities, histograms of distance transforms, and overlap functions.
 }
@@ -44,20 +43,29 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Loose Element Arrangements}
-We would like to create element packings with varying widths of negative space channels.
+\nnewtext{We would like to create element packings with varying widths of negative space channels.
 Even negative space is one of many design considerations to create aesthetically pleasing element packings.
-As discussed in Chapter~\ref{nnn}, variations in the balance of positive and negative space can be used to emphasize focal points.
+As discussed in Chapter~\ref{chapter_introduction}, variations in the balance of positive and negative space can be used to emphasize focal points.
 It would be interesting to incorporate a density field, similar to stippling artwork by Secord~\cite{Secord2002}.
-In a low density area, elements are smaller and negative space is wider. On the other hand, 
+In a low density area, elements are smaller and negative space is wider. On the other hand, high density area can be simulate with bigger elements and narrower negative space. 
+It would also be great to use a bitmap image as a container, we then perform image segmentation algorithm to produce subregions, each has a different element density.
+Additionally, generating a pleasing result from a fully automated method is difficult, so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013}.
+}
 
 
 % aesthetic arrangement
 
 % texture synthesis
+\nnewtext{
 Another potential extension to our deformation-driven methods is discrete texture synthesis.
-In element textures, the positive space distribution is more dominant than the negative space distribution.
-We would like to include inter-element spatial relationships into RepulsionPak simulations.
-Inspired by Ijiri et al.~\cite{blah}
+In discrete textures, the element distribution is more important than element interlocking.
+As the arrangement is not tight, we can run RepulsionPak simulation without the growth process.
+However, the main challenge is to incorporate inter-element spatial relationships from an exemplar to the RepulsionPak simulation.
+}
+%However, the main challenge is to mimic the element distribution in an exemplar.
+%We would like to investigate whether the technique developed by Ijiri et al.~\cite{Ijiri2008a} can be incorporated to RepulsionPak.
+%Ijiri et al. encoded inter-element spatial relationships by triangulating the element positions.
+%The edges of the triangle mesh can be included to RepulsionPak simulation as edge springs.  
 
 
 
@@ -72,8 +80,15 @@ in creating families of interrelated shapes that can be used as element librarie
 A simple example can be seen in a FLOWPAK packing, 
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
-Another approach may be to identify salient shapes in a source photograph and
-vectorize them to produce collections of elements.
+
+\nnewtext{We can also create elements from salient regions in a source photograph which
+can be detected using an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and a salient map.
+Once these regions are obtained, each can be vectorized to create a new fixed element.
+Another idea is to use a data-driven method to find a compatible element, 
+which later can be significantly deformed to fit a salient region.
+}
+%Another idea is to identify salient shapes in a source photograph and
+%vectorize them to produce collections of elements.
 
 \newtext{Earlier data-driven packing techniques achieve variety 
 by assembling a large library of element shapes. 
@@ -280,6 +295,13 @@ elements while a composition is being created.
 \newtext{
 Inspired by doodle murals by Joe Whale (Figure~\ref{doodle_boy}), 
 it would be interesting \newtext{to develop an interactive installation in which users could interact with a live packing on a large touch-screen display}.
+}
+
+\nnewtext
+{
+It would also be interesting to create a system to assist an artist for creating arrangements from physical elements.
+It would be interesting to use a camera-equipped virtual reality headset. The camera is used to scan these elements which are then processed by the system.
+The virtual reality headset later displays an suggestion of an element arrangement in an augmented reality style.
 }
 
 \newtext{In the context of animated packings,} 
