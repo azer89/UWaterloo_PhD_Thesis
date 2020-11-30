@@ -63,9 +63,9 @@ Another potential extension to our deformation-driven methods is synthesizing di
 where element distributions are more important than element interlocking.
 As the arrangement is spacious, we can run RepulsionPak simulation without the growth process.
 However, the main challenge is to incorporate inter-element spatial relationships from an exemplar to the RepulsionPak simulation.
-Additionally, generating a pleasing arrangement from a fully automated method is difficult, 
+Lastly, generating a pleasing arrangement from a fully automated method is difficult, 
 so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013} 
-that can infer an artist's intention to create an artistic layout.
+that can infer an artist's intention to generate an artistic arrangement.
 }
 %However, the main challenge is to mimic the element distribution in an exemplar.
 %We would like to investigate whether the technique developed by Ijiri et al.~\cite{Ijiri2008a} can be incorporated to RepulsionPak.
@@ -80,19 +80,11 @@ that can infer an artist's intention to create an artistic layout.
 \subsection{Element Construction}
 
 \deadtext{Good element shapes are difficult to design.} 
-We would like to explore techniques to assist users 
-in creating families of interrelated shapes that can be used as element libraries. 
+\nnewtext{We would like to explore techniques to assist users in creating element shapes.}
 A simple example can be seen in a FLOWPAK packing, 
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
 
-
-\nnewtext{
-Another idea is to identify salient shapes in a source photograph.
-We first perform an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and the artist can select regions they think are important.
-Each region is then vectorized to create a new fixed element.
-Another idea is to replace these salient regions with highly deformed elements, similar to the calligraphy packing approaches~\cite{Xu2007, Zou2016}.
-}
 
 \newtext{Earlier data-driven packing techniques achieve variety 
 by assembling a large library of element shapes. 
@@ -116,6 +108,15 @@ A challenge here is to identify pairs of subparts, and points on them, that supp
 This quality can be measured geometrically, possibly aided by new algorithms for content-aware blending of vector shapes.  
 It also has a semantic component; for example, a leaf shape can be attached to a stem, but not directly to a twig. 
 Past research on ornament synthesis, such as DecoBrush~\cite{Lu2014} may be relevant here.}
+
+
+\nnewtext{
+Lastly, we would like to investigate a way to identify salient shapes in a source photograph to create fixed elements.
+We first perform an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and the artist can select regions they think are important.
+Each region is then vectorized to create a new fixed element.
+Another approach is to replace these salient regions with highly deformed elements, 
+similar to the calligraphy packing approaches~\cite{Xu2007, Zou2016}.
+}
 
 \begin{comment}
 \nnewtext{Unlike data-driven methods and deformation-driven methods,
@@ -207,12 +208,10 @@ Plant-style modular elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beyond 2D}
 
-\newtext{We would like to explore the use of deformation-driven methods} \nnewtext{to create packings on surfaces.} \deadtext{in a fabrication context.}
-The skull packing in Figure~\ref{paul_daichi_packings} has a 3D shaded appearance.
-\nnewtext{It should be possible to adapt FLOWPAK and RepulsionPak to pack elements on 3D surfaces.
-Unlike 2D packings, we need to use geodesic distances to compute physical forces.}
-
-
+\nnewtext{Inspired by the 3D shaded skull packing in Figure~\ref{paul_daichi_packings},}
+\nnewtext{we would like to explore the use of deformation-driven methods to create packings on surfaces.}
+\nnewtext{It should be possible to adapt FLOWPAK and RepulsionPak to pack elements on 3D 
+surfaces by computing geodesic distances to generate physical forces.}
 \nnewtext{Packings on surfaces are also useful in a fabrication context, for example, 
 creating printed objects in the style of previous work like that of Chen et al.~\cite{Chen2017}.}
 We could exploit boundary compatibilities to discover ideal locations to connect neighbouring elements.
@@ -303,9 +302,9 @@ it would be interesting \newtext{to develop an interactive installation in which
 
 \nnewtext
 {
-It would also be interesting to create a system to assist an artist for creating arrangements from physical elements.
-It would be interesting to use a camera-equipped virtual reality headset. The camera is used to scan these elements which are then processed by the system.
-The virtual reality headset later displays a suggestion of an element arrangement in an augmented reality style.
+It would also be interesting to create a system to assist an artist for creating arrangements from physical elements
+by using a camera-equipped augmented reality headset. The camera is used to scan these elements which are then processed by the system.
+Finally, the headset displays a suggestion of an element arrangement which the artist can follow.
 }
 
 \newtext{In the context of animated packings,} 
