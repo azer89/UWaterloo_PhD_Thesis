@@ -1008,7 +1008,9 @@ where
 With this scoring function, a sample point that lies on the container boundary
 will have a score of 1, the maximum for $q(\bm{x})$.
 Scores decay exponentially towards 0
-for points farther inside the container.  Sample points outside the container
+for points farther inside the container.  
+\nnewtext{In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.}
+Sample points outside the container
 are penalized by assigning a negative score proportional to distance.
 
 
@@ -1022,7 +1024,6 @@ Q = \sum_{i = 1}^{n_\mathrm{p}} q(\bm{x}_i)
 \item[$n_\mathrm{p}$] \nnewtext{is the number of sample points on the element.}
 \end{packeddescriptions}
 
-In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.
 For every salient container feature, we obtain the $10$ closest descriptors from the k-D tree, 
 and choose one that has the highest $Q$.
 Finally, we place the selected element in the container by 
