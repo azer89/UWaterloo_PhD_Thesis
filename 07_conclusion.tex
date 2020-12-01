@@ -44,12 +44,13 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Spacious Element Arrangements}
 
-\nnewtext{We would like to create element arrangements that have varying negative space widths.
+\nnewtext{We would like to create element arrangements with varying negative space widths,
+some are wide enough to generate spacious element arrangements.
 Evenness of negative space is only one of many design considerations to create aesthetically pleasing element packings.
 As discussed in Chapter~\ref{chapter_introduction}, variations in the balance of positive and negative space can be used to emphasize focal points.
 It would be interesting to incorporate a density field, similar to stippling artwork by Secord~\cite{Secord2002}.
 In a low density area, elements are smaller and negative space is wider. 
-Conversely, high density area can be represented by bigger elements and narrower negative space. 
+Conversely, a high density area can be represented by bigger elements and narrower negative space. 
 It would also be great to use a bitmap image as a container, 
 we then perform image segmentation algorithm to produce subregions, each has a different element density.
 }
@@ -61,7 +62,7 @@ we then perform image segmentation algorithm to produce subregions, each has a d
 \nnewtext{
 Another potential extension to our deformation-driven methods is synthesizing discrete texture,
 where element distributions are more important than element interlocking.
-As the arrangement is spacious, we can run RepulsionPak simulation without the growth process.
+Because of the generous negative space, we can run RepulsionPak simulation without the growth process.
 However, the main challenge is to incorporate inter-element spatial relationships from an exemplar to the RepulsionPak simulation.
 Lastly, generating a pleasing arrangement from a fully automated method is difficult, 
 so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013} 
@@ -80,7 +81,7 @@ that can infer an artist's intention to generate an artistic arrangement.
 \subsection{Element Construction}
 
 \deadtext{Good element shapes are difficult to design.} 
-\nnewtext{We would like to explore techniques to assist users in creating element shapes.}
+\nnewtext{We would like to explore techniques to assist users in constructing element shapes.}
 A simple example can be seen in a FLOWPAK packing, 
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
@@ -111,7 +112,7 @@ Past research on ornament synthesis, such as DecoBrush~\cite{Lu2014} may be rele
 
 
 \nnewtext{
-Lastly, we would like to investigate a way to identify salient shapes in a source photograph to create fixed elements.
+Lastly, we would like to investigate a way to identify salient shapes in a source photograph to construct fixed elements.
 We first perform an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and the artist can select regions they think are important.
 Each region is then vectorized to create a new fixed element.
 Another approach is to replace these salient regions with highly deformed elements, 
