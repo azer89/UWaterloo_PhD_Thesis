@@ -144,11 +144,8 @@ gear-like meshing of oppositely-rotating copies of Lisa Simpson.}}
 \textbf{Animated Packings and Tilings:}
 Animosaics by Smith et al.~\cite{Smith2005} \newtext{constructs} animations 
 in which static elements without scripted
-animations follow the motion of an animated container.  Elements are
-placed using \newtext{centroidal area Voronoi diagrams (CAVDs)}. 
-%and advected frame-to-frame using a choice of methods
-%motivated by Gestalt grouping principles.
-\nnewtext{Initially, elements are placed using \newtext{centroidal area Voronoi diagrams (CAVDs)}.
+animations follow the motion of an animated container.
+\newtext{Initially, elements are placed using \newtext{centroidal area Voronoi diagrams (CAVDs)}.
 Elements are then advected frame-to-frame using a choice of methods motivated by Gestalt grouping principles,
 aiming to generate group motions of elements, instead of distracting uncoordinated movements of individual elements.}
 As the container's area changes, elements are added and removed as needed,
@@ -202,10 +199,10 @@ then oriented rectangular tesserae relative to edge directions.
 \newtext
 {
 \textbf{Animated 3D Packings:} Theobalt et al.~\cite{Theobalt2007}
-developed a data-driven method to generate animated 3D collages that resemble \nnewtext{Arcimboldo paintings} by arranging 
+developed a data-driven method to generate animated 3D collages that resemble \newtext{Arcimboldo paintings} by arranging 
 static 3D elements into an animated 3D container.
 They \newtext{partitioned} the input animated container by identifying
-rigid parts, \nnewtext{each of which is replaced} by a matching element taken from a library.
+rigid parts, \newtext{each of which is replaced} by a matching element taken from a library.
 The result is a 3D collage with overlapping elements, 
 and the animation is created from rigid transformations of the elements
 \newtext{with some degree of deformation to improve the fit with the container.}
@@ -288,11 +285,9 @@ characters.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\nnewtext{The input to AnimationPak is similar to ones described in Section~\ref{problem_formulation},
-with the addition of scripted animation for each element.}
-\deadtext{The input to AnimationPak is a library of animated elements and a
-fixed container shape.}  AnimationPak currently supports two kinds
-of animation: the user can animate the shape of each individual
+\nnewtext{The inputs to AnimationPak are similar to those described in Section~\ref{problem_formulation},
+with the addition of a scripted animation for each element.}
+AnimationPak currently supports two kinds of animation: the user can animate the shape of each individual
 element and can also give elements trajectories that animate
 their position within the container.  This
 section explains how we animate the element shapes using
@@ -354,8 +349,8 @@ barycentric coordinates within one triangle.
 To extend the element into the time dimension, 
 we now position evenly-spaced copies of the slice along the time axis.
 Assuming that the animation will run over the time interval $[0,1]$, 
-we choose a number of slices \nnewtext{$n_\mathrm{s}$} and place slices \nnewtext{$\{s_1,\ldots,s_{n_\mathrm{s}}\}$},
-with slice $s_i$ being placed at time \nnewtext{$(i-1)/(n_\mathrm{s}-1)$}.
+we choose a number of slices \newtext{$n_\mathrm{s}$} and place slices \newtext{$\{s_1,\ldots,s_{n_\mathrm{s}}\}$},
+with slice $s_i$ being placed at time \newtext{$(i-1)/(n_\mathrm{s}-1)$}.
 Higher temporal resolution will
 produce a smoother final animation at the expense of more computation.
 In our examples, we set $n_\mathrm{s}=100$. 
@@ -388,7 +383,7 @@ The creation of a discretized spacetime element.
 (e) The vertices on the boundaries of the slices are joined by 
   time edges.  The black edges in~(e) define a triangle mesh
   called the envelope of the element.
-  In practice we use a larger number of slices \nnewtext{than} in (d) and (e).
+  In practice we use a larger number of slices \newtext{than} in (d) and (e).
   %In practice we use a larger number of slices in~(d) and~(e).
 }
 \end{figure*}
@@ -622,7 +617,7 @@ allowing the element to deform and move away from a neighbouring element.}
 {
 \textbf{Edge forces}
 allow elements to deform in response to repulsion forces.}
-\nnewtext
+\newtext
 {The edge forces are calculated using a quadratic version of Hooke's law, 
 allowing more tolerance to small displacements while avoiding severe deformation.}
 \newtext{As discussed in Section~\ref{animationpak_spacetime_extrusion} and Section~\ref{animationpak_initial_configuration},
@@ -632,7 +627,7 @@ shear springs,
 negative-space springs,
 time springs, and
 target-point springs.
-\nnewtext{Each spring type} has a different relative strength.
+\newtext{Each spring type} has a different relative strength.
 }
 %\nnewtext
 %{The edge forces are calculated using a quadratic version of Hooke's law, 
@@ -1174,27 +1169,10 @@ We simulate only half of the packing and reflect it to create the other half.
 The facial features were added manually in a post-processing step.
 \newtext{We call the slow motions of the lion's mane as ambient animation,
 a topic that we would like to pursue as future work.}
-%\nnewtext{This is a demonstration of a packing with ambient animation,
-%consisting of static elements combined with slowly animated elements.}
-
-
-%\nnewtext{This packing demonstrates ambient animation,
-%which are slower than other results.}
-
-%\nnewtext{This is a demonstration of a packing with ambient animation,
-%consisting of static elements combined with slowly animated elements.}
-%We consider this packing as a demonstration of ambient animation,
-%where slow motions of the lion's mane is combined with static elements
 
 
 
-Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak} compares
-a static 2D packing created by RepulsionPak with a frame
-from an animated packing created by AnimationPak.
-The extra negative space in AnimationPak comes partly from the trade-off
-between temporal coherence and tight packing, and partly from the lack
-of secondary elements, which were used in a second pass in RepulsionPak 
-to fill pockets of negative space.
+
 
 
 Figure~\ref{fig_animationpak_star_comparison} offers a direct comparison between
@@ -1213,7 +1191,13 @@ Repulsion forces and deformation allow AnimationPak to achieve a tighter packing
 that persists across the animation, including gear-like meshing of
 \newtext{counter-rotating} stars.
 
-
+Figure~\ref{fig_animationpak_repulsionpak_vs_animationpak} compares
+a static 2D packing created by RepulsionPak with a frame
+from an animated packing created by AnimationPak.
+The extra negative space in AnimationPak comes partly from the trade-off
+between temporal coherence and tight packing, and partly from the lack
+of secondary elements, which were used in a second pass in RepulsionPak 
+to fill pockets of negative space.
 
 
 Figure~\ref{fig_animationpak_teaser_weak_t_springs} emphasizes the trade-off between
@@ -1270,13 +1254,13 @@ We show a variety of results where
 We see a number of opportunities for improvements and extensions to AnimationPak:}
 \begin{itemize}
 
-\item \nnewtext{\textbf{Motion Paths:}
-Element motions in resulting packings can look chaotic due to the interaction between time springs and repulsion forces.
-It may be possible to replace time springs with motion paths, each is a curve that connects slices together.
-The challenge is to generate plausible motion paths that can be deformed by other forces.
-We also need to detect motion extrema of an animation, which are then used as constraints when generating a motion path.
+\item \textbf{Motion Paths:}
+Element motions in \nnewtext{animated} packings can look chaotic due to the interaction between time springs and repulsion forces.
+It may be possible to replace time springs with \nnewtext{motion paths that connect} slices together.
+The challenge is to generate plausible motion paths that can be \nnewtext{modulated} by other forces.
+We \nnewtext{would} also need to detect motion extrema of an animation, which are then used as constraints when generating a motion path.
 We would like to investigate motion path editing techniques such as work by Gleicher~\cite{Gleicher2001} and Lockwood and Singh~\cite{Lockwood2011}. 
-}
+
 
 \item \newtext{\textbf{2D Vector Graphics Interpolation:}}
 Because we use linear interpolation to \newtext{render} an element's shape
@@ -1366,19 +1350,7 @@ The other birds adapt to the reduced space by prematurely stopping some of their
   half using a reflection, and add the facial features by hand.
   }  
 \end{figure}
-\begin{figure}
-  \centering
-  \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsionpak_vs_animationpak.pdf}
-  \caption[A comparison between RepulsionPak and AnimationPak]
-  {
-  \label{fig_animationpak_repulsionpak_vs_animationpak}
-    (a) A static packing created with RepulsionPak.
-  (b) The first frame of a comparable AnimationPak packing.
-    The input spacetime elements are shown on the right.
-  The AnimationPak packing has more negative space because
-  we must tradeoff between temporal coherence and packing density.
-  }  
-\end{figure}
+
 
 \begin{figure}
 \centering
@@ -1395,7 +1367,19 @@ but still leaves significant pockets of negative space.
 The AnimationPak packing has less negative space that is more even.}
 \end{figure}
 
-
+\begin{figure}
+  \centering
+  \includegraphics[width=1.0\textwidth]{figures/animationpak/repulsionpak_vs_animationpak.pdf}
+  \caption[A comparison between RepulsionPak and AnimationPak]
+  {
+  \label{fig_animationpak_repulsionpak_vs_animationpak}
+    (a) A static packing created with RepulsionPak.
+  (b) The first frame of a comparable AnimationPak packing.
+    The input spacetime elements are shown on the right.
+  The AnimationPak packing has more negative space because
+  we must tradeoff between temporal coherence and packing density.
+  }  
+\end{figure}
 
 
 

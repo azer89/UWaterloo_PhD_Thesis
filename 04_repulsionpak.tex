@@ -272,11 +272,10 @@ The creation of a packing using RepulsionPak.
 }
 \end{figure}
 
-\nnewtext{
-RepulsionPak requires several pieces of input, which are described in Section~\ref{problem_formulation}.
+
+RepulsionPak requires several \newtext{inputs}, which are described in Section~\ref{problem_formulation}.
 Elements are then categorized as primary and optional secondary elements, such as those shown in Figure~\ref{fig_repulsionpak_pipeline}a.
 Additionally, an artist needs to specify the desired element spacing distance $d_\mathrm{gap}>0$.
-}
 
 \begin{comment}
 Our system requires three main pieces of input:
@@ -375,7 +374,7 @@ their neighbours.
 %Section~\ref{section_forces} and Figure~\ref{fig_forces}b).
 %\mynote{this is perfect place to describe negative space springs}
 \newtext{
-We also add extra edges \nnewtext{to reduce}
+We also add extra edges \newtext{to reduce}
 folding and self-intersections during simulation.  First, if two triangles 
 $ABC$ and $BCD$ share an edge $BC$, then we add a \textit{shear edge}
 connecting $A$ and $D$ (Figure~\ref{fig_elements_image}e). 
@@ -537,7 +536,7 @@ where
 
 
 We apply $\simforce{edg}$ to $\bm{x_{a}}$ and $-\simforce{edg}$ to $\bm{x_{b}}$.
-\nnewtext
+\newtext
 {
 The strengths of the edge forces increase quadratically with displacement.
 The equation is a modification of Hooke's law, which is defined as $-k_\mathrm{edg}( \| \bm{u} \| - \ell)$.
@@ -816,7 +815,7 @@ in our system.
 
 The iteration process described above can leave behind isolated pockets of 
 empty space, which will be visible in the final composition.  We imitate the
-approach taken by human artists by filling these pockets \nnewtext{with} small, usually
+approach taken by human artists by filling these pockets \newtext{with} small, usually
 simple secondary elements.  
 
 We seed the container with secondary elements by finding points
@@ -888,7 +887,7 @@ improve the quality later.
 
 We begin by building shape descriptors for the elements.  
 Each element is first scaled to have area
-\nnewtext{$0.6A_c/n_\mathrm{e}$}, where $A_c$ is the container area and \nnewtext{$n_\mathrm{e}$} is the 
+\newtext{$0.6A_c/n_\mathrm{e}$}, where $A_c$ is the container area and \newtext{$n_\mathrm{e}$} is the 
 number of elements.  This step resizes the element to a rough estimate
 of its final size in the packing, an approximation that is adequate
 for our fit-based placement.  We then sample the target container and
@@ -901,7 +900,7 @@ Let $P(t)$ be an arclength-parameterized 2D curve, and let $\kappa(t)$ represent
 \newtext{\begin{equation}
 \tau(s,t) = \int_{s}^{t} | \kappa(x) | dx.
 \end{equation}}
-\nnewtext{In our implementation, we estimated curvature from the discrete sample points
+\newtext{In our implementation, we estimated curvature from the discrete sample points
 using second-order forward finite differences~\cite{Banchoff2015}, although
 we recently found that second-order central finite differences can give more accurate approximations.
 Lastly, we} compute $\tau$ by summing curvature estimates using the trapezoid rule.
@@ -1009,7 +1008,7 @@ With this scoring function, a sample point that lies on the container boundary
 will have a score of 1, the maximum for $q(\bm{x})$.
 Scores decay exponentially towards 0
 for points farther inside the container.  
-\nnewtext{In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.}
+\newtext{In our implementation we choose $\alpha = 1$ and $\beta = 0.001$.}
 Sample points outside the container
 are penalized by assigning a negative score proportional to distance.
 
@@ -1019,9 +1018,9 @@ all of its sample points:
 \begin{equation}
 Q = \sum_{i = 1}^{n_\mathrm{p}} q(\bm{x}_i)
 \end{equation}
-\nnewtext{where} 
+\newtext{where} 
 \begin{packeddescriptions}
-\item[$n_\mathrm{p}$] \nnewtext{is the number of sample points on the element.}
+\item[$n_\mathrm{p}$] \newtext{is the number of sample points on the element.}
 \end{packeddescriptions}
 
 For every salient container feature, we obtain the $10$ closest descriptors from the k-D tree, 
@@ -1351,5 +1350,5 @@ We deliberately chose a simple simulation model based on springs and forward Eul
   in the swallow tails in the left result of Figure~\ref{three_packings}.
   We would like to explore other methods for warping an element's
   geometry based on the correspondences between the triangles of its original
-  mesh and the deformed meshes in the final packing, \nnewtext{for example,
+  mesh and the deformed meshes in the final packing, \newtext{for example,
   work of Jacobson et al.~\cite{Jacobson2011}, Liu et al.~\cite{Liu2014}, and James~\cite{James2020}}.}

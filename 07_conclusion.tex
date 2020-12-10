@@ -17,6 +17,12 @@ each an extruded 3D shape in a spacetime domain.
 }
 
 \newtext
+{We discussed the evenness of negative space as an indicator of the quality of a packing.
+We measured the evenness using three statistical metrics:
+spherical contact probabilities, histograms of distance transforms, and overlap functions.
+}
+
+\newtext
 {
 Given a small element library, 
 we demonstrated that deformation-driven methods can create element compatibilities
@@ -25,17 +31,21 @@ Repeated elements give a sense of uniformity but deformation creates a sense of 
 %As element compatibilities are increased, the negative space is more even.
 }
 
-\newtext
-{We discussed the evenness of negative space as an indicator of the quality of a packing.
-We measured the evenness using three statistical metrics:
-spherical contact probabilities, histograms of distance transforms, and overlap functions.
+\nnewtext
+{
+Informally, the packings our methods have generated received a lot of positive feedback. 
+In particular, FLOWPAK and RepulsionPak are sufficiently stable and automatic that they could be used in a general graphic design context to create simple packings. Of course, this level of automation will never fully capture the semantic intent of a design, 
+for example, the placement of an animal form's eye. 
+A real-world tool will have to integrate our simulations into the larger context of manual drawing and editing. 
+Lastly, the animations produced by AnimationPak are a promising first step, 
+but will require further refinement before they can be deployed in motion graphics.
 }
 
 \section{Future Work}
 
 \newtext
 {
-This thesis \nnewtext{is} only the tip of the iceberg of packing research \newtext{and}
+This thesis \newtext{is} only the tip of the iceberg of packing research \newtext{and}
 we see many possibilities for future work.
 }
 
@@ -44,34 +54,25 @@ we see many possibilities for future work.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Spacious Element Arrangements}
 
-\nnewtext{We would like to create element arrangements with varying and wider negative space gaps.
+We would like to create element arrangements with varying and wider negative space gaps.
 Evenness of negative space is only one of many design considerations to create aesthetically pleasing element packings.
 As discussed in Chapter~\ref{chapter_introduction}, variations in the balance of positive and negative space can be used to emphasize focal points.
 It would be interesting to incorporate a density field, similar to stippling artwork by Secord~\cite{Secord2002}.
 In a low density area, elements are smaller and negative space is wider. 
 Conversely, a high density area can be represented by bigger elements and narrower negative space. 
-%It would also be great to use a bitmap image as a container, 
-%we then perform image segmentation algorithm to produce subregions, each has a different element density.
-}
 
 
 % aesthetic arrangement
 
 % texture synthesis
-\nnewtext{
-Another potential extension to our deformation-driven methods is synthesizing discrete texture,
+Another potential extension to our deformation-driven methods is synthesizing discrete \nnewtext{textures},
 where element distributions are more important than element interlocking.
-Because of the generous negative space, we can run RepulsionPak simulation without the growth process.
-However, the main challenge is to incorporate inter-element spatial relationships from an exemplar to the RepulsionPak simulation.
-Additionally, we can adapt AnimationPak to generate animated discrete texture, in a similar style to work by Ma et al.~\cite{Ma2013}. 
+Because of the generous negative space, \nnewtext{we could run RepulsionPak} without the growth process.
+\nnewtext{However, the main challenge is to modify our simulation to incorporate inter-element spatial relationships extracted from an exemplar.}
+Additionally, we can adapt AnimationPak to generate animated discrete textures, in a similar style to work by Ma et al.~\cite{Ma2013}. 
 Lastly, generating a pleasing arrangement from a fully automated method is difficult, 
 so it also would be interesting to incorporate an interactive tool by Reinert et al.~\cite{Reinert2013} 
 that can infer an artist's intention while creating an artistic arrangement.
-}
-%However, the main challenge is to mimic the element distribution in an exemplar.
-%We would like to investigate whether the technique developed by Ijiri et al.~\cite{Ijiri2008a} can be incorporated to RepulsionPak.
-%Ijiri et al. encoded inter-element spatial relationships by triangulating the element positions.
-%The edges of the triangle mesh can be included to RepulsionPak simulation as edge springs.  
 
 
 
@@ -80,12 +81,11 @@ that can infer an artist's intention while creating an artistic arrangement.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Element Construction}
 
-\deadtext{Good element shapes are difficult to design.} 
-\nnewtext{We would like to explore techniques to assist users in constructing element shapes.}
+\newtext{We would like to explore techniques to assist users in constructing element shapes.}
 A simple example can be seen in a FLOWPAK packing, 
 where we allow the user to construct additional motifs automatically 
 by tracing the shapes of pockets of negative space (Figure~\ref{result_bear_offset}). 
-\nnewtext
+\newtext
 {
 Another approach may be to identify salient shapes in a source photograph to construct fixed elements.
 We first perform an image segmentation algorithm~\cite{Comaniciu2002, Achanta2012} and the artist can select regions they think are important.
@@ -215,10 +215,10 @@ Plant-style modular elements.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Beyond 2D}
 
-\nnewtext{Inspired by the 3D shaded skull packing in Figure~\ref{paul_daichi_packings},}
-\nnewtext{we would like to explore the use of deformation-driven methods to create packings on surfaces.}
-\nnewtext{To realize this idea, it should be possible to adapt RepulsionPak by computing geodesic distances to generate physical forces.}
-\nnewtext{Packings on surfaces are also useful in a fabrication context, for example, 
+\newtext{Inspired by the 3D shaded skull packing in Figure~\ref{paul_daichi_packings},}
+\newtext{we would like to explore the use of deformation-driven methods to create packings on surfaces.}
+\newtext{To realize this idea, it should be possible to adapt RepulsionPak by computing geodesic distances to generate physical forces.}
+\newtext{Packings on surfaces are also useful in a fabrication context, for example, 
 creating printed objects in the style of previous work like that of Chen et al.~\cite{Chen2017}.}
 We could exploit boundary compatibilities to discover ideal locations to connect neighbouring elements.
 Alternatively, it would be interesting to 3D print the 
@@ -306,13 +306,12 @@ Inspired by doodle murals by Joe Whale (Figure~\ref{doodle_boy}),
 it would be interesting \newtext{to develop an interactive installation in which users could interact with a live packing on a large touch-screen display}.
 }
 
-\nnewtext
-{
-It would also be interesting to create a system to assist an artist for creating arrangements of physical elements
-by using a camera-equipped augmented reality headset. We use the camera to scan these elements which are then processed by the system.
+
+It would also be interesting to create a system to assist \nnewtext{artists in} creating arrangements of \nnewtext{physical objects. 
+One approach could make use of} a camera-equipped augmented reality headset. 
+We use the camera to scan \nnewtext{elements,} which are then processed by the system.
 The headset displays a suggestion of an element arrangement which the artist can follow.
-As the artist moves the elements around, the system rescan the current element placement and recompute a new suggestion.
-}
+As the artist moves the elements around, the system \nnewtext{rescans} the current element placement and \nnewtext{recomputes} a new suggestion.
 
 \newtext{In the context of animated packings,} 
 we were only able to find a single example from The Simpsons (Figure~\ref{fig_animationpak_lisa_packing}). 

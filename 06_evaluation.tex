@@ -502,7 +502,7 @@ between positive space and negative space.}
 
 \textbf{Calibration:}
 \newtext{Two or more packings} must be calibrated to each other before they
-\nnewtext{can be} compared meaningfully.  
+can be compared meaningfully.  
 The calibration process requires packings to satisfy these conditions:
 \begin{enumerate}
 \item \newtext{All packings should use an identical container shape. We then normalize the container to have unit area.}
@@ -519,13 +519,13 @@ as changing the size of an element can make it harder or easier to interlock wit
 
 \end{enumerate}
 
-\nnewtext{
+
 In RepulsionPak simulations, we offset the elements outward by $d_\mathrm{gap}/2$ to create element skins (Section~\ref{repulsionpak_preprocessing}).
-This allows us to estimate the expected width of negative space which is $d_\mathrm{gap}$ after the simulation stops.
+This allows us to estimate the expected \nnewtext{final} width of negative space \nnewtext{as $d_\mathrm{gap}$}.
 Note that calibrated packings have the same negative space area so they should have the same expected of $d_\mathrm{gap}$.
 In a good packing, the gaps of negative space would be close to $d_\mathrm{gap}$.
 On the other hand, the gaps in a bad packings would have variations in widths which are smaller or bigger than $d_\mathrm{gap}$.
-}
+
 
 
 \textbf{Comparison to PAD:} 
@@ -552,7 +552,7 @@ A comparison between a PAD~packing shown in~(a) and a RepulsionPak packing in~(b
 with their corresponding SCPs~(c), distance histograms~(d), and overlap functions~(e). 
 The PAD and RepulsionPak packings are calibrated
 to have the same negative space ratio.
-\nnewtext{We visualize the statistics of the PAD packing and the RepulsionPak packing as red curves and blue curves, respectively.}
+\newtext{We visualize the statistics of the PAD packing and the RepulsionPak packing as red curves and blue curves, respectively.}
 Our SCP is lower and shorter than the PAD's result,
 our histogram shows higher concentration around $d_\mathrm{gap} / 2$,
 indicating more even negative space,
@@ -630,27 +630,27 @@ more histogram concentrations around $d_\mathrm{gap} / 2$, and lower overlap fun
 \section{Conclusions and Future Work}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newtext{
-\nnewtext{We believe} the evenness of negative space is an indicator
+
+\nnewtext{We believe that} evenness of negative space is an indicator
 of the quality of a packing. 
 The more the elements interlock, the more even the negative space.
 %we validated our deformation-driven approach 
 We evaluated the evenness of negative space
 using spherical contact probabilities, histograms of distance transform, and overlap functions.
 A packing with a more even negative space has a steeper and shorter SCP, 
-more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.}
+more histogram concentrations around $d_\mathrm{gap} / 2$, and a lower overlap function.
 
 \newtext
 {
 There are a few ideas that we would like to explore to improve packing evaluation:}
 \begin{itemize}
 
-\item \nnewtext{Due to its random initial placement, 
-the evenness of negative space of RepulsionPak results can vary slightly as shown in Figure~\ref{fifteen_packings}.
+\item Due to its random initial placement, 
+the evenness of negative space of RepulsionPak results can vary \nnewtext{slightly,} as shown in Figure~\ref{fifteen_packings}.
 For each RepulsionPak result in Figure~\ref{pad_comparison} and~\ref{balabolka_comparison}, 
 we run the simulation a few times and choose one that we like.
 Although we believe that RepulsionPak generates consistent results,
-we would like to improve the comparisons by aggregating data from multiple simulations.}
+we would like to improve the comparisons by aggregating data from multiple simulations.
 
 
 \item We would like to conduct experiments that investigate the

@@ -111,7 +111,7 @@ Lastly, Xu and Mould~\cite{Xu2015} proposed a graph-based tree synthesis method 
 \newtext
 {
 \textbf{Decorative Ornaments on Surfaces:} 
-Related methods in fabrication \nnewtext{have} sought to cover surfaces with
+Related methods in fabrication \newtext{have} sought to cover surfaces with
 arrangements of decorative elements that satisfy manufacturing
 constraints such as connectivity~\cite{Chen2016, Zehnder2016, Bian2018, Martinez2019}.
 Elements must be \newtext{linked together} to produce a connected result
@@ -165,28 +165,30 @@ The next section describes how we achieve these results.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-\nnewtext{The user provides several pieces of input, similar to ones described in Section~\ref{problem_formulation} with a few additional details:}
+\newtext{The user provides \nnewtext{several inputs, similar to those} described in Section~\ref{problem_formulation} with a few additional details:}
 \begin{enumerate}
-\item \nnewtext{An input element has a spine that will control its deformation.}
-\item \nnewtext{A container should contain a set of direction guides that influence the placement algorithm, defining the flow of the results.
+\item \newtext{An input element has a spine that will control its deformation.}
+\item \newtext{\nnewtext{Each container includes} a set of direction guides that influence the placement algorithm, defining the flow of the results.
 Every target container must have at least one guide, and some or all of the guides typically follow the container boundaries.}
-\item \nnewtext{Fixed elements are also included.}
+\item \newtext{Fixed elements are also included.}
 \end{enumerate}
 
-\nnewtext{The drawing in Figure~\ref{fig_flowpak_pipeline}(1) shows the illustration of the containers, directional guides, and a fixed element.}
-\nnewtext{The drawing in Figure~\ref{fig_flowpak_pipeline}(2) shows the illustration of elements and their spines.}
-\nnewtext{The goal of FLOWPAK is to fill each target container with elements.}
-Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. The numbers in the following
-steps correspond to parts of the figure.
+\nnewtext{
+The goal of FLOWPAK is to fill each target container with elements.
+Figure~\ref{fig_flowpak_pipeline} gives an overall view of our system. 
+The drawing in Figure~\ref{fig_flowpak_pipeline}(1) shows containers, directional guides, and a fixed element.
+The drawing in Figure~\ref{fig_flowpak_pipeline}(2) shows elements and their spines.
+The numbers in the following steps correspond to parts of the figure.}
+
 
 \begin{enumerate}
   \item Read the input target containers and
   copy any fixed elements to the output art (Section~\ref{flowpak_target_containers}).
   \item Analyze the ornamental elements, creating a shape descriptor for each
    (Section~\ref{flowpak_ornamental_element_and_lr_functions}).
-  \item Use the direction guides to fill each target container with a vector field \nnewtext{and then} trace streamlines 
+  \item Use the direction guides to fill each target container with a vector field \newtext{and then} trace streamlines 
   (Section~\ref{flowpak_creating_vector_fields_and_tracing_streamlines}).
-  \item \nnewtext{Divide the target containers into Voronoi cells around the streamlines, each cell is called as a \textit{blob}.} (Section~\ref{flowpak_subregion_blobs}).
+  \item Divide the target containers into Voronoi cells around \nnewtext{the streamlines. Each cell is referred to} as a \textit{blob}. (Section~\ref{flowpak_subregion_blobs}).
   \item Use the element shape descriptors to determine the best element for each blob. 
         Place the element in the blob, treating it as a skeletal stroke and mapping its
         spine to the streamline (Section~\ref{flowpak_shape_matching_and_deformation}).
@@ -490,12 +492,9 @@ in an iterative manner.
 %this part of the algorithm globally, by merging all containers and allowing the
 %elements within them to interact.
 
-\nnewtext{The refinement process aims to reduce the amount of negative space and make it
+\newtext{The refinement process aims to reduce the amount of negative space and make it
 more even by growing and shifting the placed ornamental elements. 
 We improve the placement of each element as much as possible before moving on to the next.}
-\deadtext{It would be possible to use a greedy approach, improving the placement of each element as much
-as possible before moving on to the next, However, we have found that gradually
-improving the placement of all elements leads to a more even result.}
 Each refinement iteration has two phases.
 First, we shift the streamlines to more accurately follow the space that is available,
 as shown in Figure~\ref{shift_streamline}. After shifting, we recalculate the LR function
