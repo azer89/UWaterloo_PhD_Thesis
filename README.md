@@ -1,11 +1,7 @@
-# uw_thesis
+PhD Thesis @University of Waterloo
 
-* https://github.com/azer89/DecorativeOrnament_Paper
+Title: Deformation-Driven Element Packing
 
-* https://github.com/azer89/repulsionpak_tvcg
+Official thesis here: https://uwspace.uwaterloo.ca/handle/10012/16536
 
-* https://github.com/azer89/animationpak_paper
 
-* https://github.com/azer89/comp_2
-
-* https://www.overleaf.com/latex/templates/university-of-waterloo-thesis-template/mkpbdmvrmqmz
